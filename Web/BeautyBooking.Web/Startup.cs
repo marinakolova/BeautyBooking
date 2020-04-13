@@ -60,6 +60,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
 
+            // External Login Setups
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
                 facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
