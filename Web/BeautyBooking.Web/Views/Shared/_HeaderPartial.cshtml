@@ -1,0 +1,54 @@
+﻿<header class="header" id="header">
+    <div>
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo">
+                                <a href="#"><span>Beauty</span>Booking</a>
+                            </div>
+                            <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
+                                <div class="header_top_nav">
+                                    <ul class="d-flex flex-row align-items-center justify-content-start">
+                                        <partial name="_LoginPartial" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header_nav" id="header_nav_pin">
+            <div class="header_nav_inner">
+                <div class="header_nav_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+                                    <nav class="main_nav">
+                                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                                            <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                            <li class="menu_item"><a asp-area="" asp-controller="Settings" asp-action="Index">Settings</a></li>
+                                            <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                                            <li class="menu_item"><a asp-area="" asp-controller="" asp-action="">TO-DO</a></li>
+                                            <li class="menu_item"><a asp-area="" asp-controller="" asp-action="">TO-DO</a></li>
+                                        </ul>
+                                    </nav>
+                                    <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
+                                        <form action="#" id="search_container_form" class="search_container_form">
+                                            <input type="text" class="search_container_input" placeholder="Search" required="required">
+                                            <button class="search_container_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

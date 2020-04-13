@@ -44,4 +44,6 @@
     <ProjectReference Include="..\BeautyBooking.Data.Models\BeautyBooking.Data.Models.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
