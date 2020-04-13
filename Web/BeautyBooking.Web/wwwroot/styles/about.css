@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -34,7 +34,6 @@
 	margin: 0;
 	padding: 0;
 	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 body
@@ -66,7 +65,6 @@ p
 	font-weight: 400;
 	color: #838383;
 	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 p a
@@ -77,7 +75,6 @@ p a
 	border-bottom: solid 1px #ffa07f;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -89,7 +86,6 @@ a, a:hover, a:visited, a:active, a:link
 {
 	text-decoration: none;
 	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 p a:active
@@ -124,7 +120,6 @@ h1, h2, h3, h4, h5, h6
 {
 	font-family: 'Montserrat', sans-serif;
 	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 h1::selection, 
@@ -175,7 +170,6 @@ section
 {
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -183,7 +177,6 @@ section
 {
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
-	-ms-transition: all 300ms ease;
 	-o-transition: all 300ms ease;
 	transition: all 300ms ease;
 }
@@ -191,7 +184,6 @@ section
 {
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
-	-ms-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
 }
@@ -199,7 +191,6 @@ section
 {
 	-webkit-transition: all 500ms ease;
 	-moz-transition: all 500ms ease;
-	-ms-transition: all 500ms ease;
 	-o-transition: all 500ms ease;
 	transition: all 500ms ease;
 }
@@ -274,7 +265,6 @@ section
 	white-space: nowrap;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
-	-ms-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
 }
@@ -366,7 +356,6 @@ section
 	height: 91px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -403,7 +392,6 @@ section
 	color: #838383;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -441,7 +429,6 @@ section
 	color: #4c4c4c;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -494,7 +481,6 @@ section
 	text-transform: uppercase;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -548,7 +534,7 @@ section
 	font-style: italic;
 	color: #ababab !important;
 }
-.search_container_input::input-placeholder
+.search_container_input
 {
 	font-size: 12px !important;
 	font-weight: 400 !important;
@@ -579,7 +565,6 @@ section
 	color: #4c4c4c;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -597,7 +582,7 @@ section
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(50,198,154,0.95);
+	background: rgba(186, 85, 211, 0.7);
 	z-index: 101;
 	opacity: 0;
 	visibility: hidden;
@@ -648,7 +633,6 @@ section
 	pointer-events: none;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 400ms ease;
 }
@@ -678,7 +662,6 @@ section
 	background: #FFFFFF;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -694,7 +677,6 @@ section
 	background: #FFFFFF;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -745,7 +727,7 @@ section
 	font-style: italic;
 	color: #ababab !important;
 }
-.menu_search_input::input-placeholder
+.menu_search_input
 {
 	font-size: 12px !important;
 	font-weight: 400 !important;
@@ -793,7 +775,6 @@ section
 	color: rgba(255,255,255,0.7);
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 	padding: 5px;
@@ -981,7 +962,6 @@ section
 	margin-bottom: 50px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -1001,7 +981,6 @@ section
 	opacity: 0;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -1053,7 +1032,6 @@ section
 	line-height: 0.75;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -1082,7 +1060,6 @@ section
 	opacity: 0;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -1223,7 +1200,7 @@ section
 	font-style: italic;
 	color: #FFFFFF !important;
 }
-.footer_contact_input::input-placeholder
+.footer_contact_input
 {
 	font-size: 12px !important;
 	font-weight: 400 !important;
@@ -1300,7 +1277,6 @@ section
 	text-transform: uppercase;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
@@ -1329,7 +1305,6 @@ section
 	color: #a0a1a1;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
