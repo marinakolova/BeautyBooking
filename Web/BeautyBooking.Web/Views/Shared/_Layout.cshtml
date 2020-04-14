@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
         <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
         <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+        <link rel="stylesheet" type="text/css" href="~/styles/home.css">
         <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
     </environment>
     <environment names="Staging,Production">
@@ -22,43 +23,66 @@
         <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
         <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
         <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+        <link rel="stylesheet" type="text/css" href="~/styles/home.css">
         <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
     </environment>
 </head>
 <body>
-
     <div class="super_container">
 
         <!-- Menu -->
         <partial name="_MenuPartial" />
 
         <!-- Home -->
-        <div class="home">
-            <div class="background_image" style="background-image:url(images/index.jpg)"></div>
+        @if (this.ViewData["Title"].ToString() == "Home Page")
+        {
+            <div class="home-home">
+                <div class="background_image" style="background-image:url(images/index.jpg)"></div>
 
-            <!-- Header -->
-            <partial name="_HeaderPartial" />
-            <partial name="_CookieConsentPartial" />
+                <partial name="_HeaderPartial" />
 
-            <div class="home_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="home_content">
-                                <main role="main">
-                                    @this.RenderBody()
-                                </main>
+                <div class="home_container-home">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="home_title-home">Welcome to @GlobalConstants.SystemName!</div>
+                                <div class="home_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien.</div>
+                                <div class="button home_button"><a href="#"><span>read more</span><span>read more</span></a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        }
+        else
+        {
+            <div class="home">
+                <div class="background_image" style="background-image:url(images/cover-bg.jpg)"></div>
 
+                <partial name="_HeaderPartial" />
+
+                <div class="home_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="home_content">
+                                    <div class="home_title">@this.ViewData["Title"]</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="container p-5">
+            <main role="main">
+                @this.RenderBody()
+            </main>
         </div>
 
         <!-- Footer -->
         <partial name="_FooterPartial" />
-
     </div>
 
     <environment names="Development">
