@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -27,7 +27,9 @@
 
 @media only screen and (max-width: 1600px)
 {
-	
+	.box {
+		padding-left: 60px;
+	}
 }
 
 /************
@@ -74,6 +76,18 @@
 	.cta_button
 	{
 		margin-top: 30px;
+	}
+	.box 
+	{
+		padding-left: 30px;
+	}
+	.loaders 
+	{
+		padding-bottom: 0;
+	}
+	.loader_col 
+	{
+		margin-bottom: 100px;
 	}
 	.footer_contact_form div input
 	{
@@ -145,6 +159,65 @@
 	{
 		margin-top: 100px;
 	}
+	.about_image 
+	{
+		position: relative;
+		top: auto;
+		-webkit-transform: none;
+		-moz-transform: none;
+		-ms-transform: none;
+		-o-transform: none;
+		transform: none;
+		right: auto;
+		margin-top: 30px;
+	}
+	.about_text_2 
+	{
+		margin-top: 12px;
+	}
+	.milestone_col:not(:last-child) 
+	{
+		margin-bottom: 80px;
+	}
+	.box 
+	{
+		width: 100%;
+		padding-left: 90px;
+	}
+	.tab_panels 
+	{
+		margin-top: 40px;
+	}
+	.news_sidebar 
+	{
+		margin-top: 100px;
+	}
+	.contact_col:not(:last-child) 
+	{
+		margin-bottom: 60px;
+	}
+	.contact_info 
+	{
+		position: relative;
+		left: 15px;
+		top: auto;
+		width: calc(100% - 30px);
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	.contact_info_list_2 
+	{
+		padding-top: 0;
+	}
+	.contact_map 
+	{
+		margin-top: 65px;
+		height: 650px;
+	}
+	.icon_box_col:not(:last-child) 
+	{
+		margin-bottom: 45px;
+	}
 	.footer_col:not(:last-child)
 	{
 		margin-bottom: 100px;
@@ -214,6 +287,9 @@
 	{
 		display: none;
 	}
+	.box {
+		padding-left: 60px;
+	}
 }
 
 /************
@@ -248,7 +324,15 @@
 		font-size: 28px;
 		max-width: 100%;
 	}
-	.home_title
+	.home 
+	{
+		height: 320px;
+	}
+	.home_title 
+	{
+		font-size: 28px;
+	}
+	.home_title-home
 	{
 		font-size: 36px;
 	}
@@ -256,6 +340,10 @@
 	{
 		font-size: 14px;
 		max-width: 100%;
+	}
+	.about_text_highlight 
+	{
+		font-size: 14px;
 	}
 	.info_text
 	{
@@ -273,6 +361,23 @@
 	.news_title
 	{
 		font-size: 28px;
+	}
+	.box 
+	{
+		padding-left: 30px;
+	}
+
+	.box_title 
+	{
+		font-size: 24px;
+	}
+	.box_text 
+	{
+		font-size: 13px;
+	}
+	.news_post_title a 
+	{
+		font-size: 24px;
 	}
 	.footer_about_text
 	{
