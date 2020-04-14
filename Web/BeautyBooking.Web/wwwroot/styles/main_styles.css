@@ -641,24 +641,23 @@ section
 	color: #FFFFFF;
 	font-weight: 600;
 }
-.menu_item a::after
-{
-	display: block;
-	position: absolute;
-	top: 52%;
-	left: 0;
-	width: 0;
-	height: 4px;
-	background: #FFFFFF;
-	letter-spacing: 2px;
-	content: '';
-	z-index: 10;
-	pointer-events: none;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 400ms ease;
-}
+	.menu_item a::after {
+		display: block;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: #BA55D3;
+		letter-spacing: 2px;
+		content: '';
+		z-index: 10;
+		pointer-events: none;
+		-webkit-transition: all 200ms ease;
+		-moz-transition: all 200ms ease;
+		-o-transition: all 200ms ease;
+		transition: all 400ms ease;
+	}
 .menu_item:hover a::after
 {
 	width: 100%;
