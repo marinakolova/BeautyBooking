@@ -1,0 +1,27 @@
+﻿@model BeautyBooking.Web.ViewModels.Administration.Dashboard.CategoryInputModel
+@{
+    this.ViewData["Title"] = "Add Category";
+}
+
+<div class="col-lg-8 contact_col">
+    <div class="contact_form">
+        <div class="contact_title">New Category</div>
+        <div class="contact_form_container">
+            <form method="post" class="contact_form">
+                <input type="text" asp-for="@Model.Name" class="contact_input" placeholder="Name" required="required">
+                <input type="text" asp-for="@Model.ImageUrl" class="contact_input" placeholder="ImageUrl" required="required">
+                <textarea class="contact_input contact_textarea mb-3" asp-for="@Model.Description" placeholder="Description" required="required"></textarea>
+                <button class="button button-large button_1 elements_button" type="submit">
+                    <a asp-area="Administration" asp-controller="Dashboard" asp-action="AddCategory">
+                        <span>add category</span><span>add category</span>
+                    </a>
+                </button>
+            </form>
+            <div class="button button-large button_2 elements_button">
+                <a asp-area="Administration" asp-controller="Dashboard" asp-action="Categories">
+                    <span>Cancel</span><span>Cancel</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
