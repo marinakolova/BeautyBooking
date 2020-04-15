@@ -16,10 +16,14 @@
             this.categoriesRepository = categoriesRepository;
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<T> GetAll<T>(int? count = null)
         {
             IQueryable<Category> query =
                 this.categoriesRepository.All().OrderBy(x => x.Name);
+            if (count.HasValue)
+            {
+                query = query.Take(count.Value);
+            }
 
             return query.To<T>().ToList();
         }
@@ -28,6 +32,14 @@
         {
             var category = this.categoriesRepository.All()
                 .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
+                .To<T>().FirstOrDefault();
+            return category;
+        }
+
+        public T GetById<T>(int id)
+        {
+            var category = this.categoriesRepository.All()
+                .Where(x => x.Id == id)
                 .To<T>().FirstOrDefault();
             return category;
         }

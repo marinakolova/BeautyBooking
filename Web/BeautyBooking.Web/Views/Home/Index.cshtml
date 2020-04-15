@@ -1,8 +1,43 @@
-﻿@using BeautyBooking.Common
+﻿@model BeautyBooking.Web.ViewModels.Home.IndexViewModel
+
+@using BeautyBooking.Common
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
+    <div class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_title">Categories</div>
+                    <div class="section_subtitle">to choose from</div>
+                </div>
+            </div>
+            <div class="row icon_boxes_row">
 
+                @foreach (var category in Model.Categories)
+                {
+                    <!-- Icon Box -->
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="icon_box">
+                            <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+                                <div class="icon_box_icon"><img class="img-thumbnail" src="@category.ImageUrl" alt=""></div>
+                                <div class="icon_box_title">@category.Name</div>
+                            </div>
+                            <div class="icon_box_text">@category.Description</div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="button services_button ml-auto mr-auto">
+                        <a asp-area="" asp-controller="Categories" asp-action="Index"><span>see all</span><span>see all</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 

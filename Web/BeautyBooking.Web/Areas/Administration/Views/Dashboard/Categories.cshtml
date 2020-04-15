@@ -3,36 +3,75 @@
     this.ViewData["Title"] = "Manage Categories";
 }
 
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">CATEGORY</th>
-                <th scope="col">Salons</th>
-                <th scope="col">Blog Posts</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var category in this.Model.Categories)
-            {
-                <tr>
-                    <th scope="row">@category.Name</th>
-                    <td>@category.SalonsCount</td>
-                    <td>@category.BlogPostsCount</td>
-                    <td><button class="btn btn-info">View</button></td>
-                    <td><button class="btn btn-secondary">Edit</button></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
-                </tr>
-            }
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
-            <th scope="row"><button class="btn btn-success">Add New Category</button></th>
+            <th scope="col">CATEGORY</th>
+            <th scope="col">Salons</th>
+            <th scope="col">Blog Posts</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in this.Model.Categories)
+        {
+            <tr>
+                <th scope="row">@category.Name</th>
+                <td>@category.SalonsCount</td>
+                <td>@category.BlogPostsCount</td>
+                <td><button class="btn btn-info">View</button></td>
+                <td><button class="btn btn-warning">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
+        }
+        <tr>
+            <th scope="row">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewCategoryModal">
+                    Add New Category
+                </button>
+            </th>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        </tbody>
-    </table>
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="addNewCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">ImageUrl:</label>
+                        <textarea class="form-control" id="image-url"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Add Category</button>
+            </div>
+        </div>
+    </div>
+</div>

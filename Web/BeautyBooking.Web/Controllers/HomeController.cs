@@ -2,15 +2,28 @@
 {
     using System.Diagnostics;
 
+    using BeautyBooking.Services.Data;
     using BeautyBooking.Web.ViewModels;
-
+    using BeautyBooking.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly ICategoriesService categoriesService;
+
+        public HomeController(ICategoriesService categoriesService)
+        {
+            this.categoriesService = categoriesService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = new IndexViewModel
+            {
+                Categories =
+                    this.categoriesService.GetAll<IndexCategoryViewModel>(6),
+            };
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()
