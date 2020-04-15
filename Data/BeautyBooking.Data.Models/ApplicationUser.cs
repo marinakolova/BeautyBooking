@@ -16,6 +16,8 @@ namespace BeautyBooking.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Salons = new HashSet<Salon>();
+            this.Appointments = new HashSet<Appointment>();
         }
 
         // Audit info
@@ -33,5 +35,9 @@ namespace BeautyBooking.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Salon> Salons { get; set; }
+
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }
