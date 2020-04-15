@@ -1,0 +1,38 @@
+﻿@model BeautyBooking.Web.ViewModels.Administration.Dashboard.AdminCategoriesViewModel
+@{
+    this.ViewData["Title"] = "Manage Categories";
+}
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">Salons</th>
+                <th scope="col">Blog Posts</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in this.Model.Categories)
+            {
+                <tr>
+                    <th scope="row">@category.Name</th>
+                    <td>@category.SalonsCount</td>
+                    <td>@category.BlogPostsCount</td>
+                    <td><button class="btn btn-info">View</button></td>
+                    <td><button class="btn btn-secondary">Edit</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+            }
+        <tr>
+            <th scope="row"><button class="btn btn-success">Add New Category</button></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>

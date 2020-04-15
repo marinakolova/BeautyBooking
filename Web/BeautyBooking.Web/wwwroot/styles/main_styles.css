@@ -40,6 +40,16 @@
 19. Contact
 20. Google Map
 
+	ELEMENTS
+
+21. Elements
+	21.1 Buttons
+	21.2 Accordions
+	21.3 Tabs
+	21.4 Loaders
+	21.5 Milestones
+	21.6 Icon Boxes
+
 ******************************/
 
 /***********
@@ -269,6 +279,13 @@ section
 	background: #BA55D3;
 	overflow: hidden;
 }
+.button-large 
+{
+	width: 254px !important;
+	height: 54px;
+	background: #BA55D3;
+	overflow: hidden;
+}
 .button a
 {
 	display: block;
@@ -332,6 +349,22 @@ section
 	font-size: 11px;
 	opacity: 1;
 }
+.button_2 {
+	background: #404040;
+}
+
+	.button_2 a span {
+		color: #FFFFFF;
+	}
+
+.button_3 {
+	background: transparent;
+	border: solid 2px #BA55D3;
+}
+
+	.button_3 a span {
+		color: #404040;
+	}
 .section_title
 {
 	font-size: 36px;
@@ -2844,4 +2877,410 @@ section
 #map {
 	width: 100%;
 	height: calc(100% + 30px);
+}
+
+/*********************************
+21. Elements
+*********************************/
+
+.elements {
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.elements_title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #404040;
+	line-height: 0.75;
+}
+
+/*********************************
+21.1 Buttons
+*********************************/
+
+.buttons {
+}
+
+.buttons_content {
+	margin-top: 100px;
+}
+
+.elements_button {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+	.elements_button:not(:last-child) {
+		margin-right: 46px;
+	}
+
+/*********************************
+21.2 Accordions
+*********************************/
+
+.accordions {
+	margin-top: 90px;
+}
+
+.accordions_container {
+	margin-top: 100px;
+}
+
+.accordion_container:not(:last-child) {
+	margin-bottom: 14px;
+}
+
+.accordion {
+	height: 49px;
+	width: 100%;
+	background: #FFFFFF;
+	padding-left: 70px;
+	cursor: pointer;
+	color: #404040;
+	font-size: 14px;
+	font-weight: 600;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+	.accordion div {
+		max-width: 90%;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.accordion::after {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+		left: 0;
+		width: 50px;
+		height: 100%;
+		content: '+';
+		background: #BA55D3;
+		font-size: 14px;
+		color: #FFFFFF;
+		font-weight: 500;
+		-webkit-transition: all 200ms ease;
+		-moz-transition: all 200ms ease;
+		-o-transition: all 200ms ease;
+		transition: all 200ms ease;
+	}
+
+	.accordion.active {
+		background: #BA55D3;
+		color: #FFFFFF;
+	}
+
+		.accordion.active::after {
+			content: '-';
+			color: #FFFFFF;
+			background: #404040;
+		}
+
+.accordion_panel {
+	padding-right: 8px;
+	max-height: 0px;
+	overflow: hidden;
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+	.accordion_panel > div {
+		padding-bottom: 11px;
+	}
+
+	.accordion_panel p {
+		font-size: 14px;
+		font-weight: 500;
+		padding-top: 35px;
+		color: #838383;
+		line-height: 2.14;
+	}
+
+/*********************************
+21.3 Tabs
+*********************************/
+
+.elements_tabs {
+	margin-top: 100px;
+}
+
+.tabs_content {
+	margin-top: 100px;
+}
+
+.tab {
+	width: 100%;
+	padding-left: 29px;
+	padding-top: 23px;
+	padding-bottom: 25px;
+	padding-right: 29px;
+	background: #f8fafc;
+	cursor: pointer;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+	.tab:not(:last-child) {
+		margin-bottom: 2px;
+	}
+
+	.tab::after {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 6px;
+		height: 100%;
+		content: '';
+		background: #dfdfdf;
+		-webkit-transition: all 200ms ease;
+		-moz-transition: all 200ms ease;
+		-o-transition: all 200ms ease;
+		transition: all 200ms ease;
+	}
+
+	.tab:hover::after,
+	.tab.active::after {
+		background: #404040;
+	}
+
+	.tab:hover,
+	.tab.active {
+		background: #BA55D3;
+	}
+
+		.tab:hover .tab_title,
+		.tab:hover .tab_text,
+		.tab.active .tab_title,
+		.tab.active .tab_text {
+			color: #FFFFFF;
+		}
+
+.tab_panel {
+	display: none !important;
+	width: 100%;
+	height: 100%;
+	-webkit-animation: fadeEffect 1s;
+	animation: fadeEffect 1s;
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.tab_panel.active {
+	display: block !important;
+}
+
+.tab_list {
+	padding-top: 31px;
+}
+
+	.tab_list ul li:not(:last-child) {
+		margin-bottom: 41px;
+	}
+
+.tab_image {
+	width: 100%;
+}
+
+	.tab_image img {
+		max-width: 100%;
+	}
+
+.tab_title {
+	font-size: 20px;
+	font-weight: 700;
+	color: #404040;
+	line-height: 1.2;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.tab_text {
+	font-size: 14px;
+	font-weight: 500;
+	color: #b1b1b1;
+	margin-top: 7px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.tab_list_title {
+	font-size: 20px;
+	font-weight: 600;
+	color: #404040;
+}
+
+.tab_list_text {
+	margin-top: 8px;
+}
+
+/*********************************
+21.4 Loaders
+*********************************/
+
+.loaders {
+	margin-top: 100px;
+	padding-bottom: 38px;
+}
+
+.loaders_container {
+	margin-top: 85px;
+}
+
+.loader {
+	width: 82px;
+	height: 82px;
+	margin: 0 auto;
+	background: transparent;
+}
+
+.loader_content {
+	position: absolute;
+	left: 50%;
+	bottom: -46px;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	font-size: 18px;
+	font-weight: 500;
+	color: #232323;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.loader_title {
+	font-size: 18px;
+	color: #252525;
+	font-weight: 500;
+}
+
+/*********************************
+21.5 Milestones
+*********************************/
+
+.milestones {
+	margin-top: 100px;
+}
+
+.milestones_content {
+	margin-top: 100px;
+}
+
+.milestone {
+	width: 100%;
+}
+
+.milestone_icon {
+	display: inline-block;
+	height: 65px;
+	width: 65px;
+}
+
+	.milestone_icon img {
+		max-width: 100%;
+	}
+
+.milestone_content {
+	padding-left: 29px;
+}
+
+.milestone_counter {
+	font-size: 48px;
+	font-weight: 600;
+	color: #404040;
+	line-height: 0.75;
+}
+
+.milestone_text {
+	font-size: 16px;
+	font-weight: 600;
+	color: #c1c1c1;
+	margin-top: 12px;
+	line-height: 1.2;
+}
+
+/*********************************
+21.6 Icon Boxes
+*********************************/
+
+.icon_boxes {
+	margin-top: 100px;
+}
+
+.icon_boxes_row {
+	margin-top: 100px;
+}
+
+.icon_box {
+}
+
+.icon_box_icon {
+	width: 49px;
+	height: 49px;
+}
+
+	.icon_box_icon img {
+		max-width: 100%;
+	}
+
+.icon_box_title {
+	font-size: 20px;
+	font-weight: 600;
+	color: #404040;
+	padding-left: 25px;
+}
+
+.icon_box_text {
+	font-size: 14px;
+	font-weight: 500;
+	color: #838383;
+	line-height: 2.14;
+	margin-top: 21px;
 }

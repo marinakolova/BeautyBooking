@@ -3,5 +3,15 @@
     this.ViewData["Title"] = "Admin dashboard";
 }
 
-<h1>@this.ViewData["Title"]</h1>
-Settings: @this.Model.SettingsCount
+
+<div class="button button-large button_1 elements_button">
+    <a asp-area="Administration" asp-controller="Dashboard" asp-action="Categories"><span>Manage Categories</span><span>Manage Categories</span></a>
+</div>
+
+<div class="button button-large button_2 elements_button">
+    <a asp-area="Administration" asp-controller="Dashboard" asp-action="Salons"><span>Manage Salons</span><span>Manage Salons</span></a>
+</div>
+
+<div class="button button-large button_3 elements_button">
+    <a asp-area="Administration" asp-controller="Dashboard" asp-action="Blog"><span>Manage Blog Posts</span><span>Manage Blog Posts</span></a>
+</div>

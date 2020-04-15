@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautyBooking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200415121102_AddAppointments")]
-    partial class AddAppointments
+    [Migration("20200415145521_AddCategoriesSalonsAndBlogPosts")]
+    partial class AddCategoriesSalonsAndBlogPosts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -216,6 +216,38 @@ namespace BeautyBooking.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("BlogPosts");
+                });
+
+            modelBuilder.Entity("BeautyBooking.Data.Models.BlogPostCategory", b =>
+                {
+                    b.Property<int>("BlogPostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("BlogPostId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("BlogPostCategories");
                 });
 
             modelBuilder.Entity("BeautyBooking.Data.Models.Category", b =>
@@ -440,6 +472,21 @@ namespace BeautyBooking.Data.Migrations
                     b.HasOne("BeautyBooking.Data.Models.Salon", "Salon")
                         .WithMany("Appointments")
                         .HasForeignKey("SalonId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BeautyBooking.Data.Models.BlogPostCategory", b =>
+                {
+                    b.HasOne("BeautyBooking.Data.Models.BlogPost", "BlogPost")
+                        .WithMany("Categories")
+                        .HasForeignKey("BlogPostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BeautyBooking.Data.Models.Category", "Category")
+                        .WithMany("BlogPosts")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
