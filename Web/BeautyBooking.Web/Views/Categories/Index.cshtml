@@ -4,23 +4,27 @@
     this.ViewData["Title"] = "Categories";
 }
 
-<div class="row">
+<div class="card-deck">
     @foreach (var category in Model.Categories)
     {
-        <div class="card p-2 m-3" style="width: 22rem;">
-            <img class="card-img-top img-fluid img-thumbnail" src="@category.ImageUrl" alt="Card image cap">
+        <div class="card bg-light text-center mb-4" style="min-width: 20rem;">
+            <img class="card-img-top img-thumbnail align-self-center" src="@category.ImageUrl" style="width:300px;height:300px;">
             <div class="card-body">
-                <div class="logo">
-                    <a><span>@category.Name</span></a>
+                <div class="card-title">
+                    <div class="logo">
+                        <a><span>@category.Name</span></a>
+                    </div>
                 </div>
-                <p class="home_text">@category.Description</p>
-                <div class="row my-4">
-                    <div class="button button_1 elements_button">
-                        <a href="#"><span>Find Salons</span><span>Find Salons</span></a>
-                    </div>
-                    <div class="button button_3 elements_button">
-                        <a><span>Read More</span><span>Read More</span></a>
-                    </div>
+                <div class="card-text">
+                    <p class="home_text">@category.Description</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="button button_1 elements_button">
+                    <a href="#"><span>Find Salons</span><span>Find Salons</span></a>
+                </div>
+                <div class="button button_3 elements_button">
+                    <a><span>Read More</span><span>Read More</span></a>
                 </div>
             </div>
         </div>
