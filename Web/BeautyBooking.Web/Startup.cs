@@ -60,6 +60,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IBlogPostsService, BlogPostsService>();
 
             // External Login Setups
             services.AddAuthentication().AddFacebook(facebookOptions =>

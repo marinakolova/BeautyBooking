@@ -36,6 +36,12 @@
 
         public DbSet<BlogPostCategory> BlogPostCategories { get; set; }
 
+        public DbSet<SalonCategory> SalonCategories { get; set; }
+
+        public DbSet<Service> Services { get; set; }
+
+        public DbSet<SalonService> SalonServices { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

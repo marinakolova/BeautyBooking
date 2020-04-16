@@ -1,5 +1,42 @@
-﻿@{
+﻿@model BeautyBooking.Web.ViewModels.Blog.IndexViewModel
+@{
     this.ViewData["Title"] = "Blog";
 }
 
-<h1>Blog Page</h1>
+<h1>All Blog Posts</h1>
+
+    <div class="news">
+        <div class="container">
+            <div class="row">
+
+                <!-- News Posts -->
+                <div class="col-lg-8">
+                    <div class="news_posts">
+
+                        @foreach (var blogPost in Model.BlogPosts)
+                        {
+                            <!-- News Post -->
+                            <div class="news_post">
+                                <div class="news_post_image"><img src="@blogPost.ImageUrl" alt=""></div>
+                                <div class="news_post_content">
+                                    <div class="news_post_date"><a href="#">@blogPost.CreatedOn</a></div>
+                                    <div class="news_post_title"><a href="#">@blogPost.Title</a></div>
+                                    <div class="news_post_info">
+                                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                                            <li><a href="#">by @blogPost.Author</a></li>
+                                            <li><a href="#">@blogPost.CreatedOn</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="news_post_text">
+                                        <p>@blogPost.Content</p>
+                                    </div>
+                                    <div class="button news_post_button"><a href="#"><span>read more</span><span>read more</span></a></div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>

@@ -1,5 +1,50 @@
-﻿@{
+﻿@model BeautyBooking.Web.ViewModels.Administration.Dashboard.AdminBlogPostsListViewModel
+@{
     this.ViewData["Title"] = "Manage Blog Posts";
 }
 
-<h1>Manage Blog Posts</h1>
+<h1>All Blog Posts (@Model.BlogPosts.Count())</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Image</th>
+            <th scope="col">Content</th>
+            <th scope="col">Author</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blogPost in this.Model.BlogPosts)
+        {
+            <tr>
+                <th scope="row">@blogPost.Title</th>
+                <td>
+                    <img class="align-self-center" src="@blogPost.ImageUrl" style="width:100px;height:100px;">
+                </td>
+                <td>@blogPost.Content</td>
+                <td>@blogPost.Author</td>
+                <td>
+                    <div class="button button-large button_2 elements_button">
+                        <a asp-area="Administration" asp-controller="Dashboard" asp-action="DeleteBlogPost" asp-route-id="@blogPost.Id"><span>Delete</span><span>Delete</span></a>
+                    </div>
+                </td>
+            </tr>
+        }
+        <tr>
+            <th scope="row">
+                <div class="button button-large button_1 elements_button">
+                    <a asp-area="Administration" asp-controller="Dashboard" asp-action="AddBlogPost">
+                        <span>Add New Category</span><span>Add New Blog Post</span>
+                    </a>
+                </div>
+            </th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

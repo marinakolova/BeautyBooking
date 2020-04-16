@@ -10,11 +10,13 @@
     {
         private readonly ISettingsService settingsService;
         private readonly ICategoriesService categoriesService;
+        private readonly IBlogPostsService blogPostsService;
 
-        public DashboardController(ISettingsService settingsService, ICategoriesService categoriesService)
+        public DashboardController(ISettingsService settingsService, ICategoriesService categoriesService, IBlogPostsService blogPostsService)
         {
             this.settingsService = settingsService;
             this.categoriesService = categoriesService;
+            this.blogPostsService = blogPostsService;
         }
 
         public IActionResult Index()
@@ -56,14 +58,41 @@
             return this.RedirectToAction("Categories");
         }
 
-        // SALONS
-        public IActionResult Salons()
+        // BLOG
+        public IActionResult Blog()
+        {
+            var viewModel = new AdminBlogPostsListViewModel
+            {
+                BlogPosts =
+                    this.blogPostsService.GetAll<AdminBlogPostViewModel>(),
+            };
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult AddBlogPost()
         {
             return this.View();
         }
 
-        // BLOG
-        public IActionResult Blog()
+        [HttpPost]
+        public async Task<IActionResult> AddBlogPost(BlogPostInputModel input)
+        {
+            await this.blogPostsService.AddBlogPostAsync(input.Title, input.Content, input.Author, input.ImageUrl);
+
+            return this.RedirectToAction("Blog");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteBlogPost(int id)
+        {
+            await this.blogPostsService.DeleteBlogPostAsync(id);
+
+            return this.RedirectToAction("Blog");
+        }
+
+        // SALONS
+        public IActionResult Salons()
         {
             return this.View();
         }
