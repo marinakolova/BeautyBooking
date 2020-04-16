@@ -30,11 +30,7 @@
                                 <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
                                     <nav class="main_nav">
                                         <ul class="d-flex flex-row align-items-center justify-content-start">
-                                            <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                                            <li class="menu_item"><a asp-area="" asp-controller="Categories" asp-action="Index">Categories</a></li>
-                                            <li class="menu_item"><a asp-area="" asp-controller="Salons" asp-action="Index">Salons</a></li>
-                                            <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
-                                            <li class="menu_item"><a asp-area="" asp-controller="Calendar" asp-action="Index">Calendar</a></li>
+                                            <partial name="_MenuItemsPartial" />
                                         </ul>
                                     </nav>
                                     <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">

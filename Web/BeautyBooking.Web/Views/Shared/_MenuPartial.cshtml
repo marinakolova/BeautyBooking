@@ -1,12 +1,13 @@
 ﻿<div class="menu trans_500">
     <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-        <div class="menu_close_container"><div class="menu_close"></div></div>        
-        <ul>            
-            <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li class="menu_item"><a asp-area="" asp-controller="Categories" asp-action="Index">Categories</a></li>
-            <li class="menu_item"><a asp-area="" asp-controller="Salons" asp-action="Index">Salons</a></li>
-            <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
-            <li class="menu_item"><a asp-area="" asp-controller="Calendar" asp-action="Index">Calendar</a></li>
+        <div class="menu_close_container"><div class="menu_close"></div></div>
+        <ul>
+            <partial name="_MenuItemsPartial" />
+        </ul>
+    </div>
+    <div class="menu_social">
+        <ul>
+            <partial name="_LoginPartial" />
         </ul>
     </div>
 </div>
