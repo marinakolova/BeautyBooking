@@ -5,6 +5,8 @@
     this.ViewData["Title"] = "Home Page";
 }
 
+<hr class="bg-dark mx-4" style="height: 6px;" />
+
 <div class="departments">
     <div class="container">
         <div class="row">
@@ -34,25 +36,114 @@
                             }
 
                         </div>
-
                     </div>
-
                     <!-- Dept Slider Nav -->
                     <div class="dept_slider_nav"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-
                 </div>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="button services_button ml-auto mr-auto">
+                    <a asp-area="" asp-controller="Categories" asp-action="Index"><span>see all</span><span>see all</span></a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col">
-        <div class="button services_button ml-auto mr-auto">
-            <a asp-area="" asp-controller="Categories" asp-action="Index"><span>see all</span><span>see all</span></a>
+<hr class="bg-dark mx-4" style="height: 6px;" />
+
+<!-- FAQ & News -->
+
+<div class="stuff">
+    <div class="container">
+        <div class="row">
+
+            <!-- FAQ -->
+            <div class="col-lg-7">
+                <div class="faq">
+                    <div class="faq_title">Faq & Stuff</div>
+                    <div class="faq_subtitle">read all about it</div>
+                    <div class="elements_accordions">
+                        <div class="accordions">
+
+                            <div class="accordion_container">
+                                <div class="accordion d-flex flex-row align-items-center active"><div>What is BeautyBooking?</div></div>
+                                <div class="accordion_panel">
+                                    <div>
+                                        <p>
+                                            BeautyBooking is an online booking platform for beauty services. 
+                                            Haircut, wax, manicure - or whichever treatment you're after - you can find a salon or spa nearby and book 24/7.
+                                            We don't own salons or spas and we don't manufacture cosmetics. 
+                                            We are just the easiest way to book all your beauty appointments.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion_container">
+                                <div class="accordion d-flex flex-row align-items-center"><div>How does the booking system work?</div></div>
+                                <div class="accordion_panel">
+                                    <div>
+                                        <p>
+                                            BeautyBooking gives salons access to their own online diary system so they can independently control their calendar and on-site availability.
+                                            As a result, all appointments showing on our site should be bookable.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion_container">
+                                <div class="accordion d-flex flex-row align-items-center"><div>Is it free?</div></div>
+                                <div class="accordion_panel">
+                                    <div>
+                                        <p>
+                                            Yep, it is free! It is free for both clients and salons. 
+                                            We just love making things easy... Plus it is a students project ;)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest News -->
+            <div class="col-lg-5">
+                <div class="news-grey">
+                    <div class="news_title">Latest Blog Posts</div>
+                    <div class="news_subtitle">read all about it</div>
+                    <div class="news_container">
+
+                        @foreach (var blogPost in Model.BlogPosts)
+                        {
+                            <!-- Latest News Post -->
+                            <div class="latest d-flex flex-row align-items-start justify-content-start">
+                                <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
+                                <div class="latest_content">
+                                    <div class="latest_title"><a href="news.html">@blogPost.Title</a></div>
+                                    <div class="latest_info">
+                                        <ul class="d-flex flex-row align-items-start justify-content-start">
+                                            <li><a href="#">by @blogPost.Author</a></li>
+                                            <li><a href="#">@blogPost.CreatedOn</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="latest_comments"><a href="#">@blogPost.CommentsCount Comments</a></div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
+<hr class="bg-dark mx-4" style="height: 6px;" />
 
 

@@ -24,8 +24,4 @@
     <ProjectReference Include="..\BeautyBooking.Services.Mapping\BeautyBooking.Services.Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Appointments\" />
-  </ItemGroup>
-
 </Project>

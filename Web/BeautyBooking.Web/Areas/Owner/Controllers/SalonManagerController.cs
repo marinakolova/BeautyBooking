@@ -6,7 +6,7 @@
     using BeautyBooking.Web.ViewModels.Administration.Dashboard;
     using Microsoft.AspNetCore.Mvc;
 
-    public class ManagerController : OwnerController
+    public class SalonManagerController : OwnerBaseController
     {
         public IActionResult Index()
         {

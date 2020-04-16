@@ -2176,6 +2176,13 @@ section
 	padding-bottom: 102px;
 }
 
+.news-grey {
+	width: 100%;
+	background: #f4f8fb;
+	padding-top: 99px;
+	padding-bottom: 102px;
+}
+
 .news_post:not(:last-child) {
 	margin-bottom: 63px;
 }

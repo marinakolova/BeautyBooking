@@ -2,6 +2,7 @@
 {
     using System.Diagnostics;
 
+    using BeautyBooking.Services.Data.Blog;
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Web.ViewModels;
     using BeautyBooking.Web.ViewModels.Home;
@@ -10,10 +11,12 @@
     public class HomeController : BaseController
     {
         private readonly ICategoriesService categoriesService;
+        private readonly IBlogPostsService blogPostsService;
 
-        public HomeController(ICategoriesService categoriesService)
+        public HomeController(ICategoriesService categoriesService, IBlogPostsService blogPostsService)
         {
             this.categoriesService = categoriesService;
+            this.blogPostsService = blogPostsService;
         }
 
         public IActionResult Index()
@@ -22,6 +25,8 @@
             {
                 Categories =
                     this.categoriesService.GetAll<IndexCategoryViewModel>(),
+                BlogPosts =
+                    this.blogPostsService.GetAll<IndexBlogViewModel>(4),
             };
             return this.View(viewModel);
         }

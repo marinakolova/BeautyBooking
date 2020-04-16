@@ -12,7 +12,7 @@
             this.salonsService = salonsService;
         }
 
-        public IActionResult Salons()
+        public IActionResult Index()
         {
             return this.View();
         }

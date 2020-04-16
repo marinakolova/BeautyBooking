@@ -15,7 +15,7 @@
             this.blogPostsService = blogPostsService;
         }
 
-        public IActionResult Blog()
+        public IActionResult Index()
         {
             var viewModel = new BlogPostsListViewModel
             {
@@ -36,7 +36,7 @@
         {
             await this.blogPostsService.AddBlogPostAsync(input.Title, input.Content, input.Author, input.ImageUrl);
 
-            return this.RedirectToAction("Blog");
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -44,7 +44,7 @@
         {
             await this.blogPostsService.DeleteBlogPostAsync(id);
 
-            return this.RedirectToAction("Blog");
+            return this.RedirectToAction("Index");
         }
     }
 }

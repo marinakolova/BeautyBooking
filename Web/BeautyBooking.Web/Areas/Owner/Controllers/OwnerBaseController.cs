@@ -8,7 +8,7 @@
 
     [Authorize(Roles = GlobalConstants.SalonOwnerRoleName)]
     [Area("Owner")]
-    public class OwnerController : BaseController
+    public class OwnerBaseController : BaseController
     {
     }
 }

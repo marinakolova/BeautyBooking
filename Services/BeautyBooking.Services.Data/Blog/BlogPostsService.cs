@@ -21,7 +21,7 @@
         public IEnumerable<T> GetAll<T>(int? count = null)
         {
             IQueryable<BlogPost> query =
-                this.blogPostsRepository.All().OrderBy(x => x.Title);
+                this.blogPostsRepository.All().OrderByDescending(x => x.CreatedOn);
             if (count.HasValue)
             {
                 query = query.Take(count.Value);

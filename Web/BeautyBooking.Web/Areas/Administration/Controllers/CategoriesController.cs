@@ -15,7 +15,7 @@
             this.categoriesService = categoriesService;
         }
 
-        public IActionResult Categories()
+        public IActionResult Index()
         {
             var viewModel = new CategoriesListViewModel
             {
@@ -36,7 +36,7 @@
         {
             await this.categoriesService.AddCategoryAsync(input.Name, input.Description, input.ImageUrl);
 
-            return this.RedirectToAction("Categories");
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -44,7 +44,7 @@
         {
             await this.categoriesService.DeleteCategoryAsync(id);
 
-            return this.RedirectToAction("Categories");
+            return this.RedirectToAction("Index");
         }
     }
 }
