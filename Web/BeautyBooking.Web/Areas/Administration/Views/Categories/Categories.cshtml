@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Administration.Dashboard.AdminCategoriesViewModel
+﻿@model BeautyBooking.Web.ViewModels.Administration.Categories.CategoriesListViewModel
 @{
     this.ViewData["Title"] = "Manage Categories";
 }
@@ -27,7 +27,7 @@
                 <td>@category.SalonsCount</td>                
                 <td>
                     <div class="button button_2 elements_button">
-                        <a asp-area="Administration" asp-controller="Dashboard" asp-action="DeleteCategory" asp-route-id="@category.Id"><span>Delete</span><span>Delete</span></a>
+                        <a asp-area="Administration" asp-controller="Categories" asp-action="DeleteCategory" asp-route-id="@category.Id"><span>Delete</span><span>Delete</span></a>
                     </div>
                 </td>
             </tr>
@@ -35,7 +35,7 @@
             <tr>
                 <th scope="row">
                     <div class="button button-large button_1 elements_button">
-                        <a asp-area="Administration" asp-controller="Dashboard" asp-action="AddCategory">
+                        <a asp-area="Administration" asp-controller="Categories" asp-action="AddCategory">
                             <span>Add New Category</span><span>Add New Category</span>
                         </a>
                     </div>

@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Administration.Dashboard
+﻿namespace BeautyBooking.Web.ViewModels.Administration.Categories
 {
     public class CategoryInputModel
     {

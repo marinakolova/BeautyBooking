@@ -1,11 +1,11 @@
-﻿namespace BeautyBooking.Web.ViewModels.Administration.Dashboard
+﻿namespace BeautyBooking.Web.ViewModels.Administration.Blog
 {
     using System;
 
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class AdminBlogPostViewModel : IMapFrom<BlogPost>
+    public class BlogPostViewModel : IMapFrom<BlogPost>
     {
         public int Id { get; set; }
 

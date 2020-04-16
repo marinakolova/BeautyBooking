@@ -1,9 +1,9 @@
-﻿namespace BeautyBooking.Web.ViewModels.Administration.Dashboard
+﻿namespace BeautyBooking.Web.ViewModels.Administration.Categories
 {
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class AdminCategoryViewModel : IMapFrom<Category>
+    public class CategoryViewModel : IMapFrom<Category>
     {
         public int Id { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
-    using BeautyBooking.Services.Data;
+    using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +15,10 @@
 
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel
+            var viewModel = new CategoriesListViewModel
             {
                 Categories =
-                    this.categoriesService.GetAll<IndexCategoryViewModel>(),
+                    this.categoriesService.GetAll<CategoryViewModel>(),
             };
             return this.View(viewModel);
         }

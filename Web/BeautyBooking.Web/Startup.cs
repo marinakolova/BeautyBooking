@@ -9,6 +9,9 @@
     using BeautyBooking.Data.Repositories;
     using BeautyBooking.Data.Seeding;
     using BeautyBooking.Services.Data;
+    using BeautyBooking.Services.Data.Blog;
+    using BeautyBooking.Services.Data.Categories;
+    using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Mapping;
     using BeautyBooking.Services.Messaging;
     using BeautyBooking.Web.ViewModels;
@@ -61,6 +64,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IBlogPostsService, BlogPostsService>();
+            services.AddTransient<ISalonsService, SalonsService>();
 
             // External Login Setups
             services.AddAuthentication().AddFacebook(facebookOptions =>

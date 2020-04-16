@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Services.Data
+﻿namespace BeautyBooking.Services.Data.Blog
 {
     using System.Collections.Generic;
     using System.Linq;

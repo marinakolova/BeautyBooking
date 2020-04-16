@@ -1,6 +1,6 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
-    using BeautyBooking.Services.Data;
+    using BeautyBooking.Services.Data.Blog;
     using BeautyBooking.Web.ViewModels.Blog;
     using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +15,10 @@
 
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel
+            var viewModel = new BlogPostsListViewModel
             {
                 BlogPosts =
-                    this.blogPostsService.GetAll<IndexBlogViewModel>(),
+                    this.blogPostsService.GetAll<BlogPostViewModel>(),
             };
             return this.View(viewModel);
         }

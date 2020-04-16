@@ -2,7 +2,7 @@
 {
     using System.Diagnostics;
 
-    using BeautyBooking.Services.Data;
+    using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Web.ViewModels;
     using BeautyBooking.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
@@ -21,7 +21,7 @@
             var viewModel = new IndexViewModel
             {
                 Categories =
-                    this.categoriesService.GetAll<IndexCategoryViewModel>(6),
+                    this.categoriesService.GetAll<IndexCategoryViewModel>(),
             };
             return this.View(viewModel);
         }

@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Services\BeautyBooking.Services.Mapping\BeautyBooking.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Administration\Salons\" />
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class IndexCategoryViewModel : IMapFrom<Category>
+    public class CategoryViewModel : IMapFrom<Category>
     {
         public string Name { get; set; }
 

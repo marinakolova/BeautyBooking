@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Administration.Dashboard.BlogPostInputModel
+﻿@model BeautyBooking.Web.ViewModels.Administration.Blog.BlogPostInputModel
 @{
     this.ViewData["Title"] = "Add Blog Post";
 }
@@ -13,13 +13,13 @@
                 <input type="text" asp-for="@Model.Author" class="contact_input" placeholder="Author" required="required">
                 <textarea class="contact_input contact_textarea mb-3" asp-for="@Model.Content" placeholder="Content" required="required"></textarea>
                 <button class="button button-large button_1 elements_button" type="submit">
-                    <a asp-area="Administration" asp-controller="Dashboard" asp-action="AddBlogPost">
+                    <a asp-area="Administration" asp-controller="Blog" asp-action="AddBlogPost">
                         <span>add blog post</span><span>add blog post</span>
                     </a>
                 </button>
             </form>
             <div class="button button-large button_2 elements_button">
-                <a asp-area="Administration" asp-controller="Dashboard" asp-action="Blog">
+                <a asp-area="Administration" asp-controller="Blog" asp-action="Blog">
                     <span>Cancel</span><span>Cancel</span>
                 </a>
             </div>

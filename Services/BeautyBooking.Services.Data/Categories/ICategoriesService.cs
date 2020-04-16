@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Services.Data
+﻿namespace BeautyBooking.Services.Data.Categories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
