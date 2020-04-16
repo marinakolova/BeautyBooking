@@ -5,39 +5,54 @@
     this.ViewData["Title"] = "Home Page";
 }
 
-    <div class="services">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="section_title">Categories</div>
-                    <div class="section_subtitle">to choose from</div>
-                </div>
+<div class="departments">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title">Beauty Services</div>
+                <div class="section_subtitle">to choose from</div>
             </div>
-            <div class="row icon_boxes_row">
+        </div>
+        <div class="row dept_row">
+            <div class="col">
+                <div class="dept_slider_container_outer">
+                    <div class="dept_slider_container">
 
-                @foreach (var category in Model.Categories)
-                {
-                    <!-- Icon Box -->
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="icon_box">
-                            <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
-                                <div class="icon_box_icon"><img class="img-thumbnail" src="@category.ImageUrl" alt=""></div>
-                                <div class="icon_box_title">@category.Name</div>
-                            </div>
-                            <div class="icon_box_text">@category.Description</div>
+                        <!-- Slider -->
+                        <div class="owl-carousel owl-theme dept_slider">
+
+                            @foreach (var category in Model.Categories)
+                            {
+                                <!-- Slide -->
+                                <div class="owl-item dept_item">
+                                    <div class="dept_image"><img src="@category.ImageUrl" alt=""></div>
+                                    <div class="dept_content">
+                                        <div class="dept_title">@category.Name</div>
+                                        <div class="dept_link"><a href="#">@category.Description</a></div>
+                                    </div>
+                                </div>
+                            }
+
                         </div>
-                    </div>
-                }
 
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="button services_button ml-auto mr-auto">
-                        <a asp-area="" asp-controller="Categories" asp-action="Index"><span>see all</span><span>see all</span></a>
                     </div>
+
+                    <!-- Dept Slider Nav -->
+                    <div class="dept_slider_nav"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+
                 </div>
+
             </div>
         </div>
     </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="button services_button ml-auto mr-auto">
+            <a asp-area="" asp-controller="Categories" asp-action="Index"><span>see all</span><span>see all</span></a>
+        </div>
+    </div>
+</div>
 
 
