@@ -12,7 +12,6 @@
                 <th scope="col">Image</th>
                 <th scope="col">Description</th>
                 <th scope="col">Salons</th>
-                <th scope="col">Blog Posts</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -25,10 +24,9 @@
                     <img class="align-self-center" src="@category.ImageUrl" style="width:100px;height:100px;">
                 </td>
                 <td>@category.Description</td>
-                <td>@category.SalonsCount</td>
-                <td>@category.BlogPostsCount</td>                
+                <td>@category.SalonsCount</td>                
                 <td>
-                    <div class="button button-large button_2 elements_button">
+                    <div class="button button_2 elements_button">
                         <a asp-area="Administration" asp-controller="Dashboard" asp-action="DeleteCategory" asp-route-id="@category.Id"><span>Delete</span><span>Delete</span></a>
                     </div>
                 </td>

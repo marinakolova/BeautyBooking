@@ -14,7 +14,5 @@
         public string ImageUrl { get; set; }
 
         public int SalonsCount { get; set; }
-
-        public int BlogPostsCount { get; set; }
     }
 }

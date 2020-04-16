@@ -1,5 +1,7 @@
 ﻿namespace BeautyBooking.Web.ViewModels.Administration.Dashboard
 {
+    using System;
+
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
@@ -14,5 +16,7 @@
         public string Author { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

@@ -34,8 +34,6 @@
 
         public DbSet<Appointment> Appointments { get; set; }
 
-        public DbSet<BlogPostCategory> BlogPostCategories { get; set; }
-
         public DbSet<SalonCategory> SalonCategories { get; set; }
 
         public DbSet<Service> Services { get; set; }
