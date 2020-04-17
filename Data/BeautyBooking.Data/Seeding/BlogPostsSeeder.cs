@@ -10,10 +10,12 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            // Add BlogPosts
-            if (!dbContext.BlogPosts.Any())
+            if (dbContext.BlogPosts.Any())
             {
-                var blogPosts = new BlogPost[]
+                return;
+            }
+
+            var blogPosts = new BlogPost[]
                 {
                     new BlogPost // Id = 1
                     {
@@ -99,8 +101,7 @@ Cheers to happy, healthy hair!",
                     },
                 };
 
-                await dbContext.AddRangeAsync(blogPosts);
-            }
+            await dbContext.AddRangeAsync(blogPosts);
         }
     }
 }

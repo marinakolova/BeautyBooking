@@ -7,6 +7,10 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
+            // if (dbContext.Settings.Any())
+            // {
+            //     return;
+            // }
             // Add Services
             // if (!dbContext.Services.Any())
             // {

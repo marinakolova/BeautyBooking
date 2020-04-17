@@ -10,10 +10,12 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            // Add Categories
-            if (!dbContext.Categories.Any())
+            if (dbContext.Categories.Any())
             {
-                var categories = new Category[]
+                return;
+            }
+
+            var categories = new Category[]
                 {
                     new Category // Id = 1
                     {
@@ -53,8 +55,7 @@
                     },
                 };
 
-                await dbContext.AddRangeAsync(categories);
-            }
+            await dbContext.AddRangeAsync(categories);
         }
     }
 }
