@@ -1,0 +1,31 @@
+﻿@model BeautyBooking.Web.ViewModels.Blog.BlogPostViewModel
+@{
+    this.ViewData["Title"] = Model.Title;
+}
+
+<div class="row">
+
+    <!-- News Posts -->
+    <div class="col-lg-12">
+        <div class="news_posts">
+
+                <!-- News Post -->
+            <div class="news_post">
+                <div class="news_post_image"><img src="@Model.ImageUrl" alt=""></div>
+                <div class="news_post_content">
+                    <div class="news_post_title"><a href="#">@Model.Title</a></div>
+                    <div class="news_post_info">
+                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                            <li><a href="#">by @Model.Author</a></li>
+                            <li><a href="#">@Model.CreatedOn</a></li>
+                        </ul>
+                    </div>
+                    <div class="news_post_text">
+                        <p>@Model.Content</p>
+                    </div>
+                </div>                
+            </div>
+
+        </div>
+    </div>
+</div>

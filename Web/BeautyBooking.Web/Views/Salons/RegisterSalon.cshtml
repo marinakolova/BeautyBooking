@@ -9,6 +9,7 @@
             <div class="contact_form_container">
                 <form method="post" class="contact_form">
                     <input type="text" asp-for="@Model.Name" class="contact_input" placeholder="Name" required="required">
+                    <input type="number" asp-for="@Model.CategoryId" class="contact_input" placeholder="CategoryId" required="required">
                     <input type="text" asp-for="@Model.ImageUrl" class="contact_input" placeholder="ImageUrl" required="required">
                     <textarea class="contact_input contact_textarea mb-3" asp-for="@Model.Address" placeholder="Address" required="required"></textarea>
                     <button class="button button-large button_1 elements_button" type="submit">

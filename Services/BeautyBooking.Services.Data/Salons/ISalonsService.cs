@@ -5,7 +5,7 @@
 
     public interface ISalonsService
     {
-        Task RegisterSalonAsync(string name, string address, string imageUrl, string ownerId);
+        Task RegisterSalonAsync(string name, string address, string imageUrl, string ownerId, int categoryId);
 
         IEnumerable<T> GetAll<T>(int? count = null);
 

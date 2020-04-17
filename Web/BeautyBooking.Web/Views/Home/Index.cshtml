@@ -64,7 +64,6 @@
             <div class="col-lg-7">
                 <div class="faq">
                     <div class="faq_title">Faq & Stuff</div>
-                    <div class="faq_subtitle">read all about it</div>
                     <div class="elements_accordions">
                         <div class="accordions">
 
@@ -117,7 +116,6 @@
             <div class="col-lg-5">
                 <div class="news-grey">
                     <div class="news_title">Latest Blog Posts</div>
-                    <div class="news_subtitle">read all about it</div>
                     <div class="news_container">
 
                         @foreach (var blogPost in Model.BlogPosts)
@@ -126,14 +124,14 @@
                             <div class="latest d-flex flex-row align-items-start justify-content-start">
                                 <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
                                 <div class="latest_content">
-                                    <div class="latest_title"><a href="news.html">@blogPost.Title</a></div>
+                                    <div class="latest_title"><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a></div>
                                     <div class="latest_info">
                                         <ul class="d-flex flex-row align-items-start justify-content-start">
-                                            <li><a href="#">by @blogPost.Author</a></li>
-                                            <li><a href="#">@blogPost.CreatedOn</a></li>
+                                            <li><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">by @blogPost.Author</a></li>
+                                            <li><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CreatedOn</a></li>
                                         </ul>
                                     </div>
-                                    <div class="latest_comments"><a href="#">@blogPost.CommentsCount Comments</a></div>
+                                    <div class="latest_comments"><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CommentsCount Comments</a></div>
                                 </div>
                             </div>
                         }

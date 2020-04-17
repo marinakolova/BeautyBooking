@@ -44,10 +44,9 @@
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
 
-            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.ImageUrl, userId);
+            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.ImageUrl, userId, input.CategoryId);
 
             await this.userManager.AddToRoleAsync(user, "Owner"); // TODO: Apply to current session
-            await this.userManager.UpdateAsync(user);
 
             return this.Redirect("/Home/Index");
         }

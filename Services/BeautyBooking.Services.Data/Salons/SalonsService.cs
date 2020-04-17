@@ -18,7 +18,7 @@
             this.salonsRepository = salonsRepository;
         }
 
-        public async Task RegisterSalonAsync(string name, string address, string imageUrl, string ownerId)
+        public async Task RegisterSalonAsync(string name, string address, string imageUrl, string ownerId, int categoryId)
         {
             await this.salonsRepository.AddAsync(new Salon
             {
@@ -26,6 +26,7 @@
                 Address = address,
                 ImageUrl = imageUrl,
                 OwnerId = ownerId,
+                CategoryId = categoryId,
             });
 
             await this.salonsRepository.SaveChangesAsync();
