@@ -47,6 +47,7 @@
             await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.ImageUrl, userId);
 
             await this.userManager.AddToRoleAsync(user, "Owner"); // TODO: Apply to current session
+            await this.userManager.UpdateAsync(user);
 
             return this.Redirect("/Home/Index");
         }
