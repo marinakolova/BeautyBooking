@@ -53,5 +53,13 @@
 
             await this.salonsRepository.SaveChangesAsync();
         }
+
+        public T GetById<T>(int id)
+        {
+            var salon = this.salonsRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
+            return salon;
+        }
     }
 }

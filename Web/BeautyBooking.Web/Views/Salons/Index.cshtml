@@ -20,9 +20,9 @@
                     <div class="doctor">
                         <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
                         <div class="doctor_content">
-                            <div class="doctor_name"><a href="#">@salon.Name</a></div>
+                            <div class="doctor_name"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a></div>
                             <div class="doctor_title">@salon.Address</div>
-                            <div class="doctor_link"><a href="#">+</a></div>
+                            <div class="doctor_link"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a></div>
                         </div>
                     </div>
                 </div>

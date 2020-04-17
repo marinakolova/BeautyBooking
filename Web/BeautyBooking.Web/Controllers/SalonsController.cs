@@ -50,5 +50,11 @@
 
             return this.Redirect("/Home/Index");
         }
+
+        public IActionResult Details(int id)
+        {
+            var viewModel = this.salonsService.GetById<SalonDetailsViewModel>(id);
+            return this.View(viewModel);
+        }
     }
 }

@@ -10,5 +10,7 @@
         IEnumerable<T> GetAll<T>(int? count = null);
 
         Task DeleteSalonAsync(int id);
+
+        T GetById<T>(int id);
     }
 }
