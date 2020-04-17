@@ -10,10 +10,14 @@
 <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
 @if (this.SignInManager.IsSignedIn(this.User))
 {
-    <li class="menu_item"><a asp-area="" asp-controller="Appointments" asp-action="Index">Your Appointments</a></li>
+    <li class="menu_item"><a asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a></li>
     if (this.User.IsInRole(GlobalConstants.SalonOwnerRoleName))
     {
 
-    <li class="menu_item"><a asp-area="Owner" asp-controller="SalonManager" asp-action="Index">Salon Manager</a></li>
+        <li class="menu_item"><a asp-area="Owner" asp-controller="SalonManager" asp-action="Index">Salon Manager</a></li>
+    }
+    else
+    {
+        <li class="menu_item"><a asp-area="" asp-controller="Salons" asp-action="RegisterSalon">Register a Salon</a></li>
     }
 }

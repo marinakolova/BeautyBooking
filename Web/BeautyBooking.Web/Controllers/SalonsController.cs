@@ -1,6 +1,7 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
     using BeautyBooking.Services.Data.Salons;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonsController : BaseController
@@ -13,6 +14,12 @@
         }
 
         public IActionResult Index()
+        {
+            return this.View();
+        }
+
+        [Authorize]
+        public IActionResult RegisterSalon()
         {
             return this.View();
         }
