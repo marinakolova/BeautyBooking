@@ -36,8 +36,6 @@
 
         public DbSet<Service> Services { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
-
         public DbSet<SalonService> SalonServices { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

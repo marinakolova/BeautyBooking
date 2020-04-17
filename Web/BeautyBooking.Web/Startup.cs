@@ -12,7 +12,6 @@
     using BeautyBooking.Services.Data.Appointments;
     using BeautyBooking.Services.Data.Blog;
     using BeautyBooking.Services.Data.Categories;
-    using BeautyBooking.Services.Data.Comments;
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.Services;
     using BeautyBooking.Services.Mapping;
@@ -69,7 +68,6 @@
             services.AddTransient<IBlogPostsService, BlogPostsService>();
             services.AddTransient<ISalonsService, SalonsService>();
             services.AddTransient<IAppointmentsService, AppointmentsService>();
-            services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IServicesService, ServicesService>();
 
             // External Login Setups

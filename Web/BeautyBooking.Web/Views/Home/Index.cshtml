@@ -127,11 +127,11 @@
                                     <div class="latest_title"><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a></div>
                                     <div class="latest_info">
                                         <ul class="d-flex flex-row align-items-start justify-content-start">
-                                            <li><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">by @blogPost.Author</a></li>
-                                            <li><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CreatedOn</a></li>
+                                            <li><a>by @blogPost.Author</a></li>
+                                            <li><a>@blogPost.CreatedOn</a></li>
                                         </ul>
                                     </div>
-                                    <div class="latest_comments"><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CommentsCount Comments</a></div>
+                                    <div class="latest_comments"><a asp-area="" asp-controller="Blog" asp-action="Details" asp-route-id="@blogPost.Id">Read</a></div>
                                 </div>
                             </div>
                         }

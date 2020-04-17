@@ -16,7 +16,5 @@
         public DateTime CreatedOn { get; set; }
 
         public string ImageUrl { get; set; }
-
-        public int CommentsCount { get; set; }
     }
 }
