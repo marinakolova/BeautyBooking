@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautyBooking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200416161839_AddComments")]
-    partial class AddComments
+    [Migration("20200417135702_AddMyEntitiesAgain")]
+    partial class AddMyEntitiesAgain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -307,11 +307,17 @@ namespace BeautyBooking.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -327,75 +333,13 @@ namespace BeautyBooking.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Salons");
-                });
-
-            modelBuilder.Entity("BeautyBooking.Data.Models.SalonCategory", b =>
-                {
-                    b.Property<int>("SalonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("SalonId", "CategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("SalonCategories");
-                });
-
-            modelBuilder.Entity("BeautyBooking.Data.Models.SalonService", b =>
-                {
-                    b.Property<int>("SalonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("SalonId", "ServiceId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("SalonServices");
                 });
 
             modelBuilder.Entity("BeautyBooking.Data.Models.Service", b =>
@@ -426,9 +370,14 @@ namespace BeautyBooking.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("SalonId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SalonId");
 
                     b.ToTable("Services");
                 });
@@ -603,37 +552,22 @@ namespace BeautyBooking.Data.Migrations
 
             modelBuilder.Entity("BeautyBooking.Data.Models.Salon", b =>
                 {
-                    b.HasOne("BeautyBooking.Data.Models.ApplicationUser", "Owner")
-                        .WithMany("Salons")
-                        .HasForeignKey("OwnerId");
-                });
-
-            modelBuilder.Entity("BeautyBooking.Data.Models.SalonCategory", b =>
-                {
-                    b.HasOne("BeautyBooking.Data.Models.Category", "GetCategory")
+                    b.HasOne("BeautyBooking.Data.Models.Category", "Category")
                         .WithMany("Salons")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BeautyBooking.Data.Models.Salon", "Salon")
-                        .WithMany("Categories")
-                        .HasForeignKey("SalonId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.HasOne("BeautyBooking.Data.Models.ApplicationUser", "Owner")
+                        .WithMany("Salons")
+                        .HasForeignKey("OwnerId");
                 });
 
-            modelBuilder.Entity("BeautyBooking.Data.Models.SalonService", b =>
+            modelBuilder.Entity("BeautyBooking.Data.Models.Service", b =>
                 {
                     b.HasOne("BeautyBooking.Data.Models.Salon", "Salon")
                         .WithMany("Services")
                         .HasForeignKey("SalonId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BeautyBooking.Data.Models.Service", "Service")
-                        .WithMany("Salons")
-                        .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

@@ -8,7 +8,7 @@
     {
         public Category()
         {
-            this.Salons = new HashSet<SalonCategory>();
+            this.Salons = new HashSet<Salon>();
         }
 
         public string Name { get; set; }
@@ -17,6 +17,6 @@
 
         public string ImageUrl { get; set; }
 
-        public virtual ICollection<SalonCategory> Salons { get; set; }
+        public virtual ICollection<Salon> Salons { get; set; }
     }
 }

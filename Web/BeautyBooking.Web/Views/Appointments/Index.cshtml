@@ -1,5 +1,6 @@
-﻿@{
+﻿@model BeautyBooking.Web.ViewModels.Appointments.AppointmentsListViewModel
+@{
     this.ViewData["Title"] = "Your Appointments";
 }
 
-<h1>Appointments Page</h1>
+    <h1>Your Appointments (@Model.Appointments.Count())</h1>

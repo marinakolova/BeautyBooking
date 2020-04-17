@@ -61,5 +61,13 @@
                 .To<T>().FirstOrDefault();
             return salon;
         }
+
+        public IEnumerable<T> GetByOwner<T>(string userId)
+        {
+            var salons = this.salonsRepository.All()
+                .Where(x => x.OwnerId == userId)
+                .To<T>().ToList();
+            return salons;
+        }
     }
 }

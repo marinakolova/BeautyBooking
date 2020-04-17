@@ -12,5 +12,7 @@
         Task DeleteSalonAsync(int id);
 
         T GetById<T>(int id);
+
+        IEnumerable<T> GetByOwner<T>(string userId);
     }
 }

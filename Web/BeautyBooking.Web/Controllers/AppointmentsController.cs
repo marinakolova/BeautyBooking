@@ -1,22 +1,36 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
+    using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Appointments;
+    using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
     [Authorize]
     public class AppointmentsController : BaseController
     {
         private readonly IAppointmentsService appointmentsService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public AppointmentsController(IAppointmentsService appointmentsService)
+        public AppointmentsController(IAppointmentsService appointmentsService, UserManager<ApplicationUser> userManager)
         {
             this.appointmentsService = appointmentsService;
+            this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return this.View();
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            var userId = await this.userManager.GetUserIdAsync(user);
+
+            var viewModel = new AppointmentsListViewModel
+            {
+                Appointments =
+                    this.appointmentsService.GetByUser<AppointmentViewModel>(userId),
+            };
+            return this.View(viewModel);
         }
     }
 }
