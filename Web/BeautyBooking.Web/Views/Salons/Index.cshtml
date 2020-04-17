@@ -1,5 +1,33 @@
-﻿@{
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsListViewModel
+@{
     this.ViewData["Title"] = "Salons";
 }
 
-<h1>Salons Page</h1>
+<div class="doctors">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title">Salons</div>
+                <div class="section_subtitle">to choose from</div>
+            </div>
+        </div>
+        <div class="row doctors_row">
+
+            @foreach (var salon in Model.Salons)
+            {
+                <!-- Doctor -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="doctor">
+                        <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
+                        <div class="doctor_content">
+                            <div class="doctor_name"><a href="#">@salon.Name</a></div>
+                            <div class="doctor_title">@salon.Address</div>
+                            <div class="doctor_link"><a href="#">+</a></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>        
+    </div>
+</div>

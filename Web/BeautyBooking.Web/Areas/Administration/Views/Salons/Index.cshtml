@@ -1,5 +1,36 @@
-﻿@{
+﻿@model BeautyBooking.Web.ViewModels.Administration.Salons.SalonsListViewModel
+@{
     this.ViewData["Title"] = "Manage Salons";
 }
 
-<h1>Manage Salons</h1>
+<h1>All Salons (@Model.Salons.Count())</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Address</th>
+            <th scope="col">Owner</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salon in this.Model.Salons)
+        {
+            <tr>
+                <th scope="row">@salon.Name</th>
+                <td>
+                    <img class="align-self-center" src="@salon.ImageUrl" style="width:100px;height:100px;">
+                </td>
+                <td>@salon.Address</td>
+                <td>@salon.Owner.UserName</td>
+                <td>
+                    <div class="button button_2 elements_button">
+                        <a asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id"><span>Delete</span><span>Delete</span></a>
+                    </div>
+                </td>
+            </tr>
+        }        
+    </tbody>
+</table>
