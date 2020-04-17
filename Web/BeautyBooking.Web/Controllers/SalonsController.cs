@@ -30,27 +30,6 @@
             return this.View(viewModel);
         }
 
-        [Authorize]
-        [HttpGet]
-        public IActionResult RegisterSalon()
-        {
-            return this.View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> RegisterSalon(SalonInputModel input)
-        {
-            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
-            var userId = await this.userManager.GetUserIdAsync(user);
-
-            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.ImageUrl, userId, input.CategoryId);
-
-            await this.userManager.AddToRoleAsync(user, "Owner"); // TODO: Apply to current session
-
-            return this.Redirect("/Home/Index");
-        }
-
         public IActionResult Details(int id)
         {
             var viewModel = this.salonsService.GetById<SalonDetailsViewModel>(id);

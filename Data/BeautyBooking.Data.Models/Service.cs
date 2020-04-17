@@ -8,19 +8,13 @@
     {
         public Service()
         {
-            this.Appointments = new HashSet<Appointment>();
+            this.Salons = new HashSet<SalonService>();
         }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public double Price { get; set; }
-
-        public int SalonId { get; set; }
-
-        public virtual Salon Salon { get; set; }
-
-        public ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<SalonService> Salons { get; set; }
     }
 }

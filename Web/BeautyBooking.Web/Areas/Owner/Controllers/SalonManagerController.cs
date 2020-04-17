@@ -2,34 +2,41 @@
 {
     using System.Threading.Tasks;
 
-    using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Web.ViewModels.Owner.SalonManager;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonManagerController : OwnerBaseController
     {
         private readonly ISalonsService salonsService;
-        private readonly UserManager<ApplicationUser> userManager;
 
-        public SalonManagerController(ISalonsService salonsService, UserManager<ApplicationUser> userManager)
+        public SalonManagerController(ISalonsService salonsService)
         {
             this.salonsService = salonsService;
-            this.userManager = userManager;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public IActionResult Index()
         {
-            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
-            var userId = await this.userManager.GetUserIdAsync(user);
-
             var viewModel = new SalonsListViewModel
             {
                 Salons =
-                    this.salonsService.GetByOwner<SalonViewModel>(userId),
+                    this.salonsService.GetAll<SalonViewModel>(),
             };
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult RegisterSalon()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterSalon(SalonInputModel input)
+        {
+            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.ImageUrl, input.CategoryId);
+
+            return this.Redirect("/Home/Index");
         }
     }
 }

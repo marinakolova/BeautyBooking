@@ -1,9 +1,8 @@
 ﻿namespace BeautyBooking.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

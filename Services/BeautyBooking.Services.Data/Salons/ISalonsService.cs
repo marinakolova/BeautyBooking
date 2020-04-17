@@ -5,14 +5,12 @@
 
     public interface ISalonsService
     {
-        Task RegisterSalonAsync(string name, string address, string imageUrl, string ownerId, int categoryId);
+        Task RegisterSalonAsync(string name, string address, string imageUrl, int categoryId);
 
         IEnumerable<T> GetAll<T>(int? count = null);
 
         Task DeleteSalonAsync(int id);
 
         T GetById<T>(int id);
-
-        IEnumerable<T> GetByOwner<T>(string userId);
     }
 }

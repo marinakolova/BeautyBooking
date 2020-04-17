@@ -1,12 +1,13 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Appointments;
     using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [Authorize]
     public class AppointmentsController : BaseController

@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Salons
+﻿namespace BeautyBooking.Web.ViewModels.Owner.SalonManager
 {
     public class SalonInputModel
     {

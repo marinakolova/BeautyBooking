@@ -11,7 +11,6 @@
             <th scope="col">Name</th>
             <th scope="col">Image</th>
             <th scope="col">Address</th>
-            <th scope="col">Owner</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -24,7 +23,6 @@
                     <img class="align-self-center" src="@salon.ImageUrl" style="width:100px;height:100px;">
                 </td>
                 <td>@salon.Address</td>
-                <td>@salon.Owner.UserName</td>
                 <td>
                     <div class="button button_2 elements_button">
                         <a asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id"><span>Delete</span><span>Delete</span></a>
@@ -32,7 +30,9 @@
                 </td>
             </tr>
         }
-    <tr>
+    
+        
+        <tr>
         <th scope="row">
             <div class="button button-large button_1 elements_button">
                 <a asp-area="" asp-controller="Salons" asp-action="RegisterSalon">
@@ -46,5 +46,6 @@
         <td></td>
         <td></td>
     </tr>
+        
     </tbody>
 </table>

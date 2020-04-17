@@ -15,9 +15,5 @@
         public string ClientId { get; set; }
 
         public virtual ApplicationUser Client { get; set; }
-
-        public int ServiceId { get; set; }
-
-        public virtual Service Service { get; set; }
     }
 }

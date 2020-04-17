@@ -1,9 +1,10 @@
 ﻿namespace BeautyBooking.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Web.ViewModels.Administration.Salons;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class SalonsController : AdministrationController
     {

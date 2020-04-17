@@ -18,14 +18,13 @@
             this.salonsRepository = salonsRepository;
         }
 
-        public async Task RegisterSalonAsync(string name, string address, string imageUrl, string ownerId, int categoryId)
+        public async Task RegisterSalonAsync(string name, string address, string imageUrl, int categoryId)
         {
             await this.salonsRepository.AddAsync(new Salon
             {
                 Name = name,
                 Address = address,
                 ImageUrl = imageUrl,
-                OwnerId = ownerId,
                 CategoryId = categoryId,
             });
 
@@ -61,14 +60,6 @@
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefault();
             return salon;
-        }
-
-        public IEnumerable<T> GetByOwner<T>(string userId)
-        {
-            var salons = this.salonsRepository.All()
-                .Where(x => x.OwnerId == userId)
-                .To<T>().ToList();
-            return salons;
         }
     }
 }

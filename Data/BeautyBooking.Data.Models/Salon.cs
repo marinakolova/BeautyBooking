@@ -9,7 +9,7 @@
         public Salon()
         {
             this.Appointments = new HashSet<Appointment>();
-            this.Services = new HashSet<Service>();
+            this.Services = new HashSet<SalonService>();
         }
 
         public string Name { get; set; }
@@ -18,15 +18,11 @@
 
         public string ImageUrl { get; set; }
 
-        public string OwnerId { get; set; }
-
-        public virtual ApplicationUser Owner { get; set; }
-
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<Service> Services { get; set; }
+        public virtual ICollection<SalonService> Services { get; set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }
     }

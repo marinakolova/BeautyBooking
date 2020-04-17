@@ -27,7 +27,12 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
-                              new DataSeeder(),
+                              new AccountsSeeder(),
+                              new CategoriesSeeder(),
+                              new BlogPostsSeeder(),
+                              new ServicesSeeder(),
+                              new SalonsSeeder(),
+                              new AppointmentsSeeder(),
                           };
 
             foreach (var seeder in seeders)
