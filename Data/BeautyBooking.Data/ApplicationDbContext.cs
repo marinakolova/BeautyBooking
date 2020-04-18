@@ -30,6 +30,8 @@
 
         public DbSet<Service> Services { get; set; }
 
+        public DbSet<City> Cities { get; set; }
+
         public DbSet<Salon> Salons { get; set; }
 
         public DbSet<SalonService> SalonServices { get; set; }

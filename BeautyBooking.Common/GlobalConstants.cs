@@ -48,6 +48,8 @@
             public const int BlogPosts = 4;
 
             public const int Services = 116;
+
+            public const int Cities = 3;
         }
     }
 }

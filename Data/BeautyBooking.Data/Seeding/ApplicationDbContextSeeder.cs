@@ -30,6 +30,7 @@
                               new CategoriesSeeder(),
                               new BlogPostsSeeder(),
                               new ServicesSeeder(),
+                              new CitiesSeeder(),
                               new SalonsSeeder(),
                               new AppointmentsSeeder(),
                           };

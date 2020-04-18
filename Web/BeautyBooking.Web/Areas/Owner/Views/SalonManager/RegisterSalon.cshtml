@@ -9,7 +9,8 @@
         <div class="contact_form_container">
             <form method="post" enctype="multipart/form-data" class="contact_form">
                 <input type="text" asp-for="@Model.Name" class="contact_input" placeholder="Name" required="required">
-                <input type="number" asp-for="@Model.CategoryId" class="contact_input" placeholder="CategoryId" required="required">
+                <input type="number" asp-for="@Model.CategoryId" class="contact_input" placeholder="CategoryId" required="required">                
+                <input type="text" asp-for="@Model.Address" class="contact_input" placeholder="Address" required="required">
                 <div class="form-group">
                     <div class="row justify-content-lg-between">
                         <div>
@@ -17,7 +18,6 @@
                         </div>
                     </div>
                 </div>
-                <textarea class="contact_input contact_textarea mb-3" asp-for="@Model.Address" placeholder="Address" required="required"></textarea>
                 <button class="button button-large button_1 elements_button" type="submit">
                     <a asp-area="" asp-controller="Salons" asp-action="RegisterSalon">
                         <span>register salon</span><span>register salon</span>
