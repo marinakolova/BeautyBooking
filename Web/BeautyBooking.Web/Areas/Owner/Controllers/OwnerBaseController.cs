@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Roles = GlobalConstants.SalonOwnerRoleName)]
+    [Authorize(Roles = GlobalConstants.SalonOwnerRoleName + "," + GlobalConstants.AdministratorRoleName)]
     [Area("Owner")]
     public class OwnerBaseController : BaseController
     {

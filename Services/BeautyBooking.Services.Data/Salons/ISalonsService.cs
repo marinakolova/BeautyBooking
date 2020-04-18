@@ -3,9 +3,11 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Http;
+
     public interface ISalonsService
     {
-        Task RegisterSalonAsync(string name, string address, string imageUrl, int categoryId);
+        Task RegisterSalonAsync(string name, string address, IFormFile image, int categoryId);
 
         IEnumerable<T> GetAll<T>(int? count = null);
 

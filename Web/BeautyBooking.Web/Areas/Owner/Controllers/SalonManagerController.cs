@@ -34,7 +34,7 @@
         [HttpPost]
         public async Task<IActionResult> RegisterSalon(SalonInputModel input)
         {
-            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.ImageUrl, input.CategoryId);
+            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.Image, input.CategoryId);
 
             return this.Redirect("/Home/Index");
         }

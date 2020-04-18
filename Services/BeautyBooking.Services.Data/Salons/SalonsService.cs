@@ -6,20 +6,26 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
+    using BeautyBooking.Services.Cloudinary;
     using BeautyBooking.Services.Mapping;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
 
     public class SalonsService : ISalonsService
     {
         private readonly IDeletableEntityRepository<Salon> salonsRepository;
+        private readonly ICloudinaryService cloudinaryService;
 
-        public SalonsService(IDeletableEntityRepository<Salon> salonsRepository)
+        public SalonsService(IDeletableEntityRepository<Salon> salonsRepository, ICloudinaryService cloudinaryService)
         {
             this.salonsRepository = salonsRepository;
+            this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task RegisterSalonAsync(string name, string address, string imageUrl, int categoryId)
+        public async Task RegisterSalonAsync(string name, string address, IFormFile image, int categoryId)
         {
+            var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
+
             await this.salonsRepository.AddAsync(new Salon
             {
                 Name = name,
