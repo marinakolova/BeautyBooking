@@ -1,9 +1,10 @@
 ﻿namespace BeautyBooking.Services.Data.Cities
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public interface ICitiesService
     {
-        IEnumerable<T> GetAll<T>();
+        Task<IEnumerable<T>> GetAllAsync<T>();
     }
 }

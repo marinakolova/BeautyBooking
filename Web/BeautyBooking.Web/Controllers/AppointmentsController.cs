@@ -21,15 +21,14 @@
             this.userManager = userManager;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> Index()
         {
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
 
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments =
-                    this.appointmentsService.GetByUser<AppointmentViewModel>(userId),
+                Appointments = await this.appointmentsService.GetByUserAsync<AppointmentViewModel>(userId),
             };
             return this.View(viewModel);
         }

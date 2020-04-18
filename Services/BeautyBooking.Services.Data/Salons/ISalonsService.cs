@@ -7,12 +7,12 @@
 
     public interface ISalonsService
     {
-        Task RegisterSalonAsync(string name, string address, IFormFile image, int categoryId);
+        Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
-        IEnumerable<T> GetAll<T>(int? count = null);
+        Task<T> GetByIdAsync<T>(int id);
+
+        Task AddSalonAsync(string name, string address, IFormFile image, int categoryId);
 
         Task DeleteSalonAsync(int id);
-
-        T GetById<T>(int id);
     }
 }

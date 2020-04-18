@@ -2,10 +2,12 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
+    using Microsoft.EntityFrameworkCore;
 
     public class CitiesService : ICitiesService
     {
@@ -16,12 +18,12 @@
             this.citiesRepository = citiesRepository;
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             IQueryable<City> query =
                 this.citiesRepository.All().OrderBy(x => x.Id);
 
-            return query.To<T>().ToList();
+            return await query.To<T>().ToListAsync();
         }
     }
 }

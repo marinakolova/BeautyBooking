@@ -15,26 +15,24 @@
             this.salonsService = salonsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new SalonsListViewModel
             {
-                Salons =
-                    this.salonsService.GetAll<SalonViewModel>(),
+                Salons = await this.salonsService.GetAllAsync<SalonViewModel>(),
             };
             return this.View(viewModel);
         }
 
-        [HttpGet]
-        public IActionResult RegisterSalon()
+        public IActionResult AddSalon()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterSalon(SalonInputModel input)
+        public async Task<IActionResult> AddSalon(SalonInputModel input)
         {
-            await this.salonsService.RegisterSalonAsync(input.Name, input.Address, input.Image, input.CategoryId);
+            await this.salonsService.AddSalonAsync(input.Name, input.Address, input.Image, input.CategoryId);
 
             return this.Redirect("/Home/Index");
         }

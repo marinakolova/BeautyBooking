@@ -20,19 +20,20 @@
             this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new SalonsListViewModel
             {
-                Salons =
-                    this.salonsService.GetAll<SalonViewModel>(),
+                Salons = await this.salonsService.GetAllAsync<SalonViewModel>(),
             };
+
             return this.View(viewModel);
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var viewModel = this.salonsService.GetById<SalonDetailsViewModel>(id);
+            var viewModel = await this.salonsService.GetByIdAsync<SalonDetailsViewModel>(id);
+
             return this.View(viewModel);
         }
     }

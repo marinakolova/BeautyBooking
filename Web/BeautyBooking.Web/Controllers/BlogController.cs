@@ -1,5 +1,7 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using BeautyBooking.Services.Data.Blog;
     using BeautyBooking.Web.ViewModels.Blog;
     using Microsoft.AspNetCore.Mvc;
@@ -13,19 +15,20 @@
             this.blogPostsService = blogPostsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new BlogPostsListViewModel
             {
-                BlogPosts =
-                    this.blogPostsService.GetAll<BlogPostViewModel>(),
+                BlogPosts = await this.blogPostsService.GetAllAsync<BlogPostViewModel>(),
             };
+
             return this.View(viewModel);
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var viewModel = this.blogPostsService.GetById<BlogPostViewModel>(id);
+            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
+
             return this.View(viewModel);
         }
     }

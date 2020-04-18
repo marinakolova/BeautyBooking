@@ -15,17 +15,15 @@
             this.salonsService = salonsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new SalonsListViewModel
             {
-                Salons =
-                    this.salonsService.GetAll<SalonViewModel>(),
+                Salons = await this.salonsService.GetAllAsync<SalonViewModel>(),
             };
             return this.View(viewModel);
         }
 
-        [HttpGet]
         public async Task<IActionResult> DeleteSalon(int id)
         {
             await this.salonsService.DeleteSalonAsync(id);

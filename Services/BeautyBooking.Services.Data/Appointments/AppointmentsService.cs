@@ -2,10 +2,12 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
+    using Microsoft.EntityFrameworkCore;
 
     public class AppointmentsService : IAppointmentsService
     {
@@ -16,11 +18,11 @@
             this.appointmentsRepository = appointmentsRepository;
         }
 
-        public IEnumerable<T> GetByUser<T>(string userId)
+        public async Task<IEnumerable<T>> GetByUserAsync<T>(string userId)
         {
-            var appointments = this.appointmentsRepository.All()
+            var appointments = await this.appointmentsRepository.All()
                 .Where(x => x.ClientId == userId)
-                .To<T>().ToList();
+                .To<T>().ToListAsync();
             return appointments;
         }
     }

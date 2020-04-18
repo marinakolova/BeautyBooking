@@ -22,7 +22,7 @@
             this.cloudinaryService = cloudinaryService;
         }
 
-        public IEnumerable<T> GetAll<T>(int? count = null)
+        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
         {
             IQueryable<Category> query =
                 this.categoriesRepository.All().OrderBy(x => x.Id);
@@ -31,22 +31,14 @@
                 query = query.Take(count.Value);
             }
 
-            return query.To<T>().ToList();
+            return await query.To<T>().ToListAsync();
         }
 
-        public T GetByName<T>(string name)
+        public async Task<T> GetByIdAsync<T>(int id)
         {
-            var category = this.categoriesRepository.All()
-                .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
-                .To<T>().FirstOrDefault();
-            return category;
-        }
-
-        public T GetById<T>(int id)
-        {
-            var category = this.categoriesRepository.All()
+            var category = await this.categoriesRepository.All()
                 .Where(x => x.Id == id)
-                .To<T>().FirstOrDefault();
+                .To<T>().FirstOrDefaultAsync();
             return category;
         }
 

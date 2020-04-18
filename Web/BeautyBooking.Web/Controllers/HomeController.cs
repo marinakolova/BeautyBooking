@@ -1,6 +1,7 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
     using System.Diagnostics;
+    using System.Threading.Tasks;
 
     using BeautyBooking.Services.Data.Blog;
     using BeautyBooking.Services.Data.Categories;
@@ -19,15 +20,14 @@
             this.blogPostsService = blogPostsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new IndexViewModel
             {
-                Categories =
-                    this.categoriesService.GetAll<IndexCategoryViewModel>(),
-                BlogPosts =
-                    this.blogPostsService.GetAll<IndexBlogViewModel>(4),
+                Categories = await this.categoriesService.GetAllAsync<IndexCategoryViewModel>(),
+                BlogPosts = await this.blogPostsService.GetAllAsync<IndexBlogViewModel>(4),
             };
+
             return this.View(viewModel);
         }
 

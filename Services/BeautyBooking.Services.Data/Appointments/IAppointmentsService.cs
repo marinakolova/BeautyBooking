@@ -1,9 +1,10 @@
 ﻿namespace BeautyBooking.Services.Data.Appointments
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public interface IAppointmentsService
     {
-        IEnumerable<T> GetByUser<T>(string userId);
+        Task<IEnumerable<T>> GetByUserAsync<T>(string userId);
     }
 }

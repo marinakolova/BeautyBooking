@@ -22,7 +22,27 @@
             this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task RegisterSalonAsync(string name, string address, IFormFile image, int categoryId)
+        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        {
+            IQueryable<Salon> query =
+                this.salonsRepository.All().OrderBy(x => x.Name);
+            if (count.HasValue)
+            {
+                query = query.Take(count.Value);
+            }
+
+            return await query.To<T>().ToListAsync();
+        }
+
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var salon = await this.salonsRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return salon;
+        }
+
+        public async Task AddSalonAsync(string name, string address, IFormFile image, int categoryId)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
 
@@ -37,18 +57,6 @@
             await this.salonsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAll<T>(int? count = null)
-        {
-            IQueryable<Salon> query =
-                this.salonsRepository.All().OrderBy(x => x.Name);
-            if (count.HasValue)
-            {
-                query = query.Take(count.Value);
-            }
-
-            return query.To<T>().ToList();
-        }
-
         public async Task DeleteSalonAsync(int id)
         {
             var salon = await this.salonsRepository
@@ -58,14 +66,6 @@
             this.salonsRepository.Delete(salon);
 
             await this.salonsRepository.SaveChangesAsync();
-        }
-
-        public T GetById<T>(int id)
-        {
-            var salon = this.salonsRepository.All()
-                .Where(x => x.Id == id)
-                .To<T>().FirstOrDefault();
-            return salon;
         }
     }
 }

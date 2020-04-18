@@ -16,17 +16,15 @@
             this.categoriesService = categoriesService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new CategoriesListViewModel
             {
-                Categories =
-                    this.categoriesService.GetAll<CategoryViewModel>(),
+                Categories = await this.categoriesService.GetAllAsync<CategoryViewModel>(),
             };
             return this.View(viewModel);
         }
 
-        [HttpGet]
         public IActionResult AddCategory()
         {
             return this.View();

@@ -16,17 +16,15 @@
             this.blogPostsService = blogPostsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var viewModel = new BlogPostsListViewModel
             {
-                BlogPosts =
-                    this.blogPostsService.GetAll<BlogPostViewModel>(),
+                BlogPosts = await this.blogPostsService.GetAllAsync<BlogPostViewModel>(),
             };
             return this.View(viewModel);
         }
 
-        [HttpGet]
         public IActionResult AddBlogPost()
         {
             return this.View();
@@ -40,7 +38,6 @@
             return this.RedirectToAction("Index");
         }
 
-        [HttpGet]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
             if (id <= GlobalConstants.SeededDataCounts.BlogPosts)
