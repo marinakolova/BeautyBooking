@@ -22,5 +22,11 @@
             };
             return this.View(viewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var viewModel = this.categoriesService.GetById<CategoryViewModel>(id);
+            return this.View(viewModel);
+        }
     }
 }

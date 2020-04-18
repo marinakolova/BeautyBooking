@@ -21,7 +21,7 @@
         public IEnumerable<T> GetAll<T>(int? count = null)
         {
             IQueryable<Category> query =
-                this.categoriesRepository.All().OrderBy(x => x.Name);
+                this.categoriesRepository.All().OrderBy(x => x.Id);
             if (count.HasValue)
             {
                 query = query.Take(count.Value);

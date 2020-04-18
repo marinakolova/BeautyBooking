@@ -1,32 +1,39 @@
 ﻿@model BeautyBooking.Web.ViewModels.Categories.CategoriesListViewModel
 
 @{
-    this.ViewData["Title"] = "Categories";
+    this.ViewData["Title"] = "Categories of Beauty Services";
 }
 
-<div class="card-deck">
-    @foreach (var category in Model.Categories)
-    {
-        <div class="card bg-light text-center mb-4" style="min-width: 20rem;">
-            <img class="card-img-top img-thumbnail align-self-center" src="@category.ImageUrl" style="width:300px;height:300px;">
-            <div class="card-body">
-                <div class="card-title">
-                    <div class="logo">
-                        <a><span>@category.Name</span></a>
-                    </div>
-                </div>
-                <div class="card-text">
-                    <p class="home_text">@category.Description</p>
+<div class="row">
+
+    <!-- News Posts -->
+    <div class="col-lg-10">
+        <div class="news_posts">
+
+            @foreach (var category in Model.Categories)
+            {
+                <hr class="bg-dark mx-4" style="height: 6px;" id="@category.Id" />
+
+                <!-- News Post -->
+        <div class="news_post">
+            <div class="news_post_image"><img src="@category.ImageUrl" alt=""></div>
+            <div class="news_post_content">
+                <div class="news_post_title"><a>@category.Name</a></div>
+                <div class="news_post_text">
+                    <p>@category.Description</p>
                 </div>
             </div>
-            <div class="card-footer">
-                <div class="button button-large button_1 elements_button">
-                    <a href="#"><span>Find Salons</span><span>Find Salons</span></a>
-                </div>
-                <div class="button button-large button_3 elements_button">
-                    <a><span>Register Salon</span><span>Register Salon</span></a>
-                </div>
+            <div class="button button-large button_1 elements_button mt-5">
+                <a asp-area="" asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id">
+                    <span>See Services (@category.Services.Count)</span>
+                    <span>See Services (@category.Services.Count)</span>
+                </a>
             </div>
         </div>
-    }
+
+                
+            }
+
+        </div>
+    </div>
 </div>

@@ -30,7 +30,7 @@
                                     <div class="dept_image"><img src="@category.ImageUrl" alt=""></div>
                                     <div class="dept_content">
                                         <div class="dept_title">@category.Name</div>
-                                        <div class="dept_link"><a href="#">@category.Description</a></div>
+                                        <div class="dept_link"><a asp-area="" asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id">@category.Description</a></div>
                                     </div>
                                 </div>
                             }
