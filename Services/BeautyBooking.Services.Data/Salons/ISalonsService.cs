@@ -11,7 +11,7 @@
 
         Task<T> GetByIdAsync<T>(int id);
 
-        Task AddSalonAsync(string name, int categoryId, int cityId, string address, IFormFile image);
+        Task<int> AddSalonAsync(string name, int categoryId, int cityId, string address, IFormFile image);
 
         Task DeleteSalonAsync(int id);
     }

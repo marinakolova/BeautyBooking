@@ -42,20 +42,24 @@
             return salon;
         }
 
-        public async Task AddSalonAsync(string name, int categoryId, int cityId, string address, IFormFile image)
+        public async Task<int> AddSalonAsync(string name, int categoryId, int cityId, string address, IFormFile image)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
 
-            await this.salonsRepository.AddAsync(new Salon
+            var salon = new Salon
             {
                 Name = name,
                 CategoryId = categoryId,
                 CityId = cityId,
                 Address = address,
                 ImageUrl = imageUrl,
-            });
+            };
 
+            await this.salonsRepository.AddAsync(salon);
             await this.salonsRepository.SaveChangesAsync();
+
+            var salonId = salon.Id;
+            return salonId;
         }
 
         public async Task DeleteSalonAsync(int id)

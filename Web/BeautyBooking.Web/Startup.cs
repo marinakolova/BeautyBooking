@@ -14,6 +14,7 @@
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Services.Data.Cities;
     using BeautyBooking.Services.Data.Salons;
+    using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
     using BeautyBooking.Services.Mapping;
     using BeautyBooking.Services.Messaging;
@@ -84,6 +85,7 @@
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<ICitiesService, CitiesService>();
             services.AddTransient<ISalonsService, SalonsService>();
+            services.AddTransient<ISalonServicesService, SalonServicesService>();
             services.AddTransient<IAppointmentsService, AppointmentsService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
         }

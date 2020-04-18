@@ -34,6 +34,14 @@
             return await query.To<T>().ToListAsync();
         }
 
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var category = await this.categoriesRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return category;
+        }
+
         public async Task<IEnumerable<string>> GetAllCategoriesNamesAsync()
         {
             ICollection<string> categoriesNames =
@@ -45,20 +53,13 @@
             return categoriesNames;
         }
 
-        public async Task<T> GetByIdAsync<T>(int id)
+        public async Task<int> GetIdByNameAsync(string name)
         {
-            var category = await this.categoriesRepository.All()
-                .Where(x => x.Id == id)
-                .To<T>().FirstOrDefaultAsync();
-            return category;
-        }
-
-        public async Task<T> GetByNameAsync<T>(string name)
-        {
-            var category = await this.categoriesRepository.All()
+            var categoryId = await this.categoriesRepository.All()
                 .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
-                .To<T>().FirstOrDefaultAsync();
-            return category;
+                .Select(x => x.Id)
+                .FirstOrDefaultAsync();
+            return categoryId;
         }
 
         public async Task AddCategoryAsync(string name, string description, IFormFile image)

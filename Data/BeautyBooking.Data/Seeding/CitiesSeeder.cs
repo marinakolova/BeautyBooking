@@ -17,17 +17,13 @@
 
             var cities = new City[]
                 {
+                    new City // Id = 2
+                    {
+                        Name = "Varna",
+                    },
                     new City // Id = 1
                     {
                         Name = "Sofia",
-                    },
-                    new City // Id = 2
-                    {
-                        Name = "Plovdiv",
-                    },
-                    new City // Id = 3
-                    {
-                        Name = "Varna",
                     },
                 };
 
