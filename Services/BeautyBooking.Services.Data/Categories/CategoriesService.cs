@@ -6,16 +6,20 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
+    using BeautyBooking.Services.Cloudinary;
     using BeautyBooking.Services.Mapping;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
 
     public class CategoriesService : ICategoriesService
     {
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly ICloudinaryService cloudinaryService;
 
-        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository)
+        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository, ICloudinaryService cloudinaryService)
         {
             this.categoriesRepository = categoriesRepository;
+            this.cloudinaryService = cloudinaryService;
         }
 
         public IEnumerable<T> GetAll<T>(int? count = null)
@@ -46,8 +50,10 @@
             return category;
         }
 
-        public async Task AddCategoryAsync(string name, string description, string imageUrl)
+        public async Task AddCategoryAsync(string name, string description, IFormFile image)
         {
+            var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, "categorytest");
+
             await this.categoriesRepository.AddAsync(new Category
             {
                 Name = name,

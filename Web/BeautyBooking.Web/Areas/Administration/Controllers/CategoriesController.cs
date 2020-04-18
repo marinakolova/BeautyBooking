@@ -34,7 +34,7 @@
         [HttpPost]
         public async Task<IActionResult> AddCategory(CategoryInputModel input)
         {
-            await this.categoriesService.AddCategoryAsync(input.Name, input.Description, input.ImageUrl);
+            await this.categoriesService.AddCategoryAsync(input.Name, input.Description, input.Image);
 
             return this.RedirectToAction("Index");
         }
