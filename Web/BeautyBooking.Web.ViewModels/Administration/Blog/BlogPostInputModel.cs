@@ -1,5 +1,9 @@
 ﻿namespace BeautyBooking.Web.ViewModels.Administration.Blog
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Microsoft.AspNetCore.Http;
+
     public class BlogPostInputModel
     {
         public string Title { get; set; }
@@ -8,6 +12,7 @@
 
         public string Author { get; set; }
 
-        public string ImageUrl { get; set; }
+        [DataType(DataType.Upload)]
+        public IFormFile Image { get; set; }
     }
 }

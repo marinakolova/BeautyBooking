@@ -52,7 +52,7 @@
 
         public async Task AddCategoryAsync(string name, string description, IFormFile image)
         {
-            var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, "categorytest");
+            var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
 
             await this.categoriesRepository.AddAsync(new Category
             {

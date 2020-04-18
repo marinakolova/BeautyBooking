@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
 
+    using BeautyBooking.Common;
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Web.ViewModels.Administration.Categories;
     using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,11 @@
         [HttpGet]
         public async Task<IActionResult> DeleteCategory(int id)
         {
+            if (id <= GlobalConstants.SeededDataCounts.Categories)
+            {
+                return this.RedirectToAction("Index");
+            }
+
             await this.categoriesService.DeleteCategoryAsync(id);
 
             return this.RedirectToAction("Index");

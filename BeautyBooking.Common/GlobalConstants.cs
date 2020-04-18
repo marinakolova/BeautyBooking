@@ -40,5 +40,14 @@
 
             public const string Body = "https://res.cloudinary.com/beauty-booking/image/upload/v1587149548/Categories/body_dfc8jw.png";
         }
+
+        public static class SeededDataCounts
+        {
+            public const int Categories = 6;
+
+            public const int BlogPosts = 4;
+
+            public const int Services = 116;
+        }
     }
 }

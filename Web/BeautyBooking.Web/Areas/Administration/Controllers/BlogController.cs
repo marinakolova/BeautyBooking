@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
 
+    using BeautyBooking.Common;
     using BeautyBooking.Services.Data.Blog;
     using BeautyBooking.Web.ViewModels.Administration.Blog;
     using Microsoft.AspNetCore.Mvc;
@@ -34,7 +35,7 @@
         [HttpPost]
         public async Task<IActionResult> AddBlogPost(BlogPostInputModel input)
         {
-            await this.blogPostsService.AddBlogPostAsync(input.Title, input.Content, input.Author, input.ImageUrl);
+            await this.blogPostsService.AddBlogPostAsync(input.Title, input.Content, input.Author, input.Image);
 
             return this.RedirectToAction("Index");
         }
@@ -42,6 +43,11 @@
         [HttpGet]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
+            if (id <= GlobalConstants.SeededDataCounts.BlogPosts)
+            {
+                return this.RedirectToAction("Index");
+            }
+
             await this.blogPostsService.DeleteBlogPostAsync(id);
 
             return this.RedirectToAction("Index");
