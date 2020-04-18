@@ -34,10 +34,29 @@
             return await query.To<T>().ToListAsync();
         }
 
+        public async Task<IEnumerable<string>> GetAllCategoriesNamesAsync()
+        {
+            ICollection<string> categoriesNames =
+                await this.categoriesRepository.All()
+                .OrderBy(x => x.Id)
+                .Select(x => x.Name)
+                .ToListAsync();
+
+            return categoriesNames;
+        }
+
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var category = await this.categoriesRepository.All()
                 .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return category;
+        }
+
+        public async Task<T> GetByNameAsync<T>(string name)
+        {
+            var category = await this.categoriesRepository.All()
+                .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
                 .To<T>().FirstOrDefaultAsync();
             return category;
         }

@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using BeautyBooking.Common;
     using BeautyBooking.Data.Models;
 
     public class BlogPostsSeeder : ISeeder
@@ -36,7 +37,7 @@ The Solution: Get at least eight hours of sleep. Since the light from your smart
 
 In today’s world, stress seems inevitable, yet, there are simple solutions that can make all the difference in showing a face that appears to have just returned from a relaxing vacation.",
                         Author = "Elizabeth Scarcella",
-                        ImageUrl = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152732/Blog/Saving_Stressed_Skin_xdcjam.jpg",
+                        ImageUrl = GlobalConstants.Images.StressedSkin,
                     },
                     new BlogPost // Id = 2
                     {
@@ -53,7 +54,7 @@ Invest in moisturizers that work on wet skin when best absorbed. Don’t skip th
 
 Buy quality sunscreens. Look beyond the SPF and buy quality sunscreens with safe ingredients. Reapply every hour or so, and if you take a dip in the water, reapply when you get out. Water attracts the sun (like snow), creating a glare that can cause sunburns.",
                         Author = "Michele McDonough",
-                        ImageUrl = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152732/Blog/Summer_Beauty_Tips_ebdgqa.jpg",
+                        ImageUrl = GlobalConstants.Images.SummerBeautyTips,
                     },
                     new BlogPost // Id = 3
                     {
@@ -74,7 +75,7 @@ Powder, blush, bronzer or eyeshadow can last for two years, with proper care. An
 
 Heat destroys the shelf life of your favorite products, so a trick of the trade for desert dwellers is to find a handy little make-up tote and refrigerate your make-up. The bonus of refrigeration is the refreshing coolness during application!",
                         Author = "Michele McDonough",
-                        ImageUrl = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152732/Blog/How_Often_Should_I_Change_My_Make-Up_n4a2mt.jpg",
+                        ImageUrl = GlobalConstants.Images.MakeUp,
                     },
                     new BlogPost // Id = 4
                     {
@@ -97,7 +98,7 @@ Regardless of how you tame your mane, the most important factor in achieving hea
 
 Cheers to happy, healthy hair!",
                         Author = "Elizabeth Scarcella",
-                        ImageUrl = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152733/Blog/Summer_Essentials_for_Healthy_Hair_lztxwm.jpg",
+                        ImageUrl = GlobalConstants.Images.SummerHealthyHair,
                     },
                 };
 

@@ -5,7 +5,6 @@
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Web.ViewModels.Salons;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 

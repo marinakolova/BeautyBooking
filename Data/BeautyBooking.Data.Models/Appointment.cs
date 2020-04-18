@@ -15,5 +15,9 @@
         public string ClientId { get; set; }
 
         public virtual ApplicationUser Client { get; set; }
+
+        public int SalonServiceId { get; set; }
+
+        public virtual SalonService Service { get; set; }
     }
 }

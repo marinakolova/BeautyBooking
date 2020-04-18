@@ -25,5 +25,32 @@
 
             return await query.To<T>().ToListAsync();
         }
+
+        public async Task<IEnumerable<string>> GetAllCitiesNamesAsync()
+        {
+            ICollection<string> citiesNames =
+                await this.citiesRepository.All()
+                .OrderByDescending(x => x.Id)
+                .Select(x => x.Name)
+                .ToListAsync();
+
+            return citiesNames;
+        }
+
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var city = await this.citiesRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return city;
+        }
+
+        public async Task<T> GetByNameAsync<T>(string name)
+        {
+            var city = await this.citiesRepository.All()
+                .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
+                .To<T>().FirstOrDefaultAsync();
+            return city;
+        }
     }
 }

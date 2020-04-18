@@ -1,5 +1,6 @@
 ﻿namespace BeautyBooking.Web.ViewModels.Owner.SalonManager
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
@@ -8,9 +9,11 @@
     {
         public string Name { get; set; }
 
-        public string Address { get; set; }
+        public string Category { get; set; }
 
-        public int CategoryId { get; set; }
+        public string City { get; set; }
+
+        public string Address { get; set; }
 
         [DataType(DataType.Upload)]
         public IFormFile Image { get; set; }

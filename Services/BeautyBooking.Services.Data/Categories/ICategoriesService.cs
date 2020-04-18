@@ -9,7 +9,11 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
+        Task<IEnumerable<string>> GetAllCategoriesNamesAsync();
+
         Task<T> GetByIdAsync<T>(int id);
+
+        Task<T> GetByNameAsync<T>(string name);
 
         Task AddCategoryAsync(string name, string description, IFormFile image);
 

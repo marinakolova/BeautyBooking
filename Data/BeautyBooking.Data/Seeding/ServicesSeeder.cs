@@ -1,9 +1,10 @@
 ﻿namespace BeautyBooking.Data.Seeding
 {
-    using BeautyBooking.Data.Models;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using BeautyBooking.Data.Models;
 
     public class ServicesSeeder : ISeeder
     {

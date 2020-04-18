@@ -1,6 +1,8 @@
 ﻿@model BeautyBooking.Web.ViewModels.Owner.SalonManager.SalonInputModel
 @{
     this.ViewData["Title"] = "Add Salon";
+    var categories = this.ViewData["Categories"] as IEnumerable<string>;
+    var cities = this.ViewData["Cities"] as IEnumerable<string>;
 }
 
 <div class="col-lg-8 contact_col">
@@ -9,10 +11,28 @@
         <div class="contact_form_container">
             <form method="post" enctype="multipart/form-data" class="contact_form">
                 <input type="text" asp-for="@Model.Name" class="contact_input" placeholder="Name" required="required">
-                <input type="number" asp-for="@Model.CategoryId" class="contact_input" placeholder="CategoryId" required="required">                
+                <div class="form-group">
+                    <label asp-for="@Model.Category"></label>
+                    <select asp-for="@Model.Category" class="form-control text-dark" required="required">
+                        @foreach (var category in categories)
+                        {
+                        <option value="@category">@category</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.City"></label>
+                    <select asp-for="@Model.City" class="form-control text-dark" required="required">
+                        @foreach (var city in cities)
+                        {
+                            <option value="@city">@city</option>
+                        }
+                    </select>
+                </div>
                 <input type="text" asp-for="@Model.Address" class="contact_input" placeholder="Address" required="required">
                 <div class="form-group">
-                    <div class="row justify-content-lg-between">
+                    <label asp-for="@Model.Image"></label>
+                    <div class="row">
                         <div>
                             <input type="file" asp-for="@Model.Image" class="image-upload" />
                         </div>

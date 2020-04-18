@@ -9,8 +9,6 @@
     {
         public DateTime Time { get; set; }
 
-        public virtual Salon Salon { get; set; }
-
-        public virtual Service Service { get; set; }
+        public virtual AppointmentSalonServiceViewModel SalonService { get; set; }
     }
 }
