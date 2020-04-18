@@ -63,12 +63,11 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IBlogPostsService, BlogPostsService>();
             services.AddTransient<ISalonsService, SalonsService>();
-            services.AddTransient<IAppointmentsService, AppointmentsService>();
             services.AddTransient<IServicesService, ServicesService>();
+            services.AddTransient<IAppointmentsService, AppointmentsService>();
 
             // External Login Setups
             services.AddAuthentication().AddFacebook(facebookOptions =>

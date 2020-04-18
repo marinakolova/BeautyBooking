@@ -24,19 +24,17 @@
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
-
         public DbSet<Category> Categories { get; set; }
-
-        public DbSet<Salon> Salons { get; set; }
 
         public DbSet<BlogPost> BlogPosts { get; set; }
 
-        public DbSet<Appointment> Appointments { get; set; }
-
         public DbSet<Service> Services { get; set; }
 
+        public DbSet<Salon> Salons { get; set; }
+
         public DbSet<SalonService> SalonServices { get; set; }
+
+        public DbSet<Appointment> Appointments { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
