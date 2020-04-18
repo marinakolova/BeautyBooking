@@ -7,33 +7,31 @@
 <div class="row">
 
     <!-- News Posts -->
-    <div class="col-lg-10">
-        <div class="news_posts">
 
-            @foreach (var category in Model.Categories)
-            {
-                <hr class="bg-dark mx-4" style="height: 6px;" id="@category.Id" />
+    @foreach (var category in Model.Categories)
+    {
+        <div class="col-lg-4">
 
-                <!-- News Post -->
-        <div class="news_post">
-            <div class="news_post_image"><img src="@category.ImageUrl" alt=""></div>
-            <div class="news_post_content">
-                <div class="news_post_title"><a>@category.Name</a></div>
-                <div class="news_post_text">
-                    <p>@category.Description</p>
+            <hr class="bg-dark mx-4" style="height: 6px;" id="@category.Id" />
+
+            <!-- News Post -->
+            <div class="news_post">
+                <div class="news_post_image"><img src="@category.ImageUrl" alt=""></div>
+                <div class="news_post_content">
+                    <div class="news_post_title"><a>@category.Name</a></div>
+                    <div class="news_post_text">
+                        <p>@category.Description</p>
+                    </div>
+                </div>
+                <div class="button button-large button_1 elements_button mt-4">
+                    <a asp-area="" asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id">
+                        <span>See Services (@category.Services.Count)</span>
+                        <span>See Services (@category.Services.Count)</span>
+                    </a>
                 </div>
             </div>
-            <div class="button button-large button_1 elements_button mt-5">
-                <a asp-area="" asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id">
-                    <span>See Services (@category.Services.Count)</span>
-                    <span>See Services (@category.Services.Count)</span>
-                </a>
-            </div>
         </div>
 
-                
-            }
+    }
 
-        </div>
-    </div>
 </div>
