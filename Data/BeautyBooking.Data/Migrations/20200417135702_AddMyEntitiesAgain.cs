@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace BeautyBooking.Data.Migrations
+﻿namespace BeautyBooking.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddMyEntitiesAgain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +21,7 @@ namespace BeautyBooking.Data.Migrations
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true)
+                    ImageUrl = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -39,7 +40,7 @@ namespace BeautyBooking.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true)
+                    ImageUrl = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -58,7 +59,7 @@ namespace BeautyBooking.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Text = table.Column<string>(nullable: true),
                     AuthorId = table.Column<string>(nullable: true),
-                    BlogPostId = table.Column<int>(nullable: false)
+                    BlogPostId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -91,7 +92,7 @@ namespace BeautyBooking.Data.Migrations
                     Address = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     OwnerId = table.Column<string>(nullable: true),
-                    CategoryId = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -123,7 +124,7 @@ namespace BeautyBooking.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false),
-                    SalonId = table.Column<int>(nullable: false)
+                    SalonId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -149,7 +150,7 @@ namespace BeautyBooking.Data.Migrations
                     Time = table.Column<DateTime>(nullable: false),
                     SalonId = table.Column<int>(nullable: false),
                     ClientId = table.Column<string>(nullable: true),
-                    ServiceId = table.Column<int>(nullable: false)
+                    ServiceId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {

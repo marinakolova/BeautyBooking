@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace BeautyBooking.Data.Migrations
+﻿namespace BeautyBooking.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class ChangeSalonOwnerLogicAndSalonServices : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,7 +61,7 @@ namespace BeautyBooking.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Available = table.Column<bool>(nullable: false),
-                    Price = table.Column<double>(nullable: true)
+                    Price = table.Column<double>(nullable: true),
                 },
                 constraints: table =>
                 {

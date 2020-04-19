@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace BeautyBooking.Data.Migrations
+﻿namespace BeautyBooking.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddSalonServiceToAppointments : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
