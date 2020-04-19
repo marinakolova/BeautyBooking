@@ -23,12 +23,12 @@
                 GlobalConstants.AccountsSeeding.AdminEmail,
                 GlobalConstants.AdministratorRoleName);
 
-            // Create SalonOwner
+            // Create SalonManager
             await CreateUser(
                 userManager,
                 roleManager,
-                GlobalConstants.AccountsSeeding.OwnerEmail,
-                GlobalConstants.SalonOwnerRoleName);
+                GlobalConstants.AccountsSeeding.SalonManagerEmail,
+                GlobalConstants.SalonManagerRoleName);
 
             // Create User
             await CreateUser(

@@ -1,6 +1,5 @@
-﻿namespace BeautyBooking.Web.ViewModels.Owner.SalonManager
+﻿namespace BeautyBooking.Web.ViewModels.SalonManager.Salons
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;

@@ -91,7 +91,7 @@
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
-                    OwnerId = table.Column<string>(nullable: true),
+                    SalonManagerId = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
@@ -104,8 +104,8 @@
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Salons_AspNetUsers_OwnerId",
-                        column: x => x.OwnerId,
+                        name: "FK_Salons_AspNetUsers_SalonManagerId",
+                        column: x => x.SalonManagerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -231,9 +231,9 @@
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Salons_OwnerId",
+                name: "IX_Salons_SalonManagerId",
                 table: "Salons",
-                column: "OwnerId");
+                column: "SalonManagerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_IsDeleted",

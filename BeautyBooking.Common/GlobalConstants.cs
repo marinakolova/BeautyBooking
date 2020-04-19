@@ -6,7 +6,7 @@
 
         public const string AdministratorRoleName = "Administrator";
 
-        public const string SalonOwnerRoleName = "Owner";
+        public const string SalonManagerRoleName = "SalonManager";
 
         public static class AccountsSeeding
         {
@@ -14,7 +14,7 @@
 
             public const string AdminEmail = "admin@admin.com";
 
-            public const string OwnerEmail = "owner@owner.com";
+            public const string SalonManagerEmail = "salonmanager@salonmanager.com";
 
             public const string UserEmail = "user@user.com";
         }

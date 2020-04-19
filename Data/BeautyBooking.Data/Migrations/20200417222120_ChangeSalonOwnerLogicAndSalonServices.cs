@@ -4,7 +4,7 @@
 
     using Microsoft.EntityFrameworkCore.Migrations;
 
-    public partial class ChangeSalonOwnerLogicAndSalonServices : Migration
+    public partial class ChangeSalonSalonManagerLogicAndSalonServices : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@
                 table: "Appointments");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Salons_AspNetUsers_OwnerId",
+                name: "FK_Salons_AspNetUsers_SalonManagerId",
                 table: "Salons");
 
             migrationBuilder.DropForeignKey(
@@ -25,7 +25,7 @@
                 table: "Services");
 
             migrationBuilder.DropIndex(
-                name: "IX_Salons_OwnerId",
+                name: "IX_Salons_SalonManagerId",
                 table: "Salons");
 
             migrationBuilder.DropIndex(
@@ -37,7 +37,7 @@
                 table: "Services");
 
             migrationBuilder.DropColumn(
-                name: "OwnerId",
+                name: "SalonManagerId",
                 table: "Salons");
 
             migrationBuilder.DropColumn(
@@ -129,7 +129,7 @@
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<string>(
-                name: "OwnerId",
+                name: "SalonManagerId",
                 table: "Salons",
                 type: "nvarchar(450)",
                 nullable: true);
@@ -147,9 +147,9 @@
                 column: "SalonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Salons_OwnerId",
+                name: "IX_Salons_SalonManagerId",
                 table: "Salons",
-                column: "OwnerId");
+                column: "SalonManagerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_ServiceId",
@@ -165,9 +165,9 @@
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Salons_AspNetUsers_OwnerId",
+                name: "FK_Salons_AspNetUsers_SalonManagerId",
                 table: "Salons",
-                column: "OwnerId",
+                column: "SalonManagerId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);

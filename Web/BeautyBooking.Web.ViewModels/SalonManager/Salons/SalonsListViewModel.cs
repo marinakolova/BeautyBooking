@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Owner.SalonManager
+﻿namespace BeautyBooking.Web.ViewModels.SalonManager.Salons
 {
     using System.Collections.Generic;
 

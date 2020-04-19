@@ -328,7 +328,7 @@ namespace BeautyBooking.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OwnerId")
+                    b.Property<string>("SalonManagerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -337,7 +337,7 @@ namespace BeautyBooking.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("SalonManagerId");
 
                     b.ToTable("Salons");
                 });
@@ -558,9 +558,9 @@ namespace BeautyBooking.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BeautyBooking.Data.Models.ApplicationUser", "Owner")
+                    b.HasOne("BeautyBooking.Data.Models.ApplicationUser", "SalonManager")
                         .WithMany("Salons")
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("SalonManagerId");
                 });
 
             modelBuilder.Entity("BeautyBooking.Data.Models.Service", b =>

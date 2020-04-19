@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.Areas.Owner.Controllers
+﻿namespace BeautyBooking.Web.Areas.SalonManager.Controllers
 {
     using System.Threading.Tasks;
 
@@ -7,10 +7,10 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
-    using BeautyBooking.Web.ViewModels.Owner.SalonManager;
+    using BeautyBooking.Web.ViewModels.SalonManager.Salons;
     using Microsoft.AspNetCore.Mvc;
 
-    public class SalonManagerController : OwnerBaseController
+    public class SalonsController : SalonManagerBaseController
     {
         private readonly ISalonsService salonsService;
         private readonly ICategoriesService categoriesService;
@@ -18,7 +18,7 @@
         private readonly IServicesService servicesService;
         private readonly ISalonServicesService salonServicesService;
 
-        public SalonManagerController(
+        public SalonsController(
             ISalonsService salonsService,
             ICategoriesService categoriesService,
             ICitiesService citiesService,
