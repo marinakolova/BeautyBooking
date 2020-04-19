@@ -3,16 +3,14 @@
     this.ViewData["Title"] = "Blog";
 }
 
-
 <div class="row">
 
     <!-- News Posts -->
     <div class="col-lg-8">
         <div class="news_posts">
-
             @foreach (var blogPost in Model.BlogPosts)
             {
-                <hr class="bg-dark mx-4" style="height: 6px;" />
+                <hr class="bg-dark mx-4" style="height: 6px;" id="@blogPost.Id" />
 
                 <!-- News Post -->
                 <div class="news_post">
@@ -29,7 +27,36 @@
                     </div>
                 </div>
             }
-
         </div>
     </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+        <div class="news_sidebar">
+            <!-- Latest News -->
+            <div class="sidebar_latest">
+                <div class="sidebar_title">Latest Blog Posts</div>
+                <div class="sidebar_latest_container">
+                    @foreach (var blogPost in Model.BlogPosts)
+                    {
+                        <!-- Latest News Post -->
+                        <div class="latest d-flex flex-row align-items-start justify-content-start">
+                            <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
+                            <div class="latest_content">
+                                <div class="latest_title"><a href="#@blogPost.Id">@blogPost.Title</a></div>
+                                <div class="latest_info">
+                                    <ul class="d-flex flex-row align-items-start justify-content-start">
+                                        <li><a>by @blogPost.Author</a></li>
+                                        <li><a>@blogPost.CreatedOn.Date</a></li>
+                                    </ul>
+                                </div>
+                                <div class="latest_comments"><a href="#@blogPost.Id">Jump To This</a></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

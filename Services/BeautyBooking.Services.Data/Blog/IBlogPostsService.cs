@@ -9,6 +9,8 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
+        Task<int> GetCountAsync();
+
         Task<T> GetByIdAsync<T>(int id);
 
         Task AddBlogPostAsync(string title, string content, string author, IFormFile image);

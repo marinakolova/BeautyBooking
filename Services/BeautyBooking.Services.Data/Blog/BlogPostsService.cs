@@ -34,6 +34,12 @@
             return await query.To<T>().ToListAsync();
         }
 
+        public async Task<int> GetCountAsync()
+        {
+            var count = await this.blogPostsRepository.All().CountAsync();
+            return count;
+        }
+
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var blogPost = await this.blogPostsRepository.All()
