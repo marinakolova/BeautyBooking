@@ -8,16 +8,18 @@
     {
         public DateTime Time { get; set; }
 
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
         public int SalonId { get; set; }
 
         public virtual Salon Salon { get; set; }
 
-        public string ClientId { get; set; }
+        public int ServiceId { get; set; }
 
-        public virtual ApplicationUser Client { get; set; }
+        public virtual Service Service { get; set; }
 
-        public int SalonServiceId { get; set; }
-
-        public virtual SalonService Service { get; set; }
+        public virtual SalonService SalonService { get; set; }
     }
 }

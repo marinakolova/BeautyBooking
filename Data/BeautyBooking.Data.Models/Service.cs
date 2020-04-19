@@ -9,6 +9,7 @@
         public Service()
         {
             this.Salons = new HashSet<SalonService>();
+            this.Appointments = new HashSet<Appointment>();
         }
 
         public string Name { get; set; }
@@ -20,5 +21,7 @@
         public virtual Category Category { get; set; }
 
         public virtual ICollection<SalonService> Salons { get; set; }
+
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

@@ -21,7 +21,7 @@
         public async Task<IEnumerable<T>> GetByUserAsync<T>(string userId)
         {
             var appointments = await this.appointmentsRepository.All()
-                .Where(x => x.ClientId == userId)
+                .Where(x => x.UserId == userId)
                 .To<T>().ToListAsync();
             return appointments;
         }

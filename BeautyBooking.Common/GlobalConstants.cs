@@ -98,6 +98,10 @@
             public const int Cities = 2;
 
             public const int Salons = 18;
+
+            public const int Appointments = 3;
+
+            // SalonServices: for each Salon => seeded every Service in its Category
         }
     }
 }
