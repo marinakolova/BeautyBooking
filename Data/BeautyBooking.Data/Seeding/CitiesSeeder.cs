@@ -17,17 +17,22 @@
 
             var cities = new City[]
                 {
-                    new City // Id = 2
-                    {
-                        Name = "Varna",
-                    },
                     new City // Id = 1
                     {
                         Name = "Sofia",
                     },
+                    new City // Id = 2
+                    {
+                        Name = "Varna",
+                    },
                 };
 
-            await dbContext.AddRangeAsync(cities);
+            // Need them in particular order
+            foreach (var city in cities)
+            {
+                await dbContext.AddAsync(city);
+                await dbContext.SaveChangesAsync();
+            }
         }
     }
 }

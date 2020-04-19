@@ -27,8 +27,8 @@
                           {
                               new RolesSeeder(),
                               new AccountsSeeder(),
-                              new CategoriesSeeder(),
                               new BlogPostsSeeder(),
+                              new CategoriesSeeder(),
                               new ServicesSeeder(),
                               new CitiesSeeder(),
                               new SalonsSeeder(),

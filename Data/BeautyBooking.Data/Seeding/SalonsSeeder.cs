@@ -18,7 +18,7 @@
 
             var salons = new Salon[]
                 {
-                    // 1. Hairdressers and hair salons
+                    // 1. Hair Salons
                     new Salon
                     {
                         Name = "Salon De Style",
@@ -44,7 +44,7 @@
                         ImageUrl = GlobalConstants.Images.Hair3,
                     },
 
-                    // 2. Hair removal salons
+                    // 2. Hair removal Salons
                     new Salon
                     {
                         Name = "Pretty Her Salon",
@@ -70,21 +70,21 @@
                         ImageUrl = GlobalConstants.Images.HairRemoval3,
                     },
 
-                    // 3. Massage Salons and Therapists
-                    new Salon
-                    {
-                        Name = "Treat Yourself",
-                        CategoryId = 1,
-                        CityId = 1,
-                        Address = "Sunnydale 38",
-                        ImageUrl = GlobalConstants.Images.Massage1,
-                    },
+                    // 3. Massage ans Spa Salons
                     new Salon
                     {
                         Name = "Your Style Spa",
                         CategoryId = 1,
                         CityId = 1,
                         Address = "Swinton Road 158",
+                        ImageUrl = GlobalConstants.Images.Massage1,
+                    },
+                    new Salon
+                    {
+                        Name = "Treat Yourself",
+                        CategoryId = 1,
+                        CityId = 1,
+                        Address = "Sunnydale 38",
                         ImageUrl = GlobalConstants.Images.Massage2,
                     },
                     new Salon
@@ -96,7 +96,7 @@
                         ImageUrl = GlobalConstants.Images.Massage3,
                     },
 
-                    // 4. Nail salons and nail bars
+                    // 4. Nail Salons
                     new Salon
                     {
                         Name = "Cool Colors",
@@ -122,7 +122,7 @@
                         ImageUrl = GlobalConstants.Images.Nails3,
                     },
 
-                    // 5. Face treatments
+                    // 5. Face Treatments
                     new Salon
                     {
                         Name = "Makeover Paradise",
@@ -148,7 +148,7 @@
                         ImageUrl = GlobalConstants.Images.Face3,
                     },
 
-                    // 6. Body treatments
+                    // 6. Body Treatments
                     new Salon
                     {
                         Name = "Harmony",
@@ -167,7 +167,7 @@
                     },
                     new Salon
                     {
-                        Name = "Beautiful Bodies Salon",
+                        Name = "Beautiful Bodies",
                         CategoryId = 1,
                         CityId = 2,
                         Address = "Pool View 42",
