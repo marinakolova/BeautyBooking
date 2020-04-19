@@ -17,7 +17,7 @@
 
             var services = new Service[]
                 {
-                    // Hairdressers and hair salons
+                    // 1. Hairdressers and hair salons
                     new Service
                     {
                         Name = "Ladies' Haircuts",
@@ -127,7 +127,7 @@
                         CategoryId = 1,
                     },
 
-                    // Hair removal salons
+                    // 2. Hair removal salons
                     new Service
                     {
                         Name = "Ladies' Waxing",
@@ -195,7 +195,7 @@
                         CategoryId = 2,
                     },
 
-                    // Massage Salons and Therapists
+                    // 3. Massage Salons and Therapists
                     new Service
                     {
                         Name = "Deep Tissue Massage",
@@ -365,7 +365,7 @@
                         CategoryId = 3,
                     },
 
-                    // Nail salons and nail bars
+                    // 4. Nail salons and nail bars
                     new Service
                     {
                         Name = "Pedicure",
@@ -421,7 +421,7 @@
                         CategoryId = 4,
                     },
 
-                    // Face treatments
+                    // 5. Face treatments
                     new Service
                     {
                         Name = "Classic Facials",
@@ -555,7 +555,7 @@
                         CategoryId = 5,
                     },
 
-                    // Body treatments
+                    // 6. Body treatments
                     new Service
                     {
                         Name = "Spray Tanning and Sunless Tanning",

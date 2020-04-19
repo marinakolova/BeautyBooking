@@ -32,6 +32,7 @@
                               new ServicesSeeder(),
                               new CitiesSeeder(),
                               new SalonsSeeder(),
+                              new SalonServicesSeeder(),
                               new AppointmentsSeeder(),
                           };
 

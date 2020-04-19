@@ -14,6 +14,10 @@
 
         public string Name { get; set; }
 
+        public int CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
+
         public int CityId { get; set; }
 
         public virtual City City { get; set; }
@@ -21,10 +25,6 @@
         public string Address { get; set; }
 
         public string ImageUrl { get; set; }
-
-        public int CategoryId { get; set; }
-
-        public virtual Category Category { get; set; }
 
         public virtual ICollection<SalonService> Services { get; set; }
 
