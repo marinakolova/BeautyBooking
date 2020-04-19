@@ -1,9 +1,16 @@
 ﻿@model BeautyBooking.Web.ViewModels.Administration.Blog.BlogPostsListViewModel
+@using BeautyBooking.Common
 @{
-    this.ViewData["Title"] = "Manage Blog Posts";
+    this.ViewData["Title"] = "Blog Posts";
 }
 
 <h1>All Blog Posts (@Model.BlogPosts.Count())</h1>
+
+<div class="button button-large button_1 elements_button">
+    <a asp-area="Administration" asp-controller="Blog" asp-action="AddBlogPost">
+        <span>Add New Blog Post</span><span>Add New Blog Post</span>
+    </a>
+</div>
 
 <table class="table table-striped">
     <thead class="thead-dark">
@@ -13,7 +20,7 @@
             <th scope="col">Content</th>
             <th scope="col">Author</th>
             <th scope="col">CreatedOn</th>
-            <th scope="col"></th>
+            <th scope="col">Delete Button</th>
         </tr>
     </thead>
     <tbody>
@@ -24,29 +31,49 @@
             <td>
                 <img class="align-self-center" src="@blogPost.ImageUrl" style="width:180px;height:120px;">
             </td>
-            <td>@blogPost.Content</td>
+            <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#@blogPost.Id">
+                    See Full Content
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="@blogPost.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">@blogPost.Title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @blogPost.Content
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
             <td>@blogPost.Author</td>
             <td>@blogPost.CreatedOn</td>
             <td>
+                @if (blogPost.Id <= GlobalConstants.SeededDataCounts.BlogPosts)
+                {
+                <div class="button button_2 elements_button">
+                    <a>Seeded Data Cannot be Deleted</a>
+                </div>
+                }
+                else
+                {
                 <div class="button button_2 elements_button">
                     <a asp-area="Administration" asp-controller="Blog" asp-action="DeleteBlogPost" asp-route-id="@blogPost.Id"><span>Delete</span><span>Delete</span></a>
                 </div>
+                }
             </td>
         </tr>
         }
-        <tr>
-            <th scope="row">
-                <div class="button button-large button_1 elements_button">
-                    <a asp-area="Administration" asp-controller="Blog" asp-action="AddBlogPost">
-                        <span>Add New Blog Post</span><span>Add New Blog Post</span>
-                    </a>
-                </div>
-            </th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
     </tbody>
 </table>

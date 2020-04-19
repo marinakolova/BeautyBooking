@@ -6,5 +6,11 @@
     public interface IServicesService
     {
         Task<IEnumerable<int>> GetAllServicesInCategoryAsync(int categoryId);
+
+        Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
+
+        Task<T> GetByIdAsync<T>(int id);
+
+        Task DeleteServiceAsync(int id);
     }
 }

@@ -1,0 +1,60 @@
+﻿@model BeautyBooking.Web.ViewModels.Administration.Services.ServicesListViewModel
+@using BeautyBooking.Common
+@{
+    this.ViewData["Title"] = "Beauty Services";
+}
+
+<h1>All Services (@Model.Services.Count())</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+            <th scope="col">Salons</th>
+            <th scope="col">Appointments</th>
+            <th scope="col">Delete Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in this.Model.Services)
+        {
+            <tr>
+                <th scope="row">@service.Name</th>
+                <td>@service.CategoryName</td>
+                <td>@service.Description</td>
+                <td>@service.SalonsCount</td>
+                <td>@service.AppointmentsCount</td>
+                <td>
+                    @if (service.Id <= GlobalConstants.SeededDataCounts.Services)
+                    {
+                        <div class="button button_2 elements_button">
+                            <a>Seeded Data Cannot be Deleted</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="button button_2 elements_button">
+                            <a asp-area="Administration" asp-controller="Services" asp-action="DeleteService" asp-route-id="@service.Id"><span>Delete</span><span>Delete</span></a>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+        <tr>
+            <th scope="row">
+                <div class="button button-large button_1 elements_button">
+                    <a asp-area="Administration" asp-controller="Services" asp-action="AddService">
+                        <span>Add New Service</span><span>Add New Service</span>
+                    </a>
+                </div>
+            </th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

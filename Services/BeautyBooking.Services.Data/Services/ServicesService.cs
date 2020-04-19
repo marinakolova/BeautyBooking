@@ -6,6 +6,7 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
+    using BeautyBooking.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
     public class ServicesService : IServicesService
@@ -26,6 +27,37 @@
                 .ToListAsync();
 
             return servicesIds;
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        {
+            IQueryable<Service> query =
+                this.servicesRepository.All().OrderBy(x => x.CategoryId).ThenBy(x => x.Id);
+            if (count.HasValue)
+            {
+                query = query.Take(count.Value);
+            }
+
+            return await query.To<T>().ToListAsync();
+        }
+
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var service = await this.servicesRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return service;
+        }
+
+        public async Task DeleteServiceAsync(int id)
+        {
+            var service = await this.servicesRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            this.servicesRepository.Delete(service);
+
+            await this.servicesRepository.SaveChangesAsync();
         }
     }
 }

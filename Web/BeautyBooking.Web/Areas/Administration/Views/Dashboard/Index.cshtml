@@ -1,19 +1,33 @@
 ﻿@{
-    this.ViewData["Title"] = "Admin dashboard";
+    this.ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="button button-large button_1 elements_button">
-    <a asp-area="Administration" asp-controller="Categories" asp-action="Index"><span>Manage Categories</span><span>Manage Categories</span></a>
+<div class="row">
+    <div class="col-3">
+        <div class="button button-large button_3 elements_button">
+            <a asp-area="Administration" asp-controller="Blog" asp-action="Index"><span>Blog Posts</span><span>Blog Posts</span></a>
+        </div>
+        <div class="button button-large button_1 elements_button">
+            <a asp-area="Administration" asp-controller="Categories" asp-action="Index"><span>Categories</span><span>Categories</span></a>
+        </div>
+        <div class="button button-large button_3 elements_button">
+            <a asp-area="Administration" asp-controller="Services" asp-action="Index"><span>Services</span><span>Services</span></a>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="button button-large button_1 elements_button">
+            <a asp-area="Administration" asp-controller="Users" asp-action="Index"><span>Users</span><span>Users</span></a>
+        </div>
+        <div class="button button-large button_3 elements_button">
+            <a asp-area="Administration" asp-controller="Salons" asp-action="Index"><span>Salons</span><span>Salons</span></a>
+        </div>
+        <div class="button button-large button_1 elements_button">
+            <a asp-area="Administration" asp-controller="Appointments" asp-action="Index"><span>Appointments</span><span>Appointments</span></a>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="button button-large button_3 elements_button">
+            <a asp-area="Administration" asp-controller="Cities" asp-action="Index"><span>Cities</span><span>Cities</span></a>
+        </div>
+    </div>
 </div>
-
-<div class="button button-large button_3 elements_button">
-    <a asp-area="Administration" asp-controller="Blog" asp-action="Index"><span>Manage Blog Posts</span><span>Manage Blog Posts</span></a>
-</div>
-
-<div class="button button-large button_2 elements_button">
-    <a asp-area="Administration" asp-controller="Salons" asp-action="Index"><span>Manage Salons</span><span>Manage Salons</span></a>
-</div>
-
-
-
-

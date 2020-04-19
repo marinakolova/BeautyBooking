@@ -38,7 +38,6 @@
             return this.RedirectToAction("Index");
         }
 
-        [HttpGet]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             if (id <= GlobalConstants.SeededDataCounts.Categories)

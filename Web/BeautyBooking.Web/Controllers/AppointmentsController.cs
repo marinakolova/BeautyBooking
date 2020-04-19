@@ -32,5 +32,10 @@
             };
             return this.View(viewModel);
         }
+
+        public IActionResult MakeAnAppointment()
+        {
+            return this.View();
+        }
     }
 }
