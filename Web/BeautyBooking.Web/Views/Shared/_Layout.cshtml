@@ -28,7 +28,9 @@
     @this.RenderSection("Styles", required: false)
 </head>
 <body>
-
+    
+    <partial name="_CookieConsentPartial" />
+    
     <div class="super_container">
 
         <!-- Menu -->
@@ -41,7 +43,6 @@
                 <div class="background_image" style="background-image:url(@GlobalConstants.Images.Index)"></div>
 
                 <partial name="_HeaderPartial" />
-                <partial name="_CookieConsentPartial" />
 
                 <div class="home_container-home">
                     <div class="container">
@@ -64,7 +65,6 @@
                 <div class="background_image" style="background-image:url(@GlobalConstants.Images.CoverBackground)"></div>
 
                 <partial name="_HeaderPartial" />
-                <partial name="_CookieConsentPartial" />
 
                 <div class="home_container">
                     <div class="container">

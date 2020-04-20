@@ -1,33 +1,25 @@
 ﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsListViewModel
 @{
-    this.ViewData["Title"] = "Salons";
+    this.ViewData["Title"] = "Beauty Salons";
 }
 
-<div class="doctors">
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <div class="section_title">Salons</div>
-                <div class="section_subtitle">to choose from</div>
+
+<div class="row doctors_row row-eq-height">
+
+    @foreach (var salon in Model.Salons)
+    {
+        <!-- Doctor -->
+        <div class="col-xl-3 col-md-6">
+            <div class="doctor">
+                <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
+                <div class="doctor_content">
+                    <div class="doctor_name"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a></div>
+                    <div class="doctor_title"><strong>@salon.CategoryName</strong></div>
+                    <div class="doctor_title">@salon.CityName, @salon.Address</div>
+                    <div class="doctor_link"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a></div>
+                </div>
             </div>
         </div>
-        <div class="row doctors_row">
+    }
 
-            @foreach (var salon in Model.Salons)
-            {
-                <!-- Doctor -->
-                <div class="col-xl-3 col-md-6">
-                    <div class="doctor">
-                        <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
-                        <div class="doctor_content">
-                            <div class="doctor_name"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a></div>
-                            <div class="doctor_title">@salon.Address</div>
-                            <div class="doctor_link"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a></div>
-                        </div>
-                    </div>
-                </div>
-            }
-
-        </div>        
-    </div>
-</div>
+</div>  

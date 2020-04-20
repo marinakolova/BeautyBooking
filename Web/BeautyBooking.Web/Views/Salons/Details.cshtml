@@ -1,23 +1,43 @@
-﻿@model BeautyBooking.Web.ViewModels.Salons.SalonDetailsViewModel
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonViewModel
 @{
-    this.ViewData["Title"] = "Salon Details";
+    this.ViewData["Title"] = "Salon Details: " + Model.Name;
 }
 
-<h1>@Model.Name</h1>
-<p>@Model.CityName</p>
-<p>@Model.Address</p>
-<img src="@Model.ImageUrl" />
 
-<h3 class="mb-3">Beauty Services:</h3>
-
-@foreach (var service in Model.Services)
-{
-    <p>@service.ServiceName</p>
-    <div class="button button-large button_1 elements_button mt-4">
-        <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salon-id="@service.SalonId" asp-route-service-id="@service.ServiceId">
-            <span>Book Now</span>
-            <span>Book Now</span>
-        </a>
+<div class="row row-eq-height">
+    <!-- Info Box -->
+    <div class="col-lg-4 info_box_col">
+        <div class="info_box">
+            <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
+            <div class="info_content">
+                <div class="info_title">@Model.Name</div>
+                <div class="info_text">@Model.CategoryName</div>
+                <div class="info_text">@Model.CityName, @Model.Address</div>
+            </div>
+        </div>
     </div>
-
-}
+    <!-- Panel -->
+    <div class="col-lg-7">
+        <h1>Services:</h1>
+        <div class="tab_panel active">
+            <div class="tab_panel_content">
+                <div class="tab_list">
+                    <ul>
+                        @foreach (var service in Model.Services)
+                        {
+                            <li>
+                                <div class="tab_list_title">@service.ServiceName</div>
+                                <div class="tab_list_text"><p>@service.ServiceDescription</p></div>
+                                <div class="button info_button">
+                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
+                                        <span>book now</span><span>book now</span>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

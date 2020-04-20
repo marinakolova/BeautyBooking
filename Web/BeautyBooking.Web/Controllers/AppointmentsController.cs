@@ -33,13 +33,11 @@
             return this.View(viewModel);
         }
 
-        [Authorize]
         public IActionResult MakeAnAppointment()
         {
             return this.View();
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> MakeAnAppointment(int salonId, int serviceId)
         {

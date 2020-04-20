@@ -23,12 +23,5 @@
             };
             return this.View(viewModel);
         }
-
-        public async Task<IActionResult> Details(int id)
-        {
-            var viewModel = await this.categoriesService.GetByIdAsync<CategoryViewModel>(id);
-
-            return this.View(viewModel);
-        }
     }
 }
