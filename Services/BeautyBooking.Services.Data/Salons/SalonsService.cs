@@ -16,7 +16,9 @@
         private readonly IDeletableEntityRepository<Salon> salonsRepository;
         private readonly ICloudinaryService cloudinaryService;
 
-        public SalonsService(IDeletableEntityRepository<Salon> salonsRepository, ICloudinaryService cloudinaryService)
+        public SalonsService(
+            IDeletableEntityRepository<Salon> salonsRepository, 
+            ICloudinaryService cloudinaryService)
         {
             this.salonsRepository = salonsRepository;
             this.cloudinaryService = cloudinaryService;
@@ -34,15 +36,7 @@
             return await query.To<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync<T>(int id)
-        {
-            var salon = await this.salonsRepository.All()
-                .Where(x => x.Id == id)
-                .To<T>().FirstOrDefaultAsync();
-            return salon;
-        }
-
-        public async Task<IEnumerable<int>> GetAllSalonsInCategoryAsync(int categoryId)
+        public async Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId)
         {
             ICollection<int> salonsIds =
                 await this.salonsRepository.All()
@@ -54,7 +48,15 @@
             return salonsIds;
         }
 
-        public async Task<int> AddSalonAsync(string name, int categoryId, int cityId, string address, IFormFile image)
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var salon = await this.salonsRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return salon;
+        }
+
+        public async Task<int> AddAsync(string name, int categoryId, int cityId, string address, IFormFile image)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
 
@@ -73,7 +75,7 @@
             return salon.Id;
         }
 
-        public async Task DeleteSalonAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var salon = await this.salonsRepository
                 .AllAsNoTracking()

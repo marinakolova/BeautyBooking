@@ -7,14 +7,14 @@
 
     public interface IBlogPostsService
     {
-        Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
-
         Task<int> GetCountAsync();
+
+        Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
         Task<T> GetByIdAsync<T>(int id);
 
-        Task AddBlogPostAsync(string title, string content, string author, IFormFile image);
+        Task AddAsync(string title, string content, string author, IFormFile image);
 
-        Task DeleteBlogPostAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

@@ -30,15 +30,7 @@
             return await query.To<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync<T>(int id)
-        {
-            var service = await this.servicesRepository.All()
-                .Where(x => x.Id == id)
-                .To<T>().FirstOrDefaultAsync();
-            return service;
-        }
-
-        public async Task<IEnumerable<int>> GetAllServicesInCategoryAsync(int categoryId)
+        public async Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId)
         {
             ICollection<int> servicesIds =
                 await this.servicesRepository.All()
@@ -50,7 +42,15 @@
             return servicesIds;
         }
 
-        public async Task<int> AddServiceAsync(string name, int categoryId, string description)
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var service = await this.servicesRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return service;
+        }
+
+        public async Task<int> AddAsync(string name, int categoryId, string description)
         {
             var service = new Service
             {
@@ -65,7 +65,7 @@
             return service.Id;
         }
 
-        public async Task DeleteServiceAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var service = await this.servicesRepository
                 .AllAsNoTracking()

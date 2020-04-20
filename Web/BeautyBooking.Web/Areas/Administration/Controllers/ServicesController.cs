@@ -40,8 +40,7 @@
 
         public async Task<IActionResult> AddService()
         {
-            var categoriesNames = await this.categoriesService.GetAllCategoriesNamesAsync();
-
+            var categoriesNames = await this.categoriesService.GetAllNamesAsync();
             this.ViewData["Categories"] = categoriesNames;
 
             return this.View();
@@ -54,11 +53,11 @@
             var categoryId = await this.categoriesService.GetIdByNameAsync(input.Category);
 
             // Add Service
-            var serviceId = await this.servicesService.AddServiceAsync(input.Name, categoryId, input.Description);
+            var serviceId = await this.servicesService.AddAsync(input.Name, categoryId, input.Description);
 
             // Add the Service to all Salons in the Category
-            var salonsIds = await this.salonsService.GetAllSalonsInCategoryAsync(categoryId);
-            await this.salonServicesService.AddSalonServicesAsync(salonsIds, serviceId);
+            var salonsIds = await this.salonsService.GetAllByCategoryAsync(categoryId);
+            await this.salonServicesService.AddAsync(salonsIds, serviceId);
 
             return this.RedirectToAction("Index");
         }
@@ -70,7 +69,7 @@
                 return this.RedirectToAction("Index");
             }
 
-            await this.servicesService.DeleteServiceAsync(id);
+            await this.servicesService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
         }

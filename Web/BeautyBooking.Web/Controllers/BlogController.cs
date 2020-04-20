@@ -27,12 +27,10 @@
 
         public async Task<IActionResult> Details(int id)
         {
-            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
-
             var allPostsCount = await this.blogPostsService.GetCountAsync();
-
             this.ViewData["AllPostsCount"] = allPostsCount;
 
+            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
             return this.View(viewModel);
         }
     }

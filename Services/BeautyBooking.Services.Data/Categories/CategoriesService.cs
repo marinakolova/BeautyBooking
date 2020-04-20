@@ -16,7 +16,9 @@
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly ICloudinaryService cloudinaryService;
 
-        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository, ICloudinaryService cloudinaryService)
+        public CategoriesService(
+            IDeletableEntityRepository<Category> categoriesRepository, 
+            ICloudinaryService cloudinaryService)
         {
             this.categoriesRepository = categoriesRepository;
             this.cloudinaryService = cloudinaryService;
@@ -34,23 +36,23 @@
             return await query.To<T>().ToListAsync();
         }
 
+        public async Task<IEnumerable<string>> GetAllNamesAsync()
+        {
+            ICollection<string> names =
+                await this.categoriesRepository.All()
+                .OrderBy(x => x.Id)
+                .Select(x => x.Name)
+                .ToListAsync();
+
+            return names;
+        }
+
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var category = await this.categoriesRepository.All()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
             return category;
-        }
-
-        public async Task<IEnumerable<string>> GetAllCategoriesNamesAsync()
-        {
-            ICollection<string> categoriesNames =
-                await this.categoriesRepository.All()
-                .OrderBy(x => x.Id)
-                .Select(x => x.Name)
-                .ToListAsync();
-
-            return categoriesNames;
         }
 
         public async Task<int> GetIdByNameAsync(string name)
@@ -62,7 +64,7 @@
             return categoryId;
         }
 
-        public async Task AddCategoryAsync(string name, string description, IFormFile image)
+        public async Task AddAsync(string name, string description, IFormFile image)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
 
@@ -76,7 +78,7 @@
             await this.categoriesRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteCategoryAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var category = await this.categoriesRepository
                 .AllAsNoTracking()

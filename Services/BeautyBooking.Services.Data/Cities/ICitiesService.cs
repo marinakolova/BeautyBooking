@@ -7,14 +7,14 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>();
 
-        Task<T> GetByIdAsync<T>(int id);
+        Task<IEnumerable<string>> GetAllNamesAsync();
 
-        Task<IEnumerable<string>> GetAllCitiesNamesAsync();
+        Task<T> GetByIdAsync<T>(int id);
 
         Task<int> GetIdByNameAsync(string name);
 
-        Task AddCityAsync(string name);
+        Task AddAsync(string name);
 
-        Task DeleteCityAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

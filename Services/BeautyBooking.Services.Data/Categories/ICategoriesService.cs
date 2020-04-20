@@ -9,14 +9,14 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
-        Task<T> GetByIdAsync<T>(int id);
+        Task<IEnumerable<string>> GetAllNamesAsync();
 
-        Task<IEnumerable<string>> GetAllCategoriesNamesAsync();
+        Task<T> GetByIdAsync<T>(int id);
 
         Task<int> GetIdByNameAsync(string name);
 
-        Task AddCategoryAsync(string name, string description, IFormFile image);
+        Task AddAsync(string name, string description, IFormFile image);
 
-        Task DeleteCategoryAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

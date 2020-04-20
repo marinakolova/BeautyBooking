@@ -18,15 +18,16 @@
             this.appointmentsRepository = appointmentsRepository;
         }
 
-        public int GetAllAppointmentsCount()
+        public async Task<int> GetCountAsync()
         {
-            return this.appointmentsRepository.All().Count();
+            return await this.appointmentsRepository.All().CountAsync();
         }
 
-        public async Task<IEnumerable<T>> GetByUserAsync<T>(string userId)
+        public async Task<IEnumerable<T>> GetAllByUserAsync<T>(string userId)
         {
             var appointments = await this.appointmentsRepository.All()
                 .Where(x => x.UserId == userId)
+                .OrderBy(x => x.Time)
                 .To<T>().ToListAsync();
             return appointments;
         }

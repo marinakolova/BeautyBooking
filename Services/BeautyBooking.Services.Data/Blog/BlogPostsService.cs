@@ -16,10 +16,17 @@
         private readonly IDeletableEntityRepository<BlogPost> blogPostsRepository;
         private readonly ICloudinaryService cloudinaryService;
 
-        public BlogPostsService(IDeletableEntityRepository<BlogPost> blogPostsRepository, ICloudinaryService cloudinaryService)
+        public BlogPostsService(
+            IDeletableEntityRepository<BlogPost> blogPostsRepository,
+            ICloudinaryService cloudinaryService)
         {
             this.blogPostsRepository = blogPostsRepository;
             this.cloudinaryService = cloudinaryService;
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await this.blogPostsRepository.All().CountAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
@@ -34,12 +41,6 @@
             return await query.To<T>().ToListAsync();
         }
 
-        public async Task<int> GetCountAsync()
-        {
-            var count = await this.blogPostsRepository.All().CountAsync();
-            return count;
-        }
-
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var blogPost = await this.blogPostsRepository.All()
@@ -48,7 +49,7 @@
             return blogPost;
         }
 
-        public async Task AddBlogPostAsync(string title, string content, string author, IFormFile image)
+        public async Task AddAsync(string title, string content, string author, IFormFile image)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, title);
 
@@ -63,7 +64,7 @@
             await this.blogPostsRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteBlogPostAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var blogPost = await this.blogPostsRepository
                 .AllAsNoTracking()

@@ -33,7 +33,7 @@
         [HttpPost]
         public async Task<IActionResult> AddCategory(CategoryInputModel input)
         {
-            await this.categoriesService.AddCategoryAsync(input.Name, input.Description, input.Image);
+            await this.categoriesService.AddAsync(input.Name, input.Description, input.Image);
 
             return this.RedirectToAction("Index");
         }
@@ -45,7 +45,7 @@
                 return this.RedirectToAction("Index");
             }
 
-            await this.categoriesService.DeleteCategoryAsync(id);
+            await this.categoriesService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
         }

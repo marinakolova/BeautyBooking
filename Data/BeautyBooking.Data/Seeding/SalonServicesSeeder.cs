@@ -18,6 +18,7 @@
 
             var salonServices = new List<SalonService>();
 
+            // For each Salon add all Services from its Category
             foreach (var salon in dbContext.Salons)
             {
                 var salonId = salon.Id;

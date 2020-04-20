@@ -15,9 +15,9 @@
             this.salonServicesRepository = salonServicesRepository;
         }
 
-        public async Task AddSalonServicesAsync(IEnumerable<int> salonsIds, int serviceId)
+        public async Task AddAsync(int salonId, IEnumerable<int> servicesIds)
         {
-            foreach (var salonId in salonsIds)
+            foreach (var serviceId in servicesIds)
             {
                 await this.salonServicesRepository.AddAsync(new SalonService
                 {
@@ -30,9 +30,9 @@
             await this.salonServicesRepository.SaveChangesAsync();
         }
 
-        public async Task AddSalonServicesAsync(int salonId, IEnumerable<int> servicesIds)
+        public async Task AddAsync(IEnumerable<int> salonsIds, int serviceId)
         {
-            foreach (var serviceId in servicesIds)
+            foreach (var salonId in salonsIds)
             {
                 await this.salonServicesRepository.AddAsync(new SalonService
                 {

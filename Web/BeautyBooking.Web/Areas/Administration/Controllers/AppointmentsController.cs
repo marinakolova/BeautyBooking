@@ -1,5 +1,7 @@
 ﻿namespace BeautyBooking.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
     using BeautyBooking.Services.Data.Appointments;
     using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +14,9 @@
             this.appointmentsService = appointmentsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var viewModel = this.appointmentsService.GetAllAppointmentsCount();
+            var viewModel = await this.appointmentsService.GetCountAsync();
             return this.View(viewModel);
         }
     }

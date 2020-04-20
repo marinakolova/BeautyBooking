@@ -7,12 +7,12 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
+        Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId);
+
         Task<T> GetByIdAsync<T>(int id);
 
-        Task<IEnumerable<int>> GetAllServicesInCategoryAsync(int categoryId);
+        Task<int> AddAsync(string name, int categoryId, string description);
 
-        Task<int> AddServiceAsync(string name, int categoryId, string description);
-
-        Task DeleteServiceAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

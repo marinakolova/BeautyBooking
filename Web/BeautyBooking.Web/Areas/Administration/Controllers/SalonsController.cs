@@ -44,8 +44,8 @@
 
         public async Task<IActionResult> AddSalon()
         {
-            var categoriesNames = await this.categoriesService.GetAllCategoriesNamesAsync();
-            var citiesNames = await this.citiesService.GetAllCitiesNamesAsync();
+            var categoriesNames = await this.categoriesService.GetAllNamesAsync();
+            var citiesNames = await this.citiesService.GetAllNamesAsync();
 
             this.ViewData["Categories"] = categoriesNames;
             this.ViewData["Cities"] = citiesNames;
@@ -61,11 +61,11 @@
             var cityId = await this.citiesService.GetIdByNameAsync(input.City);
 
             // Add Salon
-            var salonId = await this.salonsService.AddSalonAsync(input.Name, categoryId, cityId, input.Address, input.Image);
+            var salonId = await this.salonsService.AddAsync(input.Name, categoryId, cityId, input.Address, input.Image);
 
             // Add to the Salon all Services from its Category
-            var servicesIds = await this.servicesService.GetAllServicesInCategoryAsync(categoryId);
-            await this.salonServicesService.AddSalonServicesAsync(salonId, servicesIds);
+            var servicesIds = await this.servicesService.GetAllByCategoryAsync(categoryId);
+            await this.salonServicesService.AddAsync(salonId, servicesIds);
 
             return this.RedirectToAction("Index");
         }
@@ -77,7 +77,7 @@
                 return this.RedirectToAction("Index");
             }
 
-            await this.salonsService.DeleteSalonAsync(id);
+            await this.salonsService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
         }

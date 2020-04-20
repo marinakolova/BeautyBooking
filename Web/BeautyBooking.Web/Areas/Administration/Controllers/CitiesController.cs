@@ -33,7 +33,7 @@
         [HttpPost]
         public async Task<IActionResult> AddCity(CityInputModel input)
         {
-            await this.citiesService.AddCityAsync(input.Name);
+            await this.citiesService.AddAsync(input.Name);
 
             return this.RedirectToAction("Index");
         }
@@ -45,7 +45,7 @@
                 return this.RedirectToAction("Index");
             }
 
-            await this.citiesService.DeleteCityAsync(id);
+            await this.citiesService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
         }
