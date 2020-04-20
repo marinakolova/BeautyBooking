@@ -1,0 +1,29 @@
+﻿@model BeautyBooking.Web.ViewModels.Manager.Salons.SalonsListViewModel
+@{
+    this.ViewData["Title"] = "Salon Manager";
+}
+
+    <h1>Your Salons (@Model.Salons.Count())</h1>
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+
+            @foreach (var salon in Model.Salons)
+            {
+                <!-- Info Box -->
+                <div class="col-lg-4 info_box_col mb-5">
+                    <div class="info_box">
+                        <div class="info_image"><img src="@salon.ImageUrl" alt=""></div>
+                        <div class="info_content">
+                            <div class="info_title">@salon.Name</div>
+                            <div class="info_text">@salon.Address</div>
+                            <div class="button info_button"><a href="#"><span>read more</span><span>read more</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

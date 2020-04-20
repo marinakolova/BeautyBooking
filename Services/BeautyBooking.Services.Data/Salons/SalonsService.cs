@@ -17,7 +17,7 @@
         private readonly ICloudinaryService cloudinaryService;
 
         public SalonsService(
-            IDeletableEntityRepository<Salon> salonsRepository, 
+            IDeletableEntityRepository<Salon> salonsRepository,
             ICloudinaryService cloudinaryService)
         {
             this.salonsRepository = salonsRepository;
@@ -38,10 +38,8 @@
 
         public async Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId)
         {
-            ICollection<int> salonsIds =
-                await this.salonsRepository.All()
+            var salonsIds = await this.salonsRepository.All()
                 .Where(x => x.CategoryId == categoryId)
-                .OrderBy(x => x.Id)
                 .Select(x => x.Id)
                 .ToListAsync();
 

@@ -4,5 +4,20 @@
 }
 
 <h1>@Model.Name</h1>
+<p>@Model.CityName</p>
 <p>@Model.Address</p>
 <img src="@Model.ImageUrl" />
+
+<h3 class="mb-3">Beauty Services:</h3>
+
+@foreach (var service in Model.Services)
+{
+    <p>@service.ServiceName</p>
+    <div class="button button-large button_1 elements_button mt-4">
+        <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salon-id="@service.SalonId" asp-route-service-id="@service.ServiceId">
+            <span>Book Now</span>
+            <span>Book Now</span>
+        </a>
+    </div>
+
+}

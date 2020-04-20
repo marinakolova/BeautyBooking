@@ -16,5 +16,7 @@
         public string ImageUrl { get; set; }
 
         public virtual ICollection<CategoryServicesViewModel> Services { get; set; }
+
+        public int SalonsCount { get; set; }
     }
 }

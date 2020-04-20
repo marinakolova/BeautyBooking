@@ -33,9 +33,20 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         public IActionResult MakeAnAppointment()
         {
             return this.View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> MakeAnAppointment(int salonId, int serviceId)
+        {
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            var userId = await this.userManager.GetUserIdAsync(user);
+
+            return this.RedirectToAction("Index");
         }
     }
 }

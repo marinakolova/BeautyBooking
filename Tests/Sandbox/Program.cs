@@ -52,9 +52,9 @@
         {
             var sw = Stopwatch.StartNew();
 
-            // var settingsService = serviceProvider.GetService<ISettingsService>();
+            var settingsService = serviceProvider.GetService<ISettingsService>();
+            Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
 
-            // Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
             Console.WriteLine(sw.Elapsed);
             return await Task.FromResult(0);
         }
@@ -81,8 +81,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-
-            // services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<ISettingsService, SettingsService>();
         }
     }
 }

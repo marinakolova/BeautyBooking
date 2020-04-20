@@ -9,14 +9,14 @@
     using BeautyBooking.Data.Repositories;
     using BeautyBooking.Data.Seeding;
     using BeautyBooking.Services.Cloudinary;
+    using BeautyBooking.Services.Data;
     using BeautyBooking.Services.Data.Appointments;
-    using BeautyBooking.Services.Data.Blog;
+    using BeautyBooking.Services.Data.BlogPosts;
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Services.Data.Cities;
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
-    using BeautyBooking.Services.Data.Users;
     using BeautyBooking.Services.Mapping;
     using BeautyBooking.Services.Messaging;
     using BeautyBooking.Web.ViewModels;
@@ -59,6 +59,11 @@
 
             services.AddSingleton(this.configuration);
 
+            // Data repositories
+            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped<IDbQueryRunner, DbQueryRunner>();
+
             // External Login Setups
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
@@ -71,17 +76,11 @@
                 this.configuration["Cloudinary:CloudName"],
                 this.configuration["Cloudinary:ApiKey"],
                 this.configuration["Cloudinary:ApiSecret"]));
-
             services.AddSingleton(cloudinary);
-
-            // Data repositories
-            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
-            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-            services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IBlogPostsService, BlogPostsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IServicesService, ServicesService>();

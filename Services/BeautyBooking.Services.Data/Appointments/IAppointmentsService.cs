@@ -8,5 +8,7 @@
         Task<int> GetCountAsync();
 
         Task<IEnumerable<T>> GetAllByUserAsync<T>(string userId);
+
+        Task AddAsync(string userId, int salonId, int serviceId);
     }
 }

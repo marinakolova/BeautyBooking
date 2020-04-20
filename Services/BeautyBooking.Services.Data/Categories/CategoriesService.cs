@@ -17,7 +17,7 @@
         private readonly ICloudinaryService cloudinaryService;
 
         public CategoriesService(
-            IDeletableEntityRepository<Category> categoriesRepository, 
+            IDeletableEntityRepository<Category> categoriesRepository,
             ICloudinaryService cloudinaryService)
         {
             this.categoriesRepository = categoriesRepository;

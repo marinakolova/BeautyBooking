@@ -31,5 +31,17 @@
                 .To<T>().ToListAsync();
             return appointments;
         }
+
+        public async Task AddAsync(string userId, int salonId, int serviceId)
+        {
+            await this.appointmentsRepository.AddAsync(new Appointment
+            {
+                UserId = userId,
+                SalonId = salonId,
+                ServiceId = serviceId,
+            });
+
+            await this.appointmentsRepository.SaveChangesAsync();
+        }
     }
 }

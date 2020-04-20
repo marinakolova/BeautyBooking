@@ -23,10 +23,16 @@
                         <p>@category.Description</p>
                     </div>
                 </div>
-                <div class="button button-large button_1 elements_button mt-4">
+                <div class="button button-large button_1 elements_button mt-4 ml-5">
                     <a asp-area="" asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id">
                         <span>See Services (@category.Services.Count)</span>
                         <span>See Services (@category.Services.Count)</span>
+                    </a>
+                </div>
+                <div class="button button-large button_3 elements_button ml-5">
+                    <a asp-area="" asp-controller="Salons" asp-action="ByCategory" asp-route-category-id="@category.Id">
+                        <span>Find Salons (@category.SalonsCount)</span>
+                        <span>Find Salons (@category.SalonsCount)</span>
                     </a>
                 </div>
             </div>

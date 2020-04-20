@@ -1,5 +1,6 @@
 ﻿namespace BeautyBooking.Web.Areas.Administration.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using BeautyBooking.Common;
