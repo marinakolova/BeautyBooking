@@ -355,5 +355,7 @@ MigrationBackup/
 # Custom ignores
 **/wwwroot/lib/
 appsettings.Production.json
+appsettings.Development.json
 *.min.css
 *.min.js
+
