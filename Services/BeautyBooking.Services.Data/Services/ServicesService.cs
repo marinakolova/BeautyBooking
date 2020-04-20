@@ -18,17 +18,6 @@
             this.servicesRepository = servicesRepository;
         }
 
-        public async Task<IEnumerable<int>> GetAllServicesInCategoryAsync(int categoryId)
-        {
-            ICollection<int> servicesIds =
-                await this.servicesRepository.All()
-                .Where(x => x.CategoryId == categoryId)
-                .Select(x => x.Id)
-                .ToListAsync();
-
-            return servicesIds;
-        }
-
         public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
         {
             IQueryable<Service> query =
@@ -47,6 +36,33 @@
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
             return service;
+        }
+
+        public async Task<IEnumerable<int>> GetAllServicesInCategoryAsync(int categoryId)
+        {
+            ICollection<int> servicesIds =
+                await this.servicesRepository.All()
+                .Where(x => x.CategoryId == categoryId)
+                .OrderBy(x => x.Id)
+                .Select(x => x.Id)
+                .ToListAsync();
+
+            return servicesIds;
+        }
+
+        public async Task<int> AddServiceAsync(string name, int categoryId, string description)
+        {
+            var service = new Service
+            {
+                Name = name,
+                CategoryId = categoryId,
+                Description = description,
+            };
+
+            await this.servicesRepository.AddAsync(service);
+            await this.servicesRepository.SaveChangesAsync();
+
+            return service.Id;
         }
 
         public async Task DeleteServiceAsync(int id)

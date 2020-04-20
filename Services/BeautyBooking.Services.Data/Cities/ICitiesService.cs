@@ -12,5 +12,9 @@
         Task<IEnumerable<string>> GetAllCitiesNamesAsync();
 
         Task<int> GetIdByNameAsync(string name);
+
+        Task AddCityAsync(string name);
+
+        Task DeleteCityAsync(int id);
     }
 }

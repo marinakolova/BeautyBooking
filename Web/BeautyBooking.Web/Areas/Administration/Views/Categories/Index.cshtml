@@ -6,6 +6,12 @@
 
 <h1>All Categories (@Model.Categories.Count())</h1>
 
+<div class="button button-large button_1 elements_button">
+    <a asp-area="Administration" asp-controller="Categories" asp-action="AddCategory">
+        <span>Add New Category</span><span>Add New Category</span>
+    </a>
+</div>
+
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -19,44 +25,30 @@
     </thead>
     <tbody>
         @foreach (var category in this.Model.Categories)
-            {
-        <tr>
-            <th scope="row">@category.Name</th>
-            <td>
-                <img class="align-self-center" src="@category.ImageUrl" style="width:180px;height:120px;">
-            </td>
-            <td>@category.Description</td>
-            <td>@category.ServicesCount</td>
-            <td>@category.SalonsCount</td>
-            <td>
-                @if (category.Id <= GlobalConstants.SeededDataCounts.Categories)
-                {
-                <div class="button button_2 elements_button">
-                    <a>Seeded Data Cannot be Deleted</a>
-                </div>
-                }
-                else
-                {
-            <div class="button button_2 elements_button">
-                <a asp-area="Administration" asp-controller="Categories" asp-action="DeleteCategory" asp-route-id="@category.Id"><span>Delete</span><span>Delete</span></a>
-            </div>
-                }
-            </td>
-        </tr>
-            }
-        <tr>
-            <th scope="row">
-                <div class="button button-large button_1 elements_button">
-                    <a asp-area="Administration" asp-controller="Categories" asp-action="AddCategory">
-                        <span>Add New Category</span><span>Add New Category</span>
-                    </a>
-                </div>
-            </th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        {
+            <tr>
+                <th scope="row">@category.Name</th>
+                <td>
+                    <img class="align-self-center" src="@category.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                <td>@category.Description</td>
+                <td>@category.ServicesCount</td>
+                <td>@category.SalonsCount</td>
+                <td>
+                    @if (category.Id <= GlobalConstants.SeededDataCounts.Categories)
+                    {
+                        <div class="button button_3 elements_button">
+                            <a>Seeded Data Cannot be Deleted</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="button button_2 elements_button">
+                            <a asp-area="Administration" asp-controller="Categories" asp-action="DeleteCategory" asp-route-id="@category.Id"><span>Delete</span><span>Delete</span></a>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

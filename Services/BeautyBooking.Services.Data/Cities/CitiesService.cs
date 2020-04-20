@@ -53,5 +53,26 @@
                 .FirstOrDefaultAsync();
             return cityId;
         }
+
+        public async Task AddCityAsync(string name)
+        {
+            await this.citiesRepository.AddAsync(new City
+            {
+                Name = name,
+            });
+
+            await this.citiesRepository.SaveChangesAsync();
+        }
+
+        public async Task DeleteCityAsync(int id)
+        {
+            var city = await this.citiesRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            this.citiesRepository.Delete(city);
+
+            await this.citiesRepository.SaveChangesAsync();
+        }
     }
 }

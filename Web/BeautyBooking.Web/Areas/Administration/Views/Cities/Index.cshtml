@@ -1,0 +1,46 @@
+﻿@model BeautyBooking.Web.ViewModels.Administration.Cities.CitiesListViewModel
+@using BeautyBooking.Common
+@{
+    this.ViewData["Title"] = "Cities";
+}
+
+<h1>All Cities (@Model.Cities.Count())</h1>
+
+<div class="button button-large button_1 elements_button">
+    <a asp-area="Administration" asp-controller="Cities" asp-action="AddCity">
+        <span>Add New City</span><span>Add New City</span>
+    </a>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Salons</th>
+            <th scope="col">Delete Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in this.Model.Cities)
+        {
+            <tr>
+                <th scope="row">@city.Name</th>
+                <td>@city.SalonsCount</td>
+                <td>
+                    @if (city.Id <= GlobalConstants.SeededDataCounts.Cities)
+                    {
+                        <div class="button button_3 elements_button">
+                            <a>Seeded Data Cannot be Deleted</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="button button_2 elements_button">
+                            <a asp-area="Administration" asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id"><span>Delete</span><span>Delete</span></a>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

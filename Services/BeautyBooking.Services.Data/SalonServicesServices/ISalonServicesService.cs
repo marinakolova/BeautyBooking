@@ -5,6 +5,8 @@
 
     public interface ISalonServicesService
     {
+        Task AddSalonServicesAsync(IEnumerable<int> salonsIds, int serviceId);
+
         Task AddSalonServicesAsync(int salonId, IEnumerable<int> servicesIds);
     }
 }

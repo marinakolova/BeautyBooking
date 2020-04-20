@@ -1,4 +1,45 @@
-﻿
+﻿@model BeautyBooking.Web.ViewModels.Administration.Services.ServiceInputModel
 @{
     this.ViewData["Title"] = "Add Service";
+    var categories = this.ViewData["Categories"] as IEnumerable<string>;
+}
+
+<div class="col-lg-6 contact_col">
+    <div class="info_form_container">
+        <div class="info_form_title">New Service</div>
+
+        <form method="post" class="info_form">
+
+            <label asp-for="@Model.Name"></label>
+            <input type="text" asp-for="@Model.Name" class="info_input" required="required">
+
+            <label asp-for="@Model.Category"></label>
+            <select asp-for="@Model.Category" name="Category" class="info_form_dep info_input info_select" required="required">
+                @foreach (var category in categories)
+                {
+                    <option value="@category">@category</option>
+                }
+            </select>
+
+            <label asp-for="@Model.Description"></label>
+            <textarea type="text" asp-for="@Model.Description" class="contact_textarea" required="required"></textarea>
+
+            <button class="button button-large button_1 elements_button my-4" type="submit">
+                <a asp-area="Administration" asp-controller="Services" asp-action="AddService">
+                    <span>add service</span><span>add service</span>
+                </a>
+            </button>
+
+        </form>
+        <div class="button button-large button_2 elements_button">
+            <a asp-area="Administration" asp-controller="Services" asp-action="Index">
+                <span>Cancel</span><span>Cancel</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/upload-image.js" asp-append-version="true"></script>
 }

@@ -5,6 +5,8 @@
 
     public interface IAppointmentsService
     {
+        int GetAllAppointmentsCount();
+
         Task<IEnumerable<T>> GetByUserAsync<T>(string userId);
     }
 }

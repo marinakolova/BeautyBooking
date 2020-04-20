@@ -1,0 +1,28 @@
+﻿@model BeautyBooking.Web.ViewModels.Administration.Cities.CityInputModel
+@{
+    this.ViewData["Title"] = "Add City";
+}
+
+<div class="col-lg-6 contact_col">
+    <div class="info_form_container">
+        <div class="info_form_title">New City</div>
+
+        <form method="post" class="info_form">
+
+            <label asp-for="@Model.Name"></label>
+            <input type="text" asp-for="@Model.Name" class="info_input" required="required">
+
+            <button class="button button-large button_1 elements_button my-4" type="submit">
+                <a asp-area="Administration" asp-controller="Cities" asp-action="AddCity">
+                    <span>add city</span><span>add city</span>
+                </a>
+            </button>
+
+        </form>
+        <div class="button button-large button_2 elements_button">
+            <a asp-area="Administration" asp-controller="Cities" asp-action="Index">
+                <span>Cancel</span><span>Cancel</span>
+            </a>
+        </div>
+    </div>
+</div>

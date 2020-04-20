@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.SalonManager.Salons
+﻿namespace BeautyBooking.Web.ViewModels.Administration.Salons
 {
     using System.ComponentModel.DataAnnotations;
 

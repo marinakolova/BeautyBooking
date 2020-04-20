@@ -42,6 +42,18 @@
             return salon;
         }
 
+        public async Task<IEnumerable<int>> GetAllSalonsInCategoryAsync(int categoryId)
+        {
+            ICollection<int> salonsIds =
+                await this.salonsRepository.All()
+                .Where(x => x.CategoryId == categoryId)
+                .OrderBy(x => x.Id)
+                .Select(x => x.Id)
+                .ToListAsync();
+
+            return salonsIds;
+        }
+
         public async Task<int> AddSalonAsync(string name, int categoryId, int cityId, string address, IFormFile image)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
@@ -58,8 +70,7 @@
             await this.salonsRepository.AddAsync(salon);
             await this.salonsRepository.SaveChangesAsync();
 
-            var salonId = salon.Id;
-            return salonId;
+            return salon.Id;
         }
 
         public async Task DeleteSalonAsync(int id)

@@ -1,17 +1,27 @@
 ﻿@model BeautyBooking.Web.ViewModels.Administration.Salons.SalonsListViewModel
+@using BeautyBooking.Common;
 @{
     this.ViewData["Title"] = "Manage Salons";
 }
 
 <h1>All Salons (@Model.Salons.Count())</h1>
 
-<table class="table table-striped">
+<div class="button button-large button_1 elements_button">
+    <a asp-area="Administration" asp-controller="Salons" asp-action="AddSalon">
+        <span>Add New Salon</span><span>Add New Salon</span>
+    </a>
+</div>
+
+<table class="table table-striped" id="sortableTable">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Image</th>
+            <th scope="col">Category</th>
+            <th scope="col">City</th>
             <th scope="col">Address</th>
-            <th scope="col"></th>
+            <th scope="col">Appointments</th>
+            <th scope="col">Delete Button</th>
         </tr>
     </thead>
     <tbody>
@@ -22,30 +32,25 @@
                 <td>
                     <img class="align-self-center" src="@salon.ImageUrl" style="width:180px;height:120px;">
                 </td>
+                <td>@salon.CategoryName</td>
+                <td>@salon.CityName</td>
                 <td>@salon.Address</td>
+                <td>@salon.AppointmentsCount</td>
                 <td>
-                    <div class="button button_2 elements_button">
-                        <a asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id"><span>Delete</span><span>Delete</span></a>
-                    </div>
+                    @if (salon.Id <= GlobalConstants.SeededDataCounts.Salons)
+                    {
+                        <div class="button button_3 elements_button">
+                            <a>Seeded Data Cannot be Deleted</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="button button_2 elements_button">
+                            <a asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id"><span>Delete</span><span>Delete</span></a>
+                        </div>
+                    }
                 </td>
             </tr>
         }
-    
-        
-        <tr>
-        <th scope="row">
-            <div class="button button-large button_1 elements_button">
-                <a asp-area="SalonManager" asp-controller="Salons" asp-action="AddSalon">
-                    <span>Add New Salon</span><span>Add New Salon</span>
-                </a>
-            </div>
-        </th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-        
     </tbody>
 </table>

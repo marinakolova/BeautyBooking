@@ -15,6 +15,21 @@
             this.salonServicesRepository = salonServicesRepository;
         }
 
+        public async Task AddSalonServicesAsync(IEnumerable<int> salonsIds, int serviceId)
+        {
+            foreach (var salonId in salonsIds)
+            {
+                await this.salonServicesRepository.AddAsync(new SalonService
+                {
+                    SalonId = salonId,
+                    ServiceId = serviceId,
+                    Available = true,
+                });
+            }
+
+            await this.salonServicesRepository.SaveChangesAsync();
+        }
+
         public async Task AddSalonServicesAsync(int salonId, IEnumerable<int> servicesIds)
         {
             foreach (var serviceId in servicesIds)

@@ -18,6 +18,11 @@
             this.appointmentsRepository = appointmentsRepository;
         }
 
+        public int GetAllAppointmentsCount()
+        {
+            return this.appointmentsRepository.All().Count();
+        }
+
         public async Task<IEnumerable<T>> GetByUserAsync<T>(string userId)
         {
             var appointments = await this.appointmentsRepository.All()

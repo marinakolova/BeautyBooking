@@ -16,6 +16,7 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
+    using BeautyBooking.Services.Data.Users;
     using BeautyBooking.Services.Mapping;
     using BeautyBooking.Services.Messaging;
     using BeautyBooking.Web.ViewModels;
@@ -80,8 +81,9 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IBlogPostsService, BlogPostsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<ICitiesService, CitiesService>();
             services.AddTransient<ISalonsService, SalonsService>();
