@@ -1,10 +1,13 @@
 ﻿namespace BeautyBooking.Services.Data.SalonServicesServices
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
+    using BeautyBooking.Services.Mapping;
+    using Microsoft.EntityFrameworkCore;
 
     public class SalonServicesService : ISalonServicesService
     {
@@ -13,6 +16,14 @@
         public SalonServicesService(IDeletableEntityRepository<SalonService> salonServicesRepository)
         {
             this.salonServicesRepository = salonServicesRepository;
+        }
+
+        public async Task<T> GetByIdAsync<T>(int salonId, int serviceId)
+        {
+            var salonService = await this.salonServicesRepository.All()
+                .Where(x => x.SalonId == salonId && x.ServiceId == serviceId)
+                .To<T>().FirstOrDefaultAsync();
+            return salonService;
         }
 
         public async Task AddAsync(int salonId, IEnumerable<int> servicesIds)

@@ -29,7 +29,7 @@
                                 <div class="tab_list_title">@service.ServiceName</div>
                                 <div class="tab_list_text"><p>@service.ServiceDescription</p></div>
                                 <div class="button info_button">
-                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
+                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salon="@Model.Id" asp-route-service="@service.ServiceId">
                                         <span>book now</span><span>book now</span>
                                     </a>
                                 </div>

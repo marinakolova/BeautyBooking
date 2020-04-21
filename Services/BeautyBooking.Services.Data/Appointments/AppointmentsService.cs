@@ -6,16 +6,21 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
+    using BeautyBooking.Services.DateTimeParser;
     using BeautyBooking.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
     public class AppointmentsService : IAppointmentsService
     {
         private readonly IDeletableEntityRepository<Appointment> appointmentsRepository;
+        private readonly IDateTimeParserService dateTimeParserService;
 
-        public AppointmentsService(IDeletableEntityRepository<Appointment> appointmentsRepository)
+        public AppointmentsService(
+            IDeletableEntityRepository<Appointment> appointmentsRepository,
+            IDateTimeParserService dateTimeParserService)
         {
             this.appointmentsRepository = appointmentsRepository;
+            this.dateTimeParserService = dateTimeParserService;
         }
 
         public async Task<int> GetCountAsync()
@@ -32,10 +37,13 @@
             return appointments;
         }
 
-        public async Task AddAsync(string userId, int salonId, int serviceId)
+        public async Task AddAsync(string userId, int salonId, int serviceId, string date, string time)
         {
+            var dateTime = this.dateTimeParserService.ConvertString(date, time);
+
             await this.appointmentsRepository.AddAsync(new Appointment
             {
+                Time = dateTime,
                 UserId = userId,
                 SalonId = salonId,
                 ServiceId = serviceId,

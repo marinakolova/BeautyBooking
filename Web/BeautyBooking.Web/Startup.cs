@@ -17,6 +17,7 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
+    using BeautyBooking.Services.DateTimeParser;
     using BeautyBooking.Services.Mapping;
     using BeautyBooking.Services.Messaging;
     using BeautyBooking.Web.ViewModels;
@@ -88,6 +89,7 @@
             services.AddTransient<ISalonsService, SalonsService>();
             services.AddTransient<ISalonServicesService, SalonServicesService>();
             services.AddTransient<IAppointmentsService, AppointmentsService>();
+            services.AddTransient<IDateTimeParserService, DateTimeParserService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
         }
 

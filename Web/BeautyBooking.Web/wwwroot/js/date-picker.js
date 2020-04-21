@@ -10,9 +10,11 @@
         $('.cell').removeClass('select');
         $(this).addClass('select');
         $("#selectedTime").text(this.innerHTML);
+        $("#Time").val(this.innerHTML);
     });
 
     $("#dp1").on('change', function () {
         $("#selectedDate").text(this.value);
+        $("#Date").val(this.value);
     });
 });

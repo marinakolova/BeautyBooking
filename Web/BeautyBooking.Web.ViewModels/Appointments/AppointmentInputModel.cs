@@ -4,10 +4,20 @@
 
     public class AppointmentInputModel
     {
-        public DateTime Time { get; set; }
-
         public int SalonId { get; set; }
 
+        public string SalonName { get; set; }
+
+        public string SalonAddress { get; set; }
+
         public int ServiceId { get; set; }
+
+        public string ServiceName { get; set; }
+
+        public double? Price { get; set; }
+
+        public string Date { get; set; }
+
+        public string Time { get; set; }
     }
 }

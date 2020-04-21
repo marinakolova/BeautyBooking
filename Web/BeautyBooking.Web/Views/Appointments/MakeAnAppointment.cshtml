@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Appointments.AppointmentsListViewModel
+﻿@model BeautyBooking.Web.ViewModels.Appointments.AppointmentInputModel
 @{
     this.ViewData["Title"] = "Make An Appointment";
 }
@@ -6,13 +6,10 @@
     <link href="~/css/date-picker.css" rel="stylesheet" asp-append-version="true" />
 }
 
-<h1>Make An Appointment</h1>
-<div id="selectedDate"></div>
-<div id="selectedTime"></div>
 
-<div class="container-fluid px-0 px-sm-4 mx-auto">
+<div class="container-fluid ">
     <div class="row justify-content-center mx-0">
-        <div class="col-lg-10">
+        <div class="col-lg-6">
             <div class="card">
                 <form autocomplete="off">
                     <div class="card-header">
@@ -105,10 +102,61 @@
                 </form>
             </div>
         </div>
+
+        <div class="col-lg-6">
+            <form method="post" enctype="multipart/form-data" class="pt-4">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Salon</label>
+                    <div class="col-sm-10">
+                        <div class="form-control">@Model.SalonName</div>
+                        <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" hidden>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Service</label>
+                    <div class="col-sm-10">
+                        <div class="form-control">@Model.ServiceName</div>
+                        <input asp-for="@Model.ServiceId" value="@Model.ServiceId" class="form-control" hidden>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                        <div id="selectedDate" asp-for="@Model.Date" class="form-control"></div>
+                        <input asp-for="@Model.Date" value="" class="form-control" hidden>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Time</label>
+                    <div class="col-sm-10">
+                        <div id="selectedTime" asp-for="@Model.Time" class="form-control"></div>
+                        <input asp-for="@Model.Time" value="" class="form-control" hidden>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button class="button button-large button_1 elements_button my-2" type="submit">
+                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
+                                <span>Make An Appointment</span><span>Make An Appointment</span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="button button-large button_2 elements_button">
+                <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@Model.SalonId">
+                    <span>Cancel</span><span>Cancel</span>
+                </a>
+            </div>
+        </div>
+
     </div>
 </div>
 
-
+<!--------------------
+<div id="selectedDate"></div>
+<div id="selectedTime"></div>
+-------------------->
 
 @section Scripts {
     <script src="~/js/bootstrap-datepicker.js" asp-append-version="true"></script>
