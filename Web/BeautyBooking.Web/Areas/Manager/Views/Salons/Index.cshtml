@@ -3,27 +3,22 @@
     this.ViewData["Title"] = "Salon Manager";
 }
 
-    <h1>Your Salons (@Model.Salons.Count())</h1>
+<div class="row doctors_row row-eq-height">
 
-<div class="info">
-    <div class="container">
-        <div class="row row-eq-height">
-
-            @foreach (var salon in Model.Salons)
-            {
-                <!-- Info Box -->
-                <div class="col-lg-4 info_box_col mb-5">
-                    <div class="info_box">
-                        <div class="info_image"><img src="@salon.ImageUrl" alt=""></div>
-                        <div class="info_content">
-                            <div class="info_title">@salon.Name</div>
-                            <div class="info_text">@salon.Address</div>
-                            <div class="button info_button"><a href="#"><span>read more</span><span>read more</span></a></div>
-                        </div>
-                    </div>
+    @foreach (var salon in Model.Salons)
+    {
+        <!-- Doctor -->
+        <div class="col-xl-2 col-md-2">
+            <div class="doctor">
+                <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
+                <div class="doctor_content">
+                    <div class="doctor_name"><a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a></div>
+                    <div class="doctor_title"><strong>@salon.CategoryName</strong></div>
+                    <div class="doctor_title">@salon.CityName, @salon.Address</div>
+                    <div class="doctor_link"><a asp-area="Manager" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a></div>
                 </div>
-            }
-
+            </div>
         </div>
-    </div>
-</div>
+    }
+
+</div>  

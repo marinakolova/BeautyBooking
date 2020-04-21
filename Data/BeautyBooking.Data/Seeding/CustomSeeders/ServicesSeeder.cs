@@ -312,18 +312,6 @@
                     },
                     new Service
                     {
-                        Name = "Ear Piercing",
-                        Description = "Ear piercings are the perfect way to switch up your look and reawaken your rebellious streak without committing to ink. Before you (or your gutsy mate) step up to the needle, though, it’s good to find out what to expect.",
-                        CategoryId = 6,
-                    },
-                    new Service
-                    {
-                        Name = "Henna Designs and Tattoos",
-                        Description = "People get skin art for different reasons. A form of self-expression? Check. A window into their personality? Check. They look effortlessly cool? Check. Check. Check. Whether you’re getting tatted up for the first time or are an experienced henna junkie, this simple guide to temporary henna designs will make you a serious pro.",
-                        CategoryId = 6,
-                    },
-                    new Service
-                    {
                         Name = "Infrared Therapy",
                         Description = "Heat can help cleanse your skin and boost your immune system. But with ever-changing weather, it can be hard to feel the heat on a regular basis (sadly!). Luckily, infrared therapy is here to help. Using a natural form of light which we feel as heat, infrared therapy can help heal your aches and pains, as well as enhancing your blood flow which, in turn, causes your skin to have a healthy glow.",
                         CategoryId = 6,

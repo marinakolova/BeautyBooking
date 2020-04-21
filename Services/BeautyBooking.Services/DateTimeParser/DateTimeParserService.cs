@@ -14,5 +14,12 @@
 
             return dateTime;
         }
+
+        public string ConvertToString(DateTime dateTime)
+        {
+            string format = "dd-MM-yyyy h:mmtt";
+
+            return dateTime.ToString(format, CultureInfo.InvariantCulture);
+        }
     }
 }

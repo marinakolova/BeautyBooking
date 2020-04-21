@@ -1,8 +1,68 @@
 ﻿@model BeautyBooking.Web.ViewModels.Manager.Salons.SalonViewModel
 @{
-    this.ViewData["Title"] = "Salon Details";
+    this.ViewData["Title"] = "Salon Manager: " + Model.Name;
 }
 
-<h1>@Model.Name</h1>
-<p>@Model.Address</p>
-<img src="@Model.ImageUrl" />
+<div class="row row-eq-height">
+    <!-- Info Box -->
+    <div class="col-lg-4 info_box_col">
+        <div class="info_box">
+            <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
+            <div class="info_content">
+                <div class="info_title">@Model.Name</div>
+                <div class="info_text">@Model.CategoryName</div>
+                <div class="info_text">@Model.CityName, @Model.Address</div>
+            </div>
+        </div>
+    </div>
+    <!-- Panel -->
+    <div class="col-lg-8">
+        <h1>Services:</h1>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Available</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var service in Model.Services)
+                {
+                    <tr>
+                        <th scope="row">@service.ServiceName</th>
+                        <td>@service.Available</td>
+                        <td>@service.Price</td>
+                        <td>Edit</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row row-eq-height">    
+    <div class="col-lg-12">
+        <h1>Appointments:</h1>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">DateTime</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Service</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in this.Model.Appointments)
+                {
+                    <tr>
+                        <th scope="row">@appointment.DateTime</th>
+                        <td>@appointment.UserEmail</td>
+                        <td>@appointment.ServiceName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

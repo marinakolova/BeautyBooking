@@ -3,8 +3,27 @@
     this.ViewData["Title"] = "Your Appointments";
 }
 
-    <h1>Your Appointments (@Model.Appointments.Count())</h1>
+<h1>Your Appointments (@Model.Appointments.Count())</h1>
 
-    <div class="button button-large button_1 elements_button">
-        <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment"><span>Make An Appointment</span><span>Make An Appointment</span></a>
-    </div>
+@if (@Model.Appointments.Count() > 0)
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">DateTime</th>
+                <th scope="col">Salon</th>
+                <th scope="col">Service</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in this.Model.Appointments)
+            {
+                <tr>
+                    <th scope="row">@appointment.Time</th>
+                    <td>@appointment.SalonService.SalonName</td>
+                    <td>@appointment.SalonService.ServiceName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
