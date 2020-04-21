@@ -51,5 +51,23 @@
 
             await this.appointmentsRepository.SaveChangesAsync();
         }
+
+        public async Task Confirm(int id)
+        {
+            var appointment = await this.appointmentsRepository.All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            appointment.Confirmed = true;
+            await this.appointmentsRepository.SaveChangesAsync();
+        }
+
+        public async Task Decline(int id)
+        {
+            var appointment = await this.appointmentsRepository.All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            appointment.Confirmed = false;
+            await this.appointmentsRepository.SaveChangesAsync();
+        }
     }
 }

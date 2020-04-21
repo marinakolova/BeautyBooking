@@ -10,5 +10,9 @@
         Task<IEnumerable<T>> GetAllByUserAsync<T>(string userId);
 
         Task AddAsync(string userId, int salonId, int serviceId, string date, string time);
+
+        Task Confirm(int id);
+
+        Task Decline(int id);
     }
 }

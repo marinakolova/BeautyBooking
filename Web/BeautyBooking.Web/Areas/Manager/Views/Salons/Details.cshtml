@@ -33,7 +33,7 @@
                     <tr>
                         <th scope="row">@service.ServiceName</th>
                         <td>@service.Available</td>
-                        <td>@service.Price</td>
+                        <td class="editable">@service.Price</td>
                         <td>Edit</td>
                     </tr>
                 }
@@ -53,7 +53,9 @@
                         <th scope="col">DateTime</th>
                         <th scope="col">Client</th>
                         <th scope="col">Service</th>
-                        <th scope="col">Confirmed</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Confirm</th>
+                        <th scope="col">Decline</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,7 +65,36 @@
                             <th scope="row">@appointment.DateTime</th>
                             <td>@appointment.UserEmail</td>
                             <td>@appointment.ServiceName</td>
-                            <td>@appointment.Confirmed</td>
+                            <td>
+                                @if (appointment.Confirmed == true)
+                                {
+                                    <span class="badge badge-success">Confirmed</span>
+                                }
+                                else if (appointment.Confirmed == false)
+                                {
+                                    <span class="badge badge-danger">Declined</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-secondary">Pending</span>
+                                }
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" class="btn btn-success btn-sm"
+                                            asp-area="Manager" asp-controller="Salons" asp-action="ConfirmAppointment" asp-route-id="@appointment.Id">
+                                        Confirm
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                            asp-area="Manager" asp-controller="Salons" asp-action="DeclineAppointment" asp-route-id="@appointment.Id">
+                                        Decline
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -71,3 +102,7 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/inline-editing.js" asp-append-version="true"></script>
+}
