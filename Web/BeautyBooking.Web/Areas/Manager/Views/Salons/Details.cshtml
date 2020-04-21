@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Manager.Salons.SalonViewModel
+﻿@model BeautyBooking.Web.ViewModels.Manager.Salons.SalonDetailsViewModel
 @{
     this.ViewData["Title"] = "Salon Manager: " + Model.Name;
 }
@@ -42,27 +42,32 @@
     </div>
 </div>
 
-<div class="row row-eq-height">    
+<div class="row row-eq-height">
     <div class="col-lg-12">
-        <h1>Appointments:</h1>
-        <table class="table table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">DateTime</th>
-                    <th scope="col">Client</th>
-                    <th scope="col">Service</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var appointment in this.Model.Appointments)
-                {
+        <h1 class="my-3">Appointments (@Model.Appointments.Count)</h1>
+        @if (@Model.Appointments.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead class="thead-light">
                     <tr>
-                        <th scope="row">@appointment.DateTime</th>
-                        <td>@appointment.UserEmail</td>
-                        <td>@appointment.ServiceName</td>
+                        <th scope="col">DateTime</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Confirmed</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var appointment in this.Model.Appointments)
+                    {
+                        <tr>
+                            <th scope="row">@appointment.DateTime</th>
+                            <td>@appointment.UserEmail</td>
+                            <td>@appointment.ServiceName</td>
+                            <td>@appointment.Confirmed</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
 </div>

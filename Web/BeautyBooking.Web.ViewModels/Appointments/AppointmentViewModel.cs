@@ -9,6 +9,14 @@
     {
         public DateTime Time { get; set; }
 
-        public virtual AppointmentSalonServiceViewModel SalonService { get; set; }
+        public string SalonName { get; set; }
+
+        public string SalonCityName { get; set; }
+
+        public string SalonAddress { get; set; }
+
+        public string ServiceName { get; set; }
+
+        public bool? Confirmed { get; set; }
     }
 }

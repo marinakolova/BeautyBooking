@@ -3,5 +3,25 @@
     this.ViewData["Title"] = "Admin Dashboard";
 }
 
-<h1>@this.ViewData["Title"]</h1>
-Settings: @this.Model.SettingsCount
+    <div class="row mt-5 ml-5">
+        <div class="col-8">
+            <div class="button button-large button_3 elements_button">
+                <a asp-area="Administration" asp-controller="BlogPosts" asp-action="Index"><span>Blog Posts</span><span>Blog Posts</span></a>
+            </div>
+            <div class="button button-large button_3 elements_button">
+                <a asp-area="Administration" asp-controller="Categories" asp-action="Index"><span>Categories</span><span>Categories</span></a>
+            </div>
+            <div class="button button-large button_3 elements_button">
+                <a asp-area="Administration" asp-controller="Services" asp-action="Index"><span>Beauty Services</span><span>Beauty Services</span></a>
+            </div>
+            <div class="button button-large button_3 elements_button">
+                <a asp-area="Administration" asp-controller="Cities" asp-action="Index"><span>Cities</span><span>Cities</span></a>
+            </div>
+            <div class="button button-large button_3 elements_button">
+                <a asp-area="Administration" asp-controller="Salons" asp-action="Index"><span>Salons</span><span>Salons</span></a>
+            </div>
+            <div class="button button-large button_3 elements_button">
+                <a asp-area="Administration" asp-controller="Appointments" asp-action="Index"><span>Appointments</span><span>Appointments</span></a>
+            </div>
+        </div>        
+    </div>

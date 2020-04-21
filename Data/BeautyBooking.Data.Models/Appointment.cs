@@ -21,5 +21,7 @@
         public virtual Service Service { get; set; }
 
         public virtual SalonService SalonService { get; set; }
+
+        public bool? Confirmed { get; set; }
     }
 }

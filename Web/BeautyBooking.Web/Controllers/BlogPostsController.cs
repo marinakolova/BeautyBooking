@@ -30,7 +30,7 @@
             var allPostsCount = await this.blogPostsService.GetCountAsync();
             this.ViewData["AllPostsCount"] = allPostsCount;
 
-            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
+            var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostDetailsViewModel>(id);
             return this.View(viewModel);
         }
     }

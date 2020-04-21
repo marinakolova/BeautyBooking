@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Salons.SalonViewModel
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonDetailsViewModel
 @{
     this.ViewData["Title"] = "Salon Details: " + Model.Name;
 }
@@ -23,13 +23,13 @@
             <div class="tab_panel_content">
                 <div class="tab_list">
                     <ul>
-                        @foreach (var service in Model.Services)
+                        @foreach (var service in Model.Services.Where(x => x.Available == true))
                         {
                             <li>
                                 <div class="tab_list_title">@service.ServiceName</div>
                                 <div class="tab_list_text"><p>@service.ServiceDescription</p></div>
                                 <div class="button info_button">
-                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salon="@Model.Id" asp-route-service="@service.ServiceId">
+                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salon="@service.SalonId" asp-route-service="@service.ServiceId">
                                         <span>book now</span><span>book now</span>
                                     </a>
                                 </div>

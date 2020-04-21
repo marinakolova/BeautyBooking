@@ -41,11 +41,12 @@
 
         public async Task<IActionResult> MakeAnAppointment(int salon, int service)
         {
-            var salonService = await this.salonServicesService.GetByIdAsync<AppointmentSalonServiceViewModel>(salon, service);
+            var salonService = await this.salonServicesService.GetByIdAsync<SalonServiceViewModel>(salon, service);
             var viewModel = new AppointmentInputModel
             {
                 SalonId = salonService.SalonId,
                 SalonName = salonService.SalonName,
+                SalonCityName = salonService.SalonCityName,
                 SalonAddress = salonService.SalonAddress,
                 ServiceId = salonService.ServiceId,
                 ServiceName = salonService.ServiceName,

@@ -3,26 +3,30 @@
     this.ViewData["Title"] = "Your Appointments";
 }
 
-<h1>Your Appointments (@Model.Appointments.Count())</h1>
+<h1 class="my-3">Your Appointments (@Model.Appointments.Count())</h1>
 
 @if (@Model.Appointments.Count() > 0)
 {
-    <table class="table table-striped">
-        <thead class="thead-dark">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
             <tr>
                 <th scope="col">DateTime</th>
                 <th scope="col">Salon</th>
+                <th scope="col">Address</th>
                 <th scope="col">Service</th>
+                <th scope="col">Confirmed</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var appointment in this.Model.Appointments)
             {
-                <tr>
-                    <th scope="row">@appointment.Time</th>
-                    <td>@appointment.SalonService.SalonName</td>
-                    <td>@appointment.SalonService.ServiceName</td>
-                </tr>
+            <tr>
+                <th scope="row">@appointment.Time</th>
+                <td>@appointment.SalonName</td>
+                <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
+                <td>@appointment.ServiceName</td>
+                <td>@appointment.Confirmed</td>
+            </tr>
             }
         </tbody>
     </table>
