@@ -3,12 +3,14 @@
     using System;
     using System.Globalization;
 
+    using BeautyBooking.Common;
+
     public class DateTimeParserService : IDateTimeParserService
     {
         public DateTime ConvertString(string date, string time)
         {
             string dateString = date + " " + time;
-            string format = "dd-MM-yyyy h:mmtt";
+            string format = GlobalConstants.DateTimeFormats.DateTimeFormat;
 
             DateTime dateTime = DateTime.ParseExact(dateString, format, CultureInfo.InvariantCulture);
 

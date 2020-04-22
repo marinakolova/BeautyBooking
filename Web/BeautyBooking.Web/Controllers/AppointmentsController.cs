@@ -58,6 +58,11 @@
         [HttpPost]
         public async Task<IActionResult> MakeAnAppointment(AppointmentInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
 

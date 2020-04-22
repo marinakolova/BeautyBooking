@@ -7,6 +7,7 @@
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Web.ViewModels;
     using BeautyBooking.Web.ViewModels.Home;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
@@ -36,6 +37,7 @@
             return this.View();
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

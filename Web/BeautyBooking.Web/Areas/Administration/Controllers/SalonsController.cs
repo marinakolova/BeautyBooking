@@ -44,6 +44,7 @@
 
         public async Task<IActionResult> AddSalon()
         {
+            // TODO: Use ViewComponent?
             var categoriesNames = await this.categoriesService.GetAllNamesAsync();
             var citiesNames = await this.citiesService.GetAllNamesAsync();
 
@@ -56,6 +57,11 @@
         [HttpPost]
         public async Task<IActionResult> AddSalon(SalonInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             // Get CategoryId and CityId
             var categoryId = await this.categoriesService.GetIdByNameAsync(input.Category);
             var cityId = await this.citiesService.GetIdByNameAsync(input.City);

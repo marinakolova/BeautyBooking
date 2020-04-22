@@ -33,6 +33,11 @@
         [HttpPost]
         public async Task<IActionResult> AddBlogPost(BlogPostInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, input.Image);
 
             return this.RedirectToAction("Index");

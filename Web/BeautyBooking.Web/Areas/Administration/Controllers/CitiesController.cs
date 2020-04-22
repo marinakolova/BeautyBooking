@@ -33,6 +33,11 @@
         [HttpPost]
         public async Task<IActionResult> AddCity(CityInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             await this.citiesService.AddAsync(input.Name);
 
             return this.RedirectToAction("Index");

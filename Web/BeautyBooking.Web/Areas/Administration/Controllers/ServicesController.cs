@@ -41,6 +41,7 @@
 
         public async Task<IActionResult> AddService()
         {
+            // TODO: Use ViewComponent?
             var categoriesNames = await this.categoriesService.GetAllNamesAsync();
             this.ViewData["Categories"] = categoriesNames;
 
@@ -50,6 +51,11 @@
         [HttpPost]
         public async Task<IActionResult> AddService(ServiceInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             // Get CategoryId
             var categoryId = await this.categoriesService.GetIdByNameAsync(input.Category);
 

@@ -31,6 +31,12 @@
             this.ViewData["AllPostsCount"] = allPostsCount;
 
             var viewModel = await this.blogPostsService.GetByIdAsync<BlogPostDetailsViewModel>(id);
+
+            if (viewModel == null)
+            {
+                return new StatusCodeResult(404);
+            }
+
             return this.View(viewModel);
         }
     }

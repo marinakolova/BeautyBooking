@@ -19,6 +19,28 @@
             public const string UserEmail = "user@user.com";
         }
 
+        public static class DataValidations
+        {
+            public const int NameMaxLength = 40;
+
+            public const int DescriptionMaxLength = 700;
+
+            public const int TitleMaxLength = 60;
+
+            public const int ContentMaxLength = 3500;
+
+            public const int AddressMaxLength = 100;
+        }
+
+        public static class DateTimeFormats
+        {
+            public const string DateFormat = "dd-MM-yyyy";
+
+            public const string TimeFormat = "h:mmtt";
+
+            public const string DateTimeFormat = "dd-MM-yyyy h:mmtt";
+        }
+
         public static class Images
         {
             public const string Index = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/index_iyfzwc.jpg";

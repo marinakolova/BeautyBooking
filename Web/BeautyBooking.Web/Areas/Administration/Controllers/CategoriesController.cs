@@ -33,6 +33,11 @@
         [HttpPost]
         public async Task<IActionResult> AddCategory(CategoryInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
             await this.categoriesService.AddAsync(input.Name, input.Description, input.Image);
 
             return this.RedirectToAction("Index");
