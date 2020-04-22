@@ -4,6 +4,8 @@
 
     public class AppointmentsListViewModel
     {
-        public IEnumerable<AppointmentViewModel> Appointments { get; set; }
+        public IEnumerable<AppointmentViewModel> UpcomingAppointments { get; set; }
+
+        public IEnumerable<AppointmentViewModel> PastAppointments { get; set; }
     }
 }

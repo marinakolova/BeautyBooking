@@ -18,5 +18,7 @@
         public string CityName { get; set; }
 
         public int AppointmentsCount { get; set; }
+
+        public double Rating { get; set; }
     }
 }

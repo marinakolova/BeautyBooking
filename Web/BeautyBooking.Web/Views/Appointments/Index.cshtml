@@ -3,9 +3,9 @@
     this.ViewData["Title"] = "Your Appointments";
 }
 
-<h1 class="my-3">Your Appointments (@Model.Appointments.Count())</h1>
+<h1 class="my-3">Upcoming Appointments (@Model.UpcomingAppointments.Count())</h1>
 
-@if (@Model.Appointments.Count() > 0)
+@if (@Model.UpcomingAppointments.Count() > 0)
 {
     <table class="table table-bordered table-striped">
         <thead class="thead-light">
@@ -14,33 +14,96 @@
                 <th scope="col">Salon</th>
                 <th scope="col">Address</th>
                 <th scope="col">Service</th>
-                <th scope="col">Status</th>
+                <th scope="col">Salon Confirmation Status</th>
+                <th scope="col">Cancel</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var appointment in this.Model.Appointments)
+            @foreach (var appointment in this.Model.UpcomingAppointments)
             {
-            <tr>
-                <th scope="row">@appointment.Time</th>
-                <td>@appointment.SalonName</td>
-                <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
-                <td>@appointment.ServiceName</td>
-                <td>
-                    @if (appointment.Confirmed == true)
-                    {
-                        <span class="badge badge-success">Confirmed</span>
-                    }
-                    else if (appointment.Confirmed == false)
-                    {
-                        <span class="badge badge-danger">Declined</span>
-                    }
-                    else
-                    {
-                        <span class="badge badge-secondary">Pending</span>
-                    }
-                </td>
-            </tr>
+                <tr>
+                    <th scope="row">@appointment.Time</th>
+                    <td>@appointment.SalonName</td>
+                    <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
+                    <td>@appointment.ServiceName</td>
+                    <td>
+                        @if (appointment.Confirmed == true)
+                        {
+                            <span class="badge badge-success">Confirmed</span>
+                        }
+                        else if (appointment.Confirmed == false)
+                        {
+                            <span class="badge badge-danger">Declined</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-secondary">Pending</span>
+                        }
+                    </td>
+                    <td>
+
+                        <div class="button button_2 elements_button">
+                            <a asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
+                                <span>cancel</span><span>cancel</span>
+                            </a>
+                        </div>
+
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+}
+
+<hr class="bg-dark mx-4" style="height: 6px;" />
+
+<h1 class="mt-5 mb-3">Past Appointments (@Model.PastAppointments.Count())</h1>
+
+@if (@Model.PastAppointments.Count() > 0)
+{
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">DateTime</th>
+                <th scope="col">Salon</th>
+                <th scope="col">Address</th>
+                <th scope="col">Service</th>
+                <th scope="col">Rate Salon</th>
+                <th scope="col">Book Again</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in this.Model.PastAppointments)
+            {
+                <tr>
+                    <th scope="row">@appointment.Time</th>
+                    <td>@appointment.SalonName</td>
+                    <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
+                    <td>@appointment.ServiceName</td>
+                    <td>
+                        <div class="star-rating">
+                            <span class="fa fa-star-o" data-rating="1"></span>
+                            <span class="fa fa-star-o" data-rating="2"></span>
+                            <span class="fa fa-star-o" data-rating="3"></span>
+                            <span class="fa fa-star-o" data-rating="4"></span>
+                            <span class="fa fa-star-o" data-rating="5"></span>
+                            <input type="hidden" name="whatever1" class="rating-value" value="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="button elements_button">
+                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salon="@appointment.SalonId" asp-route-service="@appointment.ServiceId">
+                                <span>book again</span><span>book again</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@section Scripts {
+    <script src="~/js/rating-responsive.js" asp-append-version="true"></script>
 }

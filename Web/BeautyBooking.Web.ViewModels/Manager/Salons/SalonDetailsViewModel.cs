@@ -19,6 +19,8 @@
 
         public string Address { get; set; }
 
+        public double Rating { get; set; }
+
         public virtual ICollection<SalonServiceViewModel> Services { get; set; }
 
         public virtual ICollection<SalonAppointmentViewModel> Appointments { get; set; }

@@ -65,6 +65,7 @@
                 CityId = cityId,
                 Address = address,
                 ImageUrl = imageUrl,
+                Rating = 0,
             };
 
             await this.salonsRepository.AddAsync(salon);

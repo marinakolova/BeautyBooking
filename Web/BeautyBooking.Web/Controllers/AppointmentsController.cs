@@ -34,7 +34,8 @@
 
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments = await this.appointmentsService.GetAllByUserAsync<AppointmentViewModel>(userId),
+                UpcomingAppointments = await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
+                PastAppointments = await this.appointmentsService.GetPastByUserAsync<AppointmentViewModel>(userId),
             };
             return this.View(viewModel);
         }
@@ -61,6 +62,14 @@
             var userId = await this.userManager.GetUserIdAsync(user);
 
             await this.appointmentsService.AddAsync(userId, input.SalonId, input.ServiceId, input.Date, input.Time);
+
+            return this.RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> CancelAppointment(int id)
+        {
+            // TODO: Verify the user is the client in this appointment!
+            await this.appointmentsService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
         }

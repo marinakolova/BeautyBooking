@@ -7,9 +7,13 @@
     {
         Task<int> GetCountAsync();
 
-        Task<IEnumerable<T>> GetAllByUserAsync<T>(string userId);
+        Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId);
+
+        Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId);
 
         Task AddAsync(string userId, int salonId, int serviceId, string date, string time);
+
+        Task DeleteAsync(int id);
 
         Task Confirm(int id);
 

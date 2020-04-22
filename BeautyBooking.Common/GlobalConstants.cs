@@ -99,7 +99,7 @@
 
             public const int Salons = 18;
 
-            public const int Appointments = 3;
+            public const int Appointments = 10; // UpcomingAppointments = 5; PastAppointments = 5;
         }
     }
 }

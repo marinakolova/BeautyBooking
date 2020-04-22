@@ -1,5 +1,6 @@
 ﻿namespace BeautyBooking.Services.Data.Appointments
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -28,10 +29,19 @@
             return await this.appointmentsRepository.All().CountAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllByUserAsync<T>(string userId)
+        public async Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId)
         {
             var appointments = await this.appointmentsRepository.All()
-                .Where(x => x.UserId == userId)
+                .Where(x => x.UserId == userId && x.Time > DateTime.UtcNow)
+                .OrderBy(x => x.Time)
+                .To<T>().ToListAsync();
+            return appointments;
+        }
+
+        public async Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId)
+        {
+            var appointments = await this.appointmentsRepository.All()
+                .Where(x => x.UserId == userId && x.Time < DateTime.UtcNow && x.Confirmed == true)
                 .OrderBy(x => x.Time)
                 .To<T>().ToListAsync();
             return appointments;
@@ -49,6 +59,14 @@
                 ServiceId = serviceId,
             });
 
+            await this.appointmentsRepository.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var appointment = await this.appointmentsRepository.All()
+                .Where(x => x.Id == id).FirstOrDefaultAsync();
+            appointment.IsDeleted = true;
             await this.appointmentsRepository.SaveChangesAsync();
         }
 

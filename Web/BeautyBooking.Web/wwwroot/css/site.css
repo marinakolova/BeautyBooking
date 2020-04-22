@@ -3296,3 +3296,16 @@ section
 	line-height: 2.14;
 	margin-top: 21px;
 }
+
+/*********************************
+STAR RATING
+*********************************/
+
+.star-rating {
+	line-height: 32px;
+	font-size: 1.25em;
+}
+
+	.star-rating .fa-star {
+		color: #BA55D3;
+	}
