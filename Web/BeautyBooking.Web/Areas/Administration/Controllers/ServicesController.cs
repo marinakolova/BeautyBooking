@@ -63,6 +63,7 @@
             return this.RedirectToAction("Index");
         }
 
+        [HttpPost]
         public async Task<IActionResult> DeleteService(int id)
         {
             if (id <= GlobalConstants.SeededDataCounts.Services)

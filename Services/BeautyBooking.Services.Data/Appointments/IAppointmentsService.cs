@@ -5,7 +5,9 @@
 
     public interface IAppointmentsService
     {
-        Task<int> GetCountAsync();
+        Task<IEnumerable<T>> GetAllUpcomingAsync<T>();
+
+        Task<IEnumerable<T>> GetAllPastAsync<T>();
 
         Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId);
 
@@ -15,8 +17,8 @@
 
         Task DeleteAsync(int id);
 
-        Task Confirm(int id);
+        Task ConfirmAsync(int id);
 
-        Task Decline(int id);
+        Task DeclineAsync(int id);
     }
 }

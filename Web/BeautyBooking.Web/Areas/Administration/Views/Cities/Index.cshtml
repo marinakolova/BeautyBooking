@@ -4,13 +4,12 @@
     this.ViewData["Title"] = "Cities";
 }
 
-<h1>All Cities (@Model.Cities.Count())</h1>
-
-<div class="button button-large button_1 elements_button">
-    <a asp-area="Administration" asp-controller="Cities" asp-action="AddCity">
-        <span>Add New City</span><span>Add New City</span>
-    </a>
-</div>
+<h2>
+    All Cities (@Model.Cities.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Cities" asp-action="AddCity">Add New City</a>
+    </span>
+</h2>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-light">
@@ -35,9 +34,12 @@
                     }
                     else
                     {
-                        <div class="button button_2 elements_button">
-                            <a asp-area="Administration" asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id"><span>Delete</span><span>Delete</span></a>
-                        </div>
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id">
+                                Delete
+                            </button>
+                        </form>
                     }
                 </td>
             </tr>

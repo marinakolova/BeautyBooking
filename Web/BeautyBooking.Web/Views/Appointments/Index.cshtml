@@ -3,7 +3,7 @@
     this.ViewData["Title"] = "Your Appointments";
 }
 
-<h1 class="my-3">Upcoming Appointments (@Model.UpcomingAppointments.Count())</h1>
+<h1>Upcoming Appointments (@Model.UpcomingAppointments.Count())</h1>
 
 @if (@Model.UpcomingAppointments.Count() > 0)
 {
@@ -15,7 +15,7 @@
                 <th scope="col">Address</th>
                 <th scope="col">Service</th>
                 <th scope="col">Salon Confirmation Status</th>
-                <th scope="col">Cancel</th>
+                <th scope="col">Cancel Button</th>
             </tr>
         </thead>
         <tbody>
@@ -41,13 +41,12 @@
                         }
                     </td>
                     <td>
-
-                        <div class="button button_2 elements_button">
-                            <a asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
-                                <span>cancel</span><span>cancel</span>
-                            </a>
-                        </div>
-
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
+                                Cancel
+                            </button>
+                        </form>
                     </td>
                 </tr>
             }
@@ -55,9 +54,9 @@
     </table>
 }
 
-<hr class="bg-dark mx-4" style="height: 6px;" />
+<hr class="bg-dark m-5" style="height: 6px;" />
 
-<h1 class="mt-5 mb-3">Past Appointments (@Model.PastAppointments.Count())</h1>
+<h1>Past Appointments (@Model.PastAppointments.Count())</h1>
 
 @if (@Model.PastAppointments.Count() > 0)
 {

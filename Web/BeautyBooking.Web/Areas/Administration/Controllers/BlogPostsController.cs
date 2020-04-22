@@ -38,6 +38,7 @@
             return this.RedirectToAction("Index");
         }
 
+        [HttpPost]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
             if (id <= GlobalConstants.SeededDataCounts.BlogPosts)

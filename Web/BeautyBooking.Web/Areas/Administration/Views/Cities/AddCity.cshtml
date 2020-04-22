@@ -3,26 +3,25 @@
     this.ViewData["Title"] = "Add City";
 }
 
-<div class="col-lg-6 contact_col">
-    <div class="info_form_container">
-        <div class="info_form_title">New City</div>
-
-        <form method="post" class="info_form">
-
-            <label asp-for="@Model.Name"></label>
-            <input type="text" asp-for="@Model.Name" class="info_input" required="required">
-
-            <button class="button button-large button_1 elements_button my-4" type="submit">
-                <a asp-area="Administration" asp-controller="Cities" asp-action="AddCity">
-                    <span>add city</span><span>add city</span>
-                </a>
-            </button>
-
-        </form>
-        <div class="button button-large button_2 elements_button">
-            <a asp-area="Administration" asp-controller="Cities" asp-action="Index">
-                <span>Cancel</span><span>Cancel</span>
-            </a>
+<div class="col-lg-6">
+    <h2>New City</h2>
+    <form method="post" enctype="multipart/form-data" class="pt-4">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Name" class="form-control" required="required">
+            </div>
         </div>
-    </div>
+        <div class="form-group row">
+            <div class="col-sm-6 text-right">
+                <button type="submit" class="btn btn-success"
+                        asp-area="Administration" asp-controller="Cities" asp-action="AddCity">
+                    Add City
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn btn-danger" asp-area="Administration" asp-controller="Cities" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
 </div>

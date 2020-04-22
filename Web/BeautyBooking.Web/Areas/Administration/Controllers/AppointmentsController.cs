@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using BeautyBooking.Services.Data.Appointments;
+    using BeautyBooking.Web.ViewModels.Administration.Appointments;
     using Microsoft.AspNetCore.Mvc;
 
     public class AppointmentsController : AdministrationController
@@ -16,7 +17,11 @@
 
         public async Task<IActionResult> Index()
         {
-            var viewModel = await this.appointmentsService.GetCountAsync();
+            var viewModel = new AppointmentsListViewModel
+            {
+                UpcomingAppointments = await this.appointmentsService.GetAllUpcomingAsync<AppointmentViewModel>(),
+                PastAppointments = await this.appointmentsService.GetAllPastAsync<AppointmentViewModel>(),
+            };
             return this.View(viewModel);
         }
     }

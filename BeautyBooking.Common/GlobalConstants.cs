@@ -27,6 +27,8 @@
 
             public const string Footer = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/footer_rvuuls.jpg";
 
+            public const string AdminDashboard = "https://res.cloudinary.com/beauty-booking/image/upload/v1587535555/seo_file_folder_setup_setting-512_fiscca.png";
+
             // BlogPosts
             public const string SummerHealthyHair = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152733/Blog/Summer_Essentials_for_Healthy_Hair_lztxwm.jpg";
 
@@ -87,7 +89,7 @@
             public const string Body3 = "https://res.cloudinary.com/beauty-booking/image/upload/v1587257301/Salons/body-3_x95ezf.jpg";
         }
 
-        public static class SeededDataCounts
+        public static class SeededDataCounts // for data I want to preserve from deleting
         {
             public const int BlogPosts = 4;
 
@@ -98,8 +100,6 @@
             public const int Cities = 2;
 
             public const int Salons = 18;
-
-            public const int Appointments = 10; // UpcomingAppointments = 5; PastAppointments = 5;
         }
     }
 }

@@ -3,37 +3,45 @@
     this.ViewData["Title"] = "Add Blog Post";
 }
 
-<div class="col-lg-8 contact_col">
-    <div class="info_form_container">
-        <div class="info_form_title">New Blog Post</div>
-
-        <form method="post" enctype="multipart/form-data" class="info_form">
-
-            <label asp-for="@Model.Title"></label>
-            <input type="text" asp-for="@Model.Title" class="info_input" required="required">
-
-            <label asp-for="@Model.Author"></label>
-            <input type="text" asp-for="@Model.Author" class="info_input" required="required">
-
-            <label asp-for="@Model.Image"></label>
-            <input type="file" asp-for="@Model.Image" class="info_input image-upload" />
-
-            <label asp-for="@Model.Content"></label>
-            <textarea type="text" asp-for="@Model.Content" class="contact_textarea" required="required"></textarea>
-
-            <button class="button button-large button_1 elements_button my-4" type="submit">
-                <a asp-area="Administration" asp-controller="BlogPosts" asp-action="AddBlogPost">
-                    <span>add blog post</span><span>add blog post</span>
-                </a>
-            </button>
-
-        </form>
-        <div class="button button-large button_2 elements_button">
-            <a asp-area="Administration" asp-controller="BlogPosts" asp-action="Index">
-                <span>Cancel</span><span>Cancel</span>
-            </a>
+<div class="col-lg-6">
+    <h2>New Blog Post</h2>
+    <form method="post" enctype="multipart/form-data" class="pt-4">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Title" class="form-control" required="required">
+            </div>
         </div>
-    </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Author" class="form-control" required="required">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
+                <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Content</label>
+            <div class="col-sm-10">
+                <textarea type="text" asp-for="@Model.Content" class="form-control" required="required"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 text-right">
+                <button type="submit" class="btn btn-success"
+                        asp-area="Administration" asp-controller="BlogPosts" asp-action="AddBlogPost">
+                    Add Blog Post
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn btn-danger" asp-area="Administration" asp-controller="BlogPosts" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>    
 </div>
 
 @section Scripts {

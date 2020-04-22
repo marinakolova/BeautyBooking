@@ -35,17 +35,17 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmAppointment(int id)
+        public async Task<IActionResult> ConfirmAppointment(int id, int salon)
         {
-            await this.appointmentsService.Confirm(id);
-            return this.RedirectToAction("Index");
+            await this.appointmentsService.ConfirmAsync(id);
+            return this.RedirectToAction("Details", new { id = salon });
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeclineAppointment(int id)
+        public async Task<IActionResult> DeclineAppointment(int id, int salon)
         {
-            await this.appointmentsService.Decline(id);
-            return this.RedirectToAction("Index");
+            await this.appointmentsService.DeclineAsync(id);
+            return this.RedirectToAction("Details", new { id = salon });
         }
     }
 }

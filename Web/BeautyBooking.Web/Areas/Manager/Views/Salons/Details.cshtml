@@ -15,7 +15,6 @@
                 <div class="info_text">Address: <strong>@Model.Address</strong></div>
                 <div class="info_text">
                     Rating:
-
                     <span class="star-rating">
                         <span class="fa fa-star-o" data-rating="1"></span>
                         <span class="fa fa-star-o" data-rating="2"></span>
@@ -24,7 +23,7 @@
                         <span class="fa fa-star-o" data-rating="5"></span>
                         <input type="hidden" name="whatever1" class="rating-value" value="@Model.Rating">
                     </span>
-
+                    <span> @Model.Rating / 5</span>
                 </div>
             </div>
         </div>
@@ -46,7 +45,16 @@
                 {
                     <tr>
                         <th scope="row">@service.ServiceName</th>
-                        <td>@service.Available</td>
+                        <td>
+                            @if (service.Available == true)
+                            {
+                                <span style="font-family:Arial, FontAwesome" class="text-success">&#xf00c;</span>
+                            }
+                            else
+                            {
+                        <span style="font-family:Arial, FontAwesome" class="text-danger">&#xf00d;</span>
+                            }
+                        </td>
                         <td class="editable">@service.Price</td>
                         <td>Edit</td>
                     </tr>
@@ -96,7 +104,7 @@
                             <td>
                                 <form method="post">
                                     <button type="submit" class="btn btn-success btn-sm"
-                                            asp-area="Manager" asp-controller="Salons" asp-action="ConfirmAppointment" asp-route-id="@appointment.Id">
+                                            asp-area="Manager" asp-controller="Salons" asp-action="ConfirmAppointment" asp-route-id="@appointment.Id" asp-route-salon="@Model.Id">
                                         Confirm
                                     </button>
                                 </form>
@@ -104,7 +112,7 @@
                             <td>
                                 <form method="post">
                                     <button type="submit" class="btn btn-danger btn-sm"
-                                            asp-area="Manager" asp-controller="Salons" asp-action="DeclineAppointment" asp-route-id="@appointment.Id">
+                                            asp-area="Manager" asp-controller="Salons" asp-action="DeclineAppointment" asp-route-id="@appointment.Id" asp-route-salon="@Model.Id">
                                         Decline
                                     </button>
                                 </form>

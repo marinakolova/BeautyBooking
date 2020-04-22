@@ -34,29 +34,13 @@
     <div class="super_container">
 
         <!-- Menu -->
-        <partial name="_MenuPartial" />
+        <partial name="_AdminMenuPartial" />
 
         <!-- Home -->
+        <partial name="_AdminHeaderPartial" />
 
-        <div class="home">
-            <div class="background_image" style="background-image:url(@GlobalConstants.Images.CoverBackground)"></div>
-
-            <partial name="_HeaderPartial" />
-
-            <div class="home_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="home_content">
-                                <div class="home_title">@this.ViewData["Title"]</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
+        <div style="padding-top: 80px;">
+            <hr class="bg-dark mx-4" style="height: 6px;" />
             <div class="d-flex" id="wrapper">
 
                 <!-- Sidebar -->
@@ -64,7 +48,7 @@
 
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
-                    <div class="container-fluid mt-3 mb-3">
+                    <div class="container-fluid">
                         <main role="main">
                             @this.RenderBody()
                         </main>
@@ -73,9 +57,8 @@
 
             </div>
         </div>
-
-        <!-- Footer -->
-        <partial name="_FooterPartial" />
+        <hr class="bg-dark mx-4" style="height: 6px;" />
+        
     </div>
 
     <environment names="Development">

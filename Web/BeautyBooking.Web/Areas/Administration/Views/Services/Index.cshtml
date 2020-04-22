@@ -1,16 +1,15 @@
 ﻿@model BeautyBooking.Web.ViewModels.Administration.Services.ServicesListViewModel
 @using BeautyBooking.Common
 @{
-    this.ViewData["Title"] = "Beauty Services";
+    this.ViewData["Title"] = "Services";
 }
 
-<h1>All Services (@Model.Services.Count())</h1>
-
-<div class="button button-large button_1 elements_button">
-    <a asp-area="Administration" asp-controller="Services" asp-action="AddService">
-        <span>Add New Service</span><span>Add New Service</span>
-    </a>
-</div>
+<h2>
+    All Services (@Model.Services.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Services" asp-action="AddService">Add New Service</a>
+    </span>
+</h2>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-light">
@@ -41,9 +40,12 @@
                     }
                     else
                     {
-                        <div class="button button_2 elements_button">
-                            <a asp-area="Administration" asp-controller="Services" asp-action="DeleteService" asp-route-id="@service.Id"><span>Delete</span><span>Delete</span></a>
-                        </div>
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="Services" asp-action="DeleteService" asp-route-id="@service.Id">
+                                Delete
+                            </button>
+                        </form>
                     }
                 </td>
             </tr>

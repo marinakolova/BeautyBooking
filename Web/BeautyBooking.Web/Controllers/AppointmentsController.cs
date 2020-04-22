@@ -66,6 +66,7 @@
             return this.RedirectToAction("Index");
         }
 
+        [HttpPost]
         public async Task<IActionResult> CancelAppointment(int id)
         {
             // TODO: Verify the user is the client in this appointment!

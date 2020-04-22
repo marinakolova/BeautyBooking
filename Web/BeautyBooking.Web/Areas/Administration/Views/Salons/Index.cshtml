@@ -4,13 +4,12 @@
     this.ViewData["Title"] = "Salons";
 }
 
-<h1>All Salons (@Model.Salons.Count())</h1>
-
-<div class="button button-large button_1 elements_button">
-    <a asp-area="Administration" asp-controller="Salons" asp-action="AddSalon">
-        <span>Add New Salon</span><span>Add New Salon</span>
-    </a>
-</div>
+<h2>
+    All Salons (@Model.Salons.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Salons" asp-action="AddSalon">Add New Salon</a>
+    </span>
+</h2>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-light">
@@ -20,6 +19,7 @@
             <th scope="col">Category</th>
             <th scope="col">City</th>
             <th scope="col">Address</th>
+            <th scope="col">Rating</th>
             <th scope="col">Appointments</th>
             <th scope="col">Delete Button</th>
         </tr>
@@ -35,6 +35,7 @@
                 <td>@salon.CategoryName</td>
                 <td>@salon.CityName</td>
                 <td>@salon.Address</td>
+                <td>@salon.Rating / 5</td>
                 <td>@salon.AppointmentsCount</td>
                 <td>
                     @if (salon.Id <= GlobalConstants.SeededDataCounts.Salons)
@@ -45,9 +46,12 @@
                     }
                     else
                     {
-                        <div class="button button_2 elements_button">
-                            <a asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id"><span>Delete</span><span>Delete</span></a>
-                        </div>
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id">
+                                Delete
+                            </button>
+                        </form>
                     }
                 </td>
             </tr>

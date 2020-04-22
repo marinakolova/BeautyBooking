@@ -24,9 +24,22 @@
             this.dateTimeParserService = dateTimeParserService;
         }
 
-        public async Task<int> GetCountAsync()
+        public async Task<IEnumerable<T>> GetAllUpcomingAsync<T>()
         {
-            return await this.appointmentsRepository.All().CountAsync();
+            var appointments = await this.appointmentsRepository.All()
+                .Where(x => x.Time > DateTime.UtcNow)
+                .OrderBy(x => x.Time)
+                .To<T>().ToListAsync();
+            return appointments;
+        }
+
+        public async Task<IEnumerable<T>> GetAllPastAsync<T>()
+        {
+            var appointments = await this.appointmentsRepository.All()
+                .Where(x => x.Time < DateTime.UtcNow && x.Confirmed == true)
+                .OrderBy(x => x.Time)
+                .To<T>().ToListAsync();
+            return appointments;
         }
 
         public async Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId)
@@ -70,7 +83,7 @@
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
-        public async Task Confirm(int id)
+        public async Task ConfirmAsync(int id)
         {
             var appointment = await this.appointmentsRepository.All()
                 .Where(x => x.Id == id)
@@ -79,7 +92,7 @@
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
-        public async Task Decline(int id)
+        public async Task DeclineAsync(int id)
         {
             var appointment = await this.appointmentsRepository.All()
                 .Where(x => x.Id == id)
