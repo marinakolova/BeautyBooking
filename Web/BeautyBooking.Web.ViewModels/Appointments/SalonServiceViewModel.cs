@@ -5,7 +5,7 @@
 
     public class SalonServiceViewModel : IMapFrom<SalonService>
     {
-        public int SalonId { get; set; }
+        public string SalonId { get; set; }
 
         public string SalonName { get; set; }
 

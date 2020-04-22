@@ -1,5 +1,6 @@
 ﻿namespace BeautyBooking.Services.Data.Salons
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -36,7 +37,7 @@
             return await query.To<T>().ToListAsync();
         }
 
-        public async Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId)
+        public async Task<IEnumerable<string>> GetAllByCategoryAsync(int categoryId)
         {
             var salonsIds = await this.salonsRepository.All()
                 .Where(x => x.CategoryId == categoryId)
@@ -46,7 +47,7 @@
             return salonsIds;
         }
 
-        public async Task<T> GetByIdAsync<T>(int id)
+        public async Task<T> GetByIdAsync<T>(string id)
         {
             var salon = await this.salonsRepository.All()
                 .Where(x => x.Id == id)
@@ -54,12 +55,13 @@
             return salon;
         }
 
-        public async Task<int> AddAsync(string name, int categoryId, int cityId, string address, IFormFile image)
+        public async Task<string> AddAsync(string name, int categoryId, int cityId, string address, IFormFile image)
         {
             var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
 
             var salon = new Salon
             {
+                Id = Guid.NewGuid().ToString(),
                 Name = name,
                 CategoryId = categoryId,
                 CityId = cityId,
@@ -74,7 +76,7 @@
             return salon.Id;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var salon = await this.salonsRepository
                 .AllAsNoTracking()

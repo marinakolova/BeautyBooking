@@ -7,7 +7,7 @@
 
     public class AppointmentViewModel : IMapFrom<Appointment>
     {
-        public DateTime Time { get; set; }
+        public DateTime DateTime { get; set; }
 
         public string UserEmail { get; set; }
 

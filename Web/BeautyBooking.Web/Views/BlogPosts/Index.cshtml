@@ -43,7 +43,9 @@
                         <div class="latest d-flex flex-row align-items-start justify-content-start">
                             <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
                             <div class="latest_content">
-                                <div class="latest_title"><a href="#@blogPost.Id">@blogPost.Title</a></div>
+                                <div class="latest_title">
+                                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a>
+                                </div>
                                 <div class="latest_info">
                                     <ul class="d-flex flex-row align-items-start justify-content-start">
                                         <li><a>by @blogPost.Author</a></li>

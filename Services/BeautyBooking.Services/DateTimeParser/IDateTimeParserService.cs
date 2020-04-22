@@ -4,8 +4,6 @@
 
     public interface IDateTimeParserService
     {
-        DateTime ConvertString(string date, string time);
-
-        string ConvertToString(DateTime dateTime);
+        DateTime ConvertStrings(string date, string time);
     }
 }

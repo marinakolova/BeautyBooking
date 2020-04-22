@@ -28,7 +28,7 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string id)
         {
             var viewModel = await this.salonsService.GetByIdAsync<SalonDetailsViewModel>(id);
 

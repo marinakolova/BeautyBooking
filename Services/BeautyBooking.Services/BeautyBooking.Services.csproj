@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\BeautyBooking.Common\BeautyBooking.Common.csproj" />
+  </ItemGroup>
+
 </Project>

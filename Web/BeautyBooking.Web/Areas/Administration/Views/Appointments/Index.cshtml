@@ -21,7 +21,7 @@
             @foreach (var appointment in this.Model.UpcomingAppointments)
             {
                 <tr>
-                    <th scope="row">@appointment.Time</th>
+                    <th scope="row">@appointment.DateTime</th>
                     <td>@appointment.UserEmail</td>
                     <td>@appointment.SalonName</td>
                     <td>@appointment.ServiceName</td>
@@ -64,7 +64,7 @@
             @foreach (var appointment in this.Model.PastAppointments)
             {
                 <tr>
-                    <th scope="row">@appointment.Time</th>
+                    <th scope="row">@appointment.DateTime</th>
                     <td>@appointment.UserEmail</td>
                     <td>@appointment.SalonName</td>
                     <td>@appointment.ServiceName</td>

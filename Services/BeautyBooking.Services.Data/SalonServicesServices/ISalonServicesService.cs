@@ -5,10 +5,10 @@
 
     public interface ISalonServicesService
     {
-        Task<T> GetByIdAsync<T>(int salonId, int serviceId);
+        Task<T> GetByIdAsync<T>(string salonId, int serviceId);
 
-        Task AddAsync(int salonId, IEnumerable<int> servicesIds);
+        Task AddAsync(string salonId, IEnumerable<int> servicesIds);
 
-        Task AddAsync(IEnumerable<int> salonsIds, int serviceId);
+        Task AddAsync(IEnumerable<string> salonsIds, int serviceId);
     }
 }

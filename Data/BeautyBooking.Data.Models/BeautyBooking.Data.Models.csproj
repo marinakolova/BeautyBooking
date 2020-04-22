@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BeautyBooking.Common\BeautyBooking.Common.csproj" />
     <ProjectReference Include="..\BeautyBooking.Data.Common\BeautyBooking.Data.Common.csproj" />
   </ItemGroup>
   

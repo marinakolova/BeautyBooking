@@ -75,18 +75,5 @@
 
             return this.RedirectToAction("Index");
         }
-
-        [HttpPost]
-        public async Task<IActionResult> DeleteSalon(int id)
-        {
-            if (id <= GlobalConstants.SeededDataCounts.Salons)
-            {
-                return this.RedirectToAction("Index");
-            }
-
-            await this.salonsService.DeleteAsync(id);
-
-            return this.RedirectToAction("Index");
-        }
     }
 }

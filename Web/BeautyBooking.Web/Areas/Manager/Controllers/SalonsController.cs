@@ -27,7 +27,7 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string id)
         {
             var viewModel = await this.salonsService.GetByIdAsync<SalonDetailsViewModel>(id);
 
@@ -35,14 +35,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmAppointment(int id, int salon)
+        public async Task<IActionResult> ConfirmAppointment(string id, string salon)
         {
             await this.appointmentsService.ConfirmAsync(id);
             return this.RedirectToAction("Details", new { id = salon });
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeclineAppointment(int id, int salon)
+        public async Task<IActionResult> DeclineAppointment(string id, string salon)
         {
             await this.appointmentsService.DeclineAsync(id);
             return this.RedirectToAction("Details", new { id = salon });

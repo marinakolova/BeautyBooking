@@ -8,9 +8,11 @@
 <li class="menu_item"><a asp-area="" asp-controller="Categories" asp-action="Index">Categories</a></li>
 <li class="menu_item"><a asp-area="" asp-controller="Salons" asp-action="Index">Salons</a></li>
 <li class="menu_item"><a asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog</a></li>
+<li class="menu_item"><a asp-area="" asp-controller="Appointments" asp-action="Index"><i class="fa fa-calendar" aria-hidden="true"></i> Appointments</a></li>
+
 @if (this.SignInManager.IsSignedIn(this.User))
 {
-    <li class="menu_item"><a asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a></li>
+    
     if (this.User.IsInRole(GlobalConstants.SalonManagerRoleName) || this.User.IsInRole(GlobalConstants.AdministratorRoleName))
     {
         <li class="menu_item"><a asp-area="Manager" asp-controller="Salons" asp-action="Index">Salon Manager</a></li>

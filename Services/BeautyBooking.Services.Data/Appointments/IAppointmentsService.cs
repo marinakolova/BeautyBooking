@@ -13,12 +13,12 @@
 
         Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId);
 
-        Task AddAsync(string userId, int salonId, int serviceId, string date, string time);
+        Task AddAsync(string userId, string salonId, int serviceId, string date, string time);
 
-        Task DeleteAsync(int id);
+        Task DeleteAsync(string id);
 
-        Task ConfirmAsync(int id);
+        Task ConfirmAsync(string id);
 
-        Task DeclineAsync(int id);
+        Task DeclineAsync(string id);
     }
 }

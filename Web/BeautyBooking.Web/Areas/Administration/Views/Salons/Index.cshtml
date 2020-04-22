@@ -21,7 +21,6 @@
             <th scope="col">Address</th>
             <th scope="col">Rating</th>
             <th scope="col">Appointments</th>
-            <th scope="col">Delete Button</th>
         </tr>
     </thead>
     <tbody>
@@ -36,24 +35,7 @@
                 <td>@salon.CityName</td>
                 <td>@salon.Address</td>
                 <td>@salon.Rating / 5</td>
-                <td>@salon.AppointmentsCount</td>
-                <td>
-                    @if (salon.Id <= GlobalConstants.SeededDataCounts.Salons)
-                    {
-                        <div class="text-muted" style="font-size:smaller">
-                            Seeded Data <br />Cannot Be Deleted
-                        </div>
-                    }
-                    else
-                    {
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id">
-                                Delete
-                            </button>
-                        </form>
-                    }
-                </td>
+                <td>@salon.AppointmentsCount</td>                
             </tr>
         }
     </tbody>

@@ -7,11 +7,11 @@
 
     public class AppointmentViewModel : IMapFrom<Appointment>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public DateTime Time { get; set; }
+        public DateTime DateTime { get; set; }
 
-        public int SalonId { get; set; }
+        public string SalonId { get; set; }
 
         public string SalonName { get; set; }
 

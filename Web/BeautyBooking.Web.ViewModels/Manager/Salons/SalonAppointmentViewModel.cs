@@ -7,7 +7,7 @@
 
     public class SalonAppointmentViewModel : IMapFrom<Appointment>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public DateTime DateTime { get; set; }
 

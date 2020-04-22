@@ -3,67 +3,120 @@
     this.ViewData["Title"] = "Your Appointments";
 }
 
-<h1>Upcoming (@Model.UpcomingAppointments.Count())</h1>
+@if (@Model.UpcomingAppointments.Count() == 0)
+{
+    <div class="row">
+        <div class="col-lg-4 ml-lg-5">
+            <div class="about_text_2">
+                <p>
+                    Oh, no! Nothing booked yet...
+                </p>
+            </div>
+            <div class="about_text_highlight">
+                Book an appointment in 3 easy steps:
+            </div>
+            <div class="about_text_highlight">
+                <ol>
+                    <li>Find a salon.</li>
+                    <li>Choose a beauty service.</li>
+                    <li>Pick date and time.</li>
+                </ol>
+            </div>
+            <div class="about_text_2">
+                <p>
+                    Waiting you back here. :)
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 ml-lg-5">
+            <div class="button button-large button_1 elements_button mt-4">
+                <a asp-area="" asp-controller="Salons" asp-action="Index">
+                    <span>Find Salons</span>
+                    <span>Find Salons</span>
+                </a>
+            </div>
+        </div>
+    </div>
+}
 
 @if (@Model.UpcomingAppointments.Count() > 0)
 {
+    <h2>Upcoming (@Model.UpcomingAppointments.Count())</h2>
+
     <table class="table table-bordered table-striped">
         <thead class="thead-light">
             <tr>
-                <th scope="col">DateTime</th>
+                <th scope="col">Date and Time</th>
+                <th scope="col">Status *</th>
                 <th scope="col">Salon</th>
                 <th scope="col">Address</th>
                 <th scope="col">Service</th>
-                <th scope="col">Salon Confirmation Status</th>
-                <th scope="col">Cancel Button</th>
+                <th scope="col">Cancelation</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var appointment in this.Model.UpcomingAppointments)
             {
-                <tr>
-                    <th scope="row">@appointment.Time</th>
-                    <td>@appointment.SalonName</td>
-                    <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
-                    <td>@appointment.ServiceName</td>
-                    <td>
-                        @if (appointment.Confirmed == true)
-                        {
-                            <span class="badge badge-success">Confirmed</span>
-                        }
-                        else if (appointment.Confirmed == false)
-                        {
-                            <span class="badge badge-danger">Declined</span>
-                        }
-                        else
-                        {
-                            <span class="badge badge-secondary">Pending</span>
-                        }
-                    </td>
-                    <td>
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
-                                Cancel
-                            </button>
-                        </form>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="row">@appointment.DateTime</th>
+                <td>
+                    @if (appointment.Confirmed == true)
+                    {
+                        <span class="badge badge-success">Confirmed</span>
+                    }
+                    else if (appointment.Confirmed == false)
+                    {
+                        <span class="badge badge-danger">Declined</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-secondary">Pending</span>
+                    }
+                </td>
+                <td>@appointment.SalonName</td>
+                <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
+                <td>@appointment.ServiceName</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-outline-danger btn-sm"
+                                asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
+                            Cancel
+                        </button>
+                    </form>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
+
+    <div class="row">
+        <div class="col-lg-10 ml-lg-5">
+            <div class="about_text_highlight">
+                * Status
+            </div>        
+            <div class="about_text_2">
+                <ol>
+                    <li><span class="badge badge-secondary">Pending</span> - Waiting the Salon's reply.</li>
+                    <li><span class="badge badge-success">Confirmed</span> - Good! Your appointment is confirmed. They are expecting you on the set date and time.</li>
+                    <li><span class="badge badge-danger">Declined</span> - Sorry, the appointment can't happen on the set date and time. Check your email for rescheduling options from the Salon.</li>
+                </ol>
+            </div>
+        </div>
+    </div>    
 }
 
-<hr class="bg-dark m-5" style="height: 6px;" />
-
-<h1>Past (@Model.PastAppointments.Count())</h1>
+<hr class="bg-dark m-4" style="height: 6px;" />
 
 @if (@Model.PastAppointments.Count() > 0)
 {
+    <h2>Past (@Model.PastAppointments.Count())</h2>
+
     <table class="table table-bordered table-striped">
         <thead class="thead-light">
             <tr>
-                <th scope="col">DateTime</th>
+                <th scope="col">Date and Time</th>
                 <th scope="col">Salon</th>
                 <th scope="col">Address</th>
                 <th scope="col">Service</th>
@@ -75,7 +128,7 @@
             @foreach (var appointment in this.Model.PastAppointments)
             {
                 <tr>
-                    <th scope="row">@appointment.Time</th>
+                    <th scope="row">@appointment.DateTime</th>
                     <td>@appointment.SalonName</td>
                     <td>@appointment.SalonCityName, @appointment.SalonAddress</td>
                     <td>@appointment.ServiceName</td>

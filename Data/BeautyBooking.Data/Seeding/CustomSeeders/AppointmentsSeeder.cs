@@ -34,7 +34,8 @@
                 // Add Upcoming Appointments
                 appointments.Add(new Appointment
                 {
-                    Time = DateTime.UtcNow.AddDays(5),
+                    Id = Guid.NewGuid().ToString(),
+                    DateTime = DateTime.UtcNow.AddDays(5),
                     UserId = userId,
                     SalonId = salonId,
                     ServiceId = serviceId,
@@ -43,7 +44,8 @@
                 // Add Past Appointments
                 appointments.Add(new Appointment
                 {
-                    Time = DateTime.UtcNow.AddDays(-5),
+                    Id = Guid.NewGuid().ToString(),
+                    DateTime = DateTime.UtcNow.AddDays(-5),
                     UserId = userId,
                     SalonId = salonId,
                     ServiceId = serviceId,

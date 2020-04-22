@@ -4,7 +4,7 @@
 
     using Microsoft.EntityFrameworkCore.Migrations;
 
-    public partial class AddEntities : Migration
+    public partial class AddAllEntitiesAgainWithLengthConstraintsForColumnsAndStringIdsForSalonsAndAppointments : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,10 +18,10 @@
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(maxLength: 60, nullable: false),
+                    Content = table.Column<string>(maxLength: 3500, nullable: false),
+                    Author = table.Column<string>(maxLength: 40, nullable: false),
+                    ImageUrl = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -38,9 +38,9 @@
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 40, nullable: false),
+                    Description = table.Column<string>(maxLength: 700, nullable: false),
+                    ImageUrl = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -57,7 +57,7 @@
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 40, nullable: false),
                 },
                 constraints: table =>
                 {
@@ -74,9 +74,9 @@
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 40, nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(maxLength: 700, nullable: false),
                 },
                 constraints: table =>
                 {
@@ -93,17 +93,17 @@
                 name: "Salons",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 40, nullable: false),
+                    ImageUrl = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     CityId = table.Column<int>(nullable: false),
-                    Address = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(maxLength: 100, nullable: false),
+                    Rating = table.Column<double>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -126,7 +126,7 @@
                 name: "SalonServices",
                 columns: table => new
                 {
-                    SalonId = table.Column<int>(nullable: false),
+                    SalonId = table.Column<string>(nullable: false),
                     ServiceId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
@@ -134,7 +134,6 @@
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Available = table.Column<bool>(nullable: false),
-                    Price = table.Column<double>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -157,16 +156,17 @@
                 name: "Appointments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Time = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    SalonId = table.Column<int>(nullable: false),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
+                    SalonId = table.Column<string>(nullable: false),
                     ServiceId = table.Column<int>(nullable: false),
+                    Confirmed = table.Column<bool>(nullable: true),
+                    IsSalonRatedByTheUser = table.Column<bool>(nullable: true),
                 },
                 constraints: table =>
                 {
