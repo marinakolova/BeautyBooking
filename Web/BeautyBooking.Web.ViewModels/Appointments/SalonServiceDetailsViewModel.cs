@@ -3,7 +3,7 @@
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class SalonServiceViewModel : IMapFrom<SalonService>
+    public class SalonServiceDetailsViewModel : IMapFrom<SalonService>
     {
         public string SalonId { get; set; }
 

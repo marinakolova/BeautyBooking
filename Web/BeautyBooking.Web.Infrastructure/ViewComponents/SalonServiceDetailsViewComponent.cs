@@ -6,18 +6,19 @@
     using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Mvc;
 
-    public class MakeAnAppointmentViewComponent : ViewComponent
+    [ViewComponent(Name = "SalonServiceDetails")]
+    public class SalonServiceDetailsViewComponent : ViewComponent
     {
         private readonly ISalonServicesService salonServicesService;
 
-        public MakeAnAppointmentViewComponent(ISalonServicesService salonServicesService)
+        public SalonServiceDetailsViewComponent(ISalonServicesService salonServicesService)
         {
             this.salonServicesService = salonServicesService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string salonId, int serviceId)
         {
-            var viewModel = await this.salonServicesService.GetByIdAsync<SalonServiceViewModel>(salonId, serviceId);
+            var viewModel = await this.salonServicesService.GetByIdAsync<SalonServiceDetailsViewModel>(salonId, serviceId);
 
             return this.View(viewModel);
         }

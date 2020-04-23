@@ -103,40 +103,33 @@
         </div>
 
         <div class="col-lg-6">
-            <form method="post" enctype="multipart/form-data" class="pt-4">
-                <div class="form-group row">
-                    <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" required="required" hidden>
-                    <span asp-validation-for="SalonId" class="text-danger"></span>
-                </div>
-                <div class="form-group row">
-                    <input asp-for="@Model.ServiceId" value="@Model.ServiceId" class="form-control" required="required" hidden>
-                    <span asp-validation-for="ServiceId" class="text-danger"></span>
-                </div>
-                <div>
-                    @await Component.InvokeAsync("MakeAnAppointment", new { Model.SalonId, Model.ServiceId })
-                </div>
+            <div>
+                @await Component.InvokeAsync("SalonServiceDetails", new { Model.SalonId, Model.ServiceId })
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" hidden>
+                <input asp-for="@Model.ServiceId" value="@Model.ServiceId" class="form-control" hidden>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                        <div id="selectedDate" asp-for="@Model.Date" class="form-control"></div>
-                        <input asp-for="@Model.Date" value="" class="form-control" required="required" hidden>
+                        <div id="selectedDate" class="form-control"></div>
+                        <input asp-for="@Model.Date" value="" class="form-control" hidden>
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Time</label>
                     <div class="col-sm-10">
-                        <div id="selectedTime" asp-for="@Model.Time" class="form-control"></div>
-                        <input asp-for="@Model.Time" value="" class="form-control" required="required" hidden>
+                        <div id="selectedTime" class="form-control"></div>
+                        <input asp-for="@Model.Time" value="" class="form-control" hidden>
                         <span asp-validation-for="Time" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row mt-4">
                     <div class="col-sm-10">
-                        <button class="button button-large button_1 elements_button my-2" type="submit">
-                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
-                                <span>Make An Appointment</span><span>Make An Appointment</span>
-                            </a>
+                        <button type="submit" class="button button-large button_1 elements_button my-2"
+                                asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
+                            Make An Appointment
                         </button>
                     </div>
                 </div>

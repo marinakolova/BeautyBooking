@@ -40,12 +40,12 @@
             return this.View(viewModel);
         }
 
-        public IActionResult MakeAnAppointment(string salon, int service)
+        public IActionResult MakeAnAppointment(string salonId, int serviceId)
         {
             var viewModel = new AppointmentInputModel
             {
-                SalonId = salon,
-                ServiceId = service,
+                SalonId = salonId,
+                ServiceId = serviceId,
             };
             return this.View(viewModel);
         }
@@ -55,7 +55,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(input);
+                return this.RedirectToAction("MakeAnAppointment", new { input.SalonId, input.ServiceId });
             }
 
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
