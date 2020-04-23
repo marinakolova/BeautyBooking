@@ -19,8 +19,8 @@
         public async Task<IViewComponentResult> InvokeAsync()
         {
             // This is used as a Menu in Salon Manager Area
-            // Now only the Admin can Add Salons and only the Manager can manage it
-            // When Registering a Salon becomes option for every user, UserId (OwnerId for Salons) would be checked here
+            // Now only the Admin can Add Salons and only the seeded Manager can manage all of them
+            // When Registering a Salon becomes an option for every user, UserId (OwnerId for Salons) would be checked here
             var viewModel = new SalonsSimpleListViewModel
             {
                 Salons = await this.salonsService.GetAllAsync<SalonSimpleViewModel>(),

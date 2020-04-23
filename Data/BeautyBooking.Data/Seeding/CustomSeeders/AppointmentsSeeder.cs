@@ -24,7 +24,7 @@
             var userId = dbContext.Users.Where(x => x.Email == GlobalConstants.AccountsSeeding.UserEmail).FirstOrDefault().Id;
 
             // Get Salons Ids
-            var salonsIds = await dbContext.Salons.Where(x => x.CityId == 1).Select(x => x.Id).Take(10).ToListAsync();
+            var salonsIds = await dbContext.Salons.Where(x => x.CityId == 1).Select(x => x.Id).Take(GlobalConstants.SeededDataCounts.Salons).ToListAsync();
 
             foreach (var salonId in salonsIds)
             {

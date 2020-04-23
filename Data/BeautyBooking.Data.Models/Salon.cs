@@ -21,7 +21,9 @@
         [Required]
         public string ImageUrl { get; set; }
 
-        // Not Required! Allows testing/showing functionality with seeded data in Admin and Manager Areas
+        // Not Required! Allows testing/showing functionality with seeded data in Admin/Manager Area
+        // For now Salons can be created only in the AdminDashboard and all of them are managed by one seeded ManagerAccount
+        // This will be used when Registering a Salon becomes an option for every user
         public string OwnerId { get; set; }
 
         public virtual ApplicationUser Owner { get; set; }

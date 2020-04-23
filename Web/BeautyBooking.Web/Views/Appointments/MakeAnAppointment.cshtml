@@ -113,7 +113,7 @@
                     <label class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
                         <div id="selectedDate" asp-for="@Model.Date" class="form-control">@Model.Date</div>
-                        <input asp-for="@Model.Date" value="" class="form-control" hidden>
+                        <input asp-for="@Model.Date" value="" class="form-control" required readonly />
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                     <label class="col-sm-2 col-form-label">Time</label>
                     <div class="col-sm-10">
                         <div id="selectedTime" asp-for="@Model.Time" class="form-control">@Model.Time</div>
-                        <input asp-for="@Model.Time" value="" class="form-control" hidden>
+                        <input asp-for="@Model.Time" value="" class="form-control" required readonly />
                         <span asp-validation-for="Time" class="text-danger"></span>
                     </div>
                 </div>
