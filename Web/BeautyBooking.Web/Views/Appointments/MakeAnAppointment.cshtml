@@ -112,7 +112,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                        <div id="selectedDate" class="form-control"></div>
+                        <div id="selectedDate" asp-for="@Model.Date" class="form-control">@Model.Date</div>
                         <input asp-for="@Model.Date" value="" class="form-control" hidden>
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
@@ -120,7 +120,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Time</label>
                     <div class="col-sm-10">
-                        <div id="selectedTime" class="form-control"></div>
+                        <div id="selectedTime" asp-for="@Model.Time" class="form-control">@Model.Time</div>
                         <input asp-for="@Model.Time" value="" class="form-control" hidden>
                         <span asp-validation-for="Time" class="text-danger"></span>
                     </div>
@@ -139,6 +139,7 @@
                     <span>Cancel</span><span>Cancel</span>
                 </a>
             </div>
+            <div asp-validation-summary="All" data-valmsg-summary="true"></div>
         </div>
 
     </div>
@@ -152,4 +153,9 @@
 @section Scripts {
     <script src="~/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/js/date-picker.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            ignore: ""
+        })
+    </script>
 }
