@@ -59,6 +59,8 @@
             public const string Image = "Please select a JPG, JPEG or PNG image smaller than 1MB.";
 
             public const string DateTime = "Please select a valid DATE and TIME from the datepicker calendar on the left.";
+
+            public const string Rating = "Please choose a valid number of stars from 1 to 5.";
         }
 
         public static class DateTimeFormats

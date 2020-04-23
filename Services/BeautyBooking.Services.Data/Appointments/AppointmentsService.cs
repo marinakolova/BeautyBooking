@@ -24,6 +24,14 @@
             this.dateTimeParserService = dateTimeParserService;
         }
 
+        public async Task<T> GetByIdAsync<T>(string id)
+        {
+            var appointment = await this.appointmentsRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return appointment;
+        }
+
         public async Task<IEnumerable<T>> GetAllUpcomingAsync<T>()
         {
             var appointments = await this.appointmentsRepository.All()
@@ -99,6 +107,16 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             appointment.Confirmed = false;
+            await this.appointmentsRepository.SaveChangesAsync();
+        }
+
+        public async Task RateAppointment(string id, double rateValue)
+        {
+            var appointment = await this.appointmentsRepository.All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
+            appointment.IsSalonRatedByTheUser = true;
             await this.appointmentsRepository.SaveChangesAsync();
         }
     }

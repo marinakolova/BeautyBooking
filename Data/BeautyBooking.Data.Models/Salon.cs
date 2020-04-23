@@ -40,6 +40,8 @@
 
         public double Rating { get; set; }
 
+        public int RatersCount { get; set; }
+
         public virtual ICollection<SalonService> Services { get; set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }

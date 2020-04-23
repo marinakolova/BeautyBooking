@@ -4,7 +4,7 @@
 
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Appointments;
-    using BeautyBooking.Services.Data.SalonServicesServices;
+    using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -14,16 +14,16 @@
     public class AppointmentsController : BaseController
     {
         private readonly IAppointmentsService appointmentsService;
-        private readonly ISalonServicesService salonServicesService;
+        private readonly ISalonsService salonsService;
         private readonly UserManager<ApplicationUser> userManager;
 
         public AppointmentsController(
             IAppointmentsService appointmentsService,
-            ISalonServicesService salonServicesService,
+            ISalonsService salonsService,
             UserManager<ApplicationUser> userManager)
         {
             this.appointmentsService = appointmentsService;
-            this.salonServicesService = salonServicesService;
+            this.salonsService = salonsService;
             this.userManager = userManager;
         }
 
@@ -35,7 +35,6 @@
             var viewModel = new AppointmentsListViewModel
             {
                 UpcomingAppointments = await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
-                PastAppointments = await this.appointmentsService.GetPastByUserAsync<AppointmentViewModel>(userId),
             };
             return this.View(viewModel);
         }
@@ -67,18 +66,41 @@
         }
 
         [HttpGet]
-        public IActionResult CancelAppointmentConfirm(string id)
+        public async Task<IActionResult> CancelAppointment(string id)
         {
-            // TODO: Are you sure? Page
-            return this.View("Index");
+            var viewModel = await this.appointmentsService.GetByIdAsync<AppointmentViewModel>(id);
+
+            return this.View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CancelAppointment(string id)
+        public async Task<IActionResult> DeleteAppointment(string id)
         {
             await this.appointmentsService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> RatePastAppointment(string id)
+        {
+            var viewModel = await this.appointmentsService.GetByIdAsync<AppointmentRatingViewModel>(id);
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RateSalon(AppointmentRatingViewModel rating)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("RatePastAppointment", new { rating.Id });
+            }
+
+            await this.appointmentsService.RateAppointment(rating.Id, rating.RateValue);
+            await this.salonsService.RateSalon(rating.SalonId, rating.RateValue);
+
+            var id = rating.SalonId; // Redirection doesn't work with rating.SalonId;
+            return this.RedirectToAction("Details", "Salons", new { id });
         }
     }
 }

@@ -1,32 +1,33 @@
 ﻿namespace BeautyBooking.Web.ViewModels.Appointments
 {
-    using System;
+    using System.ComponentModel.DataAnnotations;
 
+    using BeautyBooking.Common;
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class AppointmentViewModel : IMapFrom<Appointment>
+    public class AppointmentRatingViewModel : IMapFrom<Appointment>
     {
         public string Id { get; set; }
-
-        public DateTime DateTime { get; set; }
-
-        public string UserEmail { get; set; }
 
         public string SalonId { get; set; }
 
         public string SalonName { get; set; }
 
+        public string SalonCategoryName { get; set; }
+
         public string SalonCityName { get; set; }
 
         public string SalonAddress { get; set; }
 
-        public int ServiceId { get; set; }
-
-        public string ServiceName { get; set; }
+        public string SalonImageUrl { get; set; }
 
         public bool? Confirmed { get; set; }
 
         public bool? IsSalonRatedByTheUser { get; set; }
+
+        [Required]
+        [Range(1.0, 5.0, ErrorMessage = GlobalConstants.ErrorMessages.Rating)]
+        public double RateValue { get; set; }
     }
 }

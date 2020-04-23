@@ -27,7 +27,8 @@
                         CityId = 1,
                         Address = "Laidlaw Close 28",
                         ImageUrl = GlobalConstants.Images.Hair1,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -37,7 +38,8 @@
                         CityId = 1,
                         Address = "Francis Way 198",
                         ImageUrl = GlobalConstants.Images.Hair2,
-                        Rating = 4,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -47,7 +49,8 @@
                         CityId = 2,
                         Address = "Rosehill Crescent 93",
                         ImageUrl = GlobalConstants.Images.Hair3,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
 
                     // 2. Hair removal Salons
@@ -59,7 +62,8 @@
                         CityId = 1,
                         Address = "Pintail Close 5",
                         ImageUrl = GlobalConstants.Images.HairRemoval1,
-                        Rating = 3,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -69,7 +73,8 @@
                         CityId = 1,
                         Address = "Ellesmere Gardens 143",
                         ImageUrl = GlobalConstants.Images.HairRemoval2,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -79,7 +84,8 @@
                         CityId = 2,
                         Address = "Sykes Avenue 128",
                         ImageUrl = GlobalConstants.Images.HairRemoval3,
-                        Rating = 4,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
 
                     // 3. Massage ans Spa Salons
@@ -91,7 +97,8 @@
                         CityId = 1,
                         Address = "Swinton Road 158",
                         ImageUrl = GlobalConstants.Images.Massage1,
-                        Rating = 4,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -101,7 +108,8 @@
                         CityId = 1,
                         Address = "Sunnydale 38",
                         ImageUrl = GlobalConstants.Images.Massage2,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -111,7 +119,8 @@
                         CityId = 2,
                         Address = "Penywern Road 43",
                         ImageUrl = GlobalConstants.Images.Massage3,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
 
                     // 4. Nail Salons
@@ -123,7 +132,8 @@
                         CityId = 1,
                         Address = "Greenview Drive 119",
                         ImageUrl = GlobalConstants.Images.Nails1,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -133,7 +143,8 @@
                         CityId = 1,
                         Address = "Stratford Crescent 15",
                         ImageUrl = GlobalConstants.Images.Nails2,
-                        Rating = 4,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -143,7 +154,8 @@
                         CityId = 2,
                         Address = "Malet Close 28",
                         ImageUrl = GlobalConstants.Images.Nails3,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
 
                     // 5. Face Treatments
@@ -155,7 +167,8 @@
                         CityId = 1,
                         Address = "Abbotsbury Way 81",
                         ImageUrl = GlobalConstants.Images.Face1,
-                        Rating = 4,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -165,7 +178,8 @@
                         CityId = 1,
                         Address = "Trossachs Road 62",
                         ImageUrl = GlobalConstants.Images.Face2,
-                        Rating = 2,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -175,7 +189,8 @@
                         CityId = 2,
                         Address = "Apsley Way 16",
                         ImageUrl = GlobalConstants.Images.Face3,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
 
                     // 6. Body Treatments
@@ -187,7 +202,8 @@
                         CityId = 1,
                         Address = "Warmington Road 122",
                         ImageUrl = GlobalConstants.Images.Body1,
-                        Rating = 5,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -197,7 +213,8 @@
                         CityId = 1,
                         Address = "Ingoe Close 75",
                         ImageUrl = GlobalConstants.Images.Body2,
-                        Rating = 4,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                     new Salon
                     {
@@ -207,7 +224,8 @@
                         CityId = 2,
                         Address = "Pool View 42",
                         ImageUrl = GlobalConstants.Images.Body3,
-                        Rating = 3,
+                        Rating = 0.0,
+                        RatersCount = 0,
                     },
                 };
 

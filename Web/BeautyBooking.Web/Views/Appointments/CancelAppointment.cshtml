@@ -1,0 +1,25 @@
+﻿@model BeautyBooking.Web.ViewModels.Appointments.AppointmentViewModel
+@{
+    this.ViewData["Title"] = "Cancel Appointment";
+}
+
+<h1>Are you sure you want to cancel this appointment?</h1>
+
+<p>@Model.DateTime</p>
+<p>@Model.SalonName</p>
+<p>@Model.SalonCityName, @Model.SalonAddress</p>
+<p>@Model.ServiceName</p>
+
+<form method="post">
+    <div class="form-group row">
+        <div class="col-sm-6 text-right">
+            <button type="submit" class="btn btn-outline-success"
+                    asp-area="" asp-controller="Appointments" asp-action="DeleteAppointment" asp-route-id="@Model.Id">
+                Yes, Cancel it!
+            </button>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-danger" asp-area="" asp-controller="Appointments" asp-action="Index">No! Go Back</a>
+        </div>
+    </div>
+</form>

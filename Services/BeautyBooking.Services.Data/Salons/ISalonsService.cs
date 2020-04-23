@@ -16,5 +16,7 @@
         Task<string> AddAsync(string name, int categoryId, int cityId, string address, IFormFile image);
 
         Task DeleteAsync(string id);
+
+        Task RateSalon(string id, double rateValue);
     }
 }

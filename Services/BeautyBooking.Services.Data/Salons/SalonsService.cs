@@ -86,5 +86,21 @@
 
             await this.salonsRepository.SaveChangesAsync();
         }
+
+        public async Task RateSalon(string id, double rateValue)
+        {
+            var salon = await this.salonsRepository.All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
+            // TODO: Make rating more precise
+            var oldRating = salon.Rating;
+            var ratersCount = salon.RatersCount;
+            ratersCount++;
+            var newRating = (oldRating + rateValue) / ratersCount;
+            salon.Rating = newRating;
+
+            await this.salonsRepository.SaveChangesAsync();
+        }
     }
 }

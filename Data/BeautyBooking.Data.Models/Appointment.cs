@@ -25,8 +25,11 @@
 
         public virtual SalonService SalonService { get; set; }
 
+        // The Salon can Confirm or Decline an appointment
         public bool? Confirmed { get; set; }
 
+        // For every past (and confirmed) appointment the User can Rate the Salon
+        // But rating can be given only once for each appointment
         public bool? IsSalonRatedByTheUser { get; set; }
     }
 }

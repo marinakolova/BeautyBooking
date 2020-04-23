@@ -14,7 +14,7 @@
                 <div class="info_text">City: <strong>@Model.CityName</strong></div>
                 <div class="info_text">Address: <strong>@Model.Address</strong></div>
                 <div class="info_text">
-                    Rating:
+                    Rating: &nbsp;&nbsp;
                     <span class="star-rating">
                         <span class="fa fa-star-o" data-rating="1"></span>
                         <span class="fa fa-star-o" data-rating="2"></span>
@@ -23,7 +23,7 @@
                         <span class="fa fa-star-o" data-rating="5"></span>
                         <input type="hidden" name="whatever1" class="rating-value" value="@Model.Rating">
                     </span>
-                    <span> @Model.Rating / 5</span>
+                    <span>&nbsp;&nbsp; ( @Model.Rating / 5.0 ) from @Model.RatersCount votes</span>
                 </div>
             </div>
         </div>

@@ -5,6 +5,8 @@
 
     public interface IAppointmentsService
     {
+        Task<T> GetByIdAsync<T>(string id);
+
         Task<IEnumerable<T>> GetAllUpcomingAsync<T>();
 
         Task<IEnumerable<T>> GetAllPastAsync<T>();
@@ -20,5 +22,7 @@
         Task ConfirmAsync(string id);
 
         Task DeclineAsync(string id);
+
+        Task RateAppointment(string id, double rateValue);
     }
 }
