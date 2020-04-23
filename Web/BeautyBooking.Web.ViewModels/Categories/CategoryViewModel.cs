@@ -12,5 +12,9 @@
         public string Description { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public int SalonsCount { get; set; }
+
+        public int ServicesCount { get; set; }
     }
 }

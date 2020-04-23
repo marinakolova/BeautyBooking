@@ -1,6 +1,5 @@
 ﻿namespace BeautyBooking.Web.Areas.Administration.Controllers
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using BeautyBooking.Common;
@@ -8,7 +7,7 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
-    using BeautyBooking.Web.ViewModels.Administration.Services;
+    using BeautyBooking.Web.ViewModels.Services;
     using Microsoft.AspNetCore.Mvc;
 
     public class ServicesController : AdministrationController

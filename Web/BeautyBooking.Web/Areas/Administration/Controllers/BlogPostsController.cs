@@ -4,7 +4,7 @@
 
     using BeautyBooking.Common;
     using BeautyBooking.Services.Data.BlogPosts;
-    using BeautyBooking.Web.ViewModels.Administration.BlogPosts;
+    using BeautyBooking.Web.ViewModels.BlogPosts;
     using Microsoft.AspNetCore.Mvc;
 
     public class BlogPostsController : AdministrationController

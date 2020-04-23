@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.Infrastructure.CustomValidationAttributes
+﻿namespace BeautyBooking.Web.ViewModels.CustomValidationAttributes
 {
     using System.ComponentModel.DataAnnotations;
 

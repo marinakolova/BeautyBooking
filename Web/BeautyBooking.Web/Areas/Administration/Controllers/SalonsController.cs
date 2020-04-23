@@ -8,7 +8,7 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
-    using BeautyBooking.Web.ViewModels.Administration.Salons;
+    using BeautyBooking.Web.ViewModels.Salons;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonsController : AdministrationController

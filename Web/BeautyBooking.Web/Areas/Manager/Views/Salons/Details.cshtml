@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Manager.Salons.SalonDetailsViewModel
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonWithAppointmentsViewModel
 @{
     this.ViewData["Title"] = "Salon Manager: " + Model.Name;
 }
@@ -36,7 +36,6 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Available</th>
-                    <th scope="col">Price</th>
                     <th scope="col">Edit</th>
                 </tr>
             </thead>
@@ -55,7 +54,6 @@
                         <span style="font-family:Arial, FontAwesome" class="text-danger">&#xf00d;</span>
                             }
                         </td>
-                        <td class="editable">@service.Price</td>
                         <td>Edit</td>
                     </tr>
                 }
@@ -126,6 +124,5 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/inline-editing.js" asp-append-version="true"></script>
     <script src="~/js/rating-static.js" asp-append-version="true"></script>
 }

@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Manager.Salons
+﻿namespace BeautyBooking.Web.ViewModels.Salons
 {
     using System;
 

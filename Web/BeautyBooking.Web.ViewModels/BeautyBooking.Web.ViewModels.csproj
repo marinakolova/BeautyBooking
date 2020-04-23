@@ -22,7 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\BeautyBooking.Data.Models\BeautyBooking.Data.Models.csproj" />
     <ProjectReference Include="..\..\Services\BeautyBooking.Services.Mapping\BeautyBooking.Services.Mapping.csproj" />
-    <ProjectReference Include="..\BeautyBooking.Web.Infrastructure\BeautyBooking.Web.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

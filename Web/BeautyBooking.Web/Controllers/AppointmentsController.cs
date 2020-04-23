@@ -40,17 +40,12 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> MakeAnAppointment(string salon, int service)
+        public IActionResult MakeAnAppointment(string salon, int service)
         {
-            var salonService = await this.salonServicesService.GetByIdAsync<SalonServiceViewModel>(salon, service);
             var viewModel = new AppointmentInputModel
             {
-                SalonId = salonService.SalonId,
-                SalonName = salonService.SalonName,
-                SalonCityName = salonService.SalonCityName,
-                SalonAddress = salonService.SalonAddress,
-                ServiceId = salonService.ServiceId,
-                ServiceName = salonService.ServiceName,
+                SalonId = salon,
+                ServiceId = service,
             };
             return this.View(viewModel);
         }
@@ -81,7 +76,6 @@
         [HttpPost]
         public async Task<IActionResult> CancelAppointment(string id)
         {
-            // TODO: Verify the user is the client in this appointment!
             await this.appointmentsService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");

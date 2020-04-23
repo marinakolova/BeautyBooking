@@ -4,7 +4,7 @@
 
     using BeautyBooking.Common;
     using BeautyBooking.Services.Data.Categories;
-    using BeautyBooking.Web.ViewModels.Administration.Categories;
+    using BeautyBooking.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Mvc;
 
     public class CategoriesController : AdministrationController

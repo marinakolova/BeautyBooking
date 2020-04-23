@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Administration.BlogPosts.BlogPostInputModel
+﻿@model BeautyBooking.Web.ViewModels.BlogPosts.BlogPostInputModel
 @{
     this.ViewData["Title"] = "Add Blog Post";
 }
@@ -10,25 +10,28 @@
             <label class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-10">
                 <input type="text" asp-for="@Model.Title" class="form-control" required="required">
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Author</label>
             <div class="col-sm-10">
                 <input type="text" asp-for="@Model.Author" class="form-control" required="required">
+                <span asp-validation-for="Author" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Image</label>
             <div class="col-sm-10">
                 <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
-                <span asp-validation-for="Image"></span>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Content</label>
             <div class="col-sm-10">
                 <textarea type="text" asp-for="@Model.Content" class="form-control" required="required"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">

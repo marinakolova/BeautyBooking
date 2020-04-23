@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Administration.Cities
+﻿namespace BeautyBooking.Web.ViewModels.Cities
 {
     using System.Collections.Generic;
 

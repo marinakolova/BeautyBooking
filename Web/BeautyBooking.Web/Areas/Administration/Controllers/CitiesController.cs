@@ -4,7 +4,7 @@
 
     using BeautyBooking.Common;
     using BeautyBooking.Services.Data.Cities;
-    using BeautyBooking.Web.ViewModels.Administration.Cities;
+    using BeautyBooking.Web.ViewModels.Cities;
     using Microsoft.AspNetCore.Mvc;
 
     public class CitiesController : AdministrationController

@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Administration.Cities
+﻿namespace BeautyBooking.Web.ViewModels.Cities
 {
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;

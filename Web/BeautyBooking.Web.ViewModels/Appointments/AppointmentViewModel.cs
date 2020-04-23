@@ -11,6 +11,8 @@
 
         public DateTime DateTime { get; set; }
 
+        public string UserEmail { get; set; }
+
         public string SalonId { get; set; }
 
         public string SalonName { get; set; }

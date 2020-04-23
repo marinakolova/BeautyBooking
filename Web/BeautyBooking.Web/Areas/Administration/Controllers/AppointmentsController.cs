@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using BeautyBooking.Services.Data.Appointments;
-    using BeautyBooking.Web.ViewModels.Administration.Appointments;
+    using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Mvc;
 
     public class AppointmentsController : AdministrationController

@@ -4,7 +4,7 @@
 
     using BeautyBooking.Services.Data.Appointments;
     using BeautyBooking.Services.Data.Salons;
-    using BeautyBooking.Web.ViewModels.Manager.Salons;
+    using BeautyBooking.Web.ViewModels.Salons;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonsController : ManagerBaseController
@@ -29,7 +29,7 @@
 
         public async Task<IActionResult> Details(string id)
         {
-            var viewModel = await this.salonsService.GetByIdAsync<SalonDetailsViewModel>(id);
+            var viewModel = await this.salonsService.GetByIdAsync<SalonWithAppointmentsViewModel>(id);
 
             return this.View(viewModel);
         }

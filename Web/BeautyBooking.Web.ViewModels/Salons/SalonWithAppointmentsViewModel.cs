@@ -1,9 +1,11 @@
-﻿namespace BeautyBooking.Web.ViewModels.Manager.Salons
+﻿namespace BeautyBooking.Web.ViewModels.Salons
 {
+    using System.Collections.Generic;
+
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class SalonViewModel : IMapFrom<Salon>
+    public class SalonWithAppointmentsViewModel : IMapFrom<Salon>
     {
         public string Id { get; set; }
 
@@ -18,5 +20,9 @@
         public string Address { get; set; }
 
         public double Rating { get; set; }
+
+        public virtual ICollection<SalonServiceViewModel> Services { get; set; }
+
+        public virtual ICollection<SalonAppointmentViewModel> Appointments { get; set; }
     }
 }
