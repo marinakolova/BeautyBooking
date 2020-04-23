@@ -21,6 +21,11 @@
         [Required]
         public string ImageUrl { get; set; }
 
+        // Not Required! Allows testing/showing functionality with seeded data in Admin and Manager Areas
+        public string OwnerId { get; set; }
+
+        public virtual ApplicationUser Owner { get; set; }
+
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }

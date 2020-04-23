@@ -21,6 +21,7 @@
 
         public virtual Service Service { get; set; }
 
+        // Each Salon gets all Services from its Category, but may not provide them all
         public bool Available { get; set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }

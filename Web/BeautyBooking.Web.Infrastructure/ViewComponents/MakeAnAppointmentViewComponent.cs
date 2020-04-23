@@ -6,11 +6,11 @@
     using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Mvc;
 
-    public class AppointmentsViewComponent : ViewComponent
+    public class MakeAnAppointmentViewComponent : ViewComponent
     {
         private readonly ISalonServicesService salonServicesService;
 
-        public AppointmentsViewComponent(ISalonServicesService salonServicesService)
+        public MakeAnAppointmentViewComponent(ISalonServicesService salonServicesService)
         {
             this.salonServicesService = salonServicesService;
         }
@@ -19,7 +19,6 @@
         {
             var viewModel = await this.salonServicesService.GetByIdAsync<SalonServiceViewModel>(salonId, serviceId);
 
-            // TODO:
             return this.View(viewModel);
         }
     }

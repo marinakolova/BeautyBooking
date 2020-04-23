@@ -17,13 +17,12 @@
                 return false;
             }
 
-            DateTime dt;
             bool parsed = DateTime.TryParseExact(
                             timeString,
                             GlobalConstants.DateTimeFormats.TimeFormat,
                             CultureInfo.InvariantCulture,
                             style: DateTimeStyles.AssumeUniversal,
-                            result: out dt);
+                            result: out _);
             if (!parsed)
             {
                 return false;
