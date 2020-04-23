@@ -25,6 +25,6 @@
 
         public virtual ICollection<SalonServiceViewModel> Services { get; set; }
 
-        public virtual ICollection<AppointmentOfSalonViewModel> Appointments { get; set; }
+        public virtual ICollection<AppointmentOfSalonViewModel> Appointments { get; set; } // TODO: Get them with ViewComponent!
     }
 }

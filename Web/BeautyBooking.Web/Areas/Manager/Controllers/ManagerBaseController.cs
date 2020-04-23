@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Roles = GlobalConstants.SalonManagerRoleName + "," + GlobalConstants.AdministratorRoleName)]
+    [Authorize(Roles = GlobalConstants.SalonManagerRoleName)]
     [Area("Manager")]
     public class ManagerBaseController : BaseController
     {

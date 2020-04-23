@@ -3,4 +3,44 @@
     this.ViewData["Title"] = "Admin Dashboard";
 }
 
-<img src="@GlobalConstants.Images.AdminDashboard" />
+<h3>Welcome to Admin Dashboard!</h3>
+<p>Here is a quick navigation:</p>
+<div>
+    <a asp-area="Administration" asp-controller="BlogPosts" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Blog Posts</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="BlogPosts" asp-action="AddBlogPost">Add New Blog Post</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Categories" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Categories</a>
+
+    <dvi class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="Categories" asp-action="AddCategory">Add New Category</a>
+    </dvi>
+
+    <a asp-area="Administration" asp-controller="Services" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Services</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="Services" asp-action="AddService">Add New Service</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Cities" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Cities</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="Cities" asp-action="AddCity">Add New City</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Salons" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Salons</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="Salons" asp-action="AddSalon">Add New Salon</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Appointments" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Appointments</a>
+</div>

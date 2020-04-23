@@ -55,5 +55,16 @@
 
             await this.salonServicesRepository.SaveChangesAsync();
         }
+
+        public async Task ChangeAvailableStatus(string salonId, int serviceId)
+        {
+            var salonService = await this.salonServicesRepository.All()
+                .Where(x => x.SalonId == salonId && x.ServiceId == serviceId)
+                .FirstOrDefaultAsync();
+
+            salonService.Available = !salonService.Available;
+
+            await this.salonServicesRepository.SaveChangesAsync();
+        }
     }
 }

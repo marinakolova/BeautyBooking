@@ -80,8 +80,6 @@
 
             public const string Footer = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/footer_rvuuls.jpg";
 
-            public const string AdminDashboard = "https://res.cloudinary.com/beauty-booking/image/upload/v1587535555/seo_file_folder_setup_setting-512_fiscca.png";
-
             // BlogPosts
             public const string SummerHealthyHair = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152733/Blog/Summer_Essentials_for_Healthy_Hair_lztxwm.jpg";
 

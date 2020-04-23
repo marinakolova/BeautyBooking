@@ -93,7 +93,6 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
-            // TODO: Make rating more precise
             var oldRating = salon.Rating;
             var oldRatersCount = salon.RatersCount;
 

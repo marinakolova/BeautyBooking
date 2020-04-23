@@ -36,7 +36,7 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Available</th>
-                    <th scope="col">Edit</th>
+                    <th scope="col">Change</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,10 +51,17 @@
                             }
                             else
                             {
-                        <span style="font-family:Arial, FontAwesome" class="text-danger">&#xf00d;</span>
+                                <span style="font-family:Arial, FontAwesome" class="text-danger">&#xf00d;</span>
                             }
                         </td>
-                        <td>Edit</td>
+                        <td>
+                            <form method="post">
+                                <button type="submit" class="btn btn-outline-info btn-sm"
+                                        asp-area="Manager" asp-controller="Salons" asp-action="ChangeServiceAvailableStatus" asp-route-salonId="@Model.Id" asp-route-serviceId="@service.ServiceId">
+                                    Change
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>
@@ -99,22 +106,32 @@
                                     <span class="badge badge-secondary">Pending</span>
                                 }
                             </td>
-                            <td>
-                                <form method="post">
-                                    <button type="submit" class="btn btn-success btn-sm"
-                                            asp-area="Manager" asp-controller="Salons" asp-action="ConfirmAppointment" asp-route-id="@appointment.Id" asp-route-salon="@Model.Id">
-                                        Confirm
-                                    </button>
-                                </form>
-                            </td>
-                            <td>
-                                <form method="post">
-                                    <button type="submit" class="btn btn-danger btn-sm"
-                                            asp-area="Manager" asp-controller="Salons" asp-action="DeclineAppointment" asp-route-id="@appointment.Id" asp-route-salon="@Model.Id">
-                                        Decline
-                                    </button>
-                                </form>
-                            </td>
+                            @if (appointment.DateTime.Date > DateTime.UtcNow.Date)
+                            {
+                                <td>
+                                    <form method="post">
+                                        <button type="submit" class="btn btn-success btn-sm"
+                                                asp-area="Manager" asp-controller="Salons" asp-action="ConfirmAppointment" asp-route-id="@appointment.Id" asp-route-salon="@Model.Id">
+                                            Confirm
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post">
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                asp-area="Manager" asp-controller="Salons" asp-action="DeclineAppointment" asp-route-id="@appointment.Id" asp-route-salon="@Model.Id">
+                                            Decline
+                                        </button>
+                                    </form>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>

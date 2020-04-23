@@ -10,5 +10,7 @@
         Task AddAsync(string salonId, IEnumerable<int> servicesIds);
 
         Task AddAsync(IEnumerable<string> salonsIds, int serviceId);
+
+        Task ChangeAvailableStatus(string salonId, int serviceId);
     }
 }

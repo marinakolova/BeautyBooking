@@ -1,7 +1,10 @@
 ﻿<!-- Sidebar -->
 <div class="bg-light border border-secondary" id="sidebar-wrapper">
-    <div class="sidebar-heading"><strong><u>Admin Dashboard</u></strong></div>
+    <div class="sidebar-heading"><strong><u>Admin</u></strong></div>
     <div class="list-group list-group-flush">
+
+        <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index"
+           class="list-group-item list-group-item-action bg-light">Dashboard</a>
 
         <a asp-area="Administration" asp-controller="BlogPosts" asp-action="Index"
            class="list-group-item list-group-item-action bg-light">Blog Posts</a>
