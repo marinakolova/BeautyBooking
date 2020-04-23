@@ -110,7 +110,7 @@
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
-        public async Task RateAppointment(string id, double rateValue)
+        public async Task RateAppointment(string id)
         {
             var appointment = await this.appointmentsRepository.All()
                 .Where(x => x.Id == id)

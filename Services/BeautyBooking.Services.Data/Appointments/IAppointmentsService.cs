@@ -23,6 +23,6 @@
 
         Task DeclineAsync(string id);
 
-        Task RateAppointment(string id, double rateValue);
+        Task RateAppointment(string id);
     }
 }

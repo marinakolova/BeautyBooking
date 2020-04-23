@@ -24,7 +24,7 @@
                         <span class="fa fa-star-o" data-rating="5"></span>
                         <input type="hidden" name="whatever1" class="rating-value" value="@Model.Rating">
                     </span>
-                    <span>&nbsp;&nbsp; ( @Model.Rating / 5.0 ) from @Model.RatersCount votes</span>
+                    <span>&nbsp; ( @Model.Rating.ToString("F") / 5.00 ) from @Model.RatersCount votes</span>
                 </div>
             </div>
         </div>

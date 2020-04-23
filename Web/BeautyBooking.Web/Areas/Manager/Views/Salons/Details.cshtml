@@ -5,7 +5,7 @@
 
 <div class="row row-eq-height">
     <!-- Info Box -->
-    <div class="col-lg-4 info_box_col">
+    <div class="col-lg-5 info_box_col">
         <div class="info_box">
             <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
             <div class="info_content">
@@ -23,13 +23,13 @@
                         <span class="fa fa-star-o" data-rating="5"></span>
                         <input type="hidden" name="whatever1" class="rating-value" value="@Model.Rating">
                     </span>
-                    <span>&nbsp;&nbsp; ( @Model.Rating / 5.0 ) from @Model.RatersCount votes</span>
+                    <span>&nbsp; ( @Model.Rating.ToString("F") / 5.00 ) from @Model.RatersCount votes</span>
                 </div>
             </div>
         </div>
     </div>
     <!-- Panel -->
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         <h1>Services:</h1>
         <table class="table table-bordered">
             <thead class="thead-light">

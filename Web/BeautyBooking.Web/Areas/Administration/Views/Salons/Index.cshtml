@@ -33,7 +33,7 @@
                 <td>@salon.CategoryName</td>
                 <td>@salon.CityName</td>
                 <td>@salon.Address</td>
-                <td>@salon.Rating / 5</td>
+                <td><strong>@salon.Rating.ToString("F") / 5.00</strong> from <strong>@salon.RatersCount</strong> votes</td>
                 <td>@salon.AppointmentsCount</td>                
             </tr>
         }

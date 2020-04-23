@@ -1,0 +1,10 @@
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsSimpleListViewModel
+@{
+    this.ViewData["Title"] = "Default";
+}
+
+@foreach (var salon in Model.Salons)
+{
+    <a asp-area="Manager" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id"
+       class="list-group-item list-group-item-action bg-light">@salon.Name</a>
+}

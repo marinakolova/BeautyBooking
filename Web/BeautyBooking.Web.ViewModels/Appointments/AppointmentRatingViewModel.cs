@@ -27,7 +27,7 @@
         public bool? IsSalonRatedByTheUser { get; set; }
 
         [Required]
-        [Range(1.0, 5.0, ErrorMessage = GlobalConstants.ErrorMessages.Rating)]
-        public double RateValue { get; set; }
+        [Range(1, 5, ErrorMessage = GlobalConstants.ErrorMessages.Rating)]
+        public int RateValue { get; set; }
     }
 }

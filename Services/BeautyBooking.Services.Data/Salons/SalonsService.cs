@@ -87,7 +87,7 @@
             await this.salonsRepository.SaveChangesAsync();
         }
 
-        public async Task RateSalon(string id, double rateValue)
+        public async Task RateSalon(string id, int rateValue)
         {
             var salon = await this.salonsRepository.All()
                 .Where(x => x.Id == id)
@@ -95,10 +95,13 @@
 
             // TODO: Make rating more precise
             var oldRating = salon.Rating;
-            var ratersCount = salon.RatersCount;
-            ratersCount++;
-            var newRating = (oldRating + rateValue) / ratersCount;
+            var oldRatersCount = salon.RatersCount;
+
+            var newRatersCount = oldRatersCount + 1;
+            var newRating = (oldRating + rateValue) / newRatersCount;
+
             salon.Rating = newRating;
+            salon.RatersCount = newRatersCount;
 
             await this.salonsRepository.SaveChangesAsync();
         }

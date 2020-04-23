@@ -12,9 +12,9 @@
 
 @if (this.SignInManager.IsSignedIn(this.User))
 {
-    
+    // TODO: Remove Admin when done testing   
     if (this.User.IsInRole(GlobalConstants.SalonManagerRoleName) || this.User.IsInRole(GlobalConstants.AdministratorRoleName))
     {
-        <li class="menu_item"><a asp-area="Manager" asp-controller="Salons" asp-action="Index">Salon Manager</a></li>
+        <li class="menu_item"><a asp-area="Manager" asp-controller="Dashboard" asp-action="Index">Salon Manager</a></li>
     }
 }

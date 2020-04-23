@@ -3,64 +3,78 @@
     this.ViewData["Title"] = "Rate Past Appointment";
 }
 
-<div class="row row-eq-height">
-    <!-- Info Box -->
-    <div class="col-lg-4 info_box_col">
-        <div class="info_box">
-            <div class="info_image"><img src="@Model.SalonImageUrl" alt=""></div>
-            <div class="info_content">
-                <div class="info_title">@Model.SalonName</div>
-                <div class="info_text">Category: <strong>@Model.SalonCategoryName</strong></div>
-                <div class="info_text">City: <strong>@Model.SalonCityName</strong></div>
-                <div class="info_text">Address: <strong>@Model.SalonAddress</strong></div>
+@if (Model.IsSalonRatedByTheUser == true)
+{
+    <h3>You already rated the Salon for this appointment!</h3>
+
+    <div class="pt-3">
+        <a class="btn btn-info" asp-area="" asp-controller="Appointments" asp-action="Index">
+            Back To Appointments
+        </a>
+    </div>
+}
+else
+{
+    <div class="row row-eq-height">
+        <!-- Info Box -->
+        <div class="col-lg-4 info_box_col">
+            <div class="info_box">
+                <div class="info_image"><img src="@Model.SalonImageUrl" alt=""></div>
+                <div class="info_content">
+                    <div class="info_title">@Model.SalonName</div>
+                    <div class="info_text">Category: <strong>@Model.SalonCategoryName</strong></div>
+                    <div class="info_text">City: <strong>@Model.SalonCityName</strong></div>
+                    <div class="info_text">Address: <strong>@Model.SalonAddress</strong></div>
+                </div>
+            </div>
+        </div>
+        <!-- Panel -->
+        <div class="col-lg-6">
+            <h2>
+                How would you rate
+                <br />experience at this salon:
+            </h2>
+            <div class="col-lg-6">
+                <form method="post">
+                    <div class="row my-3">
+                        <p>Choose here:</p>
+                    </div>
+                    <div class="row my-3">
+                        <div class="star-rating">
+                            <span class="fa fa-star-o" data-rating="1"></span>
+                            <span class="fa fa-star-o" data-rating="2"></span>
+                            <span class="fa fa-star-o" data-rating="3"></span>
+                            <span class="fa fa-star-o" data-rating="4"></span>
+                            <span class="fa fa-star-o" data-rating="5"></span>
+                            <input type="hidden" class="rating-value form-control form-control-sm" id="selectedRating" value="0.0" />
+                            <input type="number" class="form-control form-control-sm disabled" value="0"
+                                   asp-for="@Model.RateValue" required readonly />
+                            <span asp-validation-for="RateValue" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" hidden>
+                        <input asp-for="@Model.Id" value="@Model.Id" class="form-control" hidden>
+                    </div>
+                    <div class="row my-3">
+                        <button type="submit" class="btn btn-outline-success"
+                                asp-area="" asp-controller="Appointments" asp-action="RateSalon">
+                            Rate!
+                        </button>
+                    </div>
+                    <div class="row my-3">
+                        <div>
+                            <a class="btn btn-outline-dark" asp-area="" asp-controller="Appointments" asp-action="Index">
+                                Not Now
+                            </a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- Panel -->
-    <div class="col-lg-6">
-        <h2>
-            How would you rate
-            <br />experience at this salon:
-        </h2>
-        <div class="col-lg-6">
-            <form method="post">
-                <div class="row my-3">
-                    <p>Choose here:</p>
-                </div>
-                <div class="row my-3">
-                    <div class="star-rating">
-                        <span class="fa fa-star-o" data-rating="1"></span>
-                        <span class="fa fa-star-o" data-rating="2"></span>
-                        <span class="fa fa-star-o" data-rating="3"></span>
-                        <span class="fa fa-star-o" data-rating="4"></span>
-                        <span class="fa fa-star-o" data-rating="5"></span>
-                        <input type="hidden" class="rating-value form-control form-control-sm" id="selectedRating" value="0.0" />
-                        <input type="number" class="form-control form-control-sm disabled" value="0"
-                               asp-for="@Model.RateValue" required readonly />
-                        <span asp-validation-for="RateValue" class="text-danger"></span>
-                    </div>
-                </div>
-                <div>
-                    <input asp-for="@Model.SalonId" value="@Model.SalonId" class="form-control" hidden>
-                    <input asp-for="@Model.Id" value="@Model.Id" class="form-control" hidden>
-                </div>
-                <div class="row my-3">
-                    <button type="submit" class="btn btn-outline-success"
-                            asp-area="" asp-controller="Appointments" asp-action="RateSalon">
-                        Rate!
-                    </button>
-                </div>
-                <div class="row my-3">
-                    <div>
-                        <a class="btn btn-outline-dark" asp-area="" asp-controller="Appointments" asp-action="Index">
-                            Not Now
-                        </a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+}
+
 
 @section Scripts {
     <script src="~/js/rating-responsive.js" asp-append-version="true"></script>

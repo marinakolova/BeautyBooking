@@ -18,15 +18,6 @@
             this.appointmentsService = appointmentsService;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            var viewModel = new SalonsListViewModel
-            {
-                Salons = await this.salonsService.GetAllAsync<SalonViewModel>(),
-            };
-            return this.View(viewModel);
-        }
-
         public async Task<IActionResult> Details(string id)
         {
             var viewModel = await this.salonsService.GetByIdAsync<SalonWithAppointmentsViewModel>(id);

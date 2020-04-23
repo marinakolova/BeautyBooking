@@ -96,7 +96,12 @@
                 return this.RedirectToAction("RatePastAppointment", new { rating.Id });
             }
 
-            await this.appointmentsService.RateAppointment(rating.Id, rating.RateValue);
+            if (rating.IsSalonRatedByTheUser == true)
+            {
+                return this.RedirectToAction("RatePastAppointment", new { rating.Id });
+            }
+
+            await this.appointmentsService.RateAppointment(rating.Id);
             await this.salonsService.RateSalon(rating.SalonId, rating.RateValue);
 
             var id = rating.SalonId; // Redirection doesn't work with rating.SalonId;

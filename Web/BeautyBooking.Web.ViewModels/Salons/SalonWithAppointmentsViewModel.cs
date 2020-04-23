@@ -25,6 +25,6 @@
 
         public virtual ICollection<SalonServiceViewModel> Services { get; set; }
 
-        public virtual ICollection<SalonAppointmentViewModel> Appointments { get; set; }
+        public virtual ICollection<AppointmentOfSalonViewModel> Appointments { get; set; }
     }
 }

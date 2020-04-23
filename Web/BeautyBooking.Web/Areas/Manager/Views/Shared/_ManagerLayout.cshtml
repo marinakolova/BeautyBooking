@@ -34,13 +34,13 @@
     <div class="super_container">
 
         <!-- Menu -->
-        <partial name="_AdminMenuPartial" />
+        <partial name="_ManagerMenuPartial" />
 
         <!-- Home -->
-        <partial name="_AdminHeaderPartial" />
+        <partial name="_ManagerHeaderPartial" />
 
         <div style="padding-top: 90px;">
-
+            
             <div class="text-center">
                 <a style="color: #BA55D3" asp-area="" asp-controller="Home" asp-action="Index"><strong>BACK TO HOME PAGE</strong></a>
             </div>
@@ -48,7 +48,7 @@
             <div class="d-flex" id="wrapper">
 
                 <!-- Sidebar -->
-                <partial name="_AdminSidebarPartial" />
+                <partial name="_ManagerSidebarPartial" />
 
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
@@ -62,7 +62,10 @@
             </div>
         </div>
         <hr class="bg-dark mx-4" style="height: 6px;" />
-        
+
+        <!-- Footer -->
+        <partial name="_FooterPartial" />
+
     </div>
 
     <environment names="Development">

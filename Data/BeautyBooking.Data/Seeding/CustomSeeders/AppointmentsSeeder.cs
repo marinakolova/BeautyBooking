@@ -24,7 +24,7 @@
             var userId = dbContext.Users.Where(x => x.Email == GlobalConstants.AccountsSeeding.UserEmail).FirstOrDefault().Id;
 
             // Get Salons Ids
-            var salonsIds = await dbContext.Salons.Where(x => x.CityId == 1).Select(x => x.Id).Take(5).ToListAsync();
+            var salonsIds = await dbContext.Salons.Where(x => x.CityId == 1).Select(x => x.Id).Take(10).ToListAsync();
 
             foreach (var salonId in salonsIds)
             {
@@ -46,6 +46,17 @@
                 {
                     Id = Guid.NewGuid().ToString(),
                     DateTime = DateTime.UtcNow.AddDays(-5),
+                    UserId = userId,
+                    SalonId = salonId,
+                    ServiceId = serviceId,
+                    Confirmed = true,
+                });
+
+                // More Past Appointments for testing the RatePastAppointment option
+                appointments.Add(new Appointment
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    DateTime = DateTime.UtcNow.AddDays(-10),
                     UserId = userId,
                     SalonId = salonId,
                     ServiceId = serviceId,
