@@ -7,34 +7,24 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
-    using BeautyBooking.Services.Cloudinary;
     using BeautyBooking.Services.Mapping;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
 
     public class SalonsService : ISalonsService
     {
         private readonly IDeletableEntityRepository<Salon> salonsRepository;
-        private readonly ICloudinaryService cloudinaryService;
 
-        public SalonsService(
-            IDeletableEntityRepository<Salon> salonsRepository,
-            ICloudinaryService cloudinaryService)
+        public SalonsService(IDeletableEntityRepository<Salon> salonsRepository)
         {
             this.salonsRepository = salonsRepository;
-            this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            IQueryable<Salon> query =
-                this.salonsRepository.All().OrderBy(x => x.Name);
-            if (count.HasValue)
-            {
-                query = query.Take(count.Value);
-            }
-
-            return await query.To<T>().ToListAsync();
+            var salons = await this.salonsRepository.All()
+                .OrderBy(x => x.Name)
+                .To<T>().ToListAsync();
+            return salons;
         }
 
         public async Task<IEnumerable<T>> GetAllByCategoryAsync<T>(int categoryId)
@@ -52,7 +42,6 @@
                 .Where(x => x.CategoryId == categoryId)
                 .Select(x => x.Id)
                 .ToListAsync();
-
             return salonsIds;
         }
 
@@ -64,10 +53,8 @@
             return salon;
         }
 
-        public async Task<string> AddAsync(string name, int categoryId, int cityId, string address, IFormFile image)
+        public async Task<string> AddAsync(string name, int categoryId, int cityId, string address, string imageUrl)
         {
-            var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, name);
-
             var salon = new Salon
             {
                 Id = Guid.NewGuid().ToString(),
@@ -77,11 +64,11 @@
                 Address = address,
                 ImageUrl = imageUrl,
                 Rating = 0,
+                RatersCount = 0,
             };
 
             await this.salonsRepository.AddAsync(salon);
             await this.salonsRepository.SaveChangesAsync();
-
             return salon.Id;
         }
 
@@ -92,7 +79,6 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             this.salonsRepository.Delete(salon);
-
             await this.salonsRepository.SaveChangesAsync();
         }
 

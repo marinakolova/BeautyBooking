@@ -1,5 +1,6 @@
 ﻿namespace BeautyBooking.Services.Data.Appointments
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@
 
         Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId);
 
-        Task AddAsync(string userId, string salonId, int serviceId, string date, string time);
+        Task AddAsync(string userId, string salonId, int serviceId, DateTime dateTime);
 
         Task DeleteAsync(string id);
 

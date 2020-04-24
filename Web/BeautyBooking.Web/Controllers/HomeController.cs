@@ -15,7 +15,7 @@
         private readonly IBlogPostsService blogPostsService;
 
         public HomeController(
-            ICategoriesService categoriesService, 
+            ICategoriesService categoriesService,
             IBlogPostsService blogPostsService)
         {
             this.categoriesService = categoriesService;

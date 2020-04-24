@@ -3,8 +3,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNetCore.Http;
-
     public interface IBlogPostsService
     {
         Task<int> GetCountAsync();
@@ -13,7 +11,7 @@
 
         Task<T> GetByIdAsync<T>(int id);
 
-        Task AddAsync(string title, string content, string author, IFormFile image);
+        Task AddAsync(string title, string content, string author, string imageUrl);
 
         Task DeleteAsync(int id);
     }

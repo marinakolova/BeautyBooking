@@ -2,6 +2,8 @@
 {
     using System.Threading.Tasks;
 
+    using BeautyBooking.Common;
+    using BeautyBooking.Services.Cloudinary;
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Services.Data.Cities;
     using BeautyBooking.Services.Data.Salons;
@@ -19,19 +21,22 @@
         private readonly ICitiesService citiesService;
         private readonly IServicesService servicesService;
         private readonly ISalonServicesService salonServicesService;
+        private readonly ICloudinaryService cloudinaryService;
 
         public SalonsController(
             ISalonsService salonsService,
             ICategoriesService categoriesService,
             ICitiesService citiesService,
             IServicesService servicesService,
-            ISalonServicesService salonServicesService)
+            ISalonServicesService salonServicesService,
+            ICloudinaryService cloudinaryService)
         {
             this.salonsService = salonsService;
             this.categoriesService = categoriesService;
             this.citiesService = citiesService;
             this.servicesService = servicesService;
             this.salonServicesService = salonServicesService;
+            this.cloudinaryService = cloudinaryService;
         }
 
         public async Task<IActionResult> Index()
@@ -62,21 +67,23 @@
                 return this.View(input);
             }
 
+            string imageUrl;
             try
             {
-                // Add Salon
-                var salonId = await this.salonsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Image);
-
-                // Add to the Salon all Services from its Category
-                var servicesIds = await this.servicesService.GetAllByCategoryAsync(input.CategoryId); // TODO: Refactor this
-                await this.salonServicesService.AddAsync(salonId, servicesIds);
+                imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Name);
             }
             catch (System.Exception)
             {
                 // In case of missing Cloudinary configuration from appsettings.json
-                return this.RedirectToAction("Index");
-                throw;
+                imageUrl = GlobalConstants.Images.CloudinaryMissing;
             }
+
+            // Add Salon
+            var salonId = await this.salonsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, imageUrl);
+
+            // Add to the Salon all Services from its Category
+            var servicesIds = await this.servicesService.GetAllByCategoryAsync(input.CategoryId); // TODO: Refactor this
+            await this.salonServicesService.AddAsync(salonId, servicesIds);
 
             return this.RedirectToAction("Index");
         }

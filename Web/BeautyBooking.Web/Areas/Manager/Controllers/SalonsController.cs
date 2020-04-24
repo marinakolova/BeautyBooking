@@ -40,17 +40,17 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmAppointment(string id, string salon) // TODO: Change to salonId
+        public async Task<IActionResult> ConfirmAppointment(string id, string salonId)
         {
             await this.appointmentsService.ConfirmAsync(id);
-            return this.RedirectToAction("Details", new { id = salon });
+            return this.RedirectToAction("Details", new { id = salonId });
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeclineAppointment(string id, string salon) // TODO: Change to salonId
+        public async Task<IActionResult> DeclineAppointment(string id, string salonId)
         {
             await this.appointmentsService.DeclineAsync(id);
-            return this.RedirectToAction("Details", new { id = salon });
+            return this.RedirectToAction("Details", new { id = salonId });
         }
     }
 }

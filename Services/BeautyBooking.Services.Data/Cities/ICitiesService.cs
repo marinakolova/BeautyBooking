@@ -7,12 +7,6 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>();
 
-        Task<IEnumerable<string>> GetAllNamesAsync();
-
-        Task<T> GetByIdAsync<T>(int id);
-
-        Task<int> GetIdByNameAsync(string name);
-
         Task AddAsync(string name);
 
         Task DeleteAsync(int id);

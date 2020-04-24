@@ -6,22 +6,16 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
-    using BeautyBooking.Services.Cloudinary;
     using BeautyBooking.Services.Mapping;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
 
     public class BlogPostsService : IBlogPostsService
     {
         private readonly IDeletableEntityRepository<BlogPost> blogPostsRepository;
-        private readonly ICloudinaryService cloudinaryService;
 
-        public BlogPostsService(
-            IDeletableEntityRepository<BlogPost> blogPostsRepository,
-            ICloudinaryService cloudinaryService)
+        public BlogPostsService(IDeletableEntityRepository<BlogPost> blogPostsRepository)
         {
             this.blogPostsRepository = blogPostsRepository;
-            this.cloudinaryService = cloudinaryService;
         }
 
         public async Task<int> GetCountAsync()
@@ -32,7 +26,8 @@
         public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
         {
             IQueryable<BlogPost> query =
-                this.blogPostsRepository.All().OrderByDescending(x => x.CreatedOn);
+                this.blogPostsRepository.All()
+                .OrderByDescending(x => x.CreatedOn);
             if (count.HasValue)
             {
                 query = query.Take(count.Value);
@@ -49,10 +44,8 @@
             return blogPost;
         }
 
-        public async Task AddAsync(string title, string content, string author, IFormFile image)
+        public async Task AddAsync(string title, string content, string author, string imageUrl)
         {
-            var imageUrl = await this.cloudinaryService.UploadPictureAsync(image, title);
-
             await this.blogPostsRepository.AddAsync(new BlogPost
             {
                 Title = title,
@@ -60,7 +53,6 @@
                 Author = author,
                 ImageUrl = imageUrl,
             });
-
             await this.blogPostsRepository.SaveChangesAsync();
         }
 
@@ -71,7 +63,6 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             this.blogPostsRepository.Delete(blogPost);
-
             await this.blogPostsRepository.SaveChangesAsync();
         }
     }

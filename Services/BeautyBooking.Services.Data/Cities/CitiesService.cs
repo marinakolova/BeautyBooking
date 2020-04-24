@@ -20,38 +20,10 @@
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            IQueryable<City> query =
-                this.citiesRepository.All().OrderBy(x => x.Id);
-
-            return await query.To<T>().ToListAsync();
-        }
-
-        public async Task<IEnumerable<string>> GetAllNamesAsync()
-        {
-            ICollection<string> names =
-                await this.citiesRepository.All()
+            var cities = await this.citiesRepository.All()
                 .OrderBy(x => x.Id)
-                .Select(x => x.Name)
-                .ToListAsync();
-
-            return names;
-        }
-
-        public async Task<T> GetByIdAsync<T>(int id)
-        {
-            var city = await this.citiesRepository.All()
-                .Where(x => x.Id == id)
-                .To<T>().FirstOrDefaultAsync();
-            return city;
-        }
-
-        public async Task<int> GetIdByNameAsync(string name)
-        {
-            var cityId = await this.citiesRepository.All()
-                .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
-                .Select(x => x.Id)
-                .FirstOrDefaultAsync();
-            return cityId;
+                .To<T>().ToListAsync();
+            return cities;
         }
 
         public async Task AddAsync(string name)
@@ -60,7 +32,6 @@
             {
                 Name = name,
             });
-
             await this.citiesRepository.SaveChangesAsync();
         }
 
@@ -71,7 +42,6 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             this.citiesRepository.Delete(city);
-
             await this.citiesRepository.SaveChangesAsync();
         }
     }

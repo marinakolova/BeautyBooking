@@ -45,7 +45,7 @@
                                 <form method="post">
                                     <button type="submit" class="btn btn-success btn-sm"
                                             asp-area="Manager" asp-controller="Salons" asp-action="ConfirmAppointment" 
-                                            asp-route-id="@appointment.Id" asp-route-salon="@appointment.SalonId">
+                                            asp-route-id="@appointment.Id" asp-route-salonId="@appointment.SalonId">
                                         Confirm
                                     </button>
                                 </form>
@@ -54,7 +54,7 @@
                                 <form method="post">
                                     <button type="submit" class="btn btn-danger btn-sm"
                                             asp-area="Manager" asp-controller="Salons" asp-action="DeclineAppointment" 
-                                            asp-route-id="@appointment.Id" asp-route-salon="@appointment.SalonId">
+                                            asp-route-id="@appointment.Id" asp-route-salonId="@appointment.SalonId">
                                         Decline
                                     </button>
                                 </form>

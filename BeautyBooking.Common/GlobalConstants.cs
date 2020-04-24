@@ -8,7 +8,6 @@
 
         public const string SalonManagerRoleName = "Manager";
 
-        // Added here so the project could be started even with missing configuration from appsettings.json
         public const string CloudName = "beauty-booking";
 
         public static class AccountsSeeding
@@ -82,6 +81,8 @@
             public const string CoverBackground = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874218/cover-bg_nnwh6d.jpg";
 
             public const string Footer = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/footer_rvuuls.jpg";
+
+            public const string CloudinaryMissing = "https://res.cloudinary.com/beauty-booking/image/upload/v1587708556/cloudinary_veibtu.png";
 
             // BlogPosts
             public const string SummerHealthyHair = "https://res.cloudinary.com/beauty-booking/image/upload/v1587152733/Blog/Summer_Essentials_for_Healthy_Hair_lztxwm.jpg";

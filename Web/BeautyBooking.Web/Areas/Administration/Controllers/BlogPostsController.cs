@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using BeautyBooking.Common;
+    using BeautyBooking.Services.Cloudinary;
     using BeautyBooking.Services.Data.BlogPosts;
     using BeautyBooking.Web.ViewModels.BlogPosts;
     using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,14 @@
     public class BlogPostsController : AdministrationController
     {
         private readonly IBlogPostsService blogPostsService;
+        private readonly ICloudinaryService cloudinaryService;
 
-        public BlogPostsController(IBlogPostsService blogPostsService)
+        public BlogPostsController(
+            IBlogPostsService blogPostsService,
+            ICloudinaryService cloudinaryService)
         {
             this.blogPostsService = blogPostsService;
+            this.cloudinaryService = cloudinaryService;
         }
 
         public async Task<IActionResult> Index()
@@ -38,17 +43,18 @@
                 return this.View(input);
             }
 
+            string imageUrl;
             try
             {
-                await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, input.Image);
+                imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Title);
             }
             catch (System.Exception)
             {
                 // In case of missing Cloudinary configuration from appsettings.json
-                return this.RedirectToAction("Index");
-                throw;
+                imageUrl = GlobalConstants.Images.CloudinaryMissing;
             }
 
+            await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, imageUrl);
             return this.RedirectToAction("Index");
         }
 

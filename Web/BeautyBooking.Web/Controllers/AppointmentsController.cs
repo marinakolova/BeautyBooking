@@ -1,10 +1,12 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
 
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Appointments;
     using BeautyBooking.Services.Data.Salons;
+    using BeautyBooking.Services.DateTimeParser;
     using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -13,18 +15,21 @@
     [Authorize]
     public class AppointmentsController : BaseController
     {
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IAppointmentsService appointmentsService;
+        private readonly IDateTimeParserService dateTimeParserService;
         private readonly ISalonsService salonsService;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public AppointmentsController(
-            UserManager<ApplicationUser> userManager,
+            IDateTimeParserService dateTimeParserService,
             IAppointmentsService appointmentsService,
-            ISalonsService salonsService)
+            ISalonsService salonsService,
+            UserManager<ApplicationUser> userManager)
         {
-            this.userManager = userManager;
+            this.dateTimeParserService = dateTimeParserService;
             this.appointmentsService = appointmentsService;
             this.salonsService = salonsService;
+            this.userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -34,7 +39,7 @@
 
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments = 
+                Appointments =
                     await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
             };
             return this.View(viewModel);
@@ -58,10 +63,21 @@
                 return this.RedirectToAction("MakeAnAppointment", new { input.SalonId, input.ServiceId });
             }
 
+            DateTime dateTime;
+            try
+            {
+                dateTime = this.dateTimeParserService.ConvertStrings(input.Date, input.Time);
+            }
+            catch (System.Exception)
+            {
+                return this.RedirectToAction("MakeAnAppointment", new { input.SalonId, input.ServiceId });
+                throw;
+            }
+
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
 
-            await this.appointmentsService.AddAsync(userId, input.SalonId, input.ServiceId, input.Date, input.Time);
+            await this.appointmentsService.AddAsync(userId, input.SalonId, input.ServiceId, dateTime);
 
             return this.RedirectToAction("Index");
         }
@@ -99,19 +115,18 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.RedirectToAction("RatePastAppointment", new { rating.Id });
+                return this.RedirectToAction("RatePastAppointment", new { id = rating.Id });
             }
 
             if (rating.IsSalonRatedByTheUser == true)
             {
-                return this.RedirectToAction("RatePastAppointment", new { rating.Id });
+                return this.RedirectToAction("RatePastAppointment", new { id = rating.Id });
             }
 
             await this.appointmentsService.RateAppointment(rating.Id);
             await this.salonsService.RateSalon(rating.SalonId, rating.RateValue);
 
-            var id = rating.SalonId; // Redirection doesn't work with rating.SalonId;
-            return this.RedirectToAction("Details", "Salons", new { id });
+            return this.RedirectToAction("Details", "Salons", new { id = rating.SalonId });
         }
     }
 }

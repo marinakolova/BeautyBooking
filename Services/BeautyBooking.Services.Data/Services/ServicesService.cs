@@ -18,16 +18,13 @@
             this.servicesRepository = servicesRepository;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            IQueryable<Service> query =
-                this.servicesRepository.All().OrderBy(x => x.CategoryId).ThenBy(x => x.Id);
-            if (count.HasValue)
-            {
-                query = query.Take(count.Value);
-            }
-
-            return await query.To<T>().ToListAsync();
+            var services = await this.servicesRepository.All()
+                .OrderBy(x => x.CategoryId)
+                .ThenBy(x => x.Id)
+                .To<T>().ToListAsync();
+            return services;
         }
 
         public async Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId)
@@ -38,16 +35,7 @@
                 .OrderBy(x => x.Id)
                 .Select(x => x.Id)
                 .ToListAsync();
-
             return servicesIds;
-        }
-
-        public async Task<T> GetByIdAsync<T>(int id)
-        {
-            var service = await this.servicesRepository.All()
-                .Where(x => x.Id == id)
-                .To<T>().FirstOrDefaultAsync();
-            return service;
         }
 
         public async Task<int> AddAsync(string name, int categoryId, string description)
@@ -58,10 +46,8 @@
                 CategoryId = categoryId,
                 Description = description,
             };
-
             await this.servicesRepository.AddAsync(service);
             await this.servicesRepository.SaveChangesAsync();
-
             return service.Id;
         }
 
@@ -72,7 +58,6 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             this.servicesRepository.Delete(service);
-
             await this.servicesRepository.SaveChangesAsync();
         }
     }

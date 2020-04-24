@@ -7,21 +7,16 @@
 
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
-    using BeautyBooking.Services.DateTimeParser;
     using BeautyBooking.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
     public class AppointmentsService : IAppointmentsService
     {
         private readonly IDeletableEntityRepository<Appointment> appointmentsRepository;
-        private readonly IDateTimeParserService dateTimeParserService;
 
-        public AppointmentsService(
-            IDeletableEntityRepository<Appointment> appointmentsRepository,
-            IDateTimeParserService dateTimeParserService)
+        public AppointmentsService(IDeletableEntityRepository<Appointment> appointmentsRepository)
         {
             this.appointmentsRepository = appointmentsRepository;
-            this.dateTimeParserService = dateTimeParserService;
         }
 
         public async Task<T> GetByIdAsync<T>(string id)
@@ -52,7 +47,8 @@
         public async Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId)
         {
             var appointments = await this.appointmentsRepository.All()
-                .Where(x => x.UserId == userId && x.DateTime > DateTime.UtcNow)
+                .Where(x => x.UserId == userId
+                        && x.DateTime.Date > DateTime.UtcNow.Date)
                 .OrderBy(x => x.DateTime)
                 .To<T>().ToListAsync();
             return appointments;
@@ -61,16 +57,16 @@
         public async Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId)
         {
             var appointments = await this.appointmentsRepository.All()
-                .Where(x => x.UserId == userId && x.DateTime < DateTime.UtcNow && x.Confirmed == true)
+                .Where(x => x.UserId == userId
+                        && x.DateTime.Date < DateTime.UtcNow.Date
+                        && x.Confirmed == true)
                 .OrderBy(x => x.DateTime)
                 .To<T>().ToListAsync();
             return appointments;
         }
 
-        public async Task AddAsync(string userId, string salonId, int serviceId, string date, string time)
+        public async Task AddAsync(string userId, string salonId, int serviceId, DateTime dateTime)
         {
-            var dateTime = this.dateTimeParserService.ConvertStrings(date, time);
-
             await this.appointmentsRepository.AddAsync(new Appointment
             {
                 Id = Guid.NewGuid().ToString(),
@@ -79,15 +75,16 @@
                 SalonId = salonId,
                 ServiceId = serviceId,
             });
-
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(string id)
         {
-            var appointment = await this.appointmentsRepository.All()
-                .Where(x => x.Id == id).FirstOrDefaultAsync();
-            appointment.IsDeleted = true;
+            var appointment = await this.appointmentsRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            this.appointmentsRepository.Delete(appointment);
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
@@ -114,7 +111,6 @@
             var appointment = await this.appointmentsRepository.All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
-
             appointment.IsSalonRatedByTheUser = true;
             await this.appointmentsRepository.SaveChangesAsync();
         }
