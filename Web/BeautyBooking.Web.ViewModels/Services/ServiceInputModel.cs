@@ -14,7 +14,7 @@
         public string Name { get; set; }
 
         [Required]
-        public string Category { get; set; } // TODO: Get it with name and id for the select list
+        public int CategoryId { get; set; }
 
         [Required]
         [StringLength(

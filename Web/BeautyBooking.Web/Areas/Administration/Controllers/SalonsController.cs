@@ -2,14 +2,15 @@
 {
     using System.Threading.Tasks;
 
-    using BeautyBooking.Common;
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Services.Data.Cities;
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
     using BeautyBooking.Web.ViewModels.Salons;
+    using BeautyBooking.Web.ViewModels.SelectLists;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class SalonsController : AdministrationController
     {
@@ -44,12 +45,11 @@
 
         public async Task<IActionResult> AddSalon()
         {
-            // TODO: Use ViewComponent?
-            var categoriesNames = await this.categoriesService.GetAllNamesAsync();
-            var citiesNames = await this.citiesService.GetAllNamesAsync();
+            var categories = await this.categoriesService.GetAllAsync<CategorySelectListViewModel>();
+            var cities = await this.citiesService.GetAllAsync<CitySelectListViewModel>();
 
-            this.ViewData["Categories"] = categoriesNames;
-            this.ViewData["Cities"] = citiesNames;
+            this.ViewData["Categories"] = new SelectList(categories, "Id", "Name");
+            this.ViewData["Cities"] = new SelectList(cities, "Id", "Name");
 
             return this.View();
         }
@@ -62,16 +62,25 @@
                 return this.View(input);
             }
 
-            // Get CategoryId and CityId
-            var categoryId = await this.categoriesService.GetIdByNameAsync(input.Category);
-            var cityId = await this.citiesService.GetIdByNameAsync(input.City);
-
             // Add Salon
-            var salonId = await this.salonsService.AddAsync(input.Name, categoryId, cityId, input.Address, input.Image);
+            var salonId = await this.salonsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Image);
 
             // Add to the Salon all Services from its Category
-            var servicesIds = await this.servicesService.GetAllByCategoryAsync(categoryId);
+            var servicesIds = await this.servicesService.GetAllByCategoryAsync(input.CategoryId);
             await this.salonServicesService.AddAsync(salonId, servicesIds);
+
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteSalon(string id)
+        {
+            if (id.StartsWith("seeded"))
+            {
+                return this.RedirectToAction("Index");
+            }
+
+            await this.salonsService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");
         }

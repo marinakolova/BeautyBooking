@@ -1,7 +1,7 @@
 ﻿@model BeautyBooking.Web.ViewModels.Services.ServiceInputModel
 @{
     this.ViewData["Title"] = "Add Service";
-    var categories = this.ViewData["Categories"] as IEnumerable<string>;
+    var categories = this.ViewData["Categories"] as SelectList;
 }
 
 <div class="col-lg-6">
@@ -17,14 +17,9 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-10">
-                <select asp-for="@Model.Category" name="Category" class="form-control" required="required">
-                    <option selected="selected" disabled="disabled">Select Category</option>
-                    @foreach (var category in categories)
-                    {
-                        <option value="@category">@category</option>
-                    }
+                <select asp-for="@Model.CategoryId" class="form-control" asp-items="@categories">
                 </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">

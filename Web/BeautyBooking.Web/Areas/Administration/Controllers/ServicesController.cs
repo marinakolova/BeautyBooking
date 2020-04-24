@@ -7,8 +7,10 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
+    using BeautyBooking.Web.ViewModels.SelectLists;
     using BeautyBooking.Web.ViewModels.Services;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class ServicesController : AdministrationController
     {
@@ -40,9 +42,8 @@
 
         public async Task<IActionResult> AddService()
         {
-            // TODO: Use ViewComponent?
-            var categoriesNames = await this.categoriesService.GetAllNamesAsync();
-            this.ViewData["Categories"] = categoriesNames;
+            var categories = await this.categoriesService.GetAllAsync<CategorySelectListViewModel>();
+            this.ViewData["Categories"] = new SelectList(categories, "Id", "Name");
 
             return this.View();
         }
@@ -55,14 +56,11 @@
                 return this.View(input);
             }
 
-            // Get CategoryId
-            var categoryId = await this.categoriesService.GetIdByNameAsync(input.Category);
-
             // Add Service
-            var serviceId = await this.servicesService.AddAsync(input.Name, categoryId, input.Description);
+            var serviceId = await this.servicesService.AddAsync(input.Name, input.CategoryId, input.Description);
 
             // Add the Service to all Salons in the Category
-            var salonsIds = await this.salonsService.GetAllByCategoryAsync(categoryId);
+            var salonsIds = await this.salonsService.GetAllByCategoryAsync(input.CategoryId);
             await this.salonServicesService.AddAsync(salonsIds, serviceId);
 
             return this.RedirectToAction("Index");

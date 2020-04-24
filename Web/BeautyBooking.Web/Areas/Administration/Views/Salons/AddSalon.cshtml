@@ -1,8 +1,8 @@
 ﻿@model BeautyBooking.Web.ViewModels.Salons.SalonInputModel
 @{
     this.ViewData["Title"] = "Add Salon";
-    var categories = this.ViewData["Categories"] as IEnumerable<string>;
-    var cities = this.ViewData["Cities"] as IEnumerable<string>;
+    var categories = this.ViewData["Categories"] as SelectList;
+    var cities = this.ViewData["Cities"] as SelectList;
 }
 
 <div class="col-lg-6">
@@ -25,27 +25,17 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-10">
-                <select asp-for="@Model.Category" name="Category" class="form-control" required="required">
-                    <option selected="selected" disabled="disabled">Select Category</option>
-                    @foreach (var category in categories)
-                    {
-                        <option value="@category">@category</option>
-                    }
+                <select asp-for="@Model.CategoryId" class="form-control" asp-items="@categories">
                 </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">City</label>
             <div class="col-sm-10">
-                <select asp-for="@Model.City" class="form-control" required="required">
-                    <option selected="selected" disabled="disabled">Select City</option>
-                    @foreach (var city in cities)
-                    {
-                        <option value="@city">@city</option>
-                    }
+                <select asp-for="@Model.CityId" class="form-control" asp-items="@cities">
                 </select>
-                <span asp-validation-for="City" class="text-danger"></span>
+                <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">

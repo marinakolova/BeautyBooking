@@ -20,6 +20,7 @@
             <th scope="col">Address</th>
             <th scope="col">Rating</th>
             <th scope="col">Appointments</th>
+            <th scope="col">Delete Button</th>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +35,24 @@
                 <td>@salon.CityName</td>
                 <td>@salon.Address</td>
                 <td><strong>@salon.Rating.ToString("F") / 5.00</strong> from <strong>@salon.RatersCount</strong> votes</td>
-                <td>@salon.AppointmentsCount</td>                
+                <td>@salon.AppointmentsCount</td>
+                <td>
+                    @if (salon.Id.StartsWith("seeded"))
+                    {
+                        <div class="text-muted" style="font-size:smaller">
+                            Seeded Data <br />Cannot Be Deleted
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="Salons" asp-action="DeleteSalon" asp-route-id="@salon.Id">
+                                Delete
+                            </button>
+                        </form>
+                    }
+                </td>
             </tr>
         }
     </tbody>

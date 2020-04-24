@@ -21,7 +21,7 @@
                     // 1. Hair Salons
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Salon De Style",
                         CategoryId = 1,
                         CityId = 1,
@@ -32,7 +32,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Happy Hair Salon",
                         CategoryId = 1,
                         CityId = 1,
@@ -43,7 +43,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Angel Hair Salon",
                         CategoryId = 1,
                         CityId = 2,
@@ -56,7 +56,7 @@
                     // 2. Hair removal Salons
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Pretty Her Salon",
                         CategoryId = 2,
                         CityId = 1,
@@ -67,7 +67,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Charms Salon",
                         CategoryId = 2,
                         CityId = 1,
@@ -78,7 +78,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Little Sweets Salon",
                         CategoryId = 2,
                         CityId = 2,
@@ -91,7 +91,7 @@
                     // 3. Massage ans Spa Salons
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Your Style Spa",
                         CategoryId = 3,
                         CityId = 1,
@@ -102,7 +102,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Treat Yourself",
                         CategoryId = 3,
                         CityId = 1,
@@ -113,7 +113,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Little Castle",
                         CategoryId = 3,
                         CityId = 2,
@@ -126,7 +126,7 @@
                     // 4. Nail Salons
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Cool Colors",
                         CategoryId = 4,
                         CityId = 1,
@@ -137,7 +137,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "The Barbie Boutique",
                         CategoryId = 4,
                         CityId = 1,
@@ -148,7 +148,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Salon Don",
                         CategoryId = 4,
                         CityId = 2,
@@ -161,7 +161,7 @@
                     // 5. Face Treatments
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Makeover Paradise",
                         CategoryId = 5,
                         CityId = 1,
@@ -172,7 +172,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "The Beauty Studio",
                         CategoryId = 5,
                         CityId = 1,
@@ -183,7 +183,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Hot Chic",
                         CategoryId = 5,
                         CityId = 2,
@@ -196,7 +196,7 @@
                     // 6. Body Treatments
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Harmony",
                         CategoryId = 6,
                         CityId = 1,
@@ -207,7 +207,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Bubbles Of Love",
                         CategoryId = 6,
                         CityId = 1,
@@ -218,7 +218,7 @@
                     },
                     new Salon
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = "seeded" + Guid.NewGuid().ToString(),
                         Name = "Beautiful Bodies",
                         CategoryId = 6,
                         CityId = 2,
