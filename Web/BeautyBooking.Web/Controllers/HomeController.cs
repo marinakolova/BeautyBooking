@@ -27,7 +27,7 @@
             var viewModel = new IndexViewModel
             {
                 Categories = await this.categoriesService.GetAllAsync<IndexCategoryViewModel>(),
-                BlogPosts = await this.blogPostsService.GetAllAsync<IndexBlogPostsViewModel>(4),
+                BlogPosts = await this.blogPostsService.GetAllAsync<IndexBlogPostViewModel>(4),
             };
             return this.View(viewModel);
         }

@@ -1,38 +1,44 @@
-﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsListViewModel
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsByCategoryListViewModel
 @{
-    var category = Model.Salons.First().CategoryName;
-    this.ViewData["Title"] = category;
+    this.ViewData["Title"] = Model.CategoryName ?? "Invalid Category";
 }
 
 <div>
     @await Component.InvokeAsync("CategoriesSimpleList")
 </div>
 
-<div class="row row-eq-height">
-    @foreach (var salon in Model.Salons)
-    {
-        <div class="col-xl-3 col-md-6">
-            <div class="doctor">
-                <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
-                <div class="doctor_content">
-                    <div class="doctor_name">
-                        <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a>
-                    </div>
-                    <div class="doctor_title"><strong>@salon.CategoryName</strong></div>
-                    <div class="doctor_title">@salon.CityName, @salon.Address</div>
-                    <div class="doctor_title ml-2">
-                        <div class="button button_1 elements_button mt-2">
-                            <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">
-                                <span>See Services</span>
-                                <span>See Services</span>
-                            </a>
+@if (Model.SalonsCount == 0)
+{
+    <h3>Sorry, nothing here.</h3>
+}
+else
+{
+    <div class="row row-eq-height">
+        @foreach (var salon in Model.Salons)
+        {
+            <div class="col-xl-3 col-md-6">
+                <div class="doctor">
+                    <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
+                    <div class="doctor_content">
+                        <div class="doctor_name">
+                            <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a>
                         </div>
-                    </div>
-                    <div class="doctor_link">
-                        <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a>
+                        <div class="doctor_title"><strong>@salon.CategoryName</strong></div>
+                        <div class="doctor_title">@salon.CityName, @salon.Address</div>
+                        <div class="doctor_title ml-2">
+                            <div class="button button_1 elements_button mt-2">
+                                <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">
+                                    <span>See Services</span>
+                                    <span>See Services</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="doctor_link">
+                            <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}

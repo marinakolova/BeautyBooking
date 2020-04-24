@@ -5,7 +5,7 @@
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class IndexBlogPostsViewModel : IMapFrom<BlogPost>
+    public class IndexBlogPostViewModel : IMapFrom<BlogPost>
     {
         public int Id { get; set; }
 

@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using BeautyBooking.Services.Data.SalonServicesServices;
-    using BeautyBooking.Web.ViewModels.Appointments;
+    using BeautyBooking.Web.ViewModels.SalonServices;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonServiceDetailsViewComponent : ViewComponent

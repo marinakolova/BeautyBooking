@@ -26,6 +26,14 @@
             return categories;
         }
 
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var category = await this.categoriesRepository.All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return category;
+        }
+
         public async Task AddAsync(string name, string description, string imageUrl)
         {
             await this.categoriesRepository.AddAsync(new Category

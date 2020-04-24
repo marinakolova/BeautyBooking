@@ -6,8 +6,10 @@
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.Appointments;
     using BeautyBooking.Services.Data.Salons;
+    using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.DateTimeParser;
     using BeautyBooking.Web.ViewModels.Appointments;
+    using BeautyBooking.Web.ViewModels.SalonServices;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -15,21 +17,24 @@
     [Authorize]
     public class AppointmentsController : BaseController
     {
-        private readonly IAppointmentsService appointmentsService;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly IDateTimeParserService dateTimeParserService;
         private readonly ISalonsService salonsService;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IAppointmentsService appointmentsService;
+        private readonly ISalonServicesService salonServicesService;
 
         public AppointmentsController(
-            IDateTimeParserService dateTimeParserService,
+            UserManager<ApplicationUser> userManager,
             IAppointmentsService appointmentsService,
-            ISalonsService salonsService,
-            UserManager<ApplicationUser> userManager)
+            ISalonServicesService salonServicesService,
+            IDateTimeParserService dateTimeParserService,
+            ISalonsService salonsService)
         {
-            this.dateTimeParserService = dateTimeParserService;
-            this.appointmentsService = appointmentsService;
-            this.salonsService = salonsService;
             this.userManager = userManager;
+            this.appointmentsService = appointmentsService;
+            this.salonServicesService = salonServicesService;
+            this.dateTimeParserService = dateTimeParserService;
+            this.salonsService = salonsService;
         }
 
         public async Task<IActionResult> Index()
@@ -45,8 +50,14 @@
             return this.View(viewModel);
         }
 
-        public IActionResult MakeAnAppointment(string salonId, int serviceId)
+        public async Task<IActionResult> MakeAnAppointment(string salonId, int serviceId)
         {
+            var salonService = await this.salonServicesService.GetByIdAsync<SalonServiceSimpleViewModel>(salonId, serviceId);
+            if (salonService == null || !salonService.Available)
+            {
+                return this.View("UnavailableService");
+            }
+
             var viewModel = new AppointmentInputModel
             {
                 SalonId = salonId,
@@ -71,7 +82,6 @@
             catch (System.Exception)
             {
                 return this.RedirectToAction("MakeAnAppointment", new { input.SalonId, input.ServiceId });
-                throw;
             }
 
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);

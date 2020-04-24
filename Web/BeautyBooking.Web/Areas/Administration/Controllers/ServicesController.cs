@@ -60,7 +60,7 @@
             var serviceId = await this.servicesService.AddAsync(input.Name, input.CategoryId, input.Description);
 
             // Add the Service to all Salons in the Category
-            var salonsIds = await this.salonsService.GetAllByCategoryAsync(input.CategoryId); // TODO: Refactor this
+            var salonsIds = await this.salonsService.GetAllByCategoryAsync(input.CategoryId);
             await this.salonServicesService.AddAsync(salonsIds, serviceId);
 
             return this.RedirectToAction("Index");

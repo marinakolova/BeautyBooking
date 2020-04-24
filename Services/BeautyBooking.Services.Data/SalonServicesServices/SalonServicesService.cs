@@ -56,6 +56,14 @@
             await this.salonServicesRepository.SaveChangesAsync();
         }
 
+        public async Task<bool> CheckAvailableStatus(string salonId, int serviceId)
+        {
+            var salonService = await this.salonServicesRepository.All()
+                .Where(x => x.SalonId == salonId && x.ServiceId == serviceId)
+                .FirstOrDefaultAsync();
+            return salonService.Available;
+        }
+
         public async Task ChangeAvailableStatus(string salonId, int serviceId)
         {
             var salonService = await this.salonServicesRepository.All()

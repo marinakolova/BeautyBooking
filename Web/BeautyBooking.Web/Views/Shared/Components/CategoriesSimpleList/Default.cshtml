@@ -10,7 +10,7 @@
     <div class="dropdown-menu">
         @foreach (var category in Model.Categories)
         {
-            <a class="dropdown-item" asp-area="" asp-controller="Salons" asp-action="ByCategory" asp-route-id="@category.Id">@category.Name</a>
+            <a class="dropdown-item" asp-area="" asp-controller="Salons" asp-action="ByCategory" asp-route-id="@category.Id">@category.Name (@category.SalonsCount)</a>
         }
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" asp-area="" asp-controller="Salons" asp-action="Index">All Salons</a>

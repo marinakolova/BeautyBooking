@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.ViewModels.Appointments
+﻿namespace BeautyBooking.Web.ViewModels.SalonServices
 {
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;

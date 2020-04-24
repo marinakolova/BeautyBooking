@@ -6,6 +6,6 @@
     {
         public IEnumerable<IndexCategoryViewModel> Categories { get; set; }
 
-        public IEnumerable<IndexBlogPostsViewModel> BlogPosts { get; set; }
+        public IEnumerable<IndexBlogPostViewModel> BlogPosts { get; set; }
     }
 }

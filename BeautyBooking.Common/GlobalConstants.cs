@@ -155,6 +155,8 @@
             public const int Cities = 2;
 
             public const int Salons = 18;
+
+            public const int Appointments = 54;
         }
     }
 }

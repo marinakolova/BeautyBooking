@@ -2,17 +2,23 @@
 {
     using System.Threading.Tasks;
 
+    using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Services.Data.Salons;
+    using BeautyBooking.Web.ViewModels.Categories;
     using BeautyBooking.Web.ViewModels.Salons;
     using Microsoft.AspNetCore.Mvc;
 
     public class SalonsController : BaseController
     {
         private readonly ISalonsService salonsService;
+        private readonly ICategoriesService categoriesService;
 
-        public SalonsController(ISalonsService salonsService)
+        public SalonsController(
+            ISalonsService salonsService,
+            ICategoriesService categoriesService)
         {
             this.salonsService = salonsService;
+            this.categoriesService = categoriesService;
         }
 
         public async Task<IActionResult> Index()
@@ -26,16 +32,25 @@
 
         public async Task<IActionResult> ByCategory(int id)
         {
-            var viewModel = new SalonsListViewModel
+            var viewModel = new SalonsByCategoryListViewModel();
+            var category = await this.categoriesService.GetByIdAsync<CategorySimpleViewModel>(id);
+            if (category == null)
             {
-                Salons = await this.salonsService.GetAllByCategoryAsync<SalonViewModel>(id),
-            };
+                viewModel.CategoryName = "Invalid Category";
+            }
+            else
+            {
+                viewModel.CategoryName = category.Name;
+                viewModel.SalonsCount = category.SalonsCount;
+                viewModel.Salons = await this.salonsService.GetAllByCategoryAsync<SalonViewModel>(id);
+            }
+
             return this.View(viewModel);
         }
 
         public async Task<IActionResult> Details(string id)
         {
-            var viewModel = await this.salonsService.GetByIdAsync<SalonDetailsViewModel>(id);
+            var viewModel = await this.salonsService.GetByIdAsync<SalonWithServicesViewModel>(id);
 
             if (viewModel == null)
             {

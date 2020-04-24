@@ -11,6 +11,8 @@
 
         Task AddAsync(IEnumerable<string> salonsIds, int serviceId);
 
+        Task<bool> CheckAvailableStatus(string salonId, int serviceId);
+
         Task ChangeAvailableStatus(string salonId, int serviceId);
     }
 }
