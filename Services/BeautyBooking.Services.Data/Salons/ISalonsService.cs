@@ -11,6 +11,8 @@
 
         Task<IEnumerable<string>> GetAllByCategoryAsync(int categoryId);
 
+        Task<IEnumerable<T>> GetAllByCategoryAsync<T>(int categoryId);
+
         Task<T> GetByIdAsync<T>(string id);
 
         Task<string> AddAsync(string name, int categoryId, int cityId, string address, IFormFile image);

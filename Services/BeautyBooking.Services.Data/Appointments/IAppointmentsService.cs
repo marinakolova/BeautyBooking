@@ -7,9 +7,9 @@
     {
         Task<T> GetByIdAsync<T>(string id);
 
-        Task<IEnumerable<T>> GetAllUpcomingAsync<T>();
+        Task<IEnumerable<T>> GetAllAsync<T>();
 
-        Task<IEnumerable<T>> GetAllPastAsync<T>();
+        Task<IEnumerable<T>> GetAllBySalonAsync<T>(string salonId);
 
         Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId);
 

@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Web.Areas.Administration.Controllers
+﻿namespace BeautyBooking.Web.Infrastructure.ViewComponents
 {
     using System.Threading.Tasks;
 
@@ -6,21 +6,22 @@
     using BeautyBooking.Web.ViewModels.Appointments;
     using Microsoft.AspNetCore.Mvc;
 
-    public class AppointmentsController : AdministrationController
+    public class AllAppointmentsBySalonViewComponent : ViewComponent
     {
         private readonly IAppointmentsService appointmentsService;
 
-        public AppointmentsController(IAppointmentsService appointmentsService)
+        public AllAppointmentsBySalonViewComponent(IAppointmentsService appointmentsService)
         {
             this.appointmentsService = appointmentsService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IViewComponentResult> InvokeAsync(string salonId)
         {
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments = await this.appointmentsService.GetAllAsync<AppointmentViewModel>(),
+                Appointments = await this.appointmentsService.GetAllBySalonAsync<AppointmentViewModel>(salonId),
             };
+
             return this.View(viewModel);
         }
     }

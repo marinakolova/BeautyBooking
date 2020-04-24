@@ -3,73 +3,41 @@
     this.ViewData["Title"] = "Appointments";
 }
 
-<h2>Upcoming Appointments (@Model.UpcomingAppointments.Count())</h2>
+<h2>All Appointments (@Model.Appointments.Count())</h2>
 
-@if (@Model.UpcomingAppointments.Count() > 0)
-{
-    <table class="table table-bordered table-striped">
-        <thead class="thead-light">
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">DateTime</th>
+            <th scope="col">User</th>
+            <th scope="col">Salon</th>
+            <th scope="col">Service</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in this.Model.Appointments)
+        {
             <tr>
-                <th scope="col">DateTime</th>
-                <th scope="col">User</th>
-                <th scope="col">Salon</th>
-                <th scope="col">Service</th>
-                <th scope="col">Salon Confirmation Status</th>
+                <th scope="row">@appointment.DateTime</th>
+                <td>@appointment.UserEmail</td>
+                <td>@appointment.SalonName</td>
+                <td>@appointment.ServiceName</td>
+                <td>
+                    @if (appointment.Confirmed == true)
+                    {
+                        <span class="badge badge-success">Confirmed</span>
+                    }
+                    else if (appointment.Confirmed == false)
+                    {
+                        <span class="badge badge-danger">Declined</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-secondary">Pending</span>
+                    }
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var appointment in this.Model.UpcomingAppointments)
-            {
-                <tr>
-                    <th scope="row">@appointment.DateTime</th>
-                    <td>@appointment.UserEmail</td>
-                    <td>@appointment.SalonName</td>
-                    <td>@appointment.ServiceName</td>
-                    <td>
-                        @if (appointment.Confirmed == true)
-                        {
-                            <span class="badge badge-success">Confirmed</span>
-                        }
-                        else if (appointment.Confirmed == false)
-                        {
-                            <span class="badge badge-danger">Declined</span>
-                        }
-                        else
-                        {
-                            <span class="badge badge-secondary">Pending</span>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
-<hr class="bg-dark m-4" style="height: 6px;" />
-
-<h2>Past Appointments (@Model.PastAppointments.Count())</h2>
-
-@if (@Model.PastAppointments.Count() > 0)
-{
-    <table class="table table-bordered table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">DateTime</th>
-                <th scope="col">User</th>
-                <th scope="col">Salon</th>
-                <th scope="col">Service</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var appointment in this.Model.PastAppointments)
-            {
-                <tr>
-                    <th scope="row">@appointment.DateTime</th>
-                    <td>@appointment.UserEmail</td>
-                    <td>@appointment.SalonName</td>
-                    <td>@appointment.ServiceName</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        }
+    </tbody>
+</table>

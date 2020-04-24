@@ -3,23 +3,44 @@
     this.ViewData["Title"] = "Cancel Appointment";
 }
 
-<h1>Are you sure you want to cancel this appointment?</h1>
-
-<p>@Model.DateTime</p>
-<p>@Model.SalonName</p>
-<p>@Model.SalonCityName, @Model.SalonAddress</p>
-<p>@Model.ServiceName</p>
-
-<form method="post">
+<h3><strong>Are you sure you want to cancel this appointment?</strong></h3>
+<form class="col-6 mt-5">
     <div class="form-group row">
-        <div class="col-sm-6 text-right">
+        <label class="col-sm-3 col-form-label">Date and Time</label>
+        <div class="col-sm-7">
+            <div class="form-control">@Model.DateTime</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Salon</label>
+        <div class="col-sm-7">
+            <div class="form-control">@Model.SalonName</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Address</label>
+        <div class="col-sm-7">
+            <div class="form-control">@Model.SalonCityName, @Model.SalonAddress</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Service</label>
+        <div class="col-sm-7">
+            <div class="form-control">@Model.ServiceName</div>
+        </div>
+    </div>
+</form>
+
+<div class="col-6 mt-5 ml-5">
+    <div class="row ml-5">
+        <form method="post">
             <button type="submit" class="btn btn-outline-success"
                     asp-area="" asp-controller="Appointments" asp-action="DeleteAppointment" asp-route-id="@Model.Id">
                 Yes, Cancel it!
             </button>
-        </div>
-        <div class="col-sm-6">
+        </form>
+        <div class="ml-5">
             <a class="btn btn-danger" asp-area="" asp-controller="Appointments" asp-action="Index">No! Go Back</a>
         </div>
     </div>
-</form>
+</div>

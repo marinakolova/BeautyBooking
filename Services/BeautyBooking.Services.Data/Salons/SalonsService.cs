@@ -37,6 +37,15 @@
             return await query.To<T>().ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> GetAllByCategoryAsync<T>(int categoryId)
+        {
+            IQueryable<Salon> query = this.salonsRepository.All()
+                .Where(x => x.CategoryId == categoryId)
+                .OrderBy(x => x.Name);
+
+            return await query.To<T>().ToListAsync();
+        }
+
         public async Task<IEnumerable<string>> GetAllByCategoryAsync(int categoryId)
         {
             var salonsIds = await this.salonsRepository.All()

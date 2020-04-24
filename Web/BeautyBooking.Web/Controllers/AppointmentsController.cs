@@ -34,7 +34,7 @@
 
             var viewModel = new AppointmentsListViewModel
             {
-                UpcomingAppointments = await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
+                Appointments = await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
             };
             return this.View(viewModel);
         }

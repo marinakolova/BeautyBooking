@@ -3,9 +3,9 @@
     this.ViewData["Title"] = "Default";
 }
 
-@if (@Model.PastAppointments.Count() > 0)
+@if (@Model.Appointments.Count() > 0)
 {
-    <h2>Past (@Model.PastAppointments.Count())</h2>
+    <h2>Past (@Model.Appointments.Count())</h2>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-light">
@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var appointment in this.Model.PastAppointments)
+            @foreach (var appointment in this.Model.Appointments)
             {
                 <tr>
                     <th scope="row">@appointment.DateTime</th>
@@ -51,6 +51,3 @@
         </tbody>
     </table>
 }
-
-
-

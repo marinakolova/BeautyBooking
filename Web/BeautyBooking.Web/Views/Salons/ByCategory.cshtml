@@ -1,6 +1,7 @@
 ﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsListViewModel
 @{
-    this.ViewData["Title"] = "Beauty Salons";
+    var category = Model.Salons.First().CategoryName;
+    this.ViewData["Title"] = category;
 }
 
     <div>
@@ -28,7 +29,7 @@
                         </div>
                     </div>
                     <div class="doctor_link">
-                    <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a>
+                        <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a>
                     </div>
                 </div>
             </div>

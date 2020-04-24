@@ -6,7 +6,6 @@
     using BeautyBooking.Web.ViewModels.Salons;
     using Microsoft.AspNetCore.Mvc;
 
-    [ViewComponent(Name = "SalonsSimpleList")]
     public class SalonsSimpleListViewComponent : ViewComponent
     {
         private readonly ISalonsService salonsService;

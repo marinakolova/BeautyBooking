@@ -3,7 +3,7 @@
     this.ViewData["Title"] = "Your Appointments";
 }
 
-@if (@Model.UpcomingAppointments.Count() == 0)
+@if (@Model.Appointments.Count() == 0)
 {
     <div class="row">
         <div class="col-lg-4 ml-lg-5">
@@ -41,9 +41,9 @@
     </div>
 }
 
-@if (@Model.UpcomingAppointments.Count() > 0)
+@if (@Model.Appointments.Count() > 0)
 {
-    <h2>Upcoming (@Model.UpcomingAppointments.Count())</h2>
+    <h2>Upcoming (@Model.Appointments.Count())</h2>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-light">
@@ -57,7 +57,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var appointment in this.Model.UpcomingAppointments)
+            @foreach (var appointment in this.Model.Appointments)
             {
                 <tr>
                     <th scope="row">@appointment.DateTime</th>

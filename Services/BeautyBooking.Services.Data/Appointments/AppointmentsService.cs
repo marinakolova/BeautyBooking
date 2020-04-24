@@ -32,20 +32,19 @@
             return appointment;
         }
 
-        public async Task<IEnumerable<T>> GetAllUpcomingAsync<T>()
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var appointments = await this.appointmentsRepository.All()
-                .Where(x => x.DateTime > DateTime.UtcNow)
-                .OrderBy(x => x.DateTime)
+                .OrderByDescending(x => x.DateTime)
                 .To<T>().ToListAsync();
             return appointments;
         }
 
-        public async Task<IEnumerable<T>> GetAllPastAsync<T>()
+        public async Task<IEnumerable<T>> GetAllBySalonAsync<T>(string salonId)
         {
             var appointments = await this.appointmentsRepository.All()
-                .Where(x => x.DateTime < DateTime.UtcNow && x.Confirmed == true)
-                .OrderBy(x => x.DateTime)
+                .Where(x => x.SalonId == salonId)
+                .OrderByDescending(x => x.DateTime)
                 .To<T>().ToListAsync();
             return appointments;
         }

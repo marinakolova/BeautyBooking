@@ -8,7 +8,6 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    [ViewComponent(Name = "PastAppointments")]
     public class PastAppointmentsViewComponent : ViewComponent
     {
         private readonly IAppointmentsService appointmentsService;
@@ -29,7 +28,7 @@
 
             var viewModel = new AppointmentsListViewModel
             {
-                PastAppointments = await this.appointmentsService.GetPastByUserAsync<AppointmentViewModel>(userId),
+                Appointments = await this.appointmentsService.GetPastByUserAsync<AppointmentViewModel>(userId),
             };
 
             return this.View(viewModel);

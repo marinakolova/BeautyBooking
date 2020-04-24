@@ -28,6 +28,15 @@
             return this.View(viewModel);
         }
 
+        public async Task<IActionResult> ByCategory(int id)
+        {
+            var viewModel = new SalonsListViewModel
+            {
+                Salons = await this.salonsService.GetAllByCategoryAsync<SalonViewModel>(id),
+            };
+            return this.View(viewModel);
+        }
+
         public async Task<IActionResult> Details(string id)
         {
             var viewModel = await this.salonsService.GetByIdAsync<SalonDetailsViewModel>(id);
