@@ -8,6 +8,9 @@
 
         public const string SalonManagerRoleName = "Manager";
 
+        // Added here so the project could be started even with missing configuration from appsettings.json
+        public const string CloudName = "beauty-booking";
+
         public static class AccountsSeeding
         {
             public const string Password = "123456";

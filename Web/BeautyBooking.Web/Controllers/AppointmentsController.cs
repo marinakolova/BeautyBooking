@@ -70,6 +70,11 @@
         {
             var viewModel = await this.appointmentsService.GetByIdAsync<AppointmentViewModel>(id);
 
+            if (viewModel == null)
+            {
+                return this.RedirectToAction("Index");
+            }
+
             return this.View(viewModel);
         }
 

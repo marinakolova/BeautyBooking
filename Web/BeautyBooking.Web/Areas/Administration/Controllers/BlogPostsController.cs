@@ -38,7 +38,16 @@
                 return this.View(input);
             }
 
-            await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, input.Image);
+            try
+            {
+                await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, input.Image);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                return this.RedirectToAction("Index");
+                throw;
+            }
 
             return this.RedirectToAction("Index");
         }

@@ -62,12 +62,21 @@
                 return this.View(input);
             }
 
-            // Add Salon
-            var salonId = await this.salonsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Image);
+            try
+            {
+                // Add Salon
+                var salonId = await this.salonsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Image);
 
-            // Add to the Salon all Services from its Category
-            var servicesIds = await this.servicesService.GetAllByCategoryAsync(input.CategoryId);
-            await this.salonServicesService.AddAsync(salonId, servicesIds);
+                // Add to the Salon all Services from its Category
+                var servicesIds = await this.servicesService.GetAllByCategoryAsync(input.CategoryId);
+                await this.salonServicesService.AddAsync(salonId, servicesIds);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                return this.RedirectToAction("Index");
+                throw;
+            }
 
             return this.RedirectToAction("Index");
         }

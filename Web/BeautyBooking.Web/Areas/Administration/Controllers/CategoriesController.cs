@@ -38,7 +38,16 @@
                 return this.View(input);
             }
 
-            await this.categoriesService.AddAsync(input.Name, input.Description, input.Image);
+            try
+            {
+                await this.categoriesService.AddAsync(input.Name, input.Description, input.Image);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                return this.RedirectToAction("Index");
+                throw;
+            }
 
             return this.RedirectToAction("Index");
         }

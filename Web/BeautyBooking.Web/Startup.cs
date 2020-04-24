@@ -2,6 +2,7 @@
 {
     using System.Reflection;
 
+    using BeautyBooking.Common;
     using BeautyBooking.Data;
     using BeautyBooking.Data.Common;
     using BeautyBooking.Data.Common.Repositories;
@@ -65,16 +66,16 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
-            // External Login Setups
-            services.AddAuthentication().AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = this.configuration["Authentication:Facebook:AppSecret"];
-            });
+            // // External Login Setups
+            // services.AddAuthentication().AddFacebook(facebookOptions =>
+            // {
+            //     facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
+            //     facebookOptions.AppSecret = this.configuration["Authentication:Facebook:AppSecret"];
+            // });
 
             // Cloudinary Setup
             Cloudinary cloudinary = new Cloudinary(new Account(
-                this.configuration["Cloudinary:CloudName"],
+                GlobalConstants.CloudName, // this.configuration["Cloudinary:CloudName"],
                 this.configuration["Cloudinary:ApiKey"],
                 this.configuration["Cloudinary:ApiSecret"]));
             services.AddSingleton(cloudinary);
