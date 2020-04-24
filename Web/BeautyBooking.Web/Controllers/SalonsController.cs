@@ -36,7 +36,7 @@
             var category = await this.categoriesService.GetByIdAsync<CategorySimpleViewModel>(id);
             if (category == null)
             {
-                viewModel.CategoryName = "Invalid Category";
+                return new StatusCodeResult(404);
             }
             else
             {

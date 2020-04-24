@@ -28,6 +28,11 @@
         {
             var viewModel = await this.salonsService.GetByIdAsync<SalonWithServicesViewModel>(id);
 
+            if (viewModel == null)
+            {
+                return new StatusCodeResult(404);
+            }
+
             return this.View(viewModel);
         }
 

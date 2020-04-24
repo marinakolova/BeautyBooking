@@ -99,7 +99,7 @@
 
             if (viewModel == null)
             {
-                return this.RedirectToAction("Index");
+                return new StatusCodeResult(404);
             }
 
             return this.View(viewModel);
