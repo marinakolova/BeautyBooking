@@ -5,15 +5,11 @@
 }
 
 <div class="row">
-
     <!-- News Posts -->
-
     @foreach (var category in Model.Categories)
     {
         <div class="col-lg-4">
-
             <hr class="bg-dark mx-4" style="height: 6px;" />
-
             <!-- News Post -->
             <div class="news_post">
                 <div class="news_post_image"><img src="@category.ImageUrl" alt=""></div>
@@ -22,7 +18,7 @@
                     <div class="news_post_text">
                         <p>@category.Description</p>
                     </div>
-                </div>                
+                </div>
                 <div class="text-center">
                     <div class="row">
                         <div class="col">
@@ -51,7 +47,5 @@
                 </div>
             </div>
         </div>
-
     }
-
 </div>

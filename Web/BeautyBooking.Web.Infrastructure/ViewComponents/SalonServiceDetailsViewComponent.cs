@@ -17,7 +17,8 @@
 
         public async Task<IViewComponentResult> InvokeAsync(string salonId, int serviceId)
         {
-            var viewModel = await this.salonServicesService.GetByIdAsync<SalonServiceDetailsViewModel>(salonId, serviceId);
+            var viewModel =
+                await this.salonServicesService.GetByIdAsync<SalonServiceDetailsViewModel>(salonId, serviceId);
 
             return this.View(viewModel);
         }

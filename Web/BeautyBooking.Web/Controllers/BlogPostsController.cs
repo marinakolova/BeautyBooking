@@ -21,7 +21,6 @@
             {
                 BlogPosts = await this.blogPostsService.GetAllAsync<BlogPostViewModel>(),
             };
-
             return this.View(viewModel);
         }
 
@@ -34,7 +33,7 @@
 
             if (viewModel == null)
             {
-                return new StatusCodeResult(404);
+                return new StatusCodeResult(404); // TODO: 404 NotFound Page
             }
 
             return this.View(viewModel);

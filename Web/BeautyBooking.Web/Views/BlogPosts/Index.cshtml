@@ -4,7 +4,6 @@
 }
 
 <div class="row">
-
     <!-- News Posts -->
     <div class="col-lg-8">
         <div class="news_posts">
@@ -16,14 +15,24 @@
                 <div class="news_post">
                     <div class="news_post_image"><img src="@blogPost.ImageUrl" alt=""></div>
                     <div class="news_post_content">
-                        <div class="news_post_title"><a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a></div>
+                        <div class="news_post_title">
+                            <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a>
+                        </div>
                         <div class="news_post_info">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">by @blogPost.Author</a></li>
-                                <li><a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CreatedOn</a></li>
+                                <li>
+                                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">by @blogPost.Author</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CreatedOn</a>
+                                </li>
                             </ul>
                         </div>
-                        <div class="button news_post_button"><a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id"><span>read</span><span>read</span></a></div>
+                        <div class="button news_post_button">
+                            <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">
+                                <span>read</span><span>read</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             }
@@ -60,5 +69,4 @@
             </div>
         </div>
     </div>
-
 </div>

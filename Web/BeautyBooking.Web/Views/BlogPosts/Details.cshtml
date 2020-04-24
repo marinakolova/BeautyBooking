@@ -27,18 +27,24 @@
             @if (Model.Id < (int)ViewData["AllPostsCount"])
             {
                 <div class="button button-large button_1 elements_button">
-                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@(Model.Id + 1)"><span> &lt; Previous</span><span> &lt; Previous</span></a>
+                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@(Model.Id + 1)">
+                        <span> &lt; Previous</span><span> &lt; Previous</span>
+                    </a>
                 </div>
             }
 
             <div class="button button-large button_3 elements_button">
-                <a asp-area="" asp-controller="BlogPosts" asp-action="Index"><span>Back To All Blog Posts</span><span>Back To All Blog Posts</span></a>
+                <a asp-area="" asp-controller="BlogPosts" asp-action="Index">
+                    <span>Back To All Blog Posts</span><span>Back To All Blog Posts</span>
+                </a>
             </div>
 
             @if (Model.Id > 1)
             {
                 <div class="button button-large button_1 elements_button">
-                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@(Model.Id - 1)"><span>Next &gt;</span><span>Next &gt;</span></a>
+                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@(Model.Id - 1)">
+                        <span>Next &gt;</span><span>Next &gt;</span>
+                    </a>
                 </div>
             }
 

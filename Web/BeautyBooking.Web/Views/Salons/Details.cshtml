@@ -3,7 +3,6 @@
     this.ViewData["Title"] = "Salon: " + Model.Name;
 }
 
-
 <div class="row row-eq-height">
     <!-- Info Box -->
     <div class="col-lg-4 info_box_col">
@@ -42,7 +41,8 @@
                                 <div class="tab_list_title">@service.ServiceName</div>
                                 <div class="tab_list_text"><p>@service.ServiceDescription</p></div>
                                 <div class="button info_button">
-                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
+                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" 
+                                       asp-route-salonId="@service.SalonId" asp-route-serviceId="@service.ServiceId">
                                         <span>book now</span><span>book now</span>
                                     </a>
                                 </div>

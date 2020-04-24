@@ -19,7 +19,8 @@
         {
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments = await this.appointmentsService.GetAllBySalonAsync<AppointmentViewModel>(salonId),
+                Appointments =
+                    await this.appointmentsService.GetAllBySalonAsync<AppointmentViewModel>(salonId),
             };
 
             return this.View(viewModel);

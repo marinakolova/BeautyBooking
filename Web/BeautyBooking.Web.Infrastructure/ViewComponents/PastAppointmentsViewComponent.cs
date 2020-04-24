@@ -28,7 +28,8 @@
 
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments = await this.appointmentsService.GetPastByUserAsync<AppointmentViewModel>(userId),
+                Appointments =
+                    await this.appointmentsService.GetPastByUserAsync<AppointmentViewModel>(userId),
             };
 
             return this.View(viewModel);

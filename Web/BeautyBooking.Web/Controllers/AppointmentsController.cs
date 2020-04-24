@@ -13,18 +13,18 @@
     [Authorize]
     public class AppointmentsController : BaseController
     {
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly IAppointmentsService appointmentsService;
         private readonly ISalonsService salonsService;
-        private readonly UserManager<ApplicationUser> userManager;
 
         public AppointmentsController(
+            UserManager<ApplicationUser> userManager,
             IAppointmentsService appointmentsService,
-            ISalonsService salonsService,
-            UserManager<ApplicationUser> userManager)
+            ISalonsService salonsService)
         {
+            this.userManager = userManager;
             this.appointmentsService = appointmentsService;
             this.salonsService = salonsService;
-            this.userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -34,7 +34,8 @@
 
             var viewModel = new AppointmentsListViewModel
             {
-                Appointments = await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
+                Appointments = 
+                    await this.appointmentsService.GetUpcomingByUserAsync<AppointmentViewModel>(userId),
             };
             return this.View(viewModel);
         }
