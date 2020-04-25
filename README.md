@@ -27,12 +27,12 @@ Technologies, Frameworks and Development Techniques:
 
 - ASP.NET Core 3.1
 - Microsoft SQL Server 2017 Express as Database Service
-- Entity Framework (EF) Core 3.1 to access the Database
+- Entity Framework (EF) Core 3.1
 
 - ASP.NET Identity System
 - MVC Areas with Multiple Layouts
-- Razor Pages, Sections, Partial Views and View Components
-- Display and Editor Templates
+- Razor Pages, Sections, Partial Views 
+- View Components
 
 - Repository Pattern
 - Auto Мapping
@@ -42,6 +42,7 @@ Technologies, Frameworks and Development Techniques:
 
 - Sorting, Filtering, and Paging with EF Core
 - Data Validation in the Models and Input View Models
+- Data Validation Both Client-side and Server-side
 - Custom Validation Attributes
 
 - Responsive Design
