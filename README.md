@@ -10,6 +10,10 @@ A beauty bookings platform. My project for the ASP.NET Core course at [SoftUni](
   
   - User: user@user.com / password: 123456
 
+## Author
+
+- [Marina Kolova](https://github.com/marinakolova)
+
 ## License
 
 This project is licensed under the MIT License
