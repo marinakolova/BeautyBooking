@@ -16,6 +16,7 @@
             this.server = server;
         }
 
+        /*
         [Fact(Skip = "Example test. Disabled for CI.")]
         public async Task IndexPageShouldReturnStatusCode200WithTitle()
         {
@@ -33,5 +34,6 @@
             var response = await client.GetAsync("Identity/Account/Manage");
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         }
+        */
     }
 }

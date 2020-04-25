@@ -22,6 +22,7 @@
             this.browser = new RemoteWebDriver(opts);
         }
 
+        /*
         [Fact(Skip = "Example test. Disabled for CI.")]
         public void FooterOfThePageContainsPrivacyLink()
         {
@@ -30,5 +31,6 @@
                 this.browser.FindElements(By.CssSelector("footer a")),
                 x => x.GetAttribute("href").EndsWith("/Home/Privacy"));
         }
+        */
     }
 }

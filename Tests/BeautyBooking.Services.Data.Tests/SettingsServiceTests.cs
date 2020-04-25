@@ -17,6 +17,7 @@
 
     public class SettingsServiceTests
     {
+        /*
         [Fact]
         public void GetCountShouldReturnCorrectNumber()
         {
@@ -47,5 +48,6 @@
             var service = new SettingsService(repository);
             Assert.Equal(3, service.GetCount());
         }
+        */
     }
 }
