@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Services.Data.Tests
+﻿namespace BeautyBooking.Services.Data.Tests.UseInMemoryDatabase
 {
     using System;
 

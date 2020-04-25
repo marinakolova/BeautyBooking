@@ -58,7 +58,7 @@
             await this.salonServicesRepository.SaveChangesAsync();
         }
 
-        public async Task ChangeAvailableStatus(string salonId, int serviceId)
+        public async Task ChangeAvailableStatusAsync(string salonId, int serviceId)
         {
             var salonService =
                 await this.salonServicesRepository

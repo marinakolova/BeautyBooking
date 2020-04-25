@@ -1,29 +1,53 @@
-﻿namespace BeautyBooking.Services.Data.Tests
+﻿namespace BeautyBooking.Services.Data.Tests.UseInMemoryDatabase
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using BeautyBooking.Data;
-    using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
-    using BeautyBooking.Data.Repositories;
     using BeautyBooking.Services.Data.Services;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using Moq;
-
     using Xunit;
 
     public class ServicesServiceTests : BaseServiceTests
     {
         private IServicesService Service => this.ServiceProvider.GetRequiredService<IServicesService>();
 
-        /*
-        TODO: Task<IEnumerable<T>> GetAllAsync<T>();
+        [Fact]
+        public async Task GetAllIdsByCategoryAsyncShouldReturnCorrectCount()
+        {
+            var service1 = new Service
+            {
+                Name = new NLipsum.Core.Sentence().ToString(),
+                Description = new NLipsum.Core.Paragraph().ToString(),
+                CategoryId = 10,
+            };
+            var service2 = new Service
+            {
+                Name = new NLipsum.Core.Sentence().ToString(),
+                Description = new NLipsum.Core.Paragraph().ToString(),
+                CategoryId = 10,
+            };
+            var service3 = new Service
+            {
+                Name = new NLipsum.Core.Sentence().ToString(),
+                Description = new NLipsum.Core.Paragraph().ToString(),
+                CategoryId = 10,
+            };
 
-        TODO: Task<IEnumerable<int>> GetAllIdsByCategoryAsync(int categoryId);
-         */
+            await this.DbContext.Services.AddRangeAsync(service1, service2, service3);
+            await this.DbContext.SaveChangesAsync();
+
+            var expected = this.DbContext.Services.Where(x => x.CategoryId == 10).Count();
+            var actual = await this.Service.GetAllIdsByCategoryAsync(10);
+            var actualCount = 0;
+            foreach (var result in actual)
+            {
+                actualCount++;
+            }
+
+            Assert.Equal(expected, actualCount);
+        }
 
         [Fact]
         public async Task AddAsyncShouldAddCorrectly()

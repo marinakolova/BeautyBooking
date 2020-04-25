@@ -39,7 +39,7 @@
         [HttpPost]
         public async Task<IActionResult> ChangeServiceAvailableStatus(string salonId, int serviceId)
         {
-            await this.salonServicesService.ChangeAvailableStatus(salonId, serviceId);
+            await this.salonServicesService.ChangeAvailableStatusAsync(salonId, serviceId);
 
             return this.RedirectToAction("Details", new { id = salonId });
         }

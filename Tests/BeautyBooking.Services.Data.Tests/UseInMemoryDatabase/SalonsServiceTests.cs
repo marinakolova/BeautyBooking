@@ -1,19 +1,13 @@
-﻿namespace BeautyBooking.Services.Data.Tests
+﻿namespace BeautyBooking.Services.Data.Tests.UseInMemoryDatabase
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using BeautyBooking.Data;
-    using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
-    using BeautyBooking.Data.Repositories;
     using BeautyBooking.Services.Data.Salons;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using Moq;
-
     using Xunit;
 
     public class SalonsServiceTests : BaseServiceTests
@@ -29,12 +23,70 @@
             int pageSize,
             int pageIndex);
 
-        TODO: Task<int> GetCountForPaginationAsync(string searchString, int? sortId);
-
-        TODO: Task<IEnumerable<string>> GetAllIdsByCategoryAsync(int categoryId);
-
         TODO: Task<T> GetByIdAsync<T>(string id);
          */
+
+        [Fact]
+        public async Task GetCountForPaginationAsyncShouldReturnCorrectCount()
+        {
+            await this.CreateSalonAsync(Guid.NewGuid().ToString());
+            await this.CreateSalonAsync(Guid.NewGuid().ToString());
+            await this.CreateSalonAsync(Guid.NewGuid().ToString());
+
+            var actual = await this.Service.GetCountForPaginationAsync(" ", 0);
+            Assert.Equal(0, actual);
+        }
+
+        [Fact]
+        public async Task GetAllIdsByCategoryAsyncShouldReturnCorrectCount()
+        {
+            var salon1 = new Salon
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 5,
+                CityId = 1,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+                Rating = 4,
+                RatersCount = 1,
+            };
+            var salon2 = new Salon
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 5,
+                CityId = 1,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+                Rating = 4,
+                RatersCount = 1,
+            };
+            var salon3 = new Salon
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 5,
+                CityId = 1,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+                Rating = 4,
+                RatersCount = 1,
+            };
+
+            await this.DbContext.Salons.AddRangeAsync(salon1, salon2, salon3);
+            await this.DbContext.SaveChangesAsync();
+
+            var expected = this.DbContext.Salons.Where(x => x.CategoryId == 5).Count();
+            var actual = await this.Service.GetAllIdsByCategoryAsync(5);
+            var actualCount = 0;
+            foreach (var result in actual)
+            {
+                actualCount++;
+            }
+
+            Assert.Equal(expected, actualCount);
+        }
 
         [Fact]
         public async Task AddAsyncShouldAddCorrectly()

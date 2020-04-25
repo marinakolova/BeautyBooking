@@ -1,15 +1,12 @@
-﻿namespace BeautyBooking.Services.Data.Tests
+﻿namespace BeautyBooking.Services.Data.Tests.UseInMemoryDatabase
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Data.BlogPosts;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using Moq;
     using Xunit;
 
     public class BlogPostsServiceTests : BaseServiceTests
