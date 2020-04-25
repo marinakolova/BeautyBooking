@@ -1,6 +1,6 @@
 # BeautyBooking
 
-A beauty bookings platform for hair, nails, spa and etc. appointments.  :calendar: :nail_care:
+A beauty bookings web application for hair, nails, spa and etc. appointments.  :calendar: :nail_care:
 
 :dart:  My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/) 
 
@@ -12,14 +12,11 @@ A beauty bookings platform for hair, nails, spa and etc. appointments.  :calenda
   
   - User: user@user.com / password: 123456
 
-## Getting Started
-
 ### Prerequisites
 
 - .NET Core SDK 3.1
 - Visual Studio 2019
 - Microsoft SQL Server 2017 Express
-- SQL Server Management Studio (SSMS) - optionally
 
 ## :hammer_and_pick: Built With
 
