@@ -20,9 +20,8 @@ This project is licensed under the MIT License
 - [Nikolay Kostov](https://github.com/NikolayIT)
 - [Vladislav Karamfilov](https://github.com/vladislav-karamfilov)
 
-###### Main Front-End Template
-- Paid credit removal permission!
-
 ##### Front-End Helpers
  - [Bootstrap 4 Dark themed date and time picker](https://bbbootstrap.com/snippets/dark-themed-date-and-time-picker-76906698)
  - [Simple Sidebar Template](https://startbootstrap.com/templates/simple-sidebar/)
+
+###### Main Front-End Template is with paid credit removal permission!
