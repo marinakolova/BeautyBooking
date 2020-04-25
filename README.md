@@ -2,6 +2,8 @@
 
 A beauty bookings platform. My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/)
 
+BeautyBooking is an online bookings platform for beauty services.
+
 - Test accounts (seeded):
 
   - Admin: admin@admin.com / password: 123456
@@ -9,6 +11,45 @@ A beauty bookings platform. My project for the ASP.NET Core course at [SoftUni](
   - Salon Manager: manager@manager.com / password: 123456
   
   - User: user@user.com / password: 123456
+
+## Getting Started
+
+### Prerequisites
+
+- .NET Core SDK 3.1
+- Visual Studio 2019
+- Microsoft® SQL Server® 2017 Express
+- SQL Server Management Studio (SSMS) - optionally
+
+## Built With
+
+Technologies, Frameworks and Development Techniques:
+
+- ASP.NET Core 3.1
+- Microsoft SQL Server 2017 Express as Database Service
+- Entity Framework (EF) Core 3.1 to access the Database
+
+- ASP.NET Identity System
+- MVC Areas with Multiple Layouts
+- Razor Pages, Sections, Partial Views and View Components
+- Display and Editor Templates
+
+- Repository Pattern
+- Auto Мapping
+- Dependency Injection
+- Exception Handling Middleware
+- Status Code Pages Middleware
+
+- Sorting, Filtering, and Paging with EF Core
+- Data Validation in the Models and Input View Models
+- Custom Validation Attributes
+
+- Responsive Design
+- Bootstrap
+- jQuery
+
+- Facebook External Login
+- CloudinaryDotNet 
 
 ## Author
 
