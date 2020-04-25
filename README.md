@@ -1,6 +1,6 @@
 # BeautyBooking
 
-A beauty bookings platform. My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/).
+A beauty bookings platform. My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/)
 
 - Test accounts (seeded):
 
