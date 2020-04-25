@@ -4,13 +4,16 @@
 }
 
 <div class="btn-group dropright ml-5">
-    <button type="button" style="color: #BA55D3" class="btn btn-outline-dark btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Search by Category or Navigate to All Salons View
+    <button type="button" style="color: #BA55D3" class="btn btn-outline-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search by Category
     </button>
     <div class="dropdown-menu">
         @foreach (var category in Model.Categories)
         {
-            <a class="dropdown-item" asp-area="" asp-controller="Salons" asp-action="ByCategory" asp-route-id="@category.Id">@category.Name (@category.SalonsCount)</a>
+            <a class="dropdown-item" 
+               asp-area="" asp-controller="Salons" asp-action="Index" asp-route-sortId="@category.Id">
+                @category.Name (@category.SalonsCount)
+            </a>
         }
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" asp-area="" asp-controller="Salons" asp-action="Index">All Salons</a>

@@ -18,17 +18,25 @@
             this.categoriesRepository = categoriesRepository;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync<T>()
+        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
         {
-            var categories = await this.categoriesRepository.All()
-                .OrderBy(x => x.Id)
-                .To<T>().ToListAsync();
-            return categories;
+            IQueryable<Category> query =
+                this.categoriesRepository
+                .All()
+                .OrderBy(x => x.Id);
+            if (count.HasValue)
+            {
+                query = query.Take(count.Value);
+            }
+
+            return await query.To<T>().ToListAsync();
         }
 
         public async Task<T> GetByIdAsync<T>(int id)
         {
-            var category = await this.categoriesRepository.All()
+            var category =
+                await this.categoriesRepository
+                .All()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
             return category;
@@ -47,7 +55,8 @@
 
         public async Task DeleteAsync(int id)
         {
-            var category = await this.categoriesRepository
+            var category =
+                await this.categoriesRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();

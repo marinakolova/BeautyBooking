@@ -7,6 +7,7 @@
     using BeautyBooking.Data.Common.Repositories;
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
+    using BeautyBooking.Web.ViewModels.BlogPosts;
     using Microsoft.EntityFrameworkCore;
 
     public class BlogPostsService : IBlogPostsService
@@ -18,15 +19,11 @@
             this.blogPostsRepository = blogPostsRepository;
         }
 
-        public async Task<int> GetCountAsync()
-        {
-            return await this.blogPostsRepository.All().CountAsync();
-        }
-
         public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
         {
             IQueryable<BlogPost> query =
-                this.blogPostsRepository.All()
+                this.blogPostsRepository
+                .All()
                 .OrderByDescending(x => x.CreatedOn);
             if (count.HasValue)
             {
@@ -36,9 +33,41 @@
             return await query.To<T>().ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> GetAllWithPagingAsync<T>(
+            int? sortId,
+            int pageSize,
+            int pageIndex)
+        {
+            IQueryable<BlogPost> query =
+                this.blogPostsRepository
+                .AllAsNoTracking()
+                .OrderByDescending(x => x.CreatedOn);
+
+            if (sortId != null)
+            {
+                query = query
+                    .Where(x => x.Id == sortId);
+            }
+
+            return await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize).To<T>().ToListAsync();
+        }
+
+        public async Task<int> GetCountForPaginationAsync(int? sortId)
+        {
+            return await this.blogPostsRepository
+                .AllAsNoTracking()
+                .CountAsync();
+
+            // return await query.CountAsync();
+        }
+
         public async Task<T> GetByIdAsync<T>(int id)
         {
-            var blogPost = await this.blogPostsRepository.All()
+            var blogPost =
+                await this.blogPostsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
             return blogPost;
@@ -58,7 +87,8 @@
 
         public async Task DeleteAsync(int id)
         {
-            var blogPost = await this.blogPostsRepository
+            var blogPost =
+                await this.blogPostsRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();

@@ -20,7 +20,9 @@
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            var cities = await this.citiesRepository.All()
+            var cities =
+                await this.citiesRepository
+                .All()
                 .OrderBy(x => x.Id)
                 .To<T>().ToListAsync();
             return cities;
@@ -37,7 +39,8 @@
 
         public async Task DeleteAsync(int id)
         {
-            var city = await this.citiesRepository
+            var city =
+                await this.citiesRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();

@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.BlogPosts.BlogPostsListViewModel
+﻿@model BeautyBooking.Web.ViewModels.BlogPosts.BlogPostsPaginatedListViewModel
 @{
     this.ViewData["Title"] = "Blog";
 }
@@ -9,7 +9,7 @@
         <div class="news_posts">
             @foreach (var blogPost in Model.BlogPosts)
             {
-                <hr class="bg-dark mx-4" style="height: 6px;" id="@blogPost.Id" />
+                <hr class="bg-dark mx-4" style="height: 6px;" />
 
                 <!-- News Post -->
                 <div class="news_post">
@@ -28,10 +28,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="button news_post_button">
-                            <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">
-                                <span>read</span><span>read</span>
-                            </a>
+                        <div class="news_post_text">
+                            <p>@blogPost.Content</p>
                         </div>
                     </div>
                 </div>
@@ -46,27 +44,36 @@
             <div class="sidebar_latest">
                 <div class="sidebar_title">Latest Blog Posts</div>
                 <div class="sidebar_latest_container">
-                    @foreach (var blogPost in Model.BlogPosts)
-                    {
-                        <!-- Latest News Post -->
-                        <div class="latest d-flex flex-row align-items-start justify-content-start">
-                            <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
-                            <div class="latest_content">
-                                <div class="latest_title">
-                                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.Title</a>
-                                </div>
-                                <div class="latest_info">
-                                    <ul class="d-flex flex-row align-items-start justify-content-start">
-                                        <li><a>by @blogPost.Author</a></li>
-                                        <li><a>@blogPost.CreatedOn.Date</a></li>
-                                    </ul>
-                                </div>
-                                <div class="latest_comments"><a href="#@blogPost.Id">Jump To This</a></div>
-                            </div>
-                        </div>
-                    }
+                    <div>
+                        @await Component.InvokeAsync("LatestBlogPosts")
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@{
+    var prevDisabled = !Model.BlogPosts.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.BlogPosts.HasNextPage ? "disabled" : "";
+}
+
+@if (ViewData["CurrentSort"] == null)
+{
+    <div class="row ml-5">
+        <div class="m-5">
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.BlogPosts.PageIndex + 1)"
+               style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
+                &#x2190; Previous Post
+            </a>
+        </div>
+        <div class="m-5">
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.BlogPosts.PageIndex - 1)"
+               style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
+                Next Post &#x2192;
+            </a>
+        </div>
+    </div>
+}

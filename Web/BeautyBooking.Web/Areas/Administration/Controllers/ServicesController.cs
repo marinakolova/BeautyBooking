@@ -7,7 +7,7 @@
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Services.Data.SalonServicesServices;
     using BeautyBooking.Services.Data.Services;
-    using BeautyBooking.Web.ViewModels.SelectLists;
+    using BeautyBooking.Web.ViewModels.Common.SelectLists;
     using BeautyBooking.Web.ViewModels.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
@@ -60,7 +60,7 @@
             var serviceId = await this.servicesService.AddAsync(input.Name, input.CategoryId, input.Description);
 
             // Add the Service to all Salons in the Category
-            var salonsIds = await this.salonsService.GetAllByCategoryAsync(input.CategoryId);
+            var salonsIds = await this.salonsService.GetAllIdsByCategoryAsync(input.CategoryId);
             await this.salonServicesService.AddAsync(salonsIds, serviceId);
 
             return this.RedirectToAction("Index");

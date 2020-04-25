@@ -1,10 +1,13 @@
 ﻿namespace BeautyBooking.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Services.Data.Salons;
     using BeautyBooking.Web.ViewModels.Categories;
+    using BeautyBooking.Web.ViewModels.Common.Pagination;
     using BeautyBooking.Web.ViewModels.Salons;
     using Microsoft.AspNetCore.Mvc;
 
@@ -21,29 +24,52 @@
             this.categoriesService = categoriesService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            int? sortId, // categoryId
+            string currentFilter,
+            string searchString,
+            int? pageNumber)
         {
-            var viewModel = new SalonsListViewModel
+            if (sortId != null)
             {
-                Salons = await this.salonsService.GetAllAsync<SalonViewModel>(),
-            };
-            return this.View(viewModel);
-        }
+                var category = await this.categoriesService
+                    .GetByIdAsync<CategorySimpleViewModel>(sortId.Value);
+                if (category == null)
+                {
+                    return new StatusCodeResult(404);
+                }
 
-        public async Task<IActionResult> ByCategory(int id)
-        {
-            var viewModel = new SalonsByCategoryListViewModel();
-            var category = await this.categoriesService.GetByIdAsync<CategorySimpleViewModel>(id);
-            if (category == null)
+                this.ViewData["CategoryName"] = category.Name;
+            }
+
+            this.ViewData["CurrentSort"] = sortId;
+
+            if (searchString != null)
             {
-                return new StatusCodeResult(404);
+                pageNumber = 1;
             }
             else
             {
-                viewModel.CategoryName = category.Name;
-                viewModel.SalonsCount = category.SalonsCount;
-                viewModel.Salons = await this.salonsService.GetAllByCategoryAsync<SalonViewModel>(id);
+                searchString = currentFilter;
             }
+
+            this.ViewData["CurrentFilter"] = searchString;
+
+            int pageSize = PageSizesConstants.Salons;
+            var pageIndex = pageNumber ?? 1;
+
+            var salons = await this.salonsService
+                .GetAllWithSortingFilteringAndPagingAsync<SalonViewModel>(
+                    searchString, sortId, pageSize, pageIndex);
+            var salonsList = salons.ToList();
+
+            var count = await this.salonsService
+                .GetCountForPaginationAsync(searchString, sortId);
+
+            var viewModel = new SalonsPaginatedListViewModel
+            {
+                Salons = new PaginatedList<SalonViewModel>(salonsList, count, pageIndex, pageSize),
+            };
 
             return this.View(viewModel);
         }
@@ -54,7 +80,7 @@
 
             if (viewModel == null)
             {
-                return new StatusCodeResult(404); // TODO: 404 NotFound Page
+                return new StatusCodeResult(404);
             }
 
             return this.View(viewModel);

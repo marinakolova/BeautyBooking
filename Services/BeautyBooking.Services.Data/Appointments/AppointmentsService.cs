@@ -21,7 +21,9 @@
 
         public async Task<T> GetByIdAsync<T>(string id)
         {
-            var appointment = await this.appointmentsRepository.All()
+            var appointment =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
             return appointment;
@@ -29,7 +31,9 @@
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            var appointments = await this.appointmentsRepository.All()
+            var appointments =
+                await this.appointmentsRepository
+                .All()
                 .OrderByDescending(x => x.DateTime)
                 .To<T>().ToListAsync();
             return appointments;
@@ -37,7 +41,9 @@
 
         public async Task<IEnumerable<T>> GetAllBySalonAsync<T>(string salonId)
         {
-            var appointments = await this.appointmentsRepository.All()
+            var appointments =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.SalonId == salonId)
                 .OrderByDescending(x => x.DateTime)
                 .To<T>().ToListAsync();
@@ -46,7 +52,9 @@
 
         public async Task<IEnumerable<T>> GetUpcomingByUserAsync<T>(string userId)
         {
-            var appointments = await this.appointmentsRepository.All()
+            var appointments =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.UserId == userId
                         && x.DateTime.Date > DateTime.UtcNow.Date)
                 .OrderBy(x => x.DateTime)
@@ -56,7 +64,9 @@
 
         public async Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId)
         {
-            var appointments = await this.appointmentsRepository.All()
+            var appointments =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.UserId == userId
                         && x.DateTime.Date < DateTime.UtcNow.Date
                         && x.Confirmed == true)
@@ -80,7 +90,8 @@
 
         public async Task DeleteAsync(string id)
         {
-            var appointment = await this.appointmentsRepository
+            var appointment =
+                await this.appointmentsRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
@@ -90,7 +101,9 @@
 
         public async Task ConfirmAsync(string id)
         {
-            var appointment = await this.appointmentsRepository.All()
+            var appointment =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             appointment.Confirmed = true;
@@ -99,7 +112,9 @@
 
         public async Task DeclineAsync(string id)
         {
-            var appointment = await this.appointmentsRepository.All()
+            var appointment =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             appointment.Confirmed = false;
@@ -108,7 +123,9 @@
 
         public async Task RateAppointment(string id)
         {
-            var appointment = await this.appointmentsRepository.All()
+            var appointment =
+                await this.appointmentsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             appointment.IsSalonRatedByTheUser = true;

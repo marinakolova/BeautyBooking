@@ -20,17 +20,20 @@
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            var services = await this.servicesRepository.All()
+            var services =
+                await this.servicesRepository
+                .All()
                 .OrderBy(x => x.CategoryId)
                 .ThenBy(x => x.Id)
                 .To<T>().ToListAsync();
             return services;
         }
 
-        public async Task<IEnumerable<int>> GetAllByCategoryAsync(int categoryId)
+        public async Task<IEnumerable<int>> GetAllIdsByCategoryAsync(int categoryId)
         {
             ICollection<int> servicesIds =
-                await this.servicesRepository.All()
+                await this.servicesRepository
+                .All()
                 .Where(x => x.CategoryId == categoryId)
                 .OrderBy(x => x.Id)
                 .Select(x => x.Id)
@@ -53,7 +56,8 @@
 
         public async Task DeleteAsync(int id)
         {
-            var service = await this.servicesRepository
+            var service =
+                await this.servicesRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();

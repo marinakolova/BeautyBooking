@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\BeautyBooking.Data.Common\BeautyBooking.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\BeautyBooking.Data.Models\BeautyBooking.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\BeautyBooking.Web.ViewModels\BeautyBooking.Web.ViewModels.csproj" />
     <ProjectReference Include="..\BeautyBooking.Services.Mapping\BeautyBooking.Services.Mapping.csproj" />
   </ItemGroup>
 

@@ -7,9 +7,15 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>();
 
-        Task<IEnumerable<T>> GetAllByCategoryAsync<T>(int categoryId);
+        Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
+            string searchString,
+            int? sortId,
+            int pageSize,
+            int pageIndex);
 
-        Task<IEnumerable<string>> GetAllByCategoryAsync(int categoryId);
+        Task<int> GetCountForPaginationAsync(string searchString, int? sortId);
+
+        Task<IEnumerable<string>> GetAllIdsByCategoryAsync(int categoryId);
 
         Task<T> GetByIdAsync<T>(string id);
 

@@ -5,9 +5,14 @@
 
     public interface IBlogPostsService
     {
-        Task<int> GetCountAsync();
-
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
+
+        Task<IEnumerable<T>> GetAllWithPagingAsync<T>(
+            int? sortId,
+            int pageSize,
+            int pageIndex);
+
+        Task<int> GetCountForPaginationAsync(int? sortId);
 
         Task<T> GetByIdAsync<T>(int id);
 

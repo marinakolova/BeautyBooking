@@ -33,6 +33,10 @@
                                             <partial name="_MenuItemsPartial" />
                                         </ul>
                                     </nav>
+                                    @if (this.ViewData["Title"].ToString() == "Beauty Salons")
+                                    {
+                                        <partial name="_SearchBarPartial" />
+                                    }
                                     <!--
                                     <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
                                         <form action="#" id="search_container_form" class="search_container_form">

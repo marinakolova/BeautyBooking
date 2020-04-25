@@ -21,24 +21,72 @@
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            var salons = await this.salonsRepository.All()
+            var salons =
+                await this.salonsRepository
+                .All()
                 .OrderBy(x => x.Name)
                 .To<T>().ToListAsync();
             return salons;
         }
 
-        public async Task<IEnumerable<T>> GetAllByCategoryAsync<T>(int categoryId)
+        public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
+            string searchString,
+            int? sortId,
+            int pageSize,
+            int pageIndex)
         {
-            IQueryable<Salon> query = this.salonsRepository.All()
-                .Where(x => x.CategoryId == categoryId)
+            IQueryable<Salon> query =
+                this.salonsRepository
+                .AllAsNoTracking()
                 .OrderBy(x => x.Name);
 
-            return await query.To<T>().ToListAsync();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query
+                    .Where(x => x.Name.ToLower()
+                                .Contains(searchString.ToLower()));
+            }
+
+            if (sortId != null)
+            {
+                query = query
+                    .Where(x => x.CategoryId == sortId);
+            }
+
+            return await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .To<T>().ToListAsync();
         }
 
-        public async Task<IEnumerable<string>> GetAllByCategoryAsync(int categoryId)
+        public async Task<int> GetCountForPaginationAsync(string searchString, int? sortId)
         {
-            var salonsIds = await this.salonsRepository.All()
+            IQueryable<Salon> query =
+                this.salonsRepository
+                .AllAsNoTracking()
+                .OrderBy(x => x.Name);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query
+                    .Where(x => x.Name.ToLower()
+                                .Contains(searchString.ToLower()));
+            }
+
+            if (sortId != null)
+            {
+                query = query
+                    .Where(x => x.CategoryId == sortId);
+            }
+
+            return await query.CountAsync();
+        }
+
+        public async Task<IEnumerable<string>> GetAllIdsByCategoryAsync(int categoryId)
+        {
+            var salonsIds =
+                await this.salonsRepository
+                .All()
                 .Where(x => x.CategoryId == categoryId)
                 .Select(x => x.Id)
                 .ToListAsync();
@@ -47,7 +95,9 @@
 
         public async Task<T> GetByIdAsync<T>(string id)
         {
-            var salon = await this.salonsRepository.All()
+            var salon =
+                await this.salonsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
             return salon;
@@ -74,7 +124,8 @@
 
         public async Task DeleteAsync(string id)
         {
-            var salon = await this.salonsRepository
+            var salon =
+                await this.salonsRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
@@ -84,7 +135,9 @@
 
         public async Task RateSalon(string id, int rateValue)
         {
-            var salon = await this.salonsRepository.All()
+            var salon =
+                await this.salonsRepository
+                .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 

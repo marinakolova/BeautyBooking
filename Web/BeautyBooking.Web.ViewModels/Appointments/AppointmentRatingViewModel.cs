@@ -22,8 +22,6 @@
 
         public string SalonImageUrl { get; set; }
 
-        public bool? Confirmed { get; set; }
-
         public bool? IsSalonRatedByTheUser { get; set; }
 
         [Required]

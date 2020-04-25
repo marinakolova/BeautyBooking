@@ -20,7 +20,9 @@
 
         public async Task<T> GetByIdAsync<T>(string salonId, int serviceId)
         {
-            var salonService = await this.salonServicesRepository.All()
+            var salonService =
+                await this.salonServicesRepository
+                .All()
                 .Where(x => x.SalonId == salonId && x.ServiceId == serviceId)
                 .To<T>().FirstOrDefaultAsync();
             return salonService;
@@ -56,18 +58,13 @@
             await this.salonServicesRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> CheckAvailableStatus(string salonId, int serviceId)
-        {
-            var salonService = await this.salonServicesRepository.All()
-                .Where(x => x.SalonId == salonId && x.ServiceId == serviceId)
-                .FirstOrDefaultAsync();
-            return salonService.Available;
-        }
-
         public async Task ChangeAvailableStatus(string salonId, int serviceId)
         {
-            var salonService = await this.salonServicesRepository.All()
-                .Where(x => x.SalonId == salonId && x.ServiceId == serviceId)
+            var salonService =
+                await this.salonServicesRepository
+                .All()
+                .Where(x => x.SalonId == salonId
+                            && x.ServiceId == serviceId)
                 .FirstOrDefaultAsync();
 
             salonService.Available = !salonService.Available;

@@ -1,9 +1,9 @@
-﻿namespace BeautyBooking.Web.ViewModels.SelectLists
+﻿namespace BeautyBooking.Web.ViewModels.Common.SelectLists
 {
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;
 
-    public class CitySelectListViewModel : IMapFrom<City>
+    public class CategorySelectListViewModel : IMapFrom<Category>
     {
         public int Id { get; set; }
 

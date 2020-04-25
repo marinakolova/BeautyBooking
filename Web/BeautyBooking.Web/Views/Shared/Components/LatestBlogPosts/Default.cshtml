@@ -1,0 +1,26 @@
+﻿@model BeautyBooking.Web.ViewModels.BlogPosts.BlogPostsListViewModel
+@{
+    this.ViewData["Title"] = "Default";
+}
+
+@foreach (var blogPost in Model.BlogPosts)
+{
+    <!-- Latest News Post -->
+    <div class="latest d-flex flex-row align-items-start justify-content-start">
+        <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
+        <div class="latest_content">
+            <div class="latest_title">
+                <a asp-area="" asp-controller="BlogPosts" asp-action="Index" asp-route-sortId="@blogPost.Id">@blogPost.Title</a>
+            </div>
+            <div class="latest_info">
+                <ul class="d-flex flex-row align-items-start justify-content-start">
+                    <li><a>by @blogPost.Author</a></li>
+                    <li><a>@blogPost.CreatedOn.Date</a></li>
+                </ul>
+            </div>
+            <div class="latest_comments">
+                <a asp-area="" asp-controller="BlogPosts" asp-action="Index" asp-route-sortId="@blogPost.Id">Read</a>
+            </div>
+        </div>
+    </div>
+}

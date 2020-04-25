@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using BeautyBooking.Common;
-    using BeautyBooking.Web.ViewModels.CustomValidationAttributes;
+    using BeautyBooking.Web.ViewModels.Common.CustomValidationAttributes;
     using Microsoft.AspNetCore.Http;
 
     public class SalonInputModel

@@ -1,0 +1,16 @@
+﻿<div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
+    <form asp-area="" asp-controller="Salons" asp-action="Index" method="get" class="search_container_form">
+        <input type="text" name="SearchString" class="search_container_input"
+               placeholder="Search by salon name..." value="@ViewData["currentFilter"]" required="required" />
+        <button type="submit" value="Search" class="search_container_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+</div>
+
+<!--
+<div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
+    <form action="#" id="search_container_form" class="search_container_form">
+        <input type="text" class="search_container_input" placeholder="Search" required="required">
+        <button class="search_container_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+</div>
+-->

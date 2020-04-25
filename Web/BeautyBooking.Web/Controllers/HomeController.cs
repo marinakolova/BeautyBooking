@@ -3,6 +3,7 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
 
+    using BeautyBooking.Common;
     using BeautyBooking.Services.Data.BlogPosts;
     using BeautyBooking.Services.Data.Categories;
     using BeautyBooking.Web.ViewModels;
@@ -26,8 +27,9 @@
         {
             var viewModel = new IndexViewModel
             {
-                Categories = await this.categoriesService.GetAllAsync<IndexCategoryViewModel>(),
-                BlogPosts = await this.blogPostsService.GetAllAsync<IndexBlogPostViewModel>(4),
+                Categories =
+                    await this.categoriesService.GetAllAsync<IndexCategoryViewModel>(
+                        GlobalConstants.SeededDataCounts.Categories),
             };
             return this.View(viewModel);
         }

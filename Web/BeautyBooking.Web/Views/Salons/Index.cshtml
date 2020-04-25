@@ -1,4 +1,4 @@
-﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsListViewModel
+﻿@model BeautyBooking.Web.ViewModels.Salons.SalonsPaginatedListViewModel
 @{
     this.ViewData["Title"] = "Beauty Salons";
 }
@@ -6,6 +6,14 @@
 <div>
     @await Component.InvokeAsync("CategoriesSimpleList")
 </div>
+<div class="text-center text-dark pb-5">
+    <h2><strong>@this.ViewData["CategoryName"]?.ToString()</strong></h2>
+</div>
+
+@if (!Model.Salons.Any())
+{
+    <h2 class="ml-5">No results!</h2>
+}
 
 <div class="row row-eq-height">
     @foreach (var salon in Model.Salons)
@@ -34,4 +42,30 @@
             </div>
         </div>
     }
+</div>
+
+@{
+    var prevDisabled = !Model.Salons.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Salons.HasNextPage ? "disabled" : "";
+}
+
+<div class="row ml-5">
+    <div class="m-5">
+        <a asp-action="Index"
+           asp-route-sortId="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.Salons.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
+            &#x2190; Previous Page
+        </a>
+    </div>
+    <div class="m-5">
+        <a asp-action="Index"
+           asp-route-sortId="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.Salons.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
+            Next Page &#x2192;
+        </a>
+    </div>
 </div>

@@ -5,7 +5,7 @@
 
     public interface ICategoriesService
     {
-        Task<IEnumerable<T>> GetAllAsync<T>();
+        Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
         Task<T> GetByIdAsync<T>(int id);
 

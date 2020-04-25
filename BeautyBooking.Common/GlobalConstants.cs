@@ -146,7 +146,7 @@
             public const string Body3 = "https://res.cloudinary.com/beauty-booking/image/upload/v1587257301/Salons/body-3_x95ezf.jpg";
         }
 
-        public static class SeededDataCounts // for data I want to preserve from deleting
+        public static class SeededDataCounts
         {
             public const int BlogPosts = 4;
 

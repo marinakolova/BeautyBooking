@@ -14,5 +14,7 @@
 
 @if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.SalonManagerRoleName))
 {
-    <li class="menu_item"><a asp-area="Manager" asp-controller="Dashboard" asp-action="Index">Salon Manager</a></li>
+    <li class="menu_item">
+        <a asp-area="Manager" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-tasks" aria-hidden="true"></i> Salon Manager</a>
+    </li>
 }
