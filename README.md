@@ -1,8 +1,8 @@
 # BeautyBooking
 
-A beauty bookings platform. My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/)
+A beauty bookings platform for hair, nails, spa and etc. appointments.  :calendar: :nail_care:
 
-BeautyBooking is an online bookings platform for beauty services.
+:dart:  My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/) 
 
 - Test accounts (seeded):
 
@@ -18,20 +18,19 @@ BeautyBooking is an online bookings platform for beauty services.
 
 - .NET Core SDK 3.1
 - Visual Studio 2019
-- Microsoft® SQL Server® 2017 Express
+- Microsoft SQL Server 2017 Express
 - SQL Server Management Studio (SSMS) - optionally
 
-## Built With
+## :hammer_and_pick: Built With
 
 Technologies, Frameworks and Development Techniques:
 
 - ASP.NET Core 3.1
-- Microsoft SQL Server 2017 Express as Database Service
 - Entity Framework (EF) Core 3.1
 
 - ASP.NET Identity System
 - MVC Areas with Multiple Layouts
-- Razor Pages, Sections, Partial Views 
+- Razor Pages, Sections, Partial Views
 - View Components
 
 - Repository Pattern
@@ -41,8 +40,8 @@ Technologies, Frameworks and Development Techniques:
 - Status Code Pages Middleware
 
 - Sorting, Filtering, and Paging with EF Core
+- Data Validation, both Client-side and Server-side
 - Data Validation in the Models and Input View Models
-- Data Validation Both Client-side and Server-side
 - Custom Validation Attributes
 
 - Responsive Design
@@ -50,7 +49,7 @@ Technologies, Frameworks and Development Techniques:
 - jQuery
 
 - Facebook External Login
-- CloudinaryDotNet 
+- CloudinaryDotNet :cloud:
 
 ## Author
 
