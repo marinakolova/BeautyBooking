@@ -23,6 +23,6 @@
 
         Task DeleteAsync(string id);
 
-        Task RateSalon(string id, int rateValue);
+        Task RateSalonAsync(string id, int rateValue);
     }
 }

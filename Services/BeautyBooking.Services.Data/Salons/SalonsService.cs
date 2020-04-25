@@ -133,7 +133,7 @@
             await this.salonsRepository.SaveChangesAsync();
         }
 
-        public async Task RateSalon(string id, int rateValue)
+        public async Task RateSalonAsync(string id, int rateValue)
         {
             var salon =
                 await this.salonsRepository

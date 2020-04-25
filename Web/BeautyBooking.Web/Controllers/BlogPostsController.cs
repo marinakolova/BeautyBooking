@@ -40,7 +40,7 @@
                 .GetAllWithPagingAsync<BlogPostViewModel>(sortId, pageSize, pageIndex);
             var blogPostsList = blogPosts.ToList();
 
-            var count = await this.blogPostsService.GetCountForPaginationAsync(sortId);
+            var count = await this.blogPostsService.GetCountForPaginationAsync();
 
             var viewModel = new BlogPostsPaginatedListViewModel
             {

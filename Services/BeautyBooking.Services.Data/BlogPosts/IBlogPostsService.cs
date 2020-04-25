@@ -12,7 +12,7 @@
             int pageSize,
             int pageIndex);
 
-        Task<int> GetCountForPaginationAsync(int? sortId);
+        Task<int> GetCountForPaginationAsync();
 
         Task<T> GetByIdAsync<T>(int id);
 

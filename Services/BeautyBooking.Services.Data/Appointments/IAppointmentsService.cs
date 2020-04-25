@@ -24,6 +24,6 @@
 
         Task DeclineAsync(string id);
 
-        Task RateAppointment(string id);
+        Task RateAppointmentAsync(string id);
     }
 }

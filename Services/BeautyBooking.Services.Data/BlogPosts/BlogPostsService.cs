@@ -54,7 +54,7 @@
                 .Take(pageSize).To<T>().ToListAsync();
         }
 
-        public async Task<int> GetCountForPaginationAsync(int? sortId)
+        public async Task<int> GetCountForPaginationAsync()
         {
             return await this.blogPostsRepository
                 .AllAsNoTracking()

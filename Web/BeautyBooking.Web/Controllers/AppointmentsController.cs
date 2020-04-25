@@ -133,8 +133,8 @@
                 return this.RedirectToAction("RatePastAppointment", new { id = rating.Id });
             }
 
-            await this.appointmentsService.RateAppointment(rating.Id);
-            await this.salonsService.RateSalon(rating.SalonId, rating.RateValue);
+            await this.appointmentsService.RateAppointmentAsync(rating.Id);
+            await this.salonsService.RateSalonAsync(rating.SalonId, rating.RateValue);
 
             return this.RedirectToAction("Details", "Salons", new { id = rating.SalonId });
         }

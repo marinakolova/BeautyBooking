@@ -121,7 +121,7 @@
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
-        public async Task RateAppointment(string id)
+        public async Task RateAppointmentAsync(string id)
         {
             var appointment =
                 await this.appointmentsRepository
