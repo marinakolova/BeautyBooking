@@ -8,7 +8,7 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 
 - Test accounts:
 
-  - Admin: admin@admin.com / password: 123456 (not available on hosted app)
+  - Admin: admin@admin.com / password: 123456
 
   - Salon Manager: manager@manager.com / password: 123456
 
