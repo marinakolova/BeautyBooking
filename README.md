@@ -1,10 +1,10 @@
 # BeautyBooking
 
-:heavy_check_mark: :arrow_right: [https://beauty-booking.azurewebsites.net/](https://beauty-booking.azurewebsites.net/)
+[https://beauty-booking.azurewebsites.net/](https://beauty-booking.azurewebsites.net/)
 
 A beauty bookings web application for hair, nails, spa and etc. appointments.  :calendar: :nail_care:
 
-:dart:  My project for the ASP.NET Core course at [SoftUni](https://softuni.bg/) 
+:dart:  My project for the ASP.NET Core course at SoftUni. 
 
 ## :hammer_and_pick: Built With
 
@@ -29,7 +29,6 @@ Technologies, Frameworks and Development Techniques:
 - Data Validation in the Models and Input View Models
 - Custom Validation Attributes
 
-- CloudinaryDotNet :cloud:
 - Responsive Design
 - Bootstrap
 - jQuery
