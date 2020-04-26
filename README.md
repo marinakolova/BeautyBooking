@@ -4,7 +4,15 @@
 
 A beauty bookings web application for hair, nails, spa and etc. appointments.  :calendar: :nail_care:
 
-:dart:  My project for the ASP.NET Core course at SoftUni. 
+:dart:  My project for the ASP.NET Core course at SoftUni.
+
+- Test accounts:
+
+  - Admin: admin@admin.com / password: 123456 (not available on hosted app)
+
+  - Salon Manager: manager@manager.com / password: 123456
+
+  - User: user@user.com / password: 123456
 
 ## :hammer_and_pick: Built With
 
