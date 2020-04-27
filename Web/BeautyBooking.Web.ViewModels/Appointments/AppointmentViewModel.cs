@@ -1,6 +1,7 @@
 ﻿namespace BeautyBooking.Web.ViewModels.Appointments
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     using BeautyBooking.Data.Models;
     using BeautyBooking.Services.Mapping;

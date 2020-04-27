@@ -45,7 +45,7 @@
                 <div class="sidebar_title">Latest Blog Posts</div>
                 <div class="sidebar_latest_container">
                     <div>
-                        @await Component.InvokeAsync("LatestBlogPosts")
+                        @await Component.InvokeAsync("LatestBlogPosts", 10)
                     </div>
                 </div>
             </div>
@@ -63,16 +63,16 @@
     <div class="row ml-5">
         <div class="m-5">
             <a asp-action="Index"
-               asp-route-pageNumber="@(Model.BlogPosts.PageIndex + 1)"
-               style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
-                &#x2190; Previous Post
+               asp-route-pageNumber="@(Model.BlogPosts.PageIndex - 1)"
+               style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
+                <i class="fa fa-arrow-left"></i>
             </a>
         </div>
         <div class="m-5">
             <a asp-action="Index"
-               asp-route-pageNumber="@(Model.BlogPosts.PageIndex - 1)"
-               style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
-                Next Post &#x2192;
+               asp-route-pageNumber="@(Model.BlogPosts.PageIndex + 1)"
+               style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
+                <i class="fa fa-arrow-right"></i>
             </a>
         </div>
     </div>

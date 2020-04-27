@@ -60,7 +60,7 @@
             @foreach (var appointment in this.Model.Appointments)
             {
                 <tr>
-                    <th scope="row">@appointment.DateTime</th>
+                    <th scope="row">@appointment.DateTime.ToString("f")</th>
                     <td>
                         @if (appointment.Confirmed == true)
                         {
