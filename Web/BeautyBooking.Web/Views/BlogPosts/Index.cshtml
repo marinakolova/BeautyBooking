@@ -24,7 +24,7 @@
                                     <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">by @blogPost.Author</a>
                                 </li>
                                 <li>
-                                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CreatedOn</a>
+                                    <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id">@blogPost.CreatedOn.Date.ToString("D")</a>
                                 </li>
                             </ul>
                         </div>
