@@ -14,7 +14,7 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 
   - User: user@user.com / password: 123456
 
-## Description
+## :scroll: Description
 
 **BeautyBooking** е уеб-приложение за лесно и бързо намиране на салони за красота и записване на часове за техните услуги - прически, маникюр, педикюр, кола-маска, различни видове масаж и много други.
 
@@ -31,6 +31,8 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 Идеята на приложението за момента не е свързана със закупуване на ваучери за отстъпки и привличане на поток от клиенти за определен период или услуга.
 
 Идеята е да улесни комуникацията между салоните за красота и техните клиенти - за да може записването на час за маникюр (например) да става бързо и лесно за клиента, по всяко време на денонощието, без обаждания и съобщения, и без прелистване на "тефтера" от отсрещната страна.
+
+## :framed_picture: Image
 
 ![BeautyBooking-HomePage](https://res.cloudinary.com/beauty-booking/image/upload/v1588865868/SCREENSHOTS/1-home_orn9ng.png)
 
