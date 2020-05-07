@@ -32,9 +32,14 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 
 Идеята е да улесни комуникацията между салоните за красота и техните клиенти - за да може записването на час за маникюр (например) да става бързо и лесно за клиента, по всяко време на денонощието, без обаждания и съобщения, и без прелистване на "тефтера" от отсрещната страна.
 
-## :framed_picture: Image
+## :framed_picture: Images
 
 ![BeautyBooking-HomePage](https://res.cloudinary.com/beauty-booking/image/upload/v1588865868/SCREENSHOTS/1-home_orn9ng.png)
+
+##
+
+![BeautyBooking-MakeAnAppointment](https://res.cloudinary.com/beauty-booking/image/upload/v1588865868/SCREENSHOTS/4-make-an-appointment_zclidt.png)
+
 
 ## :hammer_and_pick: Built With
 
