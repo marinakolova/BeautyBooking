@@ -47,7 +47,7 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 ## :gear: Application Configurations
 
 ### 1. The Connection string 
-is in `appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.\\;`
+is in `appsettings.json`. If you don't use SQLEXPRESS, you should replace `Server=.\\SQLEXPRESS;` with `Server=.;`
 
 ### 2. Database Migrations 
 would be applied when you run the application, since the `ASPNETCORE-ENVIRONMENT` is set to `Development`. If you change it, you should apply the migrations yourself.
