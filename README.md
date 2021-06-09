@@ -17,7 +17,7 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 - Salon Manager (user role):
   - confirms/declines users' appointments for particular salon; 
   - controls what services are available for booking in the salon.
-- Admin
+- Admin:
   - creates/deletes blog posts, categories, salons and services; 
   - can review the appointments history.
 
@@ -25,7 +25,7 @@ A beauty bookings web application for hair, nails, spa and etc. appointments.  :
 
 - ASP.NET Core 3.1
 - Entity Framework (EF) Core 3.1
-- SQL Server Express
+- Microsoft SQL Server Express
 - ASP.NET Identity System
 - MVC Areas with Multiple Layouts
 - Razor Pages, Sections, Partial Views
@@ -91,10 +91,11 @@ You won't get an error for missing Cloudinary Credentials - it is handled by usi
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
 #### Using [ASP.NET-MVC-Template](https://github.com/NikolayIT/ASP.NET-MVC-Template) developed by:
 - [Nikolay Kostov](https://github.com/NikolayIT)
 - [Vladislav Karamfilov](https://github.com/vladislav-karamfilov)
+- [Stoyan Shopov](https://github.com/StoyanShopov)
