@@ -1,6 +1,6 @@
 # BeautyBooking
 
-A beauty bookings web application for hair, nails, spa and etc. appointments.  :calendar: :nail_care:
+A beauty bookings web application for hair, nails, spa etc. appointments.  :calendar: :nail_care:
 
 :dart:  My project for the ASP.NET Core course at SoftUni. (April 2020) 
 
